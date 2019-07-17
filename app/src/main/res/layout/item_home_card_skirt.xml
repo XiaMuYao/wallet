@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="itemSkirtListBean"
+            type="com.xiamuyao.sample.model.bean.SkirtListBean" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/shape_circle">
+
+        <ImageView
+            android:id="@+id/itemSkirtHeadView"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:netCircleImage="@{itemSkirtListBean.headUrl}" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="42.5dp"
+            android:layout_height="42.5dp"
+            android:background="@drawable/shape_circle_stroke"
+            app:layout_constraintBottom_toBottomOf="@id/itemSkirtHeadView"
+            app:layout_constraintLeft_toLeftOf="@id/itemSkirtHeadView"
+            app:layout_constraintRight_toRightOf="@+id/itemSkirtHeadView"
+            app:layout_constraintTop_toTopOf="@id/itemSkirtHeadView" />
+
+        <TextView
+            android:id="@+id/itemSkirtNameView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginBottom="15dp"
+            android:textColor="#000000"
+            android:layout_toRightOf="@id/itemSkirtHeadView"
+            android:text="@{itemSkirtListBean.name}"
+            app:layout_constraintBottom_toBottomOf="@+id/itemSkirtHeadView"
+            app:layout_constraintStart_toEndOf="@+id/itemSkirtHeadView"
+            app:layout_constraintTop_toTopOf="@+id/itemSkirtHeadView"
+            app:layout_constraintVertical_bias="0.562"
+            tools:text="name" />
+
+        <TextView
+            android:id="@+id/itemSkirtTimeView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/itemSkirtNameView"
+            android:layout_marginStart="12dp"
+            android:layout_marginBottom="3dp"
+            android:textColor="#999999"
+            android:layout_toRightOf="@id/itemSkirtHeadView"
+            android:text="@{itemSkirtListBean.time}"
+            app:layout_constraintBottom_toBottomOf="@+id/itemSkirtHeadView"
+            app:layout_constraintStart_toEndOf="@+id/itemSkirtHeadView"
+            app:layout_constraintTop_toTopOf="@+id/itemSkirtHeadView"
+            app:layout_constraintVertical_bias="1.0"
+            tools:text="time" />
+
+
+        <TextView
+            android:id="@+id/textView2"
+            android:lineSpacingExtra="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:textColor="#000000"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="8dp"
+            android:text="@{itemSkirtListBean.text}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/itemSkirtHeadView"
+            tools:text="@string/item_skit_text" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView2" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            style="@style/item_menu"
+            android:background="@drawable/icon_share"
+            app:layout_constraintLeft_toLeftOf="@id/recyclerView"
+            app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+
+
+        <ImageView
+            android:id="@+id/imageView2"
+            style="@style/item_menu"
+            android:layout_marginLeft="15dp"
+            android:background="@drawable/icon_message"
+            app:layout_constraintLeft_toRightOf="@id/imageView"
+            app:layout_constraintTop_toBottomOf="@id/recyclerView" />
+
+        <TextView
+            android:id="@+id/TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:text="@{itemSkirtListBean.message}"
+            app:layout_constraintLeft_toRightOf="@+id/imageView2"
+            app:layout_constraintTop_toBottomOf="@id/recyclerView"
+            tools:text="123" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            style="@style/item_menu"
+            android:layout_marginLeft="15dp"
+            android:background="@drawable/icon_good"
+            app:layout_constraintLeft_toRightOf="@id/TextView"
+            app:layout_constraintTop_toBottomOf="@id/recyclerView" />
+
+
+        <TextView
+            android:id="@+id/TextView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:text="@{itemSkirtListBean.good}"
+            app:layout_constraintLeft_toRightOf="@+id/imageView3"
+            app:layout_constraintTop_toBottomOf="@id/recyclerView"
+            tools:text="123" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

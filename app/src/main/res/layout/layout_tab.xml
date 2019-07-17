@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:weightSum="4">
+
+
+        <RelativeLayout
+            android:id="@+id/mainBottomTabOne"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/bottom_tab_iv_one"
+                style="@style/style_bottom_menu_image"
+                android:background="@drawable/selector_menu_home" />
+
+            <TextView
+                style="@style/style_bottom_menu_text"
+                android:layout_below="@+id/bottom_tab_iv_one"
+                android:text="Home" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/mainBottomTabTwo"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/bottom_tab_iv_two"
+                style="@style/style_bottom_menu_image"
+                android:background="@drawable/selector_menu_shop" />
+
+            <TextView
+                style="@style/style_bottom_menu_text"
+                android:layout_below="@+id/bottom_tab_iv_two"
+                android:text="Find" />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/mainBottomTabThere"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+
+            <ImageView
+                android:id="@+id/bottom_tab_iv_there"
+                style="@style/style_bottom_menu_image"
+                android:background="@drawable/selector_menu_message" />
+
+            <TextView
+                style="@style/style_bottom_menu_text"
+                android:layout_below="@+id/bottom_tab_iv_there"
+                android:text="Message" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/mainBottomTabFour"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+
+            <ImageView
+                android:id="@+id/bottom_tab_iv_four"
+                style="@style/style_bottom_menu_image"
+                android:background="@drawable/selector_menu_my" />
+
+            <TextView
+                style="@style/style_bottom_menu_text"
+                android:layout_below="@+id/bottom_tab_iv_four"
+                android:text="My" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+</layout>

@@ -1,0 +1,49 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <!--<item name="colorPrimary">@color/colorPrimary</item>-->
+        <!--<item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
+        <!--<item name="colorAccent">@color/colorAccent</item>-->
+    </style>
+
+    <style name="item_menu">
+        <item name="android:layout_width">20dp</item>
+        <item name="android:layout_height">20dp</item>
+        <item name="android:layout_marginTop">5dp</item>
+    </style>
+
+    <style name="style_bottom_menu_image">
+        <item name="android:layout_width">25dp</item>
+        <item name="android:layout_height">25dp</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:state_pressed">false</item>
+        <item name="android:checkable">false</item>
+    </style>
+
+    <style name="style_bottom_menu_text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">11dp</item>
+        <item name="android:textColor">#000000</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_marginTop">0dp</item>
+        <item name="android:state_pressed">false</item>
+        <item name="android:checkable">false</item>
+    </style>
+
+    <style name="item_nine_image">
+        <item name="android:layout_width">@dimen/itemNineImage</item>
+        <item name="android:layout_height">@dimen/itemNineImage</item>
+        <item name="android:transitionName">@{itemImageUrl}</item>
+    </style>
+
+    <style name="item_home_nine_layout">
+        <item name="android:layout_width">@dimen/itemNineLayout</item>
+        <item name="android:layout_height">@dimen/itemNineLayout</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+</resources>
