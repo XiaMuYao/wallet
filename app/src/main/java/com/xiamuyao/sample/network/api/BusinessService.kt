@@ -7,6 +7,6 @@ import retrofit2.http.GET
 interface BusinessService {
 
     @GET("chapters/json")
-    suspend fun getProvinces(): WanAndroidBean
+    suspend fun getProvinces(): BaseResponse<MutableList<WanAndroidBean.DataBean>>
 
 }

@@ -11,7 +11,7 @@ class HotViewModel(application: Application) : BaseViewModel(application) {
 
     var textStr = MutableLiveData<String>()
 
-    override fun initData() {
+    override  fun initData() {
     }
 
 }

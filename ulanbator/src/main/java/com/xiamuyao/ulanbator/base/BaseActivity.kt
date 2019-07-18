@@ -2,9 +2,7 @@ package com.xiamuyao.ulanbator.base
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.Color
 import android.os.Bundle
-import android.widget.ScrollView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -26,6 +24,7 @@ abstract class BaseActivity<V : ViewDataBinding, VM : BaseViewModel> : AppCompat
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mContext = this
+
         //页面传参
         initParam()
         //私有的初始化 Data Binding 和 ViewModel 方法
@@ -38,11 +37,11 @@ abstract class BaseActivity<V : ViewDataBinding, VM : BaseViewModel> : AppCompat
         initVVMObserver()
         //注册基本的事件回调
         initBaseLiveDataCallBack()
+
         ImmersionBar.with(this)
             .statusBarColor(R.color.design_dark_default_color_error)
             .fitsSystemWindows(true)    //解决状态栏和布局重叠问题，任选其一，默认为false，当为true时一定要指定statusBarColor()，不然状态栏为透明色，还有一些重载方法
             .init()
-
     }
 
 
@@ -70,11 +69,11 @@ abstract class BaseActivity<V : ViewDataBinding, VM : BaseViewModel> : AppCompat
     }
 
 
-    private fun showDialog() {
+    fun showDialog() {
         LL.d("showDialog")
     }
 
-    private fun dismissDialog() {
+    fun dismissDialog() {
         LL.d("dismissDialog")
     }
 
@@ -93,7 +92,7 @@ abstract class BaseActivity<V : ViewDataBinding, VM : BaseViewModel> : AppCompat
     /**
      * 初始化页面数据
      */
-    open fun initData() {
+    open  fun initData() {
         viewModel.initData()
     }
 

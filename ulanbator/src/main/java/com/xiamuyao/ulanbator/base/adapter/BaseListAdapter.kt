@@ -16,55 +16,9 @@ import com.xiamuyao.ulanbator.R
  * @param T
  * @constructor
  */
-abstract class BaseListAdapter<T>(layout: Int, data: ObservableArrayList<T>?) :
+abstract class BaseListAdapter<T>(layout: Int, data: MutableList<T>?) :
     BaseQuickAdapter<T, BaseListAdapter.ListViewHolder>(layout, data) {
 
-    init {
-        data?.addOnListChangedCallback(object :
-            ObservableList.OnListChangedCallback<ObservableList<String>>() {
-            override fun onChanged(sender: ObservableList<String>?) {
-                notifyDataSetChanged()
-            }
-
-            override fun onItemRangeRemoved(
-                sender: ObservableList<String>?,
-                positionStart: Int,
-                itemCount: Int
-            ) {
-                if (sender!!.isEmpty()) {
-                    notifyDataSetChanged()
-                } else {
-                    notifyItemRangeRemoved(positionStart, itemCount)
-                }
-            }
-
-            override fun onItemRangeMoved(
-                sender: ObservableList<String>?,
-                fromPosition: Int,
-                toPosition: Int,
-                itemCount: Int
-            ) {
-                notifyItemMoved(fromPosition, toPosition)
-            }
-
-            override fun onItemRangeInserted(
-                sender: ObservableList<String>?,
-                positionStart: Int,
-                itemCount: Int
-            ) {
-                notifyItemRangeInserted(positionStart, itemCount)
-            }
-
-            override fun onItemRangeChanged(
-                sender: ObservableList<String>?,
-                positionStart: Int,
-                itemCount: Int
-            ) {
-                notifyItemRangeChanged(positionStart, itemCount)
-            }
-
-        })
-    }
 
     override fun getItemView(layoutResId: Int, parent: ViewGroup): View {
         val binding: ViewDataBinding =

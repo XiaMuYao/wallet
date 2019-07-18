@@ -11,10 +11,8 @@ class HomeViewModel(application: Application) : BaseViewModel(application) {
 
     val titleList = arrayListOf("关注", "推荐")
 
-    override fun initData() {
+    override  fun initData() {
 
-        launch {
-        }
 
     }
 

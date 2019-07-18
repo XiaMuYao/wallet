@@ -1,7 +1,5 @@
 package com.xiamuyao.sample.model.bean
 
-import androidx.databinding.ObservableArrayList
-
 class WanAndroidBean {
 
     /**

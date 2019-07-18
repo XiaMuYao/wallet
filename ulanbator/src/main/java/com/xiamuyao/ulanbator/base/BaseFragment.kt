@@ -7,18 +7,19 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.lifecycleScope
+import com.xiamuyao.ulanbator.utlis.LL
+import com.xiamuyao.ulanbator.utlis.autoCleared
 
 
 abstract class BaseFragment<V : ViewDataBinding, VM : BaseViewModel> : Fragment() {
 
-    lateinit var binding: V
-
-    lateinit var viewModel: VM
+    var binding by autoCleared<V>()
+    var viewModel by autoCleared<VM>()
 
     var root: View? = null
-
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
@@ -48,12 +49,20 @@ abstract class BaseFragment<V : ViewDataBinding, VM : BaseViewModel> : Fragment(
             loadData()
         }
 
-
         return root
 
     }
 
     private fun initBaseLiveDataCallBack() {
+        viewModel.showDialogStatus.observe(this, Observer {
+          val baseActivity = activity as BaseActivity<*, *>
+            baseActivity.showDialog()
+        })
+
+        viewModel.showDialogStatus.observe(this, Observer {
+            val baseActivity = activity as BaseActivity<*, *>
+            baseActivity.dismissDialog()
+        })
     }
 
 

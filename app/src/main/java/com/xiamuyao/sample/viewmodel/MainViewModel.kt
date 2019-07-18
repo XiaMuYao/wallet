@@ -29,7 +29,7 @@ class MainViewModel(application: Application) : BaseViewModel(application) {
         fragmentIndex.value = 0
     }
 
-    override fun initData() {
+    override  fun initData() {
 
     }
 

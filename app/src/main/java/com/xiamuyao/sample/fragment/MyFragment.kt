@@ -24,17 +24,19 @@ class MyFragment : BaseFragment<FragmentMyBinding, MyViewModel>() {
     }
 
     private val myAdapter by lazy {
-        BaseNoChildClickAdapter(R.layout.item_my_card_skirt, viewModel.mylist, BR.myWanAndroidBean)
+        BaseNoChildClickAdapter(R.layout.item_my_card_skirt, viewModel.mylist.value, BR.myWanAndroidBean)
     }
 
     override fun initView() {
         binding.myRecyclerView.defaultStyle(myAdapter)
+        binding.ButtonwrapContent.setOnClickListener {
+
+        }
     }
 
     override fun initVVMObserver() {
-
-        viewModel.mylistmylist.observe(this, Observer {
-            LL.d(it.toString())
+        viewModel.mylist.observe(this, Observer {
+            myAdapter.setNewData(it)
         })
     }
 

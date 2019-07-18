@@ -10,9 +10,6 @@ import com.xiamuyao.sample.viewmodel.FollowViewModel
 import com.xiamuyao.ulanbator.base.BaseFragment
 import com.xiamuyao.ulanbator.extension.defaultStyle
 import com.xiamuyao.ulanbator.utlis.LL
-import androidx.core.os.bundleOf
-import androidx.core.view.ViewCompat
-import androidx.fragment.app.commit
 import com.xiamuyao.sample.R
 
 
@@ -24,44 +21,6 @@ class FollowFragment : BaseFragment<com.xiamuyao.sample.databinding.FragmentFoll
     }
 
     override fun onChildClick(childIndex: Int, parentIndex: Int, view: View) {
-
-//        fragmentManager!!.beginTransaction()
-//
-//            .addSharedElement(
-//                view,
-//                ViewCompat.getTransitionName(view)!!
-//            )
-//
-//            .addToBackStack(ViewCompat.getTransitionName(view)!!)
-//
-//            .replace(
-//                R.id.mainParentCl,FragmentB.newInstance()
-//            )
-//
-//            .commit();
-
-
-//         Fragment
-        fragmentManager?.commit {
-            replace(
-                R.id.mainParentCl,
-                ImageShowFragment.newInstance(bundleOf("imageUrl" to ViewCompat.getTransitionName(view))),
-                ImageShowFragment.javaClass.simpleName + parentIndex
-            )
-            addSharedElement(view, ViewCompat.getTransitionName(view)!!)
-            addToBackStack(ImageShowFragment.javaClass.simpleName + parentIndex)
-        }
-
-        // Activity
-//        ShowBigImageActivity.start(
-//            activity!!, view,
-//            bundleOf(
-//                "index" to childIndex,
-//                "imageList" to viewModel.skirtList[parentIndex].imageList
-//            )
-//        )
-
-
     }
 
     override fun initVVMObserver() {

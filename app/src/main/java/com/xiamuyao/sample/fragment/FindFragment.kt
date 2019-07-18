@@ -23,26 +23,6 @@ class FindFragment : BaseFragment<FragmentFindBinding, FindViewModel>() {
     override fun initView() {
         binding.ButtonButtonButton.setOnClickListener {
 
-            //            var fragmentA =FragmentA.newInstance()
-
-//            fragmentManager!!.beginTransaction()
-//                .addSharedElement(binding.root.findViewById(R.id.imageView), "simple transition name")
-//                .addToBackStack(TAG)
-//                .replace(R.id.mainParentCl, fragmentA!!)
-//                .commit()
-
-
-            var fragment = fragmentManager!!.findFragmentByTag(FragmentA::class.java.name)
-            if (fragment == null) {
-                fragment = FragmentA.newInstance()
-                fragmentManager!!.beginTransaction().add(
-                    R.id.mainParentCl,
-                    fragment,
-                    FragmentA::class.java.name
-                ).commit()
-            }
-
-
         }
     }
 

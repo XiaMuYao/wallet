@@ -1,35 +1,34 @@
 package com.xiamuyao.sample.activity
 
-import android.content.ContentValues
 import android.os.Bundle
-import android.view.View
-import androidx.fragment.app.commit
+import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import com.xiamuyao.sample.BR
 import com.xiamuyao.sample.R
 import com.xiamuyao.sample.databinding.ActivityLaunchBinding
-import com.xiamuyao.sample.fragment.FindFragment
-import com.xiamuyao.sample.fragment.FragmentA
-import com.xiamuyao.sample.fragment.HomeFragment
-import com.xiamuyao.sample.fragment.MyFragment
 import com.xiamuyao.sample.viewmodel.LaunchViewModel
 import com.xiamuyao.ulanbator.base.BaseActivity
-import kotlinx.coroutines.delay
+import com.xiamuyao.ulanbator.utlis.LL
 import kotlinx.coroutines.launch
 
 class LaunchActivity : BaseActivity<ActivityLaunchBinding, LaunchViewModel>() {
 
     override fun initView() {
 
-//        lifecycleScope.launch {
-//            delay(500)
+        lifecycleScope.launch {
             MainActivity.start(this@LaunchActivity)
-//            finish()
-//        }
+            finish()
+        }
 
     }
 
     override fun initVVMObserver() {
+//        viewModel.mylistmylist.observe(this, Observer {
+//            LL.d("数据更改过")
+//        })
+//        viewModel.mylistmylist?.observe(this, Observer {
+//            LL.d("数据更改过")
+//        })
     }
 
 

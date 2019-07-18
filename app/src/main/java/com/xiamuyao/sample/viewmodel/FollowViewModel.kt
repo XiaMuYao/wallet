@@ -12,7 +12,7 @@ class FollowViewModel(application: Application) : BaseViewModel(application) {
     var skirtList = DataUtli.getSkirtList()
 
 
-    override fun initData() {
+    override  fun initData() {
     }
 
 }

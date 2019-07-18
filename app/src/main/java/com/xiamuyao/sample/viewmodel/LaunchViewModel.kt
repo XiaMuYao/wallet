@@ -1,13 +1,15 @@
 package com.xiamuyao.sample.viewmodel
 
 import android.app.Application
+import com.xiamuyao.sample.model.repository.PlaceRepository
 import com.xiamuyao.ulanbator.base.BaseViewModel
-import com.xiamuyao.ulanbator.utlis.LL
-import com.xiamuyao.ulanbator.utlis.LibConstant
+import org.kodein.di.generic.instance
 
 class LaunchViewModel(application: Application) : BaseViewModel(application) {
 
-    override fun initData() {
+    private val repository: PlaceRepository by instance()
+
+    override  fun initData() {
 
     }
 

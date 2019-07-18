@@ -8,9 +8,9 @@ import androidx.databinding.ObservableArrayList
  * @property brId Int
  * @constructor
  */
-class BaseNoChildClickAdapter<T>(layout: Int, data: ObservableArrayList<T>, var brId: Int) :
+class BaseNoChildClickAdapter<T>(layout: Int, data: MutableList<T>?, var brId: Int) :
     BaseListAdapter<T>(layout, data) {
-    override fun convert(helper: ListViewHolder?, item: T) {
+    override fun convert(helper: ListViewHolder?, item: T?) {
         helper?.let {
             with(it) {
                 binding.setVariable(brId, item)
