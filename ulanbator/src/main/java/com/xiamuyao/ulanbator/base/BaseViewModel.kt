@@ -19,6 +19,10 @@ abstract class BaseViewModel(application: Application) : AndroidViewModel(applic
     val showDialogStatus = SingleLiveEvent<Boolean>()
     //销毁Dialog
     val disDialogStatus = SingleLiveEvent<Boolean>()
+    //上拉加载结束
+    val loadMoreStatus = SingleLiveEvent<Boolean>()
+    //下拉刷新结束
+    val refreshStatus = SingleLiveEvent<Boolean>()
 
     abstract fun initData()
 

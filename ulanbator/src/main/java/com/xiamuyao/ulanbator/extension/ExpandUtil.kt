@@ -2,15 +2,14 @@ package com.xiamuyao.ulanbator.extension
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.scwang.smartrefresh.layout.SmartRefreshLayout
+import com.scwang.smartrefresh.layout.api.RefreshLayout
+import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener
 import com.xiamuyao.ulanbator.base.adapter.BaseListAdapter
 import com.xiamuyao.ulanbator.base.BaseViewModel
 import com.xiamuyao.ulanbator.net.BaseResponse
-import com.xiamuyao.ulanbator.net.Status
 import com.xiamuyao.ulanbator.net.Status.API_ERROR
 import com.xiamuyao.ulanbator.net.Status.SUCCESS
-import com.xiamuyao.ulanbator.utlis.LibConstant
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.coroutineScope
 
 /**
  * 通用拓展函数
@@ -30,10 +29,44 @@ fun <T> RecyclerView.defaultStyle(
     this.layoutManager = LayoutManager
 }
 
+
+/**
+ * 默认下拉刷新和加载更多的方法
+ * @receiver SmartRefreshLayout
+ * @param LoadMoreBlock Function0<Unit>
+ * @param refreshBlock Function0<Unit>
+ */
+fun SmartRefreshLayout.defaultRefreshLoadMoreFun(
+    LoadMoreBlock: (() -> Unit)?,
+    refreshBlock: (() -> Unit?)?
+) {
+    val thatView = this
+    //设置是否在没有更多数据之后 Footer 跟随内容
+    thatView.setEnableFooterFollowWhenNoMoreData(true)
+
+    if (LoadMoreBlock == null) {
+        thatView.setEnableLoadMore(false)
+    }
+    if (refreshBlock == null) {
+        thatView.setEnableRefresh(false)
+    }
+    thatView.setOnRefreshLoadMoreListener(object : OnRefreshLoadMoreListener {
+        override fun onLoadMore(refreshLayout: RefreshLayout) {
+            LoadMoreBlock!!()
+        }
+
+        override fun onRefresh(refreshLayout: RefreshLayout) {
+            refreshBlock!!()
+        }
+
+    })
+
+}
+
 fun <T> BaseViewModel.businessHandler(data: BaseResponse<T>): T {
     //这里的错误代码 根据和后台约定重新建立常量类
     when (data.errorCode) {
-        SUCCESS-> { //业务正常
+        SUCCESS -> { //业务正常
 
         }
         API_ERROR -> { //API解析异常

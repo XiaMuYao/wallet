@@ -7,7 +7,7 @@
 
         <variable
             name="findViewModel"
-            type="com.xiamuyao.sample.viewmodel.FindViewModel" />
+            type="com.xiamuyao.ulanbator.viewmodel.FindViewModel" />
     </data>
 
 

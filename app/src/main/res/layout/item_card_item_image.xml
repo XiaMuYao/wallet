@@ -6,7 +6,7 @@
 
         <variable
             name="itemImageUrl"
-            type="String" />
+            type="com.xiamuyao.ulanbator.model.bean.UserViewInfo" />
 
     </data>
 
@@ -17,7 +17,8 @@
             style="@style/item_nine_image"
             android:background="#2A187E"
             android:scaleType="center"
-            app:netImage="@{itemImageUrl}" />
+            app:netImage="@{itemImageUrl.getUrl()}" />
+
 
     </RelativeLayout>
 </layout>

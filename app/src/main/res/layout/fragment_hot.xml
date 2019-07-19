@@ -6,7 +6,7 @@
 
         <variable
             name="hotViewModel"
-            type="com.xiamuyao.sample.viewmodel.HotViewModel" />
+            type="com.xiamuyao.ulanbator.viewmodel.HotViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

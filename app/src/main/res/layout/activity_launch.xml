@@ -7,7 +7,7 @@
 
         <variable
             name="launchViewModel"
-            type="com.xiamuyao.sample.viewmodel.LaunchViewModel" />
+            type="com.xiamuyao.ulanbator.viewmodel.LaunchViewModel" />
     </data>
 
 

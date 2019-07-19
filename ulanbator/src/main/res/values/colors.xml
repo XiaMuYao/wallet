@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="base_black">#393F52</color>
+
+    <color name="base_title_white">#F0F0F0</color>
+
+    <color name="color_bg_dialog">#60000000</color>
+    <color name="color_numpad_key_disable">#ff636363</color>
+    <color name="base_green">#ff1B9F92</color>
+
+</resources>

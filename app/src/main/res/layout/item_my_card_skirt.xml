@@ -7,7 +7,7 @@
 
         <variable
             name="myWanAndroidBean"
-            type="com.xiamuyao.sample.model.bean.WanAndroidBean.DataBean" />
+            type="com.xiamuyao.ulanbator.model.bean.WanAndroidBean.DataBean" />
 
     </data>
 
