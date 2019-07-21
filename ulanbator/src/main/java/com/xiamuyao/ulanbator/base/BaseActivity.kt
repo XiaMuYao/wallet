@@ -4,13 +4,13 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import com.gyf.immersionbar.ImmersionBar
 import com.xiamuyao.ulanbator.R
-import com.xiamuyao.ulanbator.utlis.*
+import com.xiamuyao.ulanbator.utlis.LL
 
 
 abstract class BaseActivity<V : ViewDataBinding, VM : BaseViewModel> : AppCompatActivity() {
@@ -24,11 +24,10 @@ abstract class BaseActivity<V : ViewDataBinding, VM : BaseViewModel> : AppCompat
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mContext = this
-
-        //页面传参
-        initParam()
         //私有的初始化 Data Binding 和 ViewModel 方法
         initViewDataBinding(savedInstanceState)
+        //页面传参
+        initParam()
         // View 初始化
         initView()
         //初始化数据
@@ -38,6 +37,10 @@ abstract class BaseActivity<V : ViewDataBinding, VM : BaseViewModel> : AppCompat
         //注册基本的事件回调
         initBaseLiveDataCallBack()
 
+        setImmersionBar()
+    }
+
+    open fun setImmersionBar() {
         ImmersionBar.with(this)
             .statusBarColor(R.color.design_dark_default_color_error)
             .fitsSystemWindows(true)    //解决状态栏和布局重叠问题，任选其一，默认为false，当为true时一定要指定statusBarColor()，不然状态栏为透明色，还有一些重载方法

@@ -1,12 +1,18 @@
 package com.xiamuyao.ulanbator.util
 
 import androidx.databinding.ObservableArrayList
+import com.xiamuyao.ulanbator.model.bean.HotCommunityBean
 import com.xiamuyao.ulanbator.model.bean.SkirtListBean
-import com.xiamuyao.ulanbator.model.bean.UserViewInfo
+import com.xiamuyao.ulanbator.model.bean.TagBean
+import com.xiamuyao.ulanbator.model.bean.TopMessageBean
 import java.io.UnsupportedEncodingException
 import java.util.*
 
 object DataUtli {
+    @JvmStatic
+    fun main(args: Array<String>) {
+        println(getRandomJianHan(3))
+    }
 
     // 图片List
     var imageList = arrayListOf<String>(
@@ -32,6 +38,17 @@ object DataUtli {
         tempList
     }
 
+    /**
+     * 获取热门社区
+     */
+    fun getHotCommunity() = run {
+        val tempList = ObservableArrayList<HotCommunityBean>()
+        repeat(10) {
+            tempList.add(HotCommunityBean(it, getRandomJianHan(3), imageList[getRandom(8)]))
+        }
+        tempList
+    }
+
     fun getSkirtList() = run {
         val tempList = ObservableArrayList<SkirtListBean>()
         repeat(10) {
@@ -42,10 +59,13 @@ object DataUtli {
                     "https://pics3.baidu.com/feed/622762d0f703918f103d2b9b8b3ea79358eec4ff.jpeg?token=ae0847d8af998e3a70eb5507e05555b3&s=46C3DC16499F40CA565021DE030080F2",
                     getRandomJianHan(getRandom(4)),
                     "2019-02-15",
-                    "Christina Photo by @FransLanting Wonderful color ! To let tourists get a better view，the bus drove slowly.What a beautiful town！",
+                    getRandomJianHan(getRandom(12)),
+                    getRandomJianHan(getRandom(120)),
                     getRandom().toString(),
                     getRandom().toString(),
-                    getImageList()
+                    getImageList(),
+                    getRandom(555).toString(),
+                    getRandomTagList()
                 )
             )
         }
@@ -56,9 +76,33 @@ object DataUtli {
      * 获取图片地址
      */
     fun getImageList(num: Int = 9) = run {
-        val tempList = ObservableArrayList<UserViewInfo>()
+        val tempList = ObservableArrayList<String>()
         repeat(getRandom(num)) {
-            tempList.add(UserViewInfo(imageList[it]))
+            tempList.add(imageList[it])
+        }
+        tempList
+    }
+
+    /**
+     * 获取随机标签List
+     */
+    fun getRandomTagList(num: Int = 5) = run {
+        val tempList = ObservableArrayList<TagBean>()
+        repeat(getRandom(num)) {
+            tempList.add(TagBean(it, "# ${getRandomJianHan(3)}"))
+        }
+        tempList
+    }
+
+    /**
+     * 获取随机文字List
+     */
+    fun getRandomListString(num: Int = 100, textLength: Int = 2) = run {
+
+        val tempList = ObservableArrayList<String>()
+
+        repeat(getRandom(num)) {
+            tempList.add(getRandomJianHan(textLength))
         }
         tempList
     }
@@ -97,9 +141,17 @@ object DataUtli {
     }
 
 
-    @JvmStatic
-    fun main(args: Array<String>) {
-        println(getRandomJianHan(3))
+    /**
+     * 获取置顶消息
+     */
+    fun getTopMessage() = run {
+
+        val tempList = ObservableArrayList<TopMessageBean>()
+        repeat(2) {
+            tempList.add(TopMessageBean(it, getRandomJianHan(3), imageList[getRandom(8)]))
+        }
+        tempList
     }
+
 
 }

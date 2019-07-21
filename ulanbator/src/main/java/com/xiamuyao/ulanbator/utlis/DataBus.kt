@@ -24,7 +24,7 @@ object DataBus {
     fun <T> observeData(contextLifecycle: LifecycleOwner, key: String, observer: DataBusObservable<T>) {
 
         LiveEventBus.get().with(key, Any::class.java).observe(contextLifecycle, Observer {
-            observer.DataBusDataCallBack(it as T)
+            observer.dataBusDataCallBack(it as T)
         })
 
 
@@ -33,6 +33,6 @@ object DataBus {
 }
 
 interface DataBusObservable<T> {
-    fun DataBusDataCallBack(it: T)
+    fun dataBusDataCallBack(it: T)
 }
 

@@ -4,8 +4,10 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
+import com.xiamuyao.ulanbator.R
 import com.xiamuyao.ulanbator.base.BaseFragment
 import com.xiamuyao.ulanbator.base.BaseViewModel
+import kotlinx.android.synthetic.main.fragment_find.view.*
 
 class SectionsPagerAdapter(
     private var fragmentManager: FragmentManager,
@@ -18,4 +20,5 @@ class SectionsPagerAdapter(
     override fun getCount(): Int {
         return mFragmentList.size
     }
+
 }

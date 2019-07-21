@@ -5,19 +5,20 @@ import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.xiamuyao.ulanbator.BR
-import com.xiamuyao.ulanbator.databinding.FragmentHomeBinding
-import com.xiamuyao.ulanbator.viewmodel.HomeViewModel
-import com.xiamuyao.ulanbator.base.BaseFragment
 import androidx.databinding.ViewDataBinding
+import com.xiamuyao.ulanbator.BR
+import com.xiamuyao.ulanbator.R
 import com.xiamuyao.ulanbator.adapter.fragmentAdapter.SectionsPagerAdapter
-import com.xiamuyao.ulanbator.view.ScaleTransitionPagerTitleView
+import com.xiamuyao.ulanbator.base.BaseFragment
 import com.xiamuyao.ulanbator.base.BaseViewModel
-import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerIndicator
+import com.xiamuyao.ulanbator.databinding.FragmentHomeBinding
+import com.xiamuyao.ulanbator.view.ScaleTransitionPagerTitleView
+import com.xiamuyao.ulanbator.viewmodel.HomeViewModel
 import net.lucode.hackware.magicindicator.ViewPagerHelper
-import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.CommonNavigatorAdapter
-import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerTitleView
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.CommonNavigator
+import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.CommonNavigatorAdapter
+import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerIndicator
+import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerTitleView
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.indicators.BezierPagerIndicator
 
 
@@ -32,7 +33,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
     }
 
     private val mFragmentList: Array<BaseFragment<out ViewDataBinding, out BaseViewModel>> by lazy {
-        arrayOf(FollowFragment(), HotFragment())
+        arrayOf(FollowFragment(), RecommendFragment(), HotFragment())
     }
 
     private val homeAdapter by lazy {
@@ -42,6 +43,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
 
     override fun initView() {
         binding.homeViewPager.adapter = homeAdapter
+
         initMagicIndicator()
     }
 
@@ -52,7 +54,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
 
 
     override fun initContentView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): Int {
-        return com.xiamuyao.ulanbator.R.layout.fragment_home
+        return R.layout.fragment_home
     }
 
     override fun initVariableId(): Int {
@@ -95,6 +97,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
         }
         binding.homeIndicator.navigator = commonNavigator
         ViewPagerHelper.bind(binding.homeIndicator, binding.homeViewPager)
+        binding.homeViewPager.currentItem = 1
+
     }
 
 }

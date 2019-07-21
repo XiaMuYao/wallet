@@ -3,42 +3,55 @@ package com.xiamuyao.ulanbator.fragment
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import androidx.databinding.library.baseAdapters.BR
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.xiamuyao.ulanbator.R
+import com.xiamuyao.ulanbator.adapter.HomeItemImageAdapter
 import com.xiamuyao.ulanbator.base.BaseFragment
-import com.xiamuyao.ulanbator.viewmodel.HotViewModel
+import com.xiamuyao.ulanbator.base.adapter.BaseNoChildClickAdapter
+import com.xiamuyao.ulanbator.databinding.FragmentRecommendBinding
+import com.xiamuyao.ulanbator.extension.defaultStyle
+import com.xiamuyao.ulanbator.viewmodel.RecommendViewModel
 
-class HotFragment : BaseFragment<com.xiamuyao.ulanbator.databinding.FragmentHotBinding, HotViewModel>() {
 
-//    private val hotAdapter by lazy {
-//        ListFragmentPagerAdapter(
-//            fragmentManager!!,
-//            viewModel.hotPageFragmentTitle
-//        )
-//    }
+class RecommendFragment : BaseFragment<FragmentRecommendBinding, RecommendViewModel>() {
+
+    private val hotAdapter by lazy {
+        BaseNoChildClickAdapter(R.layout.item_hot_community, viewModel.hotCommunity, BR.hotCommunityBean)
+    }
+    private val topMessageAdapter by lazy {
+        BaseNoChildClickAdapter(R.layout.item_top_message, viewModel.topMessage, BR.topMessageBean)
+    }
+
+    private val listMessageAdapter by lazy {
+        HomeItemImageAdapter(R.layout.item_home_card_skirt, viewModel.skirtList)
+    }
 
     override fun initVVMObserver() {
 
     }
 
     override fun initView() {
-//        binding.hotViewPager.adapter = hotAdapter
-//        initMagicIndicator()
+        binding.hotRecyclerView.defaultStyle(hotAdapter, LinearLayoutManager(context, LinearLayout.HORIZONTAL, false))
+        binding.topMessageRecyclerView.defaultStyle(topMessageAdapter)
+        binding.listMessageRecyclerView.defaultStyle(listMessageAdapter)
     }
 
     override fun initContentView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): Int {
-        return R.layout.fragment_hot
+        return R.layout.fragment_recommend
     }
 
     override fun initVariableId(): Int {
-        return BR.hotViewModel
+        return BR.recommendViewModel
     }
 
-    override fun initViewModel(): Class<HotViewModel> {
-        return HotViewModel::class.java
+    override fun initViewModel(): Class<RecommendViewModel> {
+        return RecommendViewModel::class.java
     }
 
-//    private fun initMagicIndicator() {
+    //<editor-fold desc="页面指示器">
+    //    private fun initMagicIndicator() {
 //        binding.hotIndicator.setBackgroundColor(Color.WHITE)
 //        val commonNavigator = CommonNavigator(context)
 //
@@ -71,6 +84,6 @@ class HotFragment : BaseFragment<com.xiamuyao.ulanbator.databinding.FragmentHotB
 //        binding.hotIndicator.navigator = commonNavigator
 //        ViewPagerHelper.bind(binding.hotIndicator, binding.hotViewPager)
 //    }
-
+    //</editor-fold>
 
 }
