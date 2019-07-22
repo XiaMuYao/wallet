@@ -9,7 +9,7 @@ class HomeViewModel(application: Application) : BaseViewModel(application) {
 
     private val repository: PlaceRepository by instance()
 
-    val titleList = arrayListOf("关注", "推荐","热门")
+    val titleList = arrayListOf("关注", "推荐","TOP")
 
     override  fun initData() {
 

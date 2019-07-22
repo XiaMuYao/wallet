@@ -57,7 +57,6 @@ class HomeItemImageAdapter(layout: Int, data: ObservableArrayList<SkirtListBean>
                 )
             }
 
-            it.addOnClickListener(R.id.imageView)
             it.addOnClickListener(R.id.imageView2)
             it.addOnClickListener(R.id.TextView)
             it.addOnClickListener(R.id.imageView3)

@@ -11,6 +11,9 @@ class RecommendViewModel(application: Application) : BaseViewModel(application) 
 
     var skirtList = DataUtli.getSkirtList()
 
+    var bannerList = DataUtli.getImageList(5)
+    var bannerTitle = DataUtli.getRandomListString(5)
+
     override fun initData() {
 
     }

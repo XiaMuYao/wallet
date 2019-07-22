@@ -5,11 +5,10 @@ import androidx.lifecycle.MutableLiveData
 import com.xiamuyao.ulanbator.util.DataUtli
 import com.xiamuyao.ulanbator.base.BaseViewModel
 
-class HotViewModel(application: Application) : BaseViewModel(application) {
+class TopViewModel(application: Application) : BaseViewModel(application) {
 
-    var hotPageFragmentTitle: List<String> = DataUtli.getHotPageList()
-
-    var textStr = MutableLiveData<String>()
+    var skirtList = DataUtli.getSkirtList()
+    var topPageTopList =DataUtli.getTopMessage()
 
     override  fun initData() {
     }

@@ -23,7 +23,7 @@ import com.xiamuyao.ulanbator.net.Status.SUCCESS
  */
 fun <T> RecyclerView.defaultStyle(
     mAdapter: BaseListAdapter<T>,
-    LayoutManager: RecyclerView.LayoutManager? = LinearLayoutManager(context) as RecyclerView.LayoutManager
+    LayoutManager: RecyclerView.LayoutManager? = LinearLayoutManager(context.applicationContext) as RecyclerView.LayoutManager
 ) {
     this.adapter = mAdapter
     this.layoutManager = LayoutManager

@@ -33,7 +33,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
     }
 
     private val mFragmentList: Array<BaseFragment<out ViewDataBinding, out BaseViewModel>> by lazy {
-        arrayOf(FollowFragment(), RecommendFragment(), HotFragment())
+        arrayOf(FollowFragment(), RecommendFragment(), TopFragment())
     }
 
     private val homeAdapter by lazy {
@@ -43,6 +43,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
 
     override fun initView() {
         binding.homeViewPager.adapter = homeAdapter
+        binding.homeViewPager.setSlide(true)
 
         initMagicIndicator()
     }

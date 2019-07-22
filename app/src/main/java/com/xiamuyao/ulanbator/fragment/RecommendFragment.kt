@@ -2,7 +2,9 @@ package com.xiamuyao.ulanbator.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.databinding.library.baseAdapters.BR
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,17 +15,25 @@ import com.xiamuyao.ulanbator.base.adapter.BaseNoChildClickAdapter
 import com.xiamuyao.ulanbator.databinding.FragmentRecommendBinding
 import com.xiamuyao.ulanbator.extension.defaultStyle
 import com.xiamuyao.ulanbator.viewmodel.RecommendViewModel
+import java.util.*
+import com.xiamuyao.ulanbator.activity.MainActivity
+import com.bumptech.glide.Glide
+import cn.bingoogolapple.bgabanner.BGABanner
+
+
 
 
 class RecommendFragment : BaseFragment<FragmentRecommendBinding, RecommendViewModel>() {
 
+    //热门社区
     private val hotAdapter by lazy {
         BaseNoChildClickAdapter(R.layout.item_hot_community, viewModel.hotCommunity, BR.hotCommunityBean)
     }
+    //置顶消息
     private val topMessageAdapter by lazy {
         BaseNoChildClickAdapter(R.layout.item_top_message, viewModel.topMessage, BR.topMessageBean)
     }
-
+    //列表消息
     private val listMessageAdapter by lazy {
         HomeItemImageAdapter(R.layout.item_home_card_skirt, viewModel.skirtList)
     }
@@ -36,6 +46,16 @@ class RecommendFragment : BaseFragment<FragmentRecommendBinding, RecommendViewMo
         binding.hotRecyclerView.defaultStyle(hotAdapter, LinearLayoutManager(context, LinearLayout.HORIZONTAL, false))
         binding.topMessageRecyclerView.defaultStyle(topMessageAdapter)
         binding.listMessageRecyclerView.defaultStyle(listMessageAdapter)
+        with(binding.banner){
+            setData(viewModel.bannerList as MutableList<String>, viewModel.bannerTitle)
+            setAdapter { _, itemView, model, _ ->
+                Glide.with(this)
+                    .load(model)
+                    .centerCrop()
+                    .dontAnimate()
+                    .into(itemView as ImageView)
+            }
+        }
     }
 
     override fun initContentView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): Int {
