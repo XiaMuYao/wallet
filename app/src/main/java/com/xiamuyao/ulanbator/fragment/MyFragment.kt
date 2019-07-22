@@ -23,35 +23,13 @@ class MyFragment : BaseFragment<FragmentMyBinding, MyViewModel>() {
         }
     }
 
-    private val myAdapter by lazy {
-        BaseNoChildClickAdapter(R.layout.item_my_card_skirt, viewModel.mylist.value, BR.myWanAndroidBean)
-    }
 
     override fun initView() {
-        binding.myRecyclerView.defaultStyle(myAdapter)
-
-        binding.swipeRefreshLayout.defaultRefreshLoadMoreFun(LoadMoreBlock = { viewModel.getList(false) }, refreshBlock = { viewModel.getList(true) })
     }
 
 
     override fun initVVMObserver() {
-        var a = 1
 
-        viewModel.loadMoreStatus.observe(this, Observer {
-            a++
-            myAdapter.addData(viewModel.mylist.value!!)
-            if (a > 3) {
-                binding.swipeRefreshLayout.finishLoadMoreWithNoMoreData()
-            } else {
-                binding.swipeRefreshLayout.finishLoadMore()
-            }
-
-        })
-
-        viewModel.refreshStatus.observe(this, Observer {
-            myAdapter.setNewData(viewModel.mylist.value)
-            binding.swipeRefreshLayout.finishRefresh()
-        })
 
     }
 

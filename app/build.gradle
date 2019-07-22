@@ -7,11 +7,11 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
     defaultConfig {
         applicationId "com.xiamuyao.sample"
         minSdkVersion 21
-        targetSdkVersion 28
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -55,5 +55,6 @@ dependencies {
     implementation 'me.panpf:sketch:2.6.2-b1'
     //banner
     implementation 'cn.bingoogolapple:bga-banner:2.2.6'
+    implementation project(path: ':websocketlib')
 
 }

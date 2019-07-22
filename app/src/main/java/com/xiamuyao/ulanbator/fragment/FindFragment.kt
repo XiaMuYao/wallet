@@ -30,17 +30,9 @@ class FindFragment : BaseFragment<FragmentFindBinding, FindViewModel>() {
             return findFragment
         }
     }
-    private val homeAdapter by lazy {
-        SectionsPagerAdapter(fragmentManager!!, mFragmentList)
-    }
-    private val mFragmentList: Array<BaseFragment<out ViewDataBinding, out BaseViewModel>> by lazy {
-        arrayOf(RecommendCommunityFragment(), FollowCommunityFragment())
-    }
 
 
     override fun initView() {
-        binding.findViewPager.adapter = homeAdapter
-        binding.findViewPager.setSlide(true)
 
         initMagicIndicator()
     }

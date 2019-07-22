@@ -13,28 +13,13 @@ class MyViewModel(application: Application) : BaseViewModel(application) {
 
     private val repository: PlaceRepository by instance()
 
-    var mylist: MutableLiveData<MutableList<WanAndroidBean.DataBean>> = MutableLiveData()
-
-    var typeBoolean = true
 
     override fun initData() {
 
-        getList(true)
 
     }
 
-    fun getList(clear: Boolean) {
-        launch {
-            val result = businessHandler(repository.getProvinceListAsync())
-            mylist.value = result
-            if (clear) {
-                refreshStatus.call()
-            } else {
-                loadMoreStatus.call()
-            }
-            typeBoolean = clear
-        }
-    }
+
 
 
 }

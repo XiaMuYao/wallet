@@ -1,10 +1,7 @@
 package com.xiamuyao.ulanbator.util
 
 import androidx.databinding.ObservableArrayList
-import com.xiamuyao.ulanbator.model.bean.HotCommunityBean
 import com.xiamuyao.ulanbator.model.bean.SkirtListBean
-import com.xiamuyao.ulanbator.model.bean.TagBean
-import com.xiamuyao.ulanbator.model.bean.TopMessageBean
 import java.io.UnsupportedEncodingException
 import java.util.*
 
@@ -38,16 +35,7 @@ object DataUtli {
         tempList
     }
 
-    /**
-     * 获取热门社区
-     */
-    fun getHotCommunity() = run {
-        val tempList = ObservableArrayList<HotCommunityBean>()
-        repeat(10) {
-            tempList.add(HotCommunityBean(it, getRandomJianHan(3), imageList[getRandom(8)]))
-        }
-        tempList
-    }
+
 
     fun getSkirtList() = run {
         val tempList = ObservableArrayList<SkirtListBean>()
@@ -64,8 +52,7 @@ object DataUtli {
                     getRandom().toString(),
                     getRandom().toString(),
                     getImageList(),
-                    getRandom(555).toString(),
-                    getRandomTagList()
+                    getRandom(555).toString()
                 )
             )
         }
@@ -83,16 +70,6 @@ object DataUtli {
         tempList
     }
 
-    /**
-     * 获取随机标签List
-     */
-    fun getRandomTagList(num: Int = 5) = run {
-        val tempList = ObservableArrayList<TagBean>()
-        repeat(getRandom(num)) {
-            tempList.add(TagBean(it, "# ${getRandomJianHan(3)}"))
-        }
-        tempList
-    }
 
     /**
      * 获取随机文字List
@@ -139,19 +116,5 @@ object DataUtli {
         }
         return ret
     }
-
-
-    /**
-     * 获取置顶消息
-     */
-    fun getTopMessage() = run {
-
-        val tempList = ObservableArrayList<TopMessageBean>()
-        repeat(2) {
-            tempList.add(TopMessageBean(it, getRandomJianHan(3), imageList[getRandom(8)]))
-        }
-        tempList
-    }
-
 
 }

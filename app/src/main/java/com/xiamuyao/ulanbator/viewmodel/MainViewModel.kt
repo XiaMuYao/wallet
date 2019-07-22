@@ -1,9 +1,11 @@
 package com.xiamuyao.ulanbator.viewmodel
 
 import android.app.Application
+import androidx.databinding.ObservableArrayList
 import androidx.lifecycle.MutableLiveData
 import com.xiamuyao.ulanbator.R
 import com.xiamuyao.ulanbator.base.BaseViewModel
+import com.xiamuyao.ulanbator.model.bean.MarketBean
 
 class MainViewModel(application: Application) : BaseViewModel(application) {
 
@@ -24,6 +26,8 @@ class MainViewModel(application: Application) : BaseViewModel(application) {
     )
 
     var fragmentIndex = MutableLiveData<Int>()
+
+    var marketList = ObservableArrayList<MarketBean.DataBean>()
 
     init {
         fragmentIndex.value = 0

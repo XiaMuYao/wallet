@@ -11,7 +11,5 @@ class SkirtListBean(
     var message: String,
     var good: String,
     var imageList: List<String>,
-    var hot:String,
-    var tagList: List<TagBean>
-
+    var hot:String
     )

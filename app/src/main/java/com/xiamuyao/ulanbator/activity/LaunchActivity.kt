@@ -21,12 +21,7 @@ class LaunchActivity : BaseActivity<ActivityLaunchBinding, LaunchViewModel>() {
     }
 
     override fun initVVMObserver() {
-//        viewModel.mylistmylist.observe(this, Observer {
-//            LL.d("数据更改过")
-//        })
-//        viewModel.mylistmylist?.observe(this, Observer {
-//            LL.d("数据更改过")
-//        })
+
     }
 
 

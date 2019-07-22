@@ -15,12 +15,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:gravity="center"
-            android:textSize="50dp"
-            android:layout_height="wrap_content"
-            android:text="3" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/marketRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

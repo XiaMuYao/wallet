@@ -5,8 +5,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
+import androidx.databinding.ObservableArrayList
 import androidx.databinding.ViewDataBinding
 import androidx.viewpager.widget.ViewPager
+import com.google.gson.Gson
 import com.xiamuyao.ulanbator.BR
 import com.xiamuyao.ulanbator.R
 import com.xiamuyao.ulanbator.adapter.fragmentAdapter.SectionsPagerAdapter
@@ -19,10 +21,63 @@ import com.xiamuyao.ulanbator.viewmodel.MainViewModel
 import com.xiamuyao.ulanbator.base.BaseActivity
 import com.xiamuyao.ulanbator.base.BaseFragment
 import com.xiamuyao.ulanbator.base.BaseViewModel
+import com.xiamuyao.ulanbator.constant.ProjectConstant
+import com.xiamuyao.ulanbator.model.bean.MarketBean
+import com.xiamuyao.ulanbator.utlis.JSONUtils
+import com.xiamuyao.ulanbator.utlis.LL
+import com.zhangke.websocket.SimpleListener
+import com.zhangke.websocket.WebSocketHandler
+import com.zhangke.websocket.response.ErrorResponse
+import com.zhangke.websocket.util.GzipUtil
+import java.nio.ByteBuffer
+import java.util.*
 
 class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), ViewPager.OnPageChangeListener,
     View.OnClickListener {
+    private val socketListener = object : SimpleListener() {
+        override fun onConnected() {
+            LL.d("链接成功 发送数据")
+            WebSocketHandler.getDefault().send(ProjectConstant.SUB_STR)
 
+        }
+
+        override fun onConnectFailed(e: Throwable?) {
+            if (e != null) {
+            } else {
+            }
+        }
+
+        override fun onDisconnect() {
+        }
+
+        override fun onSendDataError(errorResponse: ErrorResponse) {
+            errorResponse.release()
+        }
+
+        override fun <T> onMessage(message: String, data: T) {
+            println("接收到文本消息：$message")
+        }
+
+        override fun <T> onMessage(bytes: ByteBuffer, data: T) {
+
+            var pong = ""
+
+            pong = GzipUtil.unCompress(bytes.array())
+
+            LL.d("接收到二进制消息：onMessage:$pong")
+
+            if (pong.length < 30){
+                val replace = pong.replace("ping", "pong")
+                WebSocketHandler.getDefault().send(replace)
+            }else{
+                val fromJson = Gson().fromJson(pong, MarketBean::class.java)
+                if (null != fromJson.data){
+                    viewModel.marketList.addAll(fromJson.data!!)
+                }
+            }
+
+        }
+    }
     private val mFragmentList: Array<BaseFragment<out ViewDataBinding, out BaseViewModel>> by lazy {
         arrayOf(
             HomeFragment.newInstance(null),
@@ -69,6 +124,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), ViewPag
     }
 
     override fun initVVMObserver() {
+        WebSocketHandler.getDefault().addListener(socketListener)
 
     }
 
