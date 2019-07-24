@@ -15,9 +15,8 @@
         android:id="@+id/findParent"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
         <net.lucode.hackware.magicindicator.MagicIndicator
-            android:id="@+id/findindicator"
+            android:id="@+id/home_indicator"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -25,11 +24,12 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.xiamuyao.ulanbator.view.ViewPagerSlide
-            android:id="@+id/findViewPager"
+            android:id="@+id/homeViewPager"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/findindicator" />
+            app:layout_constraintTop_toBottomOf="@+id/home_indicator" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

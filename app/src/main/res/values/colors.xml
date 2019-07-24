@@ -4,4 +4,7 @@
     <color name="colorPrimaryDark">#19C23E</color>
     <color name="colorAccent">#1786B1</color>
     <color name="line">#BBBBBB</color>
+    <color name="pageBackground">#1E202F</color>
+    <color name="write">#FFFFFF</color>
+    <color name="pairline">#2C2B3A</color>
 </resources>

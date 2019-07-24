@@ -1,6 +1,9 @@
 package com.xiamuyao.ulanbator.model.bean
 
 import androidx.databinding.BaseObservable
+import androidx.databinding.Bindable
+import androidx.databinding.library.baseAdapters.BR
+import java.math.BigDecimal
 
 import java.util.ArrayList
 
@@ -30,13 +33,54 @@ class MarketBean : BaseObservable() {
          * symbol : onteth
          */
 
+        @get:Bindable
         var open: String = ""
+            set(sex) {
+                field = sex
+                notifyPropertyChanged(BR.open)
+            }
+        @get:Bindable
         var close: String = ""
+            set(sex) {
+                field = sex
+                notifyPropertyChanged(BR.close)
+            }
+        @get:Bindable
         var low: String =""
+            set(sex) {
+                field = sex
+                notifyPropertyChanged(BR.low)
+            }
+        @get:Bindable
         var high: String =""
+            set(sex) {
+                field = sex
+                notifyPropertyChanged(BR.high)
+            }
+        @get:Bindable
         var amount: String =""
+            set(sex) {
+                field = sex
+                notifyPropertyChanged(BR.amount)
+            }
+        @get:Bindable
         var count: String = ""
+            set(sex) {
+                field = sex
+                notifyPropertyChanged(BR.count)
+            }
+        @get:Bindable
         var vol: String =""
+            set(sex) {
+                val bigDecimal = BigDecimal(sex)
+                field = bigDecimal.toString()
+                notifyPropertyChanged(BR.vol)
+            }
+        @get:Bindable
         var symbol: String=""
+            set(sex) {
+                field = sex
+                notifyPropertyChanged(BR.symbol)
+            }
     }
 }

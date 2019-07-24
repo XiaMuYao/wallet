@@ -8,7 +8,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:weightSum="4">
+        android:background="#14111D"
+        android:weightSum="5">
 
 
         <RelativeLayout
@@ -20,12 +21,12 @@
             <ImageView
                 android:id="@+id/bottom_tab_iv_one"
                 style="@style/style_bottom_menu_image"
-                android:background="@drawable/selector_menu_home" />
+                android:background="@drawable/selector_menu_wallet" />
 
             <TextView
                 style="@style/style_bottom_menu_text"
                 android:layout_below="@+id/bottom_tab_iv_one"
-                android:text="Home" />
+                android:text="钱包" />
         </RelativeLayout>
 
 
@@ -43,7 +44,7 @@
             <TextView
                 style="@style/style_bottom_menu_text"
                 android:layout_below="@+id/bottom_tab_iv_two"
-                android:text="Find" />
+                android:text="行情" />
 
         </RelativeLayout>
 
@@ -58,12 +59,12 @@
             <ImageView
                 android:id="@+id/bottom_tab_iv_there"
                 style="@style/style_bottom_menu_image"
-                android:background="@drawable/selector_menu_message" />
+                android:background="@drawable/selector_menu_manglmoeny" />
 
             <TextView
                 style="@style/style_bottom_menu_text"
                 android:layout_below="@+id/bottom_tab_iv_there"
-                android:text="Message" />
+                android:text="理财" />
         </RelativeLayout>
 
 
@@ -77,12 +78,31 @@
             <ImageView
                 android:id="@+id/bottom_tab_iv_four"
                 style="@style/style_bottom_menu_image"
-                android:background="@drawable/selector_menu_my" />
+                android:background="@drawable/selector_menu_find" />
 
             <TextView
                 style="@style/style_bottom_menu_text"
                 android:layout_below="@+id/bottom_tab_iv_four"
-                android:text="My" />
+                android:text="发现" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/mainBottomTabFive"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+
+            <ImageView
+                android:id="@+id/bottom_tab_iv_five"
+                style="@style/style_bottom_menu_image"
+                android:background="@drawable/selector_menu_my" />
+
+            <TextView
+                style="@style/style_bottom_menu_text"
+                android:layout_below="@+id/bottom_tab_iv_five"
+                android:text="我的" />
 
         </RelativeLayout>
 

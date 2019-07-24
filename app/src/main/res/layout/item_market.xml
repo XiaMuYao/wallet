@@ -4,40 +4,117 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-<variable
-    name="marketBean"
-    type="com.xiamuyao.ulanbator.model.bean.MarketBean.DataBean" />
+
+        <variable
+            name="marketBean"
+            type="com.xiamuyao.ulanbator.model.bean.MarketBean.DataBean" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="70dp"
+        android:background="@color/pageBackground"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="160dp"
-            android:text="@{marketBean.low}"
-            android:textColor="#CE0000"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.483"
-            tools:text="123" />
 
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/dp_10"
-            android:text="@{marketBean.symbol}"
-            android:textColor="#000000"
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:background="#FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/guideline18"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{marketBean.symbol}"
+            android:textColor="#FFFFFF"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline19"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.08" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline19"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.173" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.68" />
+
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="4dp"
+            android:textColor="#FFFFFF"
+            android:text="@{marketBean.vol}"
+            android:textSize="13dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/guideline21"
+            app:layout_constraintEnd_toStartOf="@+id/guideline20" />
+
+        <TextView
+            android:id="@+id/textView17"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="8dp"
+            android:textColor="#FF5D5C71"
+            android:textSize="11dp"
+            android:text="@{marketBean.symbol}"
+            app:layout_constraintEnd_toStartOf="@+id/guideline20"
+            app:layout_constraintTop_toTopOf="@+id/guideline21" />
+
+        <TextView
+            android:layout_width="72dp"
+            android:layout_height="30dp"
+            android:background="@drawable/shape_pair_up"
+            android:gravity="center"
+            android:text="11.23%"
+            android:textColor="#FFFFFF"
+            android:textSize="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="@+id/guideline22"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline21"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline22"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.96" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/pairline"
+            app:layout_constraintTop_toTopOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -1,6 +1,8 @@
 package com.xiamuyao.ulanbator.util
 
+import android.view.View
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -9,14 +11,14 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.bumptech.glide.request.RequestOptions
 import com.xiamuyao.ulanbator.App
-import com.xiamuyao.ulanbator.base.adapter.BaseListAdapter
+import com.xiamuyao.ulanbator.base.adapter.BaseObservableListAdapter
 
 object BindingAdapters {
 
     @BindingAdapter("nowCurrentTab")
     @JvmStatic
     fun setViewPagerCurrentTab(view: ViewPager, index: Int) {
-        view.setCurrentItem(index,false)
+        view.setCurrentItem(index, false)
     }
 
     @BindingAdapter("netImage")
@@ -37,10 +39,30 @@ object BindingAdapters {
             .into(view)
     }
 
-    @BindingAdapter("defaultStyle")
+    @BindingAdapter("setImageWalletShow")
     @JvmStatic
-    fun setDefaultStyle(view: RecyclerView, mAdapter: BaseListAdapter<*>) {
-        view.adapter = mAdapter
-        view.layoutManager = LinearLayoutManager(App.CONTEXT)
+    fun setImageWalletShow(view: ImageView, type: Boolean) {
+        view.isSelected = type
+    }
+
+    @BindingAdapter("setTextWalletShow")
+    @JvmStatic
+    fun setTextWalletShow(view: TextView, type: Boolean) {
+        if (null ==view.tag) return
+        if (type){
+            view.text=view.tag.toString()
+        }else{
+            view.text="******"
+        }
+    }
+
+    @BindingAdapter("setViewShowHide")
+    @JvmStatic
+    fun setViewShowHide(view: View, type: Boolean) {
+        if (type){
+            view.visibility = View.VISIBLE
+        }else{
+            view.visibility = View.GONE
+        }
     }
 }

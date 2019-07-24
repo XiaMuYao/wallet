@@ -33,8 +33,8 @@ class FindFragment : BaseFragment<FragmentFindBinding, FindViewModel>() {
 
 
     override fun initView() {
-
         initMagicIndicator()
+
     }
 
     override fun initVVMObserver() {
@@ -52,7 +52,7 @@ class FindFragment : BaseFragment<FragmentFindBinding, FindViewModel>() {
         return FindViewModel::class.java
     }
     private fun initMagicIndicator() {
-        binding.findindicator.setBackgroundColor(Color.WHITE)
+        binding.homeIndicator.setBackgroundColor(Color.WHITE)
         val commonNavigator = CommonNavigator(context)
 
         commonNavigator.adapter = object : CommonNavigatorAdapter() {
@@ -67,7 +67,7 @@ class FindFragment : BaseFragment<FragmentFindBinding, FindViewModel>() {
                 simplePagerTitleView.normalColor = Color.GRAY
                 simplePagerTitleView.selectedColor = Color.BLACK
                 simplePagerTitleView.setOnClickListener {
-                    binding.findViewPager.currentItem = index
+                    binding.homeViewPager.currentItem = index
                 }
                 return simplePagerTitleView
             }
@@ -81,8 +81,10 @@ class FindFragment : BaseFragment<FragmentFindBinding, FindViewModel>() {
                 return indicator
             }
         }
-        binding.findindicator.navigator = commonNavigator
-        ViewPagerHelper.bind(binding.findindicator, binding.findViewPager)
+        binding.homeIndicator.navigator = commonNavigator
+        ViewPagerHelper.bind(binding.homeIndicator, binding.homeViewPager)
+        binding.homeViewPager.currentItem = 1
+
     }
 
 }

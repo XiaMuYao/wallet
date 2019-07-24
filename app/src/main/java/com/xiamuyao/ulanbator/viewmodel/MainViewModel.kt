@@ -14,7 +14,8 @@ class MainViewModel(application: Application) : BaseViewModel(application) {
         R.id.mainBottomTabOne,
         R.id.mainBottomTabTwo,
         R.id.mainBottomTabThere,
-        R.id.mainBottomTabFour
+        R.id.mainBottomTabFour,
+        R.id.mainBottomTabFive
     )
 
     //底部菜单ImageView控件List
@@ -22,7 +23,8 @@ class MainViewModel(application: Application) : BaseViewModel(application) {
         R.id.bottom_tab_iv_one,
         R.id.bottom_tab_iv_two,
         R.id.bottom_tab_iv_there,
-        R.id.bottom_tab_iv_four
+        R.id.bottom_tab_iv_four,
+        R.id.bottom_tab_iv_five
     )
 
     var fragmentIndex = MutableLiveData<Int>()

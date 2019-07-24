@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
-import androidx.databinding.ObservableArrayList
 import androidx.databinding.ViewDataBinding
 import androidx.viewpager.widget.ViewPager
 import com.google.gson.Gson
@@ -13,24 +12,19 @@ import com.xiamuyao.ulanbator.BR
 import com.xiamuyao.ulanbator.R
 import com.xiamuyao.ulanbator.adapter.fragmentAdapter.SectionsPagerAdapter
 import com.xiamuyao.ulanbator.databinding.ActivityMainBinding
-import com.xiamuyao.ulanbator.fragment.FindFragment
-import com.xiamuyao.ulanbator.fragment.HomeFragment
-import com.xiamuyao.ulanbator.fragment.MessageFragment
-import com.xiamuyao.ulanbator.fragment.MyFragment
 import com.xiamuyao.ulanbator.viewmodel.MainViewModel
 import com.xiamuyao.ulanbator.base.BaseActivity
 import com.xiamuyao.ulanbator.base.BaseFragment
 import com.xiamuyao.ulanbator.base.BaseViewModel
 import com.xiamuyao.ulanbator.constant.ProjectConstant
+import com.xiamuyao.ulanbator.fragment.*
 import com.xiamuyao.ulanbator.model.bean.MarketBean
-import com.xiamuyao.ulanbator.utlis.JSONUtils
 import com.xiamuyao.ulanbator.utlis.LL
 import com.zhangke.websocket.SimpleListener
 import com.zhangke.websocket.WebSocketHandler
 import com.zhangke.websocket.response.ErrorResponse
 import com.zhangke.websocket.util.GzipUtil
 import java.nio.ByteBuffer
-import java.util.*
 
 class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), ViewPager.OnPageChangeListener,
     View.OnClickListener {
@@ -72,6 +66,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), ViewPag
             }else{
                 val fromJson = Gson().fromJson(pong, MarketBean::class.java)
                 if (null != fromJson.data){
+                    viewModel.marketList.clear()
                     viewModel.marketList.addAll(fromJson.data!!)
                 }
             }
@@ -80,9 +75,10 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), ViewPag
     }
     private val mFragmentList: Array<BaseFragment<out ViewDataBinding, out BaseViewModel>> by lazy {
         arrayOf(
-            HomeFragment.newInstance(null),
+            WalletFragment.newInstance(null),
+            QuotationFragment.newInstance(null),
+            ManagingMoneyFragment.newInstance(null),
             FindFragment.newInstance(null),
-            MessageFragment.newInstance(null),
             MyFragment.newInstance(null)
         )
     }
@@ -108,6 +104,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), ViewPag
         binding.include2.mainBottomTabTwo.setOnClickListener(this)
         binding.include2.mainBottomTabThere.setOnClickListener(this)
         binding.include2.mainBottomTabFour.setOnClickListener(this)
+        binding.include2.mainBottomTabFive.setOnClickListener(this)
         selectorBottomImage(viewModel.fragmentIndex.value!!)
     }
 

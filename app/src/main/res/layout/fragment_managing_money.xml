@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="managingMoneyViewModel"
+            type="com.xiamuyao.ulanbator.viewmodel.ManagingMoneyViewModel" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/findParent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/pageBackground">
+
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/welletbg"
+            app:layout_constraintBottom_toBottomOf="@id/guideline27"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toRightOf="@id/guideline24"
+            app:layout_constraintRight_toRightOf="@id/guideline25"
+            app:layout_constraintTop_toTopOf="@+id/guideline26"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <net.lucode.hackware.magicindicator.MagicIndicator
+            android:id="@+id/managing_indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginTop="@dimen/dp_10"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view" />
+
+        <com.xiamuyao.ulanbator.view.ViewPagerSlide
+            android:id="@+id/managingViewPager"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="@id/guideline24"
+            app:layout_constraintRight_toRightOf="@+id/guideline25"
+            app:layout_constraintTop_toBottomOf="@+id/managing_indicator" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.04" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.96" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline26"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.022" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline27"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.271" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -5,7 +5,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
 import com.scwang.smartrefresh.layout.api.RefreshLayout
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener
-import com.xiamuyao.ulanbator.base.adapter.BaseListAdapter
+import com.xiamuyao.ulanbator.base.adapter.BaseObservableListAdapter
 import com.xiamuyao.ulanbator.base.BaseViewModel
 import com.xiamuyao.ulanbator.net.BaseResponse
 import com.xiamuyao.ulanbator.net.Status.API_ERROR
@@ -18,11 +18,11 @@ import com.xiamuyao.ulanbator.net.Status.SUCCESS
 /**
  * 列表默认 Adapter 和 LayoutManager 设置
  * @receiver RecyclerView
- * @param mAdapter BaseListAdapter<T>
+ * @param mAdapter BaseObservableListAdapter<T>
  * @param LayoutManager RecyclerView.LayoutManager?
  */
 fun <T> RecyclerView.defaultStyle(
-    mAdapter: BaseListAdapter<T>,
+    mAdapter: BaseObservableListAdapter<T>,
     LayoutManager: RecyclerView.LayoutManager? = LinearLayoutManager(context.applicationContext) as RecyclerView.LayoutManager
 ) {
     this.adapter = mAdapter
