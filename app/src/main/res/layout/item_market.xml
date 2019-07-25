@@ -7,7 +7,7 @@
 
         <variable
             name="marketBean"
-            type="com.xiamuyao.ulanbator.model.bean.MarketBean.DataBean" />
+            type="com.xiamuyao.ulanbator.model.bean.MarketBean.TickBean" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -19,9 +19,9 @@
 
 
         <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:background="#FFFFFF"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            app:setpairImage="@{marketBean.pairName}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@+id/guideline18"
             app:layout_constraintTop_toTopOf="parent" />
@@ -29,10 +29,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{marketBean.symbol}"
             android:textColor="#FFFFFF"
             android:textSize="15dp"
             android:textStyle="bold"
+            android:text="@{marketBean.pairName}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline19"
             app:layout_constraintTop_toTopOf="parent" />
@@ -64,9 +64,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
+            android:text="@{marketBean.close}"
             android:layout_marginBottom="4dp"
             android:textColor="#FFFFFF"
-            android:text="@{marketBean.vol}"
             android:textSize="13dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/guideline21"
@@ -80,7 +80,6 @@
             android:layout_marginEnd="8dp"
             android:textColor="#FF5D5C71"
             android:textSize="11dp"
-            android:text="@{marketBean.symbol}"
             app:layout_constraintEnd_toStartOf="@+id/guideline20"
             app:layout_constraintTop_toTopOf="@+id/guideline21" />
 

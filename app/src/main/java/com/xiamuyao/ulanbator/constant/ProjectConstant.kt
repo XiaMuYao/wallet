@@ -10,8 +10,9 @@ object ProjectConstant {
     /**
      * 订阅行情数据
      */
-    const val SUB_STR = "{\n" +
-            "  \"sub\": \"market.tickers\"\n" +
-            "}"
-
+    const val SUB_STR_BTC = "{\n" + "  \"sub\": \"market.btcusdt.detail\"\n" + "}"
+    const val SUB_STR_ETH = "{\n" + "  \"sub\": \"market.ethusdt.detail\"\n" + "}"
+    const val SUB_STR_LTC = "{\n" + "  \"sub\": \"market.ltcusdt.detail\"\n" + "}"
+    const val SUB_STR_EOS = "{\n" + "  \"sub\": \"market.eosusdt.detail\"\n" + "}"
+    const val SUB_STR_ETC = "{\n" + "  \"sub\": \"market.etcusdt.detail\"\n" + "}"
 }

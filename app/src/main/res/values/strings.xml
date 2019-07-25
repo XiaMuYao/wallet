@@ -2,4 +2,9 @@
     <string name="app_name">ulanbatorSimple</string>
     <string name="titleBarLeftText">返回</string>
     <string name="item_skit_text">Christina Photo by @FransLanting Wonderful color ! To let tourists get a better view，the bus drove slowly.What a beautiful town！</string>
+    <string name="sum">累计总收益</string>
+    <string name="sumprofit">累计邀请收益</string>
+    <string name="sumMarkMoney">累计理财收益</string>
+    <string name="shoping">购买</string>
+    <string name="jiechuheyue">接触合约</string>
 </resources>

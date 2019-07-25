@@ -11,6 +11,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.bumptech.glide.request.RequestOptions
 import com.xiamuyao.ulanbator.App
+import com.xiamuyao.ulanbator.R
 import com.xiamuyao.ulanbator.base.adapter.BaseObservableListAdapter
 
 object BindingAdapters {
@@ -48,21 +49,34 @@ object BindingAdapters {
     @BindingAdapter("setTextWalletShow")
     @JvmStatic
     fun setTextWalletShow(view: TextView, type: Boolean) {
-        if (null ==view.tag) return
-        if (type){
-            view.text=view.tag.toString()
-        }else{
-            view.text="******"
+        if (null == view.tag) return
+        if (type) {
+            view.text = view.tag.toString()
+        } else {
+            view.text = "******"
         }
     }
 
     @BindingAdapter("setViewShowHide")
     @JvmStatic
     fun setViewShowHide(view: View, type: Boolean) {
-        if (type){
+        if (type) {
             view.visibility = View.VISIBLE
-        }else{
+        } else {
             view.visibility = View.GONE
+        }
+    }
+
+    @BindingAdapter("setpairImage")
+    @JvmStatic
+    fun setpairImage(view: ImageView, type: String) {
+        if (type.isEmpty()) return
+        when (type) {
+            "BTC" -> {view.setImageResource(R.drawable.btc)}
+            "ETH" -> {view.setImageResource(R.drawable.btc)}
+            "LTC" -> {view.setImageResource(R.drawable.btc)}
+            "EOS" -> {view.setImageResource(R.drawable.btc)}
+            "DTC" -> {view.setImageResource(R.drawable.btc)}
         }
     }
 }

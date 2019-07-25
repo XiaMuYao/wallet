@@ -3,7 +3,7 @@
     <dimen name="dimens_24dp">24.0dip</dimen>
     <dimen name="dimens_15dp">15.0dip</dimen>
     <dimen name="dimens_5dp">5.0dip</dimen>
-    <dimen name="dimens_20dp">20.0dip</dimen>
+    <dimen name="dimens_20dp">20.0dp</dimen>
     <dimen name="base_ts_18pt">18.0sp</dimen>
     <dimen name="base_ts_16pt">16.0sp</dimen>
     <dimen name="dimens_10dp">10.0dip</dimen>

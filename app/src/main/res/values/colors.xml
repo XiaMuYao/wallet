@@ -7,4 +7,7 @@
     <color name="pageBackground">#1E202F</color>
     <color name="write">#FFFFFF</color>
     <color name="pairline">#2C2B3A</color>
+    <color name="lineinfo">#4d4d5a</color>
+
+    <color name="contraclnto">#393948</color>
 </resources>

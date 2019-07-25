@@ -5,6 +5,7 @@ import androidx.databinding.ObservableArrayList
 import androidx.lifecycle.MutableLiveData
 import com.xiamuyao.ulanbator.R
 import com.xiamuyao.ulanbator.base.BaseViewModel
+import com.xiamuyao.ulanbator.constant.ProjectConstant
 import com.xiamuyao.ulanbator.model.bean.MarketBean
 
 class MainViewModel(application: Application) : BaseViewModel(application) {
@@ -29,13 +30,39 @@ class MainViewModel(application: Application) : BaseViewModel(application) {
 
     var fragmentIndex = MutableLiveData<Int>()
 
-    var marketList = ObservableArrayList<MarketBean.DataBean>()
+    var marketList = ObservableArrayList<MarketBean.TickBean>()
 
     init {
         fragmentIndex.value = 0
+
+        val btcusdt = MarketBean.TickBean()
+        btcusdt.cch = "market.btcusdt.detail"
+        btcusdt.pairName = "BTC"
+
+        val ethusdt = MarketBean.TickBean()
+        ethusdt.cch = "market.ethusdt.detail"
+        ethusdt.pairName = "ETH"
+
+        val ltcusdt = MarketBean.TickBean()
+        ltcusdt.cch = "market.ltcusdt.detail"
+        ltcusdt.pairName = "LTC"
+
+        val eosusdt = MarketBean.TickBean()
+        eosusdt.cch = "market.eosusdt.detail"
+        eosusdt.pairName = "EOS"
+
+        val etcusdt = MarketBean.TickBean()
+        etcusdt.cch = "market.etcusdt.detail"
+        etcusdt.pairName = "ETC"
+
+        marketList.add(btcusdt)
+        marketList.add(ethusdt)
+        marketList.add(ltcusdt)
+        marketList.add(eosusdt)
+        marketList.add(etcusdt)
     }
 
-    override  fun initData() {
+    override fun initData() {
 
     }
 

@@ -10,8 +10,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="#E7E7E7">
+        android:layout_height="70dp">
 
         <ImageView
             android:id="@+id/titleBarLeftImage"
