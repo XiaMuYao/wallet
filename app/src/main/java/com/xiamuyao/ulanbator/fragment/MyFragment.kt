@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.xiamuyao.ulanbator.BR
 import com.xiamuyao.ulanbator.R
+import com.xiamuyao.ulanbator.activity.*
 import com.xiamuyao.ulanbator.databinding.FragmentMyBinding
 import com.xiamuyao.ulanbator.viewmodel.MyViewModel
 import com.xiamuyao.ulanbator.base.BaseFragment
@@ -30,6 +31,34 @@ class MyFragment : BaseFragment<FragmentMyBinding, MyViewModel>() {
 
 
     override fun initView() {
+        //个人信息
+        binding.imageView7.setOnClickListener {
+            UserInfoActivity.start(context!!)
+        }
+        //VIP
+        binding.constraintLayout3.setOnClickListener {
+            //        AboutActivity.start(context)
+        }
+        //邀请返佣
+        binding.constraintLayout4.setOnClickListener {
+            InvitationAndReturnMoneyActivity.start(context!!)
+        }
+        binding.constraintLayout5.setOnClickListener {
+            SaveCenterActivity.start(context!!)
+        }
+        binding.constraintLayout6.setOnClickListener {
+            SystemSettingActivity.start(context!!)
+        }
+        binding.constraintLayout7.setOnClickListener {
+            //        AboutActivity.start(context)
+        }
+
+        binding.constraintLayout8.setOnClickListener {
+            HelpActivity.start(context!!)
+        }
+        binding.constraintLayout9.setOnClickListener {
+            AboutActivity.start(context!!)
+        }
     }
 
 

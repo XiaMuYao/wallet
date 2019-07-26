@@ -6,7 +6,7 @@ import com.xiamuyao.ulanbator.base.BaseViewModel
 
 class BigPhotoViewModel(application: Application) : BaseViewModel(application) {
     //图片地址
-    var imageUrl =MutableLiveData<String>()
+    var imageUrl = MutableLiveData<String>()
 
     override fun initData() {
 

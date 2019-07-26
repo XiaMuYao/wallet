@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <dimen name="barLeftImg">25dp</dimen>
-    <dimen name="barRightImg">25dp</dimen>
+    <dimen name="barLeftImg">20dp</dimen>
+    <dimen name="barRightImg">20dp</dimen>
 
     <dimen name="itemNineImage">105dp</dimen>
     <dimen name="itemNineLayout">107.5dp</dimen>
 
+    <dimen name="common_navigator_height">45dp</dimen>
 
 </resources>

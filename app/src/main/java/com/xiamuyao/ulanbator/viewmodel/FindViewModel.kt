@@ -5,10 +5,10 @@ import com.xiamuyao.ulanbator.base.BaseViewModel
 
 class FindViewModel(application: Application) : BaseViewModel(application) {
 
-    val titleList = arrayListOf("推荐社区", "热门社区")
+    val titleList = arrayListOf("公告", "资讯", "Dapp")
 
 
-    override  fun initData() {
+    override fun initData() {
 
     }
 

@@ -7,7 +7,7 @@ class ManagingMoneyViewModel(application: Application) : BaseViewModel(applicati
 
     val titleList = arrayListOf("合约", "定存")
 
-    override  fun initData() {
+    override fun initData() {
 
     }
 

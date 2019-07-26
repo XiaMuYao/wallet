@@ -60,6 +60,4 @@ class App : Application(), KodeinAware {
     }
 
 
-
-
 }

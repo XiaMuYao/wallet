@@ -4,6 +4,9 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
+import android.view.View
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
@@ -126,5 +129,21 @@ abstract class BaseActivity<V : ViewDataBinding, VM : BaseViewModel> : AppCompat
      */
     abstract fun initViewModel(): Class<VM>
 
+    fun setImageAndClick(imageId: Int, block: (() -> Unit)) {
+        findViewById<ImageView>(imageId)
+            .apply { visibility = View.VISIBLE }
+            .apply { setOnClickListener { block() } }
+    }
 
+    fun setTextAndClick(textId: Int, title: String, block: (() -> Unit)) {
+        findViewById<TextView>(textId)
+            .apply { text = title }
+            .apply { setOnClickListener { block() } }
+    }
+
+    fun setTitle(titleId: Int, title: String) {
+        findViewById<TextView>(titleId)
+            .apply { visibility = View.VISIBLE }
+            .apply { text = title }
+    }
 }

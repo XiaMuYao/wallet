@@ -9,7 +9,7 @@ class LaunchViewModel(application: Application) : BaseViewModel(application) {
 
     private val repository: PlaceRepository by instance()
 
-    override  fun initData() {
+    override fun initData() {
 
     }
 

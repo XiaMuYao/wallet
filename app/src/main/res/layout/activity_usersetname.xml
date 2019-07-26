@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="usersetnameViewModel"
+            type="com.xiamuyao.ulanbator.viewmodel.UserSetNameViewModel" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/myPageColor"
+        tools:context=".activity.UserSetName">
+
+        <include
+            android:id="@+id/titleBar"
+            layout="@layout/layout_titlebar" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout4"
+            android:layout_width="match_parent"
+            android:layout_height="51dp"
+            android:layout_marginTop="@dimen/dp_10"
+            android:background="@color/myitem"
+            app:layout_constraintTop_toBottomOf="@id/titleBar">
+
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:textColor="#FFFFFF"
+                android:singleLine="true"
+                tools:text="123123123123"
+                android:paddingLeft="@dimen/dimens_15dp"
+                android:text="@{usersetnameViewModel.userName}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="@+id/guideline40"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imageView9123"
+                android:layout_width="@dimen/dimens_24dp"
+                android:layout_height="@dimen/dimens_24dp"
+                android:layout_marginLeft="@dimen/dimens_15dp"
+                android:layout_marginEnd="15dp"
+                android:src="@drawable/close"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline40"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.7" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_marginLeft="@dimen/dimens_10dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/shape_btn"
+            android:text="@string/save"
+            android:textColor="#fff"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="@+id/guideline36"
+            app:layout_constraintRight_toRightOf="@id/guideline35" />
+
+
+        <Button
+            android:id="@+id/cancel"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_marginRight="@dimen/dimens_10dp"
+            android:layout_marginBottom="16dp"
+            android:background="#353343"
+            android:text="@string/cancel"
+            android:textColor="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="@id/guideline30"
+            app:layout_constraintRight_toRightOf="@id/guideline36" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline35"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="@dimen/dimens_15dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline36"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline30"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="@dimen/dimens_15dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

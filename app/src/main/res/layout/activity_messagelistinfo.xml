@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="messagelistinfoViewModel"
+            type="com.xiamuyao.ulanbator.viewmodel.MessageListInfoViewModel" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/pageBackground"
+        tools:context=".activity.MessageListInfo">
+
+        <include
+            android:id="@+id/include"
+            layout="@layout/layout_titlebar" />
+
+        <TextView
+            android:text="@{messagelistinfoViewModel.messageBody}"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="16dp"
+            android:textColor="#B9B9B9"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/include"
+            tools:text="4545655654654654654" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

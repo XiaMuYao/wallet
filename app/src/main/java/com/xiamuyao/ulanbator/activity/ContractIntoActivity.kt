@@ -1,5 +1,6 @@
 package com.xiamuyao.ulanbator.activity
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -22,7 +23,7 @@ class ContractIntoActivity : BaseActivity<ActivityContractintoBinding, ContractI
 
         binding.constraintLayout.setOnClickListener {
             val customPopupWindow = CustomPopupWindow(this, viewModel.pariList)
-            customPopupWindow.showAtLocation(binding.constraintLayout, Gravity.CLIP_HORIZONTAL,0,0)
+            customPopupWindow.showAtLocation(binding.constraintLayout, Gravity.CLIP_HORIZONTAL, 0, 0)
         }
     }
 

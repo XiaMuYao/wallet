@@ -17,6 +17,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".activity.HelpActivity" />
+        <activity android:name=".activity.AboutActivity" />
+        <activity android:name=".activity.SelectPairActivity" />
+        <activity android:name=".activity.SelectLaunageActivity" />
+        <activity android:name=".activity.SystemSettingActivity" />
+        <activity android:name=".activity.SetUserPsdActivity" />
+        <activity android:name=".activity.SaveCenterActivity" />
+        <activity android:name=".activity.ReturnMoneyInfoActivity" />
+        <activity android:name=".activity.ReturnMoneyHisActivity" />
+        <activity android:name=".activity.InvitaionHisActivity" />
+        <activity android:name=".activity.InvitationAndReturnMoneyActivity" />
+        <activity android:name=".activity.UserSetNameActivity" />
+        <activity android:name=".activity.UserInfoActivity" />
         <activity android:name=".activity.ContractIntoActivity" />
         <activity android:name=".activity.AccountDetailsActivity" />
         <activity android:name=".activity.WalletInfoActivity" />
@@ -39,6 +52,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.ShowPhotoActivity" />
+        <activity android:name=".activity.MessageListInfoActivity" />
+        <activity android:name=".activity.RegisterActivity" />
+        <activity android:name=".activity.LoginActivity" />
+        <activity android:name=".activity.SetMoneyPsdActivity" />
     </application>
 
 </manifest>

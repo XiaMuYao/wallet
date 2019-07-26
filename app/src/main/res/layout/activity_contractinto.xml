@@ -255,6 +255,7 @@
             android:layout_marginBottom="16dp"
             android:background="@drawable/shape_btn"
             android:text="@string/shoping"
+            android:textColor="#fff"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="@+id/guideline36"
             app:layout_constraintRight_toRightOf="@id/guideline35" />

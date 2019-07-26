@@ -72,11 +72,21 @@ object BindingAdapters {
     fun setpairImage(view: ImageView, type: String) {
         if (type.isEmpty()) return
         when (type) {
-            "BTC" -> {view.setImageResource(R.drawable.btc)}
-            "ETH" -> {view.setImageResource(R.drawable.btc)}
-            "LTC" -> {view.setImageResource(R.drawable.btc)}
-            "EOS" -> {view.setImageResource(R.drawable.btc)}
-            "DTC" -> {view.setImageResource(R.drawable.btc)}
+            "BTC" -> {
+                view.setImageResource(R.drawable.btc)
+            }
+            "ETH" -> {
+                view.setImageResource(R.drawable.btc)
+            }
+            "LTC" -> {
+                view.setImageResource(R.drawable.btc)
+            }
+            "EOS" -> {
+                view.setImageResource(R.drawable.btc)
+            }
+            "DTC" -> {
+                view.setImageResource(R.drawable.btc)
+            }
         }
     }
 }

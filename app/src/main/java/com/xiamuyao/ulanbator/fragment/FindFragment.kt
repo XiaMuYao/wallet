@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.databinding.ViewDataBinding
 import com.xiamuyao.ulanbator.BR
 import com.xiamuyao.ulanbator.R
+import com.xiamuyao.ulanbator.adapter.fragmentAdapter.FindPagerAdapter
 import com.xiamuyao.ulanbator.adapter.fragmentAdapter.SectionsPagerAdapter
 import com.xiamuyao.ulanbator.databinding.FragmentFindBinding
 import com.xiamuyao.ulanbator.viewmodel.FindViewModel
@@ -20,19 +21,25 @@ import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.CommonNav
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerIndicator
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerTitleView
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.indicators.BezierPagerIndicator
+import net.lucode.hackware.magicindicator.buildins.commonnavigator.indicators.LinePagerIndicator
+import net.lucode.hackware.magicindicator.buildins.commonnavigator.titles.ColorTransitionPagerTitleView
+import net.lucode.hackware.magicindicator.buildins.commonnavigator.titles.badge.BadgePagerTitleView
 
 
 class FindFragment : BaseFragment<FragmentFindBinding, FindViewModel>() {
-    companion object {
-        fun newInstance(bundle: Bundle?): FindFragment {
-            val findFragment = FindFragment()
-            findFragment.arguments = bundle
-            return findFragment
-        }
+
+    private val findMessageAdapter by lazy {
+        FindPagerAdapter(fragmentManager!!, viewModel.titleList)
     }
 
-
     override fun initView() {
+
+        with(binding.homeViewPager) {
+            adapter = findMessageAdapter
+            offscreenPageLimit = viewModel.titleList.size
+            setSlide(true)
+        }
+
         initMagicIndicator()
 
     }
@@ -51,40 +58,44 @@ class FindFragment : BaseFragment<FragmentFindBinding, FindViewModel>() {
     override fun initViewModel(): Class<FindViewModel> {
         return FindViewModel::class.java
     }
-    private fun initMagicIndicator() {
-        binding.homeIndicator.setBackgroundColor(Color.WHITE)
-        val commonNavigator = CommonNavigator(context)
 
+    private fun initMagicIndicator() {
+        val commonNavigator = CommonNavigator(context)
         commonNavigator.adapter = object : CommonNavigatorAdapter() {
             override fun getCount(): Int {
                 return viewModel.titleList.size
             }
 
             override fun getTitleView(context: Context, index: Int): IPagerTitleView {
-                val simplePagerTitleView = ScaleTransitionPagerTitleView(context)
+                val badgePagerTitleView = BadgePagerTitleView(context)
+
+                val simplePagerTitleView = ColorTransitionPagerTitleView(context)
+                simplePagerTitleView.normalColor = Color.parseColor("#F1F1F1")
+                simplePagerTitleView.selectedColor = Color.parseColor("#000000")
                 simplePagerTitleView.text = viewModel.titleList[index]
-                simplePagerTitleView.textSize = 18f
-                simplePagerTitleView.normalColor = Color.GRAY
-                simplePagerTitleView.selectedColor = Color.BLACK
-                simplePagerTitleView.setOnClickListener {
-                    binding.homeViewPager.currentItem = index
-                }
-                return simplePagerTitleView
+                simplePagerTitleView.setOnClickListener { binding.homeViewPager.currentItem = index }
+                badgePagerTitleView.innerPagerTitleView = simplePagerTitleView
+
+                return badgePagerTitleView
             }
 
             override fun getIndicator(context: Context): IPagerIndicator {
-                val indicator = BezierPagerIndicator(context)
-                indicator.setColors(
-                    Color.parseColor("#ff4a42"),
-                    Color.parseColor("#fcde64")
-                )
-                return indicator
+                val linePagerIndicator = LinePagerIndicator(context)
+                linePagerIndicator.setColors(Color.parseColor("#4630F5"))
+                return linePagerIndicator
             }
         }
         binding.homeIndicator.navigator = commonNavigator
         ViewPagerHelper.bind(binding.homeIndicator, binding.homeViewPager)
-        binding.homeViewPager.currentItem = 1
 
+    }
+
+    companion object {
+        fun newInstance(bundle: Bundle?): FindFragment {
+            val findFragment = FindFragment()
+            findFragment.arguments = bundle
+            return findFragment
+        }
     }
 
 }

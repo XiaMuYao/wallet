@@ -30,14 +30,22 @@
             app:layout_constraintTop_toTopOf="@+id/guideline26"
             app:layout_constraintVertical_bias="0.0" />
 
-        <net.lucode.hackware.magicindicator.MagicIndicator
-            android:id="@+id/managing_indicator"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
+        <LinearLayout
+            android:id="@+id/managing_indicatorlauout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_40"
             android:layout_marginTop="@dimen/dp_10"
+            android:gravity="center"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view" />
+            app:layout_constraintTop_toBottomOf="@+id/view">
+
+            <net.lucode.hackware.magicindicator.MagicIndicator
+                android:id="@+id/managing_indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
 
         <com.xiamuyao.ulanbator.view.ViewPagerSlide
             android:id="@+id/managingViewPager"
@@ -46,7 +54,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="@id/guideline24"
             app:layout_constraintRight_toRightOf="@+id/guideline25"
-            app:layout_constraintTop_toBottomOf="@+id/managing_indicator" />
+            app:layout_constraintTop_toBottomOf="@+id/managing_indicatorlauout" />
 
 
         <androidx.constraintlayout.widget.Guideline

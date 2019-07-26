@@ -4,7 +4,7 @@ import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
 import androidx.databinding.library.baseAdapters.BR
 
-class WalletListBean: BaseObservable() {
+class WalletListBean : BaseObservable() {
     var id: Int = -1
     var pairName: String = ""
     var pairImage: String = ""

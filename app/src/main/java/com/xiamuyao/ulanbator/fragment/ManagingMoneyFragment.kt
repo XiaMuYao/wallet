@@ -17,26 +17,32 @@ import com.xiamuyao.ulanbator.databinding.FragmentManagingMoneyBinding
 import com.xiamuyao.ulanbator.view.ScaleTransitionPagerTitleView
 import com.xiamuyao.ulanbator.viewmodel.ManagingMoneyViewModel
 import net.lucode.hackware.magicindicator.ViewPagerHelper
+import net.lucode.hackware.magicindicator.buildins.UIUtil
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.CommonNavigator
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.CommonNavigatorAdapter
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerIndicator
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerTitleView
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.indicators.BezierPagerIndicator
+import net.lucode.hackware.magicindicator.buildins.commonnavigator.indicators.LinePagerIndicator
 
 
 class ManagingMoneyFragment : BaseFragment<FragmentManagingMoneyBinding, ManagingMoneyViewModel>() {
-    companion object {
-        fun newInstance(bundle: Bundle?): ManagingMoneyFragment {
-            val findFragment = ManagingMoneyFragment()
-            findFragment.arguments = bundle
-            return findFragment
-        }
+
+    private val mFragmentList: Array<BaseFragment<out ViewDataBinding, out BaseViewModel>> by lazy {
+        arrayOf(
+            ContractFragmentFragment.newInstance(null),
+            FixedDepositFragmentFragment.newInstance(null)
+        )
     }
 
+    private val managingMoneyAdapter by lazy {
+        SectionsPagerAdapter(fragmentManager!!, mFragmentList)
+    }
 
     override fun initView() {
         initMagicIndicator()
         binding.managingViewPager.setSlide(true)
+        binding.managingViewPager.adapter = managingMoneyAdapter
     }
 
     override fun initVVMObserver() {
@@ -55,40 +61,45 @@ class ManagingMoneyFragment : BaseFragment<FragmentManagingMoneyBinding, Managin
     }
 
     private fun initMagicIndicator() {
-        binding.managingIndicator.setBackgroundColor(Color.WHITE)
+        binding.managingIndicator.setBackgroundResource(R.drawable.round_indicator_bg)
         val commonNavigator = CommonNavigator(context)
-
         commonNavigator.adapter = object : CommonNavigatorAdapter() {
             override fun getCount(): Int {
                 return viewModel.titleList.size
             }
 
             override fun getTitleView(context: Context, index: Int): IPagerTitleView {
-                val simplePagerTitleView = ScaleTransitionPagerTitleView(context)
-                simplePagerTitleView.text = viewModel.titleList[index]
-                simplePagerTitleView.textSize = 18f
-                simplePagerTitleView.normalColor = Color.GRAY
-                simplePagerTitleView.selectedColor = Color.BLACK
-                simplePagerTitleView.setOnClickListener {
-                    binding.managingViewPager.currentItem = index
-                }
-                return simplePagerTitleView
+                val clipPagerTitleView = ScaleTransitionPagerTitleView(context)
+                clipPagerTitleView.text = viewModel.titleList[index]
+                clipPagerTitleView.setPadding(100, 0, 100, 0)
+                clipPagerTitleView.normalColor = Color.parseColor("#4E5269")
+                clipPagerTitleView.selectedColor = Color.parseColor("#000000")
+                clipPagerTitleView.setOnClickListener { binding.managingViewPager.currentItem = index }
+                return clipPagerTitleView
             }
 
             override fun getIndicator(context: Context): IPagerIndicator {
-                val indicator = BezierPagerIndicator(context)
-                indicator.setColors(
-                    Color.parseColor("#ff4a42"),
-                    Color.parseColor("#fcde64")
-                )
+                val indicator = LinePagerIndicator(context)
+                val navigatorHeight = context.resources.getDimension(R.dimen.common_navigator_height)
+                val borderWidth = UIUtil.dip2px(context, 1.0).toFloat()
+                val lineHeight = navigatorHeight - 2 * borderWidth
+                indicator.lineHeight = lineHeight
+                indicator.yOffset = borderWidth
+                indicator.setColors(Color.parseColor("#282633"))
                 return indicator
             }
         }
         binding.managingIndicator.navigator = commonNavigator
         ViewPagerHelper.bind(binding.managingIndicator, binding.managingViewPager)
-        binding.managingViewPager.currentItem = 1
 
     }
 
+    companion object {
+        fun newInstance(bundle: Bundle?): ManagingMoneyFragment {
+            val findFragment = ManagingMoneyFragment()
+            findFragment.arguments = bundle
+            return findFragment
+        }
+    }
 
 }

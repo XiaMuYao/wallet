@@ -36,7 +36,6 @@ object DataUtli {
     }
 
 
-
     fun getSkirtList() = run {
         val tempList = ObservableArrayList<SkirtListBean>()
         repeat(10) {

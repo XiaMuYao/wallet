@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="invitationandreturnmoneyViewModel"
+            type="com.xiamuyao.ulanbator.viewmodel.InvitationAndReturnMoneyViewModel" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/myPageColor"
+        tools:context=".activity.InvitationAndReturnMoney">
+
+
+        <include
+            android:id="@+id/titleBar"
+            layout="@layout/layout_titlebar" />
+
+
+        <View
+            android:id="@+id/view10"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/shape_background"
+            app:layout_constraintBottom_toBottomOf="@+id/guideline45"
+            app:layout_constraintEnd_toStartOf="@+id/guideline43"
+            app:layout_constraintStart_toStartOf="@+id/guideline42"
+            app:layout_constraintTop_toTopOf="@+id/guideline44" />
+
+
+        <ImageView
+            android:id="@+id/imageView12"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="#f123"
+            app:layout_constraintEnd_toStartOf="@+id/guideline43"
+            app:layout_constraintStart_toStartOf="@+id/guideline42"
+            app:layout_constraintTop_toTopOf="@+id/guideline41" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline41"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.077" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline42"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.041" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline43"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.961" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline44"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.107" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline45"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.396" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline46"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <TextView
+            android:id="@+id/textView41"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="TextView"
+            app:layout_constraintEnd_toEndOf="@+id/imageView12"
+            app:layout_constraintStart_toStartOf="@+id/imageView12"
+            app:layout_constraintTop_toBottomOf="@+id/imageView12" />
+
+        <TextView
+            android:id="@+id/textView42"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:text="TextView"
+            app:layout_constraintEnd_toEndOf="@+id/textView41"
+            app:layout_constraintStart_toStartOf="@+id/textView41"
+            app:layout_constraintTop_toBottomOf="@+id/textView41" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toStartOf="@+id/view11"
+            app:layout_constraintStart_toStartOf="@+id/guideline42"
+            app:layout_constraintTop_toBottomOf="@+id/textView42">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#fff"
+                android:textSize="31dp"
+                android:textStyle="bold"
+                tools:text="300" />
+
+            <TextView
+                style="@style/style_item_num"
+                android:layout_marginLeft="2dp"
+                android:textSize="@dimen/dimens_20dp"
+                tools:text="MAX" />
+
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4.5dp"
+            android:text="累计返佣"
+            android:textColor="#FF878DA8"
+            app:layout_constraintEnd_toEndOf="@+id/linearLayout7"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout7"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout7" />
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toStartOf="@+id/guideline43"
+            app:layout_constraintStart_toStartOf="@+id/guideline46"
+            app:layout_constraintTop_toBottomOf="@+id/textView42"
+
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#fff"
+                android:textSize="31dp"
+                android:textStyle="bold"
+                tools:text="36" />
+
+            <TextView
+                style="@style/style_item_num"
+                android:layout_marginLeft="2dp"
+                android:textSize="@dimen/dimens_20dp"
+                tools:text="人" />
+
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4.5dp"
+            android:text="邀请总人数"
+            android:textColor="#FF878DA8"
+            app:layout_constraintEnd_toEndOf="@+id/linearLayout8"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout8"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout8" />
+
+        <View
+            android:id="@+id/view11"
+            android:layout_width="0.5dp"
+            android:layout_height="46dp"
+            android:background="#33FFFFFF"
+            app:layout_constraintBottom_toBottomOf="@+id/guideline45"
+            app:layout_constraintLeft_toLeftOf="@+id/guideline42"
+            app:layout_constraintRight_toRightOf="@+id/guideline43"
+            app:layout_constraintTop_toBottomOf="@+id/textView42" />
+
+
+        <View
+            android:id="@+id/view12"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/shape_background"
+            app:layout_constraintBottom_toBottomOf="@+id/guideline48"
+            app:layout_constraintEnd_toStartOf="@+id/guideline43"
+            app:layout_constraintStart_toStartOf="@+id/guideline42"
+            app:layout_constraintTop_toTopOf="@+id/guideline47" />
+
+
+        <View
+            android:id="@+id/view13"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/shape_background_bottom"
+            app:layout_constraintBottom_toBottomOf="@+id/guideline50"
+            app:layout_constraintEnd_toStartOf="@+id/guideline52"
+            app:layout_constraintStart_toStartOf="@+id/guideline42"
+            app:layout_constraintTop_toTopOf="@+id/guideline49" />
+
+        <View
+            android:id="@+id/view14"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/shape_background_bottom"
+            app:layout_constraintBottom_toBottomOf="@+id/guideline50"
+            app:layout_constraintEnd_toStartOf="@+id/guideline43"
+            app:layout_constraintStart_toStartOf="@+id/guideline51"
+            app:layout_constraintTop_toTopOf="@+id/guideline49" />
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/guideline50"
+            app:layout_constraintEnd_toStartOf="@+id/guideline52"
+            app:layout_constraintStart_toStartOf="@+id/view13"
+            app:layout_constraintTop_toTopOf="@+id/guideline49">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:src="@drawable/yaoqing_01"
+
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/yaoqinghis"
+                android:textColor="#878DA8" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/guideline50"
+            app:layout_constraintEnd_toStartOf="@+id/guideline43"
+            app:layout_constraintStart_toStartOf="@+id/guideline51"
+            app:layout_constraintTop_toTopOf="@+id/guideline49">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:src="@drawable/yaoqing_02"
+
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/yaoqingfanyong"
+                android:textColor="#878DA8" />
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline47"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.412" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline48"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.764" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline49"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.779" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline50"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.985" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline51"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.506" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline52"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.494" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline54"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.443" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline55"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.496" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline56"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.548" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline57"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.60" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline58"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.653" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline59"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.705" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline60"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.081" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline61"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.922" />
+
+        <TextView
+            android:id="@+id/textView44"
+            style="@style/style_inviation_item"
+            android:text="邀请普通用户数"
+            app:layout_constraintStart_toStartOf="@+id/guideline60"
+            app:layout_constraintTop_toTopOf="@+id/guideline54" />
+
+        <TextView
+            android:id="@+id/textView45"
+            style="@style/style_inviation_item"
+
+            android:text="邀请 VIP1 人数"
+            app:layout_constraintStart_toStartOf="@+id/guideline60"
+            app:layout_constraintTop_toTopOf="@+id/guideline55" />
+
+        <TextView
+            android:id="@+id/textView46"
+
+            style="@style/style_inviation_item"
+            android:text="邀请 VIP2 人数"
+            app:layout_constraintStart_toStartOf="@+id/guideline60"
+            app:layout_constraintTop_toTopOf="@+id/guideline56" />
+
+        <TextView
+            android:id="@+id/textView47"
+            style="@style/style_inviation_item"
+
+            android:text="邀请 VIP3 人数"
+            app:layout_constraintStart_toStartOf="@+id/guideline60"
+            app:layout_constraintTop_toTopOf="@+id/guideline57" />
+
+        <TextView
+            android:id="@+id/textView48"
+            style="@style/style_inviation_item"
+
+            android:text="邀请 VIP4 人数"
+            app:layout_constraintStart_toStartOf="@+id/guideline60"
+            app:layout_constraintTop_toTopOf="@+id/guideline58" />
+
+        <TextView
+            android:id="@+id/textView49"
+            style="@style/style_inviation_item"
+
+            android:text="邀请 VIP5 人数"
+            app:layout_constraintStart_toStartOf="@+id/guideline60"
+            app:layout_constraintTop_toTopOf="@+id/guideline59" />
+
+        <TextView
+            android:id="@+id/textView50"
+            style="@style/style_item_people"
+            android:text="人"
+            app:layout_constraintEnd_toStartOf="@+id/guideline61"
+            app:layout_constraintTop_toTopOf="@+id/guideline54" />
+
+        <TextView
+            android:id="@+id/textView51"
+            style="@style/style_item_num"
+            android:layout_marginEnd="2dp"
+            android:text="30"
+            app:layout_constraintEnd_toStartOf="@+id/textView50"
+            app:layout_constraintTop_toTopOf="@+id/guideline54" />
+
+        <TextView
+            android:id="@+id/textView52"
+            style="@style/style_item_people"
+
+            android:text="人"
+            app:layout_constraintEnd_toStartOf="@+id/guideline61"
+            app:layout_constraintTop_toTopOf="@+id/guideline55" />
+
+        <TextView
+            android:id="@+id/textView53"
+
+            style="@style/style_item_people"
+            android:text="人"
+            app:layout_constraintEnd_toStartOf="@+id/guideline61"
+            app:layout_constraintTop_toTopOf="@+id/guideline56" />
+
+        <TextView
+            android:id="@+id/textView54"
+            style="@style/style_item_people"
+
+            android:text="人"
+            app:layout_constraintEnd_toStartOf="@+id/guideline61"
+            app:layout_constraintTop_toTopOf="@+id/guideline57" />
+
+        <TextView
+            android:id="@+id/textView55"
+            style="@style/style_item_people"
+
+            android:text="人"
+            app:layout_constraintEnd_toStartOf="@+id/guideline61"
+            app:layout_constraintTop_toTopOf="@+id/guideline58" />
+
+        <TextView
+            android:id="@+id/textView56"
+            style="@style/style_item_people"
+
+            android:text="人"
+            app:layout_constraintEnd_toStartOf="@+id/guideline61"
+            app:layout_constraintTop_toTopOf="@+id/guideline59" />
+
+        <TextView
+            android:id="@+id/textView57"
+            style="@style/style_item_num"
+            android:text="TextView"
+            app:layout_constraintEnd_toStartOf="@+id/textView52"
+            app:layout_constraintTop_toTopOf="@+id/guideline55" />
+
+        <TextView
+            android:id="@+id/textView58"
+
+            style="@style/style_item_num"
+            android:text="TextView"
+            app:layout_constraintEnd_toStartOf="@+id/textView53"
+            app:layout_constraintTop_toTopOf="@+id/guideline56" />
+
+        <TextView
+            android:id="@+id/textView59"
+
+            style="@style/style_item_num"
+            android:text="TextView"
+            app:layout_constraintEnd_toStartOf="@+id/textView54"
+            app:layout_constraintTop_toTopOf="@+id/guideline57" />
+
+        <TextView
+            android:id="@+id/textView60"
+
+            style="@style/style_item_num"
+            android:text="TextView"
+            app:layout_constraintEnd_toStartOf="@+id/textView55"
+            app:layout_constraintTop_toTopOf="@+id/guideline58" />
+
+        <TextView
+            android:id="@+id/textView61"
+
+            style="@style/style_item_num"
+            android:text="TextView"
+            app:layout_constraintEnd_toStartOf="@+id/textView56"
+            app:layout_constraintTop_toTopOf="@+id/guideline59" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
