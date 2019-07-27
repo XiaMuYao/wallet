@@ -1,7 +1,5 @@
 package com.xiamuyao.ulanbator.activity
 
-import android.app.Activity
-import android.app.Application
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -20,8 +18,11 @@ class InvitationAndReturnMoneyActivity :
     BaseActivity<ActivityInvitationandreturnmoneyBinding, InvitationAndReturnMoneyViewModel>() {
 
     override fun initView() {
-        setTitleBar("邀请返佣", { finish() },rightText = "邀请规则")
-
+        setTitleBar("邀请返佣", { finish() }, rightText = "邀请规则")
+        //邀请记录
+        binding.view13.setOnClickListener { InvitaionHisActivity.start(this) }
+        //返佣记录
+        binding.view14.setOnClickListener { ReturnMoneyHisActivity.start(this) }
     }
 
     override fun initVVMObserver() {

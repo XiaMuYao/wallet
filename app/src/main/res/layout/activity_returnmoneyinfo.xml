@@ -13,13 +13,272 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" android:background="@color/myPageColor"
+        android:layout_height="match_parent"
+        android:background="@color/myPageColor"
         tools:context=".activity.ReturnMoneyInfo">
 
 
         <include
             android:id="@+id/titleBar"
-            layout="@layout/layout_titlebar"/>
+            layout="@layout/layout_titlebar" />
+
+
+        <View
+            android:id="@+id/view15"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/pageBackground"
+            app:layout_constraintBottom_toBottomOf="@+id/guideline69"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/view16"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/shape_background"
+            app:layout_constraintBottom_toTopOf="@+id/guideline68"
+            app:layout_constraintEnd_toStartOf="@+id/guideline66"
+            app:layout_constraintStart_toStartOf="@+id/guideline65"
+            app:layout_constraintTop_toTopOf="@+id/guideline67" />
+
+
+        <View
+            android:id="@+id/view18"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/pageBackground"
+            app:layout_constraintBottom_toBottomOf="@+id/guideline71"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline70" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/returnMoneyInforecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/pageBackground"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view18" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline65"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.04" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline66"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.96" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline67"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.085" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline68"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.316" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline69"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.33" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline70"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.345" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline71"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.412" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline73"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.437" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline74"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.8" />
+
+        <TextView
+            android:id="@+id/textView65"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="时间"
+            android:textColor="#878DA8"
+            app:layout_constraintBottom_toTopOf="@+id/guideline71"
+            app:layout_constraintStart_toStartOf="@+id/guideline65"
+            app:layout_constraintTop_toTopOf="@+id/guideline70" />
+
+        <TextView
+            android:id="@+id/textView66"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="返佣类型"
+            android:textColor="#878DA8"
+
+            app:layout_constraintBottom_toTopOf="@+id/guideline71"
+            app:layout_constraintStart_toStartOf="@+id/guideline73"
+            app:layout_constraintTop_toTopOf="@+id/guideline70" />
+
+        <TextView
+            android:id="@+id/textView67"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="返佣金额"
+            android:textColor="#878DA8"
+
+            app:layout_constraintBottom_toTopOf="@+id/guideline71"
+            app:layout_constraintStart_toStartOf="@+id/guideline74"
+            app:layout_constraintTop_toTopOf="@+id/guideline70" />
+
+        <View
+            android:id="@+id/view19"
+            android:layout_width="0dp"
+            android:layout_height="0.5dp"
+            app:layout_constraintBottom_toBottomOf="@+id/guideline71"
+            app:layout_constraintLeft_toLeftOf="@+id/guideline65"
+            app:layout_constraintRight_toRightOf="@id/guideline66"
+            app:layout_constraintTop_toTopOf="@+id/guideline71" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline72"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.08" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline76"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.11" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline77"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.156" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline78"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.205" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline79"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.258" />
+
+        <TextView
+            android:id="@+id/textView68"
+            android:layout_width="wrap_content"
+            android:textColor="#878DA8"
+            android:layout_height="wrap_content"
+            android:text="昵称"
+            app:layout_constraintStart_toStartOf="@+id/guideline72"
+            app:layout_constraintTop_toTopOf="@+id/guideline76" />
+
+        <TextView
+            android:id="@+id/textView69"
+            android:layout_width="wrap_content"            android:textColor="#878DA8"
+
+            android:layout_height="wrap_content"
+            android:text="ID"
+            app:layout_constraintStart_toStartOf="@+id/guideline72"
+            app:layout_constraintTop_toTopOf="@+id/guideline77" />
+
+        <TextView
+            android:id="@+id/textView70"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="用户类型"            android:textColor="#878DA8"
+
+            app:layout_constraintStart_toStartOf="@+id/guideline72"
+            app:layout_constraintTop_toTopOf="@+id/guideline78" />
+
+        <TextView
+            android:id="@+id/textView71"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="返佣总数"            android:textColor="#878DA8"
+
+            app:layout_constraintStart_toStartOf="@+id/guideline72"
+            app:layout_constraintTop_toTopOf="@+id/guideline79" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline80"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.92" />
+
+        <TextView
+            android:id="@+id/textView73"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toStartOf="@+id/guideline80"
+            app:layout_constraintTop_toTopOf="@+id/guideline76" />
+
+        <TextView
+            android:id="@+id/textView74"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"            android:textColor="#FFFFFF"
+
+            android:text="TextView"
+            app:layout_constraintEnd_toStartOf="@+id/guideline80"
+            app:layout_constraintTop_toTopOf="@+id/guideline77" />
+
+        <TextView
+            android:id="@+id/textView75"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"            android:textColor="#FFFFFF"
+
+            android:text="TextView"
+            app:layout_constraintEnd_toStartOf="@+id/guideline80"
+            app:layout_constraintTop_toTopOf="@+id/guideline78" />
+
+        <TextView
+            android:id="@+id/textView76"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"            android:textColor="#FFFFFF"
+
+            app:layout_constraintEnd_toStartOf="@+id/guideline80"
+            app:layout_constraintTop_toTopOf="@+id/guideline79" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
