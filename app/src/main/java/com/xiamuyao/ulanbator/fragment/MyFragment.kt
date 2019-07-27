@@ -1,23 +1,14 @@
 package com.xiamuyao.ulanbator.fragment
 
-import android.content.Context
-import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.xiamuyao.ulanbator.BR
 import com.xiamuyao.ulanbator.R
 import com.xiamuyao.ulanbator.activity.*
+import com.xiamuyao.ulanbator.base.BaseFragment
 import com.xiamuyao.ulanbator.databinding.FragmentMyBinding
 import com.xiamuyao.ulanbator.viewmodel.MyViewModel
-import com.xiamuyao.ulanbator.base.BaseFragment
-import com.xiamuyao.ulanbator.view.ScaleTransitionPagerTitleView
-import net.lucode.hackware.magicindicator.ViewPagerHelper
-import net.lucode.hackware.magicindicator.buildins.commonnavigator.CommonNavigator
-import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.CommonNavigatorAdapter
-import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerIndicator
-import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerTitleView
-import net.lucode.hackware.magicindicator.buildins.commonnavigator.indicators.BezierPagerIndicator
 
 
 class MyFragment : BaseFragment<FragmentMyBinding, MyViewModel>() {
@@ -43,9 +34,11 @@ class MyFragment : BaseFragment<FragmentMyBinding, MyViewModel>() {
         binding.constraintLayout4.setOnClickListener {
             InvitationAndReturnMoneyActivity.start(context!!)
         }
+        //安全中心
         binding.constraintLayout5.setOnClickListener {
             SaveCenterActivity.start(context!!)
         }
+        //系统设置
         binding.constraintLayout6.setOnClickListener {
             SystemSettingActivity.start(context!!)
         }
