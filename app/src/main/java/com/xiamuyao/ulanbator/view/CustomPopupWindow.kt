@@ -1,10 +1,10 @@
 package com.xiamuyao.ulanbator.view
 
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.content.Context
-import android.graphics.drawable.ColorDrawable
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.PopupWindow
 import androidx.databinding.ObservableArrayList
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -44,14 +44,15 @@ class CustomPopupWindow(var context: Context, var pairList: ObservableArrayList<
     @SuppressLint("InlinedApi")
     private fun setPopupWindow() {
         this.contentView = mPopView// 设置View
-        this.height = ViewGroup.LayoutParams.WRAP_CONTENT   // 设置弹出窗口的宽
+        this.height = ViewGroup.LayoutParams.WRAP_CONTENT
         this.isFocusable = true// 设置弹出窗口可
         this.isOutsideTouchable = true
 
 
-        var a = context as Activity
-        val i = a.windowManager.defaultDisplay.width - convertDpToPx(context, 30)
-        this.width = i
+//        val a = context as Activity
+//        val i = a.windowManager.defaultDisplay.width - convertDpToPx(context, 10)
+//        this.width =i
+        this.width = ViewGroup.LayoutParams.WRAP_CONTENT
 
         //        mPopView.setOnTouchListener(new View.OnTouchListener() {// 如果触摸位置在窗口外面则销毁
         //            @Override

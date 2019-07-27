@@ -41,11 +41,8 @@
 
         <TextView
             android:id="@+id/textView62"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/style_item_return_money_info_text"
             android:text="@{returnMoneyInfoBean.type}"
-            android:textColor="#878DA8"
-            android:textSize="@dimen/dimens_20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline62"
             app:layout_constraintTop_toTopOf="parent"
@@ -53,11 +50,9 @@
 
         <TextView
             android:id="@+id/textView63"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/style_item_return_money_info_text"
             android:text="@{returnMoneyInfoBean.money}"
             android:textColor="#ffff"
-            android:textSize="@dimen/dimens_20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="@+id/guideline63"
             app:layout_constraintTop_toTopOf="parent"
@@ -65,11 +60,10 @@
 
         <TextView
             android:id="@+id/textView64"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/style_item_return_money_info_text"
             android:text="@{returnMoneyInfoBean.time}"
             android:textColor="#5856FF "
-            android:textSize="@dimen/dimens_20dp"
+            android:textSize="12dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline53"
             app:layout_constraintTop_toTopOf="parent"

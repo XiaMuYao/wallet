@@ -1,7 +1,5 @@
 package com.xiamuyao.ulanbator.activity
 
-import android.app.Activity
-import android.app.Application
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -9,12 +7,17 @@ import com.xiamuyao.ulanbator.BR
 import com.xiamuyao.ulanbator.R
 import com.xiamuyao.ulanbator.base.BaseActivity
 import com.xiamuyao.ulanbator.databinding.ActivityAboutBinding
+import com.xiamuyao.ulanbator.util.setTitleBar
 import com.xiamuyao.ulanbator.viewmodel.AboutViewModel
 
 
+/**
+ * 关于我们
+ */
 class AboutActivity : BaseActivity<ActivityAboutBinding, AboutViewModel>() {
 
     override fun initView() {
+        setTitleBar("关于我们", { finish() })
 
     }
 

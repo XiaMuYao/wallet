@@ -18,11 +18,6 @@
         tools:context=".activity.ReturnMoneyInfo">
 
 
-        <include
-            android:id="@+id/titleBar"
-            layout="@layout/layout_titlebar" />
-
-
         <View
             android:id="@+id/view15"
             android:layout_width="match_parent"
@@ -30,6 +25,10 @@
             android:background="@color/pageBackground"
             app:layout_constraintBottom_toBottomOf="@+id/guideline69"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <include
+            android:id="@+id/titleBar"
+            layout="@layout/layout_titlebar" />
 
         <View
             android:id="@+id/view16"
@@ -204,18 +203,19 @@
         <TextView
             android:id="@+id/textView68"
             android:layout_width="wrap_content"
-            android:textColor="#878DA8"
             android:layout_height="wrap_content"
             android:text="昵称"
+            android:textColor="#878DA8"
             app:layout_constraintStart_toStartOf="@+id/guideline72"
             app:layout_constraintTop_toTopOf="@+id/guideline76" />
 
         <TextView
             android:id="@+id/textView69"
-            android:layout_width="wrap_content"            android:textColor="#878DA8"
-
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+
             android:text="ID"
+            android:textColor="#878DA8"
             app:layout_constraintStart_toStartOf="@+id/guideline72"
             app:layout_constraintTop_toTopOf="@+id/guideline77" />
 
@@ -223,7 +223,8 @@
             android:id="@+id/textView70"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="用户类型"            android:textColor="#878DA8"
+            android:text="用户类型"
+            android:textColor="#878DA8"
 
             app:layout_constraintStart_toStartOf="@+id/guideline72"
             app:layout_constraintTop_toTopOf="@+id/guideline78" />
@@ -232,7 +233,8 @@
             android:id="@+id/textView71"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="返佣总数"            android:textColor="#878DA8"
+            android:text="返佣总数"
+            android:textColor="#878DA8"
 
             app:layout_constraintStart_toStartOf="@+id/guideline72"
             app:layout_constraintTop_toTopOf="@+id/guideline79" />
@@ -256,18 +258,20 @@
         <TextView
             android:id="@+id/textView74"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"            android:textColor="#FFFFFF"
-
+            android:layout_height="wrap_content"
             android:text="TextView"
+
+            android:textColor="#FFFFFF"
             app:layout_constraintEnd_toStartOf="@+id/guideline80"
             app:layout_constraintTop_toTopOf="@+id/guideline77" />
 
         <TextView
             android:id="@+id/textView75"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"            android:textColor="#FFFFFF"
-
+            android:layout_height="wrap_content"
             android:text="TextView"
+
+            android:textColor="#FFFFFF"
             app:layout_constraintEnd_toStartOf="@+id/guideline80"
             app:layout_constraintTop_toTopOf="@+id/guideline78" />
 
@@ -275,7 +279,8 @@
             android:id="@+id/textView76"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"            android:textColor="#FFFFFF"
+            android:text="TextView"
+            android:textColor="#FFFFFF"
 
             app:layout_constraintEnd_toStartOf="@+id/guideline80"
             app:layout_constraintTop_toTopOf="@+id/guideline79" />

@@ -1,10 +1,10 @@
 package com.xiamuyao.ulanbator.activity
 
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.view.Gravity
+import android.view.View
+import androidx.lifecycle.Observer
 import com.xiamuyao.ulanbator.BR
 import com.xiamuyao.ulanbator.R
 import com.xiamuyao.ulanbator.base.BaseActivity
@@ -23,11 +23,28 @@ class ContractIntoActivity : BaseActivity<ActivityContractintoBinding, ContractI
 
         binding.constraintLayout.setOnClickListener {
             val customPopupWindow = CustomPopupWindow(this, viewModel.pariList)
-            customPopupWindow.showAtLocation(binding.constraintLayout, Gravity.CLIP_HORIZONTAL, 0, 0)
+            customPopupWindow.showAsDropDown(binding.constraintLayout)
         }
+
+        viewModel.type.value = intent.getIntExtra("type", -1)
     }
 
     override fun initVVMObserver() {
+        viewModel.type.observe(this, Observer {
+            when (it) {
+                1 -> {
+                    binding.button.visibility = View.VISIBLE
+
+                }
+                2 -> {
+                    binding.button3.visibility = View.VISIBLE
+                    binding.button5.visibility = View.VISIBLE
+                }
+                3 -> {
+                    binding.button4.visibility = View.VISIBLE
+                }
+            }
+        })
     }
 
     override fun initContentView(savedInstanceState: Bundle?): Int {
@@ -43,9 +60,9 @@ class ContractIntoActivity : BaseActivity<ActivityContractintoBinding, ContractI
     }
 
     companion object {
-        fun start(context: Context, message: String? = null) {
+        fun start(context: Context, message: Int) {
             val starter = Intent(context, ContractIntoActivity::class.java)
-            starter.putExtra("message", message)
+            starter.putExtra("type", message)
             context.startActivity(starter)
         }
     }

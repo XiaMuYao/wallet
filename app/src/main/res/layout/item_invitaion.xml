@@ -40,14 +40,11 @@
 
         <TextView
             android:id="@+id/textView43"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="@{invataionListBean.invataionID}"
-            android:textColor="#ffff"
-            android:textSize="@dimen/dimens_20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline53"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            style="@style/style_item_inviation_text" />
 
         <TextView
             android:id="@+id/textView62"
@@ -55,20 +52,17 @@
             android:layout_height="wrap_content"
             android:text="@{invataionListBean.invataionTime}"
             android:textColor="#878DA8"
-            android:textSize="@dimen/dimens_20dp"
+            style="@style/style_item_inviation_text"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline62"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textView63"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="@{invataionListBean.invataionLever}"
-            android:textColor="#ffff"
-            android:textSize="@dimen/dimens_20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline63"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            style="@style/style_item_inviation_text" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -1,7 +1,5 @@
 package com.xiamuyao.ulanbator.activity
 
-import android.app.Activity
-import android.app.Application
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -13,6 +11,9 @@ import com.xiamuyao.ulanbator.databinding.ActivityMessagelistinfoBinding
 import com.xiamuyao.ulanbator.viewmodel.MessageListInfoViewModel
 
 
+/**
+ * 资讯消息详情
+ */
 class MessageListInfoActivity : BaseActivity<ActivityMessagelistinfoBinding, MessageListInfoViewModel>() {
 
     override fun initView() {

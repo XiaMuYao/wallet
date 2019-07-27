@@ -10,7 +10,7 @@
             type="com.xiamuyao.ulanbator.model.bean.PairListBean" />
     </data>
 
-     <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/linearLayout6"
         android:layout_width="wrap_content"
         android:layout_height="45dp"

@@ -8,9 +8,8 @@ import android.view.ViewGroup
 import androidx.databinding.ViewDataBinding
 import com.xiamuyao.ulanbator.BR
 import com.xiamuyao.ulanbator.R
+import com.xiamuyao.ulanbator.activity.AccountDetailsActivity
 import com.xiamuyao.ulanbator.adapter.fragmentAdapter.SectionsPagerAdapter
-import com.xiamuyao.ulanbator.databinding.FragmentFindBinding
-import com.xiamuyao.ulanbator.viewmodel.FindViewModel
 import com.xiamuyao.ulanbator.base.BaseFragment
 import com.xiamuyao.ulanbator.base.BaseViewModel
 import com.xiamuyao.ulanbator.databinding.FragmentManagingMoneyBinding
@@ -22,7 +21,6 @@ import net.lucode.hackware.magicindicator.buildins.commonnavigator.CommonNavigat
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.CommonNavigatorAdapter
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerIndicator
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerTitleView
-import net.lucode.hackware.magicindicator.buildins.commonnavigator.indicators.BezierPagerIndicator
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.indicators.LinePagerIndicator
 
 
@@ -43,6 +41,10 @@ class ManagingMoneyFragment : BaseFragment<FragmentManagingMoneyBinding, Managin
         initMagicIndicator()
         binding.managingViewPager.setSlide(true)
         binding.managingViewPager.adapter = managingMoneyAdapter
+        binding.view.setOnClickListener {
+
+            AccountDetailsActivity.start(context!!)
+        }
     }
 
     override fun initVVMObserver() {
@@ -71,9 +73,9 @@ class ManagingMoneyFragment : BaseFragment<FragmentManagingMoneyBinding, Managin
             override fun getTitleView(context: Context, index: Int): IPagerTitleView {
                 val clipPagerTitleView = ScaleTransitionPagerTitleView(context)
                 clipPagerTitleView.text = viewModel.titleList[index]
-                clipPagerTitleView.setPadding(100, 0, 100, 0)
-                clipPagerTitleView.normalColor = Color.parseColor("#4E5269")
-                clipPagerTitleView.selectedColor = Color.parseColor("#000000")
+                clipPagerTitleView.setPadding(117, 0, 117, 0)
+                clipPagerTitleView.normalColor = Color.parseColor("#FFFFFF")
+                clipPagerTitleView.selectedColor = Color.parseColor("#878DA8")
                 clipPagerTitleView.setOnClickListener { binding.managingViewPager.currentItem = index }
                 return clipPagerTitleView
             }
@@ -86,6 +88,7 @@ class ManagingMoneyFragment : BaseFragment<FragmentManagingMoneyBinding, Managin
                 indicator.lineHeight = lineHeight
                 indicator.yOffset = borderWidth
                 indicator.setColors(Color.parseColor("#282633"))
+                indicator.roundRadius = context.resources.getDimension(R.dimen.common_navigator_roundRadius)
                 return indicator
             }
         }

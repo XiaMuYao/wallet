@@ -14,10 +14,368 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/pageBackground"
         tools:context=".activity.WalletInfo">
 
+        <include
+            android:id="@+id/titleBar"
+            layout="@layout/layout_titlebar" />
 
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/bg_02"
+            app:layout_constraintBottom_toBottomOf="@+id/guideline123"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/shape_onegray"
+            app:layout_constraintBottom_toBottomOf="@+id/guideline127"
+            app:layout_constraintLeft_toLeftOf="@+id/guideline125"
+            app:layout_constraintRight_toRightOf="@+id/guideline126"
+            app:layout_constraintTop_toTopOf="@+id/guideline124" />
+
+
+        <ImageView
+            android:layout_width="@dimen/dp_40"
+            android:layout_height="@dimen/dp_40"
+            android:background="#ff12"
+            app:layout_constraintLeft_toLeftOf="@id/guideline128"
+            app:layout_constraintTop_toTopOf="@id/guideline130" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="BTC"
+            android:textColor="#fff"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="@id/guideline128"
+            app:layout_constraintTop_toTopOf="@+id/guideline123" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="¥ 72,585.86"
+            android:textColor="#fff"
+            android:textSize="12dp"
+            app:layout_constraintLeft_toLeftOf="@id/guideline128"
+            app:layout_constraintTop_toTopOf="@+id/guideline131" />
+
+        <TextView
+            android:id="@+id/textView89"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textColor="#fff"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="@+id/guideline129"
+            app:layout_constraintTop_toTopOf="@+id/guideline130" />
+
+
+        <TextView
+            android:layout_width="32dp"
+            android:layout_height="16dp"
+            android:background="@drawable/shape_wallet_yes"
+            android:text="可用"
+            android:textColor="#fff"
+            android:textSize="12dp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/textView89"
+            app:layout_constraintLeft_toRightOf="@+id/guideline136" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline123"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.193" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline124"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.08" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline125"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.04" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline126"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.96" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline127"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.329" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline128"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.093" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline129"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.368" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline130"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.118" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline131"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.25" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline132"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.156" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline133"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.204" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline134"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.225" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline135"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.271" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline136"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.412" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline137"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.32" />
+
+        <TextView
+            android:id="@+id/textView90"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="≈ 0 CNY"
+            android:textColor="#878DA8"
+            app:layout_constraintStart_toStartOf="@+id/guideline129"
+            app:layout_constraintTop_toTopOf="@+id/guideline132" />
+
+        <TextView
+            android:id="@+id/textView91"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textColor="#fff"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/guideline129"
+            app:layout_constraintTop_toTopOf="@+id/guideline134" />
+
+
+        <TextView
+            android:id="@+id/textView92"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="≈ 0 CNY"
+            android:textColor="#878DA8"
+            app:layout_constraintStart_toStartOf="@+id/guideline129"
+            app:layout_constraintTop_toTopOf="@+id/guideline135" />
+
+        <TextView
+            android:layout_width="32dp"
+            android:layout_height="16dp"
+            android:background="@drawable/shape_wallet_no"
+            android:text="冻结"
+            android:textColor="#fff"
+            android:textSize="12dp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/textView91"
+            app:layout_constraintLeft_toRightOf="@+id/guideline136" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline138"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.367" />
+
+        <TextView
+            android:id="@+id/textView93"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="交易记录"
+            android:textColor="#878DA8"
+            android:textSize="15dp"
+            app:layout_constraintStart_toStartOf="@+id/guideline125"
+            app:layout_constraintTop_toTopOf="@+id/guideline138" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintLeft_toLeftOf="@+id/guideline125"
+            app:layout_constraintRight_toRightOf="@+id/guideline126"
+            app:layout_constraintTop_toBottomOf="@+id/guideline139" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline139"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.421" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/outMoney"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_40"
+            android:layout_marginRight="@dimen/dimens_15dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/shape_btn"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="@+id/guideline125"
+            app:layout_constraintRight_toRightOf="@+id/guideline140">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/imageView26"
+                    android:layout_width="19dp"
+                    android:layout_height="19dp"
+                    android:src="@drawable/trans"
+
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="转账"
+                    android:textColor="#fff"
+                    android:textSize="14dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView26"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.523" />
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/inMoney"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_40"
+            android:layout_marginLeft="@dimen/dimens_15dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/shape_btn_jiechu"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="@+id/guideline140"
+
+            app:layout_constraintRight_toRightOf="@id/guideline126">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/imageView27"
+                    android:layout_width="19dp"
+                    android:layout_height="19dp"
+                    android:src="@drawable/receive"
+
+
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="收款"
+                    android:textColor="#fff"
+                    android:textSize="14dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView27"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.523" />
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/walletInfoRecyclerView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline142"
+            app:layout_constraintLeft_toLeftOf="@+id/guideline125"
+            app:layout_constraintRight_toRightOf="@+id/guideline126"
+            app:layout_constraintTop_toBottomOf="@+id/guideline139" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline140"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline142"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.92749655" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

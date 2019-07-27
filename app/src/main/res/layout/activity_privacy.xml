@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="privacyViewModel"
+            type="com.xiamuyao.ulanbator.viewmodel.PrivacyViewModel" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/pageBackground"
+        tools:context=".activity.Privacy">
+
+        <include
+            android:id="@+id/titleBar"
+            layout="@layout/layout_titlebar" />
+        <TextView
+            android:layout_width="0dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="@dimen/dimens_15dp"
+            android:scrollbars = "vertical"
+            android:layout_height="wrap_content"
+            android:singleLine="false"
+            app:layout_constraintTop_toBottomOf="@+id/titleBar"
+            android:text="@string/yinsixieyi"
+            android:textColor="#878DA8"
+            android:textSize="16dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

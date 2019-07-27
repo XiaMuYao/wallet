@@ -8,6 +8,7 @@ import com.xiamuyao.ulanbator.R
 import com.xiamuyao.ulanbator.activity.*
 import com.xiamuyao.ulanbator.base.BaseFragment
 import com.xiamuyao.ulanbator.databinding.FragmentMyBinding
+import com.xiamuyao.ulanbator.view.ShareDialog
 import com.xiamuyao.ulanbator.viewmodel.MyViewModel
 
 
@@ -42,13 +43,16 @@ class MyFragment : BaseFragment<FragmentMyBinding, MyViewModel>() {
         binding.constraintLayout6.setOnClickListener {
             SystemSettingActivity.start(context!!)
         }
+        //分享APP
         binding.constraintLayout7.setOnClickListener {
+            ShareDialog().show(fragmentManager!!, "Tag")
             //        AboutActivity.start(context)
         }
 
         binding.constraintLayout8.setOnClickListener {
-            HelpActivity.start(context!!)
+            //            HelpActivity.start(context!!)
         }
+        //关于我们
         binding.constraintLayout9.setOnClickListener {
             AboutActivity.start(context!!)
         }

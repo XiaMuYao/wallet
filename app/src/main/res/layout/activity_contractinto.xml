@@ -78,7 +78,7 @@
             android:layout_marginTop="17.5dp"
             android:text="可用: 1.0000 BTC"
             android:textColor="#FF878DA8"
-            android:textSize="18dp"
+            android:textSize="14dp"
             app:layout_constraintLeft_toLeftOf="@+id/guideline30"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
             tools:text="可用: 1.0000 BTC" />
@@ -92,6 +92,7 @@
             android:gravity="center"
             android:text="全部转入"
             android:textColor="#FF878DA8"
+            android:textSize="12dp"
             app:layout_constraintEnd_toStartOf="@+id/guideline35"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
@@ -227,6 +228,7 @@
             android:background="@drawable/shape_btn"
             android:text="@string/shoping"
             android:textColor="#FFFFFF"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent" />
@@ -239,9 +241,10 @@
             android:layout_marginLeft="@dimen/dimens_15dp"
             android:layout_marginRight="@dimen/dimens_15dp"
             android:layout_marginBottom="16dp"
-            android:background="#353343"
+            android:background="@drawable/shape_btn_jiechu"
             android:text="@string/jiechuheyue"
             android:textColor="#FFFFFF"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent" />
@@ -256,19 +259,22 @@
             android:background="@drawable/shape_btn"
             android:text="@string/shoping"
             android:textColor="#fff"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="@+id/guideline36"
             app:layout_constraintRight_toRightOf="@id/guideline35" />
 
 
         <Button
+            android:id="@+id/button5"
             android:layout_width="0dp"
             android:layout_height="44dp"
             android:layout_marginRight="@dimen/dimens_10dp"
             android:layout_marginBottom="16dp"
-            android:background="#353343"
+            android:background="@drawable/shape_btn_jiechu"
             android:text="@string/jiechuheyue"
             android:textColor="#FFFFFF"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="@id/guideline30"
             app:layout_constraintRight_toRightOf="@id/guideline36" />

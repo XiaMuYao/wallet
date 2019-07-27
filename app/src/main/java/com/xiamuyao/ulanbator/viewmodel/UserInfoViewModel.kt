@@ -9,8 +9,9 @@ class UserInfoViewModel(application: Application) : BaseViewModel(application) {
     var userName = MutableLiveData<String>()
 
     init {
-        userName.value="Benjamin"
+        userName.value = "Benjamin"
     }
+
     override fun initData() {
 
     }

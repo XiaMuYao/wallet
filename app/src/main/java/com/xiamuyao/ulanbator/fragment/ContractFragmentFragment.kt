@@ -1,12 +1,11 @@
 package com.xiamuyao.ulanbator.fragment
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.lifecycle.MutableLiveData
 import com.xiamuyao.ulanbator.BR
 import com.xiamuyao.ulanbator.R
+import com.xiamuyao.ulanbator.activity.ContractIntoActivity
 import com.xiamuyao.ulanbator.base.BaseFragment
 import com.xiamuyao.ulanbator.base.adapter.BaseObservableNoChildClickAdapter
 import com.xiamuyao.ulanbator.databinding.FragmentContractfragmentBinding
@@ -24,6 +23,9 @@ class ContractFragmentFragment : BaseFragment<FragmentContractfragmentBinding, C
 
     override fun initView() {
         binding.contractRecyclerView.defaultStyle(contractAdapter)
+        contractAdapter.setOnItemClickListener { _, _, position ->
+            ContractIntoActivity.start(context!!,position)
+        }
     }
 
     override fun initVVMObserver() {

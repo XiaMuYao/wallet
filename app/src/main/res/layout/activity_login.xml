@@ -14,124 +14,152 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/pageBackground"
         tools:context=".activity.Login">
 
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:background="@drawable/bgb"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <include
             android:id="@+id/titleBar"
             layout="@layout/layout_titlebar" />
+
+        <ImageView
+            android:layout_width="75dp"
+            android:layout_height="52.5dp"
+            android:scaleType="center"
+            android:src="@mipmap/ic_icon_app_start"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline143" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline35"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.35" />
+            app:layout_constraintGuide_percent="0.328" />
 
         <TextView
             android:id="@+id/textView20"
+            style="@style/loginTitle"
+            android:layout_width="wrap_content"
             android:text="@string/selelcyCity"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline35"
-            style="@style/loginTitle" />
+            app:layout_constraintStart_toStartOf="@+id/guideline145"
+            app:layout_constraintTop_toTopOf="@+id/guideline35" />
 
         <TextView
             android:id="@+id/textView21"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="28dp"
-            android:layout_marginTop="10dp"
-            tools:text="TextView"
             android:text="@{loginViewModel.selectCityName}"
-
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView20" />
+            android:textColor="#fff"
+            android:textSize="14dp"
+            app:layout_constraintStart_toStartOf="@+id/guideline145"
+            app:layout_constraintTop_toTopOf="@+id/guideline144"
+            tools:text="韩国" />
 
         <ImageView
             android:id="@+id/selectCity"
             android:layout_width="@dimen/dimens_20dp"
             android:layout_height="@dimen/dimens_20dp"
             android:layout_marginEnd="24dp"
-            android:background="#f12331"
+            android:background="@drawable/chevron_down"
             app:layout_constraintBottom_toBottomOf="@+id/textView21"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/textView21"
-            app:layout_constraintVertical_bias="0.0"
-            tools:srcCompat="@tools:sample/avatars" />
+            app:layout_constraintVertical_bias="0.0" />
 
         <View
             android:id="@+id/view3"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="12dp"
+            android:layout_width="0dp"
+            android:layout_height="0.5dp"
             android:background="@color/line"
-            app:layout_constraintTop_toBottomOf="@id/textView21"
-            tools:layout_editor_absoluteX="0dp" />
+            app:layout_constraintLeft_toLeftOf="@+id/guideline145"
+            app:layout_constraintRight_toRightOf="@+id/guideline147"
+            app:layout_constraintTop_toBottomOf="@id/guideline146" />
 
 
         <TextView
             android:id="@+id/textView22"
+            style="@style/loginTitle"
             android:text="@string/phoneNumber"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view3"
-            style="@style/loginTitle" />
+            app:layout_constraintStart_toStartOf="@+id/guideline145"
+            app:layout_constraintTop_toTopOf="@+id/guideline148" />
 
         <TextView
             android:id="@+id/textView23"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="28dp"
-            android:layout_marginTop="20dp"
-            tools:text="+86"
             android:text="@{loginViewModel.selectCityNum}"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView22" />
+            android:textColor="#fff"
+            android:textSize="14dp"
+            app:layout_constraintStart_toStartOf="@+id/guideline145"
+            app:layout_constraintTop_toTopOf="@+id/guideline149"
+            tools:text="+86" />
 
         <EditText
             android:id="@+id/editText23"
             android:layout_width="287dp"
             android:layout_height="44dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="10dp"
-            app:layout_constraintStart_toEndOf="@+id/textView23"
-            app:layout_constraintTop_toBottomOf="@+id/textView22" />
+            android:layout_marginStart="32dp"
+            android:background="@null"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#5D5C71"
+            android:textSize="14dp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/textView23"
+            app:layout_constraintStart_toEndOf="@+id/textView23" />
 
 
         <View
             android:id="@+id/view4"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="12dp"
+            android:layout_width="0dp"
+            android:layout_height="0.5dp"
             android:background="@color/line"
-            app:layout_constraintTop_toBottomOf="@id/editText23"
-            tools:layout_editor_absoluteX="0dp" />
+            app:layout_constraintLeft_toLeftOf="@+id/guideline145"
+            app:layout_constraintRight_toRightOf="@+id/guideline147"
+            app:layout_constraintTop_toBottomOf="@id/guideline150" />
 
 
         <TextView
             android:id="@+id/textView24"
+            style="@style/loginTitle"
             android:text="@string/loginPsd"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view4"
-            style="@style/loginTitle" />
+            app:layout_constraintLeft_toRightOf="@+id/guideline145"
+            app:layout_constraintTop_toBottomOf="@+id/guideline151" />
 
 
         <EditText
             android:id="@+id/editText24"
             android:layout_width="342dp"
             android:layout_height="44dp"
-            android:layout_marginStart="28dp"
-            android:layout_marginTop="10dp"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@null"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#5D5C71"
+
+            android:textSize="14dp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline152"
+            app:layout_constraintEnd_toStartOf="@+id/guideline147"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/guideline145"
             app:layout_constraintTop_toBottomOf="@+id/textView24" />
 
 
         <View
             android:id="@+id/view5"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="12dp"
+            android:layout_width="0dp"
+            android:layout_height="0.5dp"
             android:background="@color/line"
-            app:layout_constraintTop_toBottomOf="@id/editText24"
+            app:layout_constraintLeft_toLeftOf="@+id/guideline145"
+            app:layout_constraintRight_toRightOf="@+id/guideline147"
+            app:layout_constraintTop_toBottomOf="@id/guideline152"
             tools:layout_editor_absoluteX="0dp" />
 
         <androidx.constraintlayout.widget.Guideline
@@ -139,35 +167,104 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.85" />
+            app:layout_constraintGuide_percent="0.873" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline37"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.5" />
+            app:layout_constraintGuide_percent="0.52" />
 
         <TextView
             android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:text="@string/fopsd"
-            app:layout_constraintEnd_toStartOf="@+id/guideline37"
-            app:layout_constraintHorizontal_bias="0.171"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline36" />
+            android:textColor="#fff"
+            app:layout_constraintBaseline_toBaselineOf="@+id/btnLogin"
+            app:layout_constraintStart_toStartOf="@+id/guideline145" />
 
         <Button
             android:id="@+id/btnLogin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:background="@drawable/shape_btn"
             android:text="@string/login"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:textColor="#fff"
+            app:layout_constraintEnd_toStartOf="@+id/guideline147"
             app:layout_constraintStart_toStartOf="@+id/guideline37"
             app:layout_constraintTop_toTopOf="@+id/guideline36" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline143"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.08" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline144"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.403" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline145"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.08" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline146"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.457" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline147"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.92" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline148"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.488" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline149"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.539" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline150"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.591" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline151"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.623" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline152"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.726" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

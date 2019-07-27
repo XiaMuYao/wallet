@@ -8,5 +8,6 @@
     <dimen name="itemNineLayout">107.5dp</dimen>
 
     <dimen name="common_navigator_height">45dp</dimen>
-
+    <dimen name="text_size">6sp</dimen>
+    <dimen name="common_navigator_roundRadius">5dp</dimen>
 </resources>

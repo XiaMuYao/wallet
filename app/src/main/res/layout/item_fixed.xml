@@ -13,8 +13,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
-        android:layout_marginTop="@dimen/dimens_10dp"
         android:layout_height="102dp"
+        android:layout_marginTop="@dimen/dimens_10dp"
         android:background="@drawable/shape_contract">
 
 
@@ -25,7 +25,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@+id/guideline28"
             app:layout_constraintTop_toTopOf="parent"
-            app:netCircleImage="@{fixedListBean.fixedImage}" />
+            app:netCircleImageLocal="@{2}" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline28"
@@ -34,6 +34,109 @@
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.067" />
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline114"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.307" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:textColor="#343443"
+            android:textSize="75dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline117"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="X1" />
+
+        <TextView
+            android:id="@+id/textView85"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textColor="#FF8365FF"
+            android:textSize="20dp"
+            android:textStyle="bold"
+
+            app:layout_constraintStart_toStartOf="@+id/guideline114"
+            app:layout_constraintTop_toTopOf="@+id/imageView2" />
+
+        <TextView
+            android:id="@+id/textView86"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8.5dp"
+            android:text="TextView"
+            android:textColor="#47495C"
+
+            android:textSize="12dp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+            app:layout_constraintStart_toStartOf="@+id/guideline114"
+            app:layout_constraintTop_toBottomOf="@+id/textView85" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline115"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.56" />
+
+        <View
+            android:id="@+id/view22"
+            android:layout_width="0.5dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="8dp"
+            android:background="#33FFFFFF"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+            app:layout_constraintEnd_toStartOf="@+id/guideline32"
+            app:layout_constraintStart_toStartOf="@+id/guideline115"
+            app:layout_constraintTop_toTopOf="@+id/imageView2"
+            tools:text="1231231231" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline116"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.655" />
+
+        <TextView
+            android:id="@+id/textView87"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="X1"
+            android:textColor="#ffff"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/guideline116"
+            app:layout_constraintTop_toTopOf="@+id/view22" />
+
+        <TextView
+            android:id="@+id/textView88"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8.5dp"
+            android:text="定期1个月"
+            android:textColor="#47495C"
+            android:textSize="12dp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+            app:layout_constraintStart_toStartOf="@+id/guideline116"
+            app:layout_constraintTop_toBottomOf="@+id/textView87" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline117"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.923" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

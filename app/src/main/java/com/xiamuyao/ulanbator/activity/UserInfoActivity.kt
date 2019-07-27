@@ -1,6 +1,5 @@
 package com.xiamuyao.ulanbator.activity
 
-import android.app.Application
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -19,7 +18,7 @@ class UserInfoActivity : BaseActivity<ActivityUserinfoBinding, UserInfoViewModel
 
         //昵称
         binding.constraintLayout1.setOnClickListener {
-            UserSetNameActivity.start(this,viewModel.userName.value)
+            UserSetNameActivity.start(this, viewModel.userName.value)
         }
     }
 

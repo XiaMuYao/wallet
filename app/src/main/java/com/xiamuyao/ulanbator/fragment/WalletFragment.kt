@@ -1,24 +1,16 @@
 package com.xiamuyao.ulanbator.fragment
 
-import android.content.Context
-import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.xiamuyao.ulanbator.BR
 import com.xiamuyao.ulanbator.R
+import com.xiamuyao.ulanbator.activity.WalletInfoActivity
 import com.xiamuyao.ulanbator.base.BaseFragment
 import com.xiamuyao.ulanbator.base.adapter.BaseObservableNoChildClickAdapter
 import com.xiamuyao.ulanbator.databinding.FragmentHomeBinding
 import com.xiamuyao.ulanbator.extension.defaultStyle
-import com.xiamuyao.ulanbator.view.ScaleTransitionPagerTitleView
 import com.xiamuyao.ulanbator.viewmodel.WalletViewModel
-import net.lucode.hackware.magicindicator.ViewPagerHelper
-import net.lucode.hackware.magicindicator.buildins.commonnavigator.CommonNavigator
-import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.CommonNavigatorAdapter
-import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerIndicator
-import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerTitleView
-import net.lucode.hackware.magicindicator.buildins.commonnavigator.indicators.BezierPagerIndicator
 
 
 class WalletFragment : BaseFragment<FragmentHomeBinding, WalletViewModel>() {
@@ -40,6 +32,10 @@ class WalletFragment : BaseFragment<FragmentHomeBinding, WalletViewModel>() {
         binding.walletShow.setOnClickListener {
             viewModel.showOrHide.value = viewModel.showOrHide.value!!.not()
             viewModel.showOrHideListData()
+        }
+        wallerAdapter.setOnItemClickListener { _, _, position ->
+
+            WalletInfoActivity.start(context!!)
         }
     }
 

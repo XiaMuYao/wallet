@@ -90,6 +90,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:textSize="@dimen/dimens_20dp"
+            android:textColor="#fff"
             android:text="TextView"
             app:layout_constraintEnd_toEndOf="@+id/imageView12"
             app:layout_constraintStart_toStartOf="@+id/imageView12"
@@ -98,6 +100,8 @@
         <TextView
             android:id="@+id/textView42"
             android:layout_width="wrap_content"
+            android:textSize="12dp"
+            android:textColor="@color/suncolor"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
             android:text="TextView"
@@ -109,25 +113,24 @@
             android:id="@+id/linearLayout7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:orientation="horizontal"
             app:layout_constraintEnd_toStartOf="@+id/view11"
             app:layout_constraintStart_toStartOf="@+id/guideline42"
-            app:layout_constraintTop_toBottomOf="@+id/textView42">
+            app:layout_constraintTop_toBottomOf="@+id/guideline106">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="300"
                 android:textColor="#fff"
-                android:textSize="31dp"
-                android:textStyle="bold"
-                tools:text="300" />
+                android:textSize="22dp"
+                android:textStyle="bold" />
 
             <TextView
                 style="@style/style_item_num"
                 android:layout_marginLeft="2dp"
-                android:textSize="@dimen/dimens_20dp"
-                tools:text="MAX" />
+                android:text="MAX"
+                android:textSize="14dp" />
 
 
         </LinearLayout>
@@ -138,6 +141,7 @@
             android:layout_marginTop="4.5dp"
             android:text="累计返佣"
             android:textColor="#FF878DA8"
+            android:textSize="14dp"
             app:layout_constraintEnd_toEndOf="@+id/linearLayout7"
             app:layout_constraintStart_toStartOf="@+id/linearLayout7"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout7" />
@@ -147,27 +151,26 @@
             android:id="@+id/linearLayout8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:orientation="horizontal"
             app:layout_constraintEnd_toStartOf="@+id/guideline43"
             app:layout_constraintStart_toStartOf="@+id/guideline46"
-            app:layout_constraintTop_toBottomOf="@+id/textView42"
+            app:layout_constraintTop_toBottomOf="@+id/guideline106"
 
             >
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="36"
                 android:textColor="#fff"
-                android:textSize="31dp"
-                android:textStyle="bold"
-                tools:text="36" />
+                android:textSize="22dp"
+                android:textStyle="bold" />
 
             <TextView
                 style="@style/style_item_num"
                 android:layout_marginLeft="2dp"
-                android:textSize="@dimen/dimens_20dp"
-                tools:text="人" />
+                android:text="人"
+                android:textSize="14dp" />
 
 
         </LinearLayout>
@@ -178,6 +181,7 @@
             android:layout_marginTop="4.5dp"
             android:text="邀请总人数"
             android:textColor="#FF878DA8"
+            android:textSize="14dp"
             app:layout_constraintEnd_toEndOf="@+id/linearLayout8"
             app:layout_constraintStart_toStartOf="@+id/linearLayout8"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout8" />
@@ -522,6 +526,13 @@
             android:text="TextView"
             app:layout_constraintEnd_toStartOf="@+id/textView56"
             app:layout_constraintTop_toTopOf="@+id/guideline59" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline106"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.283" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

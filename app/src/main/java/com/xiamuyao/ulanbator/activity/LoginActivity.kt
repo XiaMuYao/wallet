@@ -7,6 +7,7 @@ import com.xiamuyao.ulanbator.BR
 import com.xiamuyao.ulanbator.R
 import com.xiamuyao.ulanbator.base.BaseActivity
 import com.xiamuyao.ulanbator.databinding.ActivityLoginBinding
+import com.xiamuyao.ulanbator.util.setTitleBar
 import com.xiamuyao.ulanbator.utlis.DataBus
 import com.xiamuyao.ulanbator.utlis.DataBusObservable
 import com.xiamuyao.ulanbator.viewmodel.LoginViewModel
@@ -16,13 +17,22 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
 
 
     override fun initView() {
-        setImageAndClick(R.id.titleBarLeftImage) { finish() }
-
+        setTitleBar(
+            leftCallBack = { finish() },
+            titleBarColor = R.color.touming,
+            rightText = "注册",
+            rightCallBack = { RegisterActivity.start(this) })
+        //登录
         binding.btnLogin.setOnClickListener {
             MainActivity.start(this)
         }
+        //选择国家
         binding.selectCity.setOnClickListener {
             SelectCityActivity.start(this)
+        }
+        //忘记密码
+        binding.button.setOnClickListener {
+            ForgetActivity.start(this)
         }
     }
 

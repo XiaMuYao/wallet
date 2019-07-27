@@ -11,15 +11,18 @@ import com.xiamuyao.ulanbator.util.setTitleBar
 import com.xiamuyao.ulanbator.viewmodel.SaveCenterViewModel
 
 
+/**
+ * 安全中心
+ */
 class SaveCenterActivity : BaseActivity<ActivitySavecenterBinding, SaveCenterViewModel>() {
 
     override fun initView() {
         setTitleBar("安全中心", { finish() })
 
         //修改登录密码
-        binding.constraintLayout5.setOnClickListener {SetUserPsdActivity.start(this) }
+        binding.constraintLayout5.setOnClickListener { SetUserPsdActivity.start(this) }
         //修改登录密码
-        binding.constraintLayout6.setOnClickListener {SetMoneyPsdActivity.start(this) }
+        binding.constraintLayout6.setOnClickListener { SetMoneyPsdActivity.start(this) }
 
     }
 

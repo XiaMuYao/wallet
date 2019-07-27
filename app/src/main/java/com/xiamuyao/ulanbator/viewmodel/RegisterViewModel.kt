@@ -5,6 +5,7 @@ import com.xiamuyao.ulanbator.base.BaseViewModel
 
 class RegisterViewModel(application: Application) : BaseViewModel(application) {
 
+
     override fun initData() {
 
     }

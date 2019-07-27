@@ -4,76 +4,76 @@
     <data>
 
         <variable
-                name="priceBean"
-                type="com.xiamuyao.ulanbator.bean.NoticePriceBean"/>
+            name="priceBean"
+            type="com.xiamuyao.ulanbator.bean.NoticePriceBean" />
     </data>
 
 
     <RelativeLayout
-            android:layout_width="match_parent"
-            android:background="@color/color_bg_dialog"
-            android:gravity="center"
-            android:paddingStart="@dimen/dimens_24dp"
-            android:paddingEnd="@dimen/dimens_24dp"
-            android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:background="@color/color_bg_dialog"
+        android:gravity="center"
+        android:paddingStart="@dimen/dimens_24dp"
+        android:paddingEnd="@dimen/dimens_24dp"
+        android:layout_height="wrap_content">
 
         <RelativeLayout
-                android:layout_width="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/base_title_white"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/dimens_15dp"
+            android:paddingBottom="@dimen/dimens_5dp">
+
+            <TextView
+                android:id="@+id/titleTv"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/base_title_white"
-                android:orientation="vertical"
-                android:paddingTop="@dimen/dimens_15dp"
-                android:paddingBottom="@dimen/dimens_5dp">
+                android:paddingTop="@dimen/dimens_5dp"
+                android:paddingBottom="@dimen/dimens_5dp"
+                android:paddingLeft="@dimen/dimens_20dp"
+                android:paddingRight="@dimen/dimens_20dp"
+                android:textStyle="bold"
+                android:textColor="@color/base_black"
+                android:textSize="@dimen/base_ts_18pt" />
 
             <TextView
-                    android:id="@+id/titleTv"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="@dimen/dimens_5dp"
-                    android:paddingBottom="@dimen/dimens_5dp"
-                    android:paddingLeft="@dimen/dimens_20dp"
-                    android:paddingRight="@dimen/dimens_20dp"
-                    android:textStyle="bold"
-                    android:textColor="@color/base_black"
-                    android:textSize="@dimen/base_ts_18pt"/>
-
-            <TextView
-                    android:id="@+id/contentTv"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/titleTv"
-                    android:paddingTop="@dimen/dimens_5dp"
-                    android:paddingBottom="@dimen/dimens_5dp"
-                    android:paddingLeft="@dimen/dimens_20dp"
-                    android:paddingRight="@dimen/dimens_20dp"
-                    android:textColor="@color/base_black"
-                    android:textSize="@dimen/base_ts_16pt"/>
+                android:id="@+id/contentTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/titleTv"
+                android:paddingTop="@dimen/dimens_5dp"
+                android:paddingBottom="@dimen/dimens_5dp"
+                android:paddingLeft="@dimen/dimens_20dp"
+                android:paddingRight="@dimen/dimens_20dp"
+                android:textColor="@color/base_black"
+                android:textSize="@dimen/base_ts_16pt" />
 
             <LinearLayout
-                    android:orientation="horizontal"
-                    android:gravity="right"
-                    android:layout_width="match_parent"
-                    android:layout_marginRight="@dimen/dimens_10dp"
-                    android:layout_below="@+id/contentTv"
-                    android:layout_marginTop="@dimen/dimens_5dp"
-                    android:layout_height="wrap_content">
+                android:orientation="horizontal"
+                android:gravity="right"
+                android:layout_width="match_parent"
+                android:layout_marginRight="@dimen/dimens_10dp"
+                android:layout_below="@+id/contentTv"
+                android:layout_marginTop="@dimen/dimens_5dp"
+                android:layout_height="wrap_content">
 
                 <Button
-                        style="?android:attr/borderlessButtonStyle"
-                        android:id="@+id/leftBtn"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_toLeftOf="@+id/rightBtn"
-                        android:visibility="gone"
-                        android:textColor="@color/common_dialog_btn_color_selector"/>
+                    style="?android:attr/borderlessButtonStyle"
+                    android:id="@+id/leftBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@+id/rightBtn"
+                    android:visibility="gone"
+                    android:textColor="@color/common_dialog_btn_color_selector" />
 
                 <Button
-                        style="?android:attr/borderlessButtonStyle"
-                        android:id="@+id/rightBtn"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/txt_btn_ok"
-                        android:textColor="@color/common_dialog_btn_color_selector"/>
+                    style="?android:attr/borderlessButtonStyle"
+                    android:id="@+id/rightBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/txt_btn_ok"
+                    android:textColor="@color/common_dialog_btn_color_selector" />
 
 
             </LinearLayout>

@@ -4,15 +4,12 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.ViewPager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.bumptech.glide.request.RequestOptions
 import com.xiamuyao.ulanbator.App
 import com.xiamuyao.ulanbator.R
-import com.xiamuyao.ulanbator.base.adapter.BaseObservableListAdapter
 
 object BindingAdapters {
 
@@ -39,6 +36,21 @@ object BindingAdapters {
             .apply(RequestOptions.bitmapTransform(CircleCrop()))
             .into(view)
     }
+
+    @BindingAdapter("netCircleImageLocal")
+    @JvmStatic
+    fun setImageViewWithLocalByCircle(view: ImageView, type: Int) {
+        val tempId: Int = when (type) {
+            1 -> R.drawable.logo_01
+            2 -> R.drawable.logo_02
+            else -> R.drawable.logo_01
+        }
+        Glide.with(App.CONTEXT)
+            .load(tempId)
+            .apply(RequestOptions.bitmapTransform(CircleCrop()))
+            .into(view)
+    }
+
 
     @BindingAdapter("setImageWalletShow")
     @JvmStatic
@@ -89,4 +101,30 @@ object BindingAdapters {
             }
         }
     }
+
+
+    @BindingAdapter("contractImageType")
+    @JvmStatic
+    fun setContractImageType(view: TextView, type: Int) {
+
+        when (type) {
+            1 -> {
+                view.setBackgroundResource(R.drawable.shape_contract_yirenou)
+
+                view.text = "已认购"
+            }
+            2 -> {
+                view.text = "已满额"
+
+                R.drawable.shape_contract_yimane
+            }
+            3 -> {
+                view.text = "可认购"
+
+                R.drawable.shape_contract_kerengou
+            }
+        }
+
+    }
+
 }

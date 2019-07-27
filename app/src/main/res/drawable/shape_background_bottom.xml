@@ -8,9 +8,8 @@
 
         android:endColor="#1A1825"
 
-        android:angle="270"
-        />
+        android:angle="270" />
 
-    <corners android:radius="@dimen/dimens_5dp"/>
+    <corners android:radius="@dimen/dimens_5dp" />
 
 </shape>

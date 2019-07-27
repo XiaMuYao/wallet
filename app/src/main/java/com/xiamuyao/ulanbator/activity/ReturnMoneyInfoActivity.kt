@@ -19,8 +19,13 @@ import com.xiamuyao.ulanbator.viewmodel.ReturnMoneyInfoViewModel
 class ReturnMoneyInfoActivity : BaseActivity<ActivityReturnmoneyinfoBinding, ReturnMoneyInfoViewModel>() {
 
     private val returnMoneyInfoAdapter by lazy {
-        BaseObservableNoChildClickAdapter(R.layout.item_return_money_info, viewModel.returnMoneyInfoHis, BR.returnMoneyInfoBean)
+        BaseObservableNoChildClickAdapter(
+            R.layout.item_return_money_info,
+            viewModel.returnMoneyInfoHis,
+            BR.returnMoneyInfoBean
+        )
     }
+
     override fun initView() {
         setTitleBar("返佣详情", { finish() })
 

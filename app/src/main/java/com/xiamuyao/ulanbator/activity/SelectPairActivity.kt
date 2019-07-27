@@ -36,10 +36,11 @@ class SelectPairActivity : BaseActivity<ActivitySelectpairBinding, SelectPairVie
     override fun initViewModel(): Class<SelectPairViewModel> {
         return SelectPairViewModel::class.java
     }
+
     companion object {
-        fun start(context: Context, message: String?="") {
+        fun start(context: Context, message: String? = "") {
             val starter = Intent(context, SelectPairActivity::class.java)
-            starter.putExtra("message",message)
+            starter.putExtra("message", message)
             context.startActivity(starter)
         }
     }

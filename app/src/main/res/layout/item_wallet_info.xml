@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="walletListInfoBean"
+            type="com.xiamuyao.ulanbator.model.bean.WalletListInfoBean" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/linearLayout11"
+        android:layout_width="match_parent"
+        android:layout_height="71dp"
+        android:background="@color/pageBackground">
+
+        <TextView
+            android:id="@+id/textView94"
+            tools:text="接收"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12.5dp"
+            android:text="@{walletListInfoBean.title}"
+            android:textColor="#fff"
+            android:textSize="14dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView96"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="14.5dp"
+            android:text="@{walletListInfoBean.time}"
+            tools:text="2019-07-21 13:01"
+
+            android:textColor="#878DA8"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent" />
+
+        <TextView
+            android:layout_width="@dimen/dimens_15dp"
+            android:layout_height="@dimen/dimens_15dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/shape_wallet_stroke"
+            android:gravity="center"
+            android:text="外"
+            android:textColor="#878DA8"
+            android:textSize="10dp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/textView94"
+            app:layout_constraintStart_toEndOf="@+id/textView94" />
+
+
+        <TextView
+            android:id="@+id/textView95"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="BTC"
+            android:textColor="#fff"
+            android:text="@{walletListInfoBean.pair}"
+
+            android:textSize="12dp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/textView94"
+            app:layout_constraintRight_toRightOf="parent" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            tools:text="+32.2502 "
+
+            android:textColor="#fff"
+            android:text="@{walletListInfoBean.money}"
+
+            android:textSize="18dp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/textView95"
+            app:layout_constraintEnd_toStartOf="@+id/textView95" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{walletListInfoBean.state}"
+
+            android:textColor="#878DA8"
+            app:layout_constraintBaseline_toBaselineOf="@+id/textView96"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/pairline"
+            app:layout_constraintBottom_toBottomOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

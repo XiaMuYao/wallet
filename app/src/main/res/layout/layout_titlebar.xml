@@ -13,10 +13,10 @@
         android:background="@color/lineinfo"
         android:layout_height="44dp">
 
-         <ImageView
+        <ImageView
             android:id="@+id/titleBarLeftImage"
             android:layout_width="@dimen/barLeftImg"
-            android:layout_height= "@dimen/barLeftImg"
+            android:layout_height="@dimen/barLeftImg"
             android:layout_marginStart="15dp"
             android:background="@drawable/back_w"
             android:visibility="gone"
@@ -41,7 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#FFFFFF"
-            android:textSize="20dp"
+            android:textSize="18dp"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"

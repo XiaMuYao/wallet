@@ -36,10 +36,11 @@ class SelectLaunageActivity : BaseActivity<ActivitySelectlaunageBinding, SelectL
     override fun initViewModel(): Class<SelectLaunageViewModel> {
         return SelectLaunageViewModel::class.java
     }
+
     companion object {
-        fun start(context: Context, message: String?="") {
+        fun start(context: Context, message: String? = "") {
             val starter = Intent(context, SelectLaunageActivity::class.java)
-            starter.putExtra("message",message)
+            starter.putExtra("message", message)
             context.startActivity(starter)
         }
     }

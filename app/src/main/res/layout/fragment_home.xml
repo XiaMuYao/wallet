@@ -20,7 +20,7 @@
             android:id="@+id/view"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:background="@drawable/welletbg"
+            android:background="@drawable/shape_backgtound"
             app:layout_constraintBottom_toBottomOf="@id/guideline2"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toRightOf="@id/guideline3"

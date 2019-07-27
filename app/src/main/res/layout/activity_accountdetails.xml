@@ -26,31 +26,30 @@
             android:id="@+id/textView20"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
             android:text="@string/sum"
             android:textColor="#99FFFFFF"
             android:textSize="16dp"
+            app:layout_constraintHorizontal_bias="0.501"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/titleBar" />
+            app:layout_constraintTop_toTopOf="@+id/guideline118" />
 
         <RelativeLayout
             android:id="@+id/relativeLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp_10"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView20">
+            app:layout_constraintTop_toBottomOf="@+id/guideline119">
 
             <TextView
                 android:id="@+id/sumText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="23425.12"
                 android:textColor="#FFFFFFFF"
-                android:textSize="35dp"
-                android:textStyle="bold"
-                tools:text="23425.12" />
+                android:textSize="30dp"
+                android:textStyle="bold" />
 
 
             <TextView
@@ -60,22 +59,18 @@
                 android:layout_marginLeft="@dimen/dimens_5dp"
                 android:layout_toRightOf="@+id/sumText"
                 android:textColor="#FFFFFFFF"
-                android:textSize="17.5dp"
-                tools:text="MAX" />
+                android:textSize="15dp"
+                android:text="MAX" />
         </RelativeLayout>
 
         <TextView
             android:id="@+id/textView23"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
             android:text="@string/sumprofit"
-            android:textColor="#99FFFFFF"
-            android:textSize="@dimen/dimens_20dp"
             app:layout_constraintHorizontal_bias="0.447"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="@+id/guideline29"
-            app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
+            app:layout_constraintTop_toBottomOf="@+id/guideline120"
+            style="@style/style_account_title" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline29"
@@ -86,36 +81,24 @@
 
         <TextView
             android:id="@+id/textView21"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="60dp"
-            android:layout_marginEnd="8dp"
             android:text="@string/sumMarkMoney"
-            android:textColor="#99FFFFFF"
-            android:textSize="@dimen/dimens_20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline29"
-            app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
+            app:layout_constraintTop_toBottomOf="@+id/guideline120"
+            style="@style/style_account_title" />
 
         <LinearLayout
             android:id="@+id/linearLayout4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
+
             app:layout_constraintEnd_toStartOf="@+id/guideline29"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView23">
+            app:layout_constraintTop_toBottomOf="@+id/guideline121">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#FFFFFF"
-                android:textSize="23.5dp"
-                android:textStyle="bold"
-                tools:text="23425.12" />
+                tools:text="23425.12"
+                style="@style/style_subtitle" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -123,7 +106,7 @@
                 android:textColor="#FFFFFF"
                 android:textSize="17.5dp"
                 android:textStyle="bold"
-                tools:text="MAX" />
+                android:text="MAX" />
 
         </LinearLayout>
 
@@ -132,19 +115,13 @@
             android:id="@+id/linearLayout5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="@+id/textView21"
             app:layout_constraintStart_toStartOf="@+id/textView21"
-            app:layout_constraintTop_toBottomOf="@+id/textView21">
+            app:layout_constraintTop_toBottomOf="@+id/guideline121">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#FFFFFF"
-                android:textSize="23.5dp"
-                android:textStyle="bold"
-                tools:text="23425.12" />
+                tools:text="23425.12"
+                style="@style/style_subtitle" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -152,7 +129,7 @@
                 android:textColor="#FFFFFF"
                 android:textSize="17.5dp"
                 android:textStyle="bold"
-                tools:text="MAX" />
+                android:text="MAX" />
 
         </LinearLayout>
 
@@ -161,12 +138,12 @@
             android:layout_width="match_parent"
             android:layout_height="217dp"
             android:layout_marginLeft="@dimen/dimens_15dp"
-            android:layout_marginTop="37dp"
             android:layout_marginRight="@dimen/dimens_15dp"
             android:background="@drawable/shape_gray"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout5">
+            app:layout_constraintTop_toBottomOf="@+id/guideline122">
 
             <TextView
                 android:id="@+id/textView22"
@@ -182,7 +159,6 @@
                 style="@style/acconutDetails"
                 android:layout_marginTop="30.5dp"
                 android:text="昨日理财收益"
-
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView22" />
 
@@ -196,30 +172,30 @@
 
 
             <TextView
+                style="@style/accountMoney"
                 app:layout_constraintBottom_toBottomOf="@+id/textView22"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/textView22"
                 app:layout_constraintVertical_bias="0.0"
-                tools:text="200.0 MAX"
-                style="@style/accountMoney" />
+                android:text="200.0 MAX" />
 
 
             <TextView
+                style="@style/accountMoney"
                 app:layout_constraintBottom_toBottomOf="@+id/textView24"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/textView24"
                 app:layout_constraintVertical_bias="0.0"
-                tools:text="200.0 MAX"
-                style="@style/accountMoney" />
+                android:text="200.0 MAX" />
 
 
             <TextView
+                style="@style/accountMoney"
                 app:layout_constraintBottom_toBottomOf="@+id/textView25"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/textView25"
                 app:layout_constraintVertical_bias="0.0"
-                tools:text="200.0 MAX"
-                style="@style/accountMoney" />
+                android:text="200.0 MAX" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -231,6 +207,41 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline118"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.088" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline119"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.136" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline120"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.254" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline121"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.299" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline122"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.39" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

@@ -4,9 +4,9 @@ import android.os.Bundle
 import androidx.lifecycle.lifecycleScope
 import com.xiamuyao.ulanbator.BR
 import com.xiamuyao.ulanbator.R
+import com.xiamuyao.ulanbator.base.BaseActivity
 import com.xiamuyao.ulanbator.databinding.ActivityLaunchBinding
 import com.xiamuyao.ulanbator.viewmodel.LaunchViewModel
-import com.xiamuyao.ulanbator.base.BaseActivity
 import kotlinx.coroutines.launch
 
 class LaunchActivity : BaseActivity<ActivityLaunchBinding, LaunchViewModel>() {
@@ -14,7 +14,9 @@ class LaunchActivity : BaseActivity<ActivityLaunchBinding, LaunchViewModel>() {
     override fun initView() {
 
         lifecycleScope.launch {
-            MainActivity.start(this@LaunchActivity)
+
+            kotlinx.coroutines.delay(2000)
+            LoginActivity.start(this@LaunchActivity)
             finish()
         }
 
