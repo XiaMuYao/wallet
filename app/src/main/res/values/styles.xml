@@ -94,10 +94,15 @@
 
     <style name="style_my_item">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">48dp</item>
+        <item name="android:layout_height">50dp</item>
         <item name="android:background">@color/myitem</item>
     </style>
 
+    <style name="style_my_setting_item">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:background">@color/myitem</item>
+    </style>
     <style name="style_my_item_text">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -122,6 +127,23 @@
         <item name="android:layout_marginLeft">@dimen/dimens_15dp</item>
         <item name="android:layout_marginTop">8dp</item>
         <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">18dp</item>
+    </style>
+    <style name="style_seetting_text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">18dp</item>
+    </style>
+
+    <style name="style_select_text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_marginLeft">@dimen/dimens_15dp</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">#FFFFFF</item>
         <item name="android:textSize">18dp</item>
     </style>
@@ -151,5 +173,13 @@
         <item name="android:paddingLeft">@dimen/dimens_5dp</item>
         <item name="android:textColorHint">@color/textsubclor</item>
         <item name="android:textSize">14dp</item>
+    </style>
+
+    <style name="style_select_image">
+        <item name="android:layout_width">@dimen/dimens_24dp</item>
+        <item name="android:layout_height">@dimen/dimens_24dp</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_marginRight">@dimen/dimens_15dp</item>
     </style>
 </resources>

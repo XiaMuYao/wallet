@@ -1,7 +1,5 @@
 package com.xiamuyao.ulanbator.activity
 
-import android.app.Activity
-import android.app.Application
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -9,13 +7,16 @@ import com.xiamuyao.ulanbator.BR
 import com.xiamuyao.ulanbator.R
 import com.xiamuyao.ulanbator.base.BaseActivity
 import com.xiamuyao.ulanbator.databinding.ActivitySystemsettingBinding
+import com.xiamuyao.ulanbator.util.setTitleBar
 import com.xiamuyao.ulanbator.viewmodel.SystemSettingViewModel
 
 
 class SystemSettingActivity : BaseActivity<ActivitySystemsettingBinding, SystemSettingViewModel>() {
 
     override fun initView() {
-
+        setTitleBar("系统设置", { finish() })
+        binding.constraintLayout1.setOnClickListener { SelectLaunageActivity.start(this) }
+        binding.constraintLayout2.setOnClickListener { SelectPairActivity.start(this) }
     }
 
     override fun initVVMObserver() {

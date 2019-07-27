@@ -11,16 +11,90 @@
     </data>
 
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"       android:background="@color/myPageColor"
+        android:layout_height="match_parent"
+        android:background="@color/myPageColor"
+        android:orientation="vertical"
         tools:context=".activity.SelectPair">
 
 
         <include
             android:id="@+id/titleBar"
-            layout="@layout/layout_titlebar"/>
+            layout="@layout/layout_titlebar" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <RelativeLayout
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_width="match_parent"
+            android:layout_height="51dp"
+            android:background="@color/myitem">
+
+            <TextView
+                style="@style/style_select_text"
+                android:text="人民币(CNY)" />
+
+            <ImageView style="@style/style_select_image" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_alignParentBottom="true"
+                android:background="@color/pairline" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="51dp"
+            android:background="@color/myitem">
+
+            <TextView
+                style="@style/style_select_text"
+                android:text="美元(USD)" />
+
+            <ImageView style="@style/style_select_image" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_alignParentBottom="true"
+                android:background="@color/pairline" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="51dp"
+            android:background="@color/myitem">
+
+            <TextView
+                style="@style/style_select_text"
+                android:text="日元(JPY)" />
+
+            <ImageView style="@style/style_select_image" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_alignParentBottom="true"
+                android:background="@color/pairline" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="51dp"
+            android:background="@color/myitem">
+
+            <TextView
+                style="@style/style_select_text"
+                android:text="韩元(KRW)" />
+
+            <ImageView style="@style/style_select_image" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_alignParentBottom="true"
+                android:background="@color/pairline" />
+        </RelativeLayout>
+    </LinearLayout>
 
 </layout>
