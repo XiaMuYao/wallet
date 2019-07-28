@@ -1,6 +1,5 @@
 package com.xiamuyao.ulanbator.activity
 
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -29,8 +28,8 @@ class SelectCityActivity : BaseActivity<ActivitySelectcityBinding, SelectCityVie
         binding.imageView4.setOnClickListener { finish() }
 
         contractAdapter.setOnItemClickListener { _, _, position ->
-            DataBus.postData("selectCityName", viewModel.cityList[position].cityName)
-            DataBus.postData("selectCityNum", viewModel.cityList[position].cityNum)
+            DataBus.postData("selectCityName", viewModel.cityList[position]?.titleEN.toString())
+            DataBus.postData("selectCityNum", viewModel.cityList[position]?.titleEN.toString())
             finish()
         }
     }

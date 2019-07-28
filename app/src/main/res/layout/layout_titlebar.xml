@@ -54,7 +54,7 @@
             android:layout_width="@dimen/barRightImg"
             android:layout_height="@dimen/barRightImg"
             android:layout_marginEnd="8dp"
-            android:background="#123"
+            android:background="@drawable/cscan"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

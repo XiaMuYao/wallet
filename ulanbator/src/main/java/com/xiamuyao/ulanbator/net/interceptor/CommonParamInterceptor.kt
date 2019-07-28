@@ -1,7 +1,9 @@
 package com.xiamuyao.ulanbator.net.interceptor
 
-import okhttp3.*
-
+import okhttp3.FormBody
+import okhttp3.Interceptor
+import okhttp3.Request
+import okhttp3.Response
 import java.io.IOException
 
 class CommonParamInterceptor : Interceptor {
@@ -32,10 +34,9 @@ class CommonParamInterceptor : Interceptor {
         var request = chain.request()
         if (REQUEST_METHOD_GET == request.method) {
             request = addGetBaseParams(request)
+        } else if (REQUEST_METHOD_POST == request.method) {
+            request = addPostBaseParams(request)
         }
-        //        else if (REQUEST_METHOD_POST.equals(request.method())) {
-        //            request = addPostBaseParams(request);
-        //        }
         return chain.proceed(request)
     }
 
@@ -57,35 +58,28 @@ class CommonParamInterceptor : Interceptor {
     }
 
 
-    //    /**
-    //     * 添加POST方法基础参数
-    //     *
-    //     * @param request
-    //     * @return
-    //     */
-    //    private Request addPostBaseParams(Request request) {
-    //
-    //        /**
-    //         * request.body() instanceof FormBody 为true的条件为：
-    //         * 在ApiService 中将POST请求中设置
-    //         * 1，请求参数注解为@FieldMap
-    //         * 2，方法注解为@FormUrlEncoded
-    //         */
-    //        if (request.body() instanceof FormBody) {
-    //            FormBody formBody = (FormBody) request.body();
-    //            FormBody.Builder builder = new FormBody.Builder();
-    //
-    //            for (int i = 0; i < formBody.size(); i++) {
-    //                //@FieldMap 注解 Map元素中 key 与 value 皆不能为null,否则会出现NullPointerException
-    //                if (formBody.value(i) != null)
-    //                    builder.add(formBody.name(i), formBody.value(i));
-    //            }
-    //
-    //            builder.add("platform", REQUEST_COMMON_PARAM_PLATFORM)//平台
-    //
-    //            request = request.newBuilder().post(formBody).build();
-    //        }
-    //        return request;
-    //    }
+    /**
+     * 添加POST方法基础参数
+     *
+     * @param request
+     * @return
+     */
+    private fun addPostBaseParams(request: Request): Request {
+        var tempRequest: Request? = null
+        if (request.body is FormBody) {
+            val formBody = request.body as FormBody
+            val builder = FormBody.Builder()
 
+            for (i in 0..formBody.size) {
+                if (null != formBody.value(i)) {
+                    builder.add(formBody.name(i), formBody.value(i))
+                }
+            }
+
+            builder.add("platform", REQUEST_COMMON_PARAM_PLATFORM)
+
+            tempRequest = request.newBuilder().post(formBody).build();
+        }
+        return tempRequest!!
+    }
 }

@@ -36,6 +36,7 @@
     <string name="wx">微信</string>
     <string name="wxFirend">朋友圈</string>
     <string name="register">注册</string>
+    <string name="send">发送</string>
     <string name="queding">确定</string>
     <string name="wangjimima">忘记密码</string>
     <string name="yinsixieyi">您知悉本政策及其他有关规定适用于我的区块链及我的区块链上我的区块链所自主拥有的DApp。
@@ -61,4 +62,22 @@
 （4） 所收集的个人信息是您自行向社会公众公开的；\n\n
 
 （5） 从合法公开披露的信息中收集您的个人信息，如合法的新闻报道，政府信息公开等渠道；</string>
+    <string name="agranRegister">请同意隐私政策</string>
+    <string name="setMoney">设置资金密码</string>
+    <string name="setmoenyagen">再次输入资金密码</string>
+    <string name="copyAddress">复制地址</string>
+    <string name="copyMemo">复制Memo</string>
+    <string name="senNUm">发送数量</string>
+    <string name="toAddress">对方地址</string>
+    <string name="memo">Memo</string>
+    <string name="headmoney">手续费</string>
+    <string name="moenypsd">资金密码</string>
+    <string name="phoneCode">短信验证</string>
+    <string name="inphoneCode">请输入短信验证码</string>
+    <string name="inmoneypsd">请输入资金密码</string>
+    <string name="getphoneCode">获取验证码</string>
+    <string name="type">类型</string>
+    <string name="createTIme">创建时间</string>
+    <string name="hasmap">交易哈希</string>
+    <string name="sendsucess">发送成功</string>
 </resources>

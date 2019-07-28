@@ -16,6 +16,7 @@ fun <V : ViewDataBinding, VM : BaseViewModel> BaseActivity<V, VM>.setTitleBar(
     leftCallBack: (() -> Unit)? = null,
     titleBarColor: Int = R.color.immersionBar,
     rightText: String = "",
+    rightImageView: Int?=null,
     rightCallBack: (() -> Unit)? = null
 
     ) {
@@ -42,9 +43,15 @@ fun <V : ViewDataBinding, VM : BaseViewModel> BaseActivity<V, VM>.setTitleBar(
     }
 
 
-    val leftTextView = findViewById<TextView>(R.id.titleBarRightText)
+    val rightTextView = findViewById<TextView>(R.id.titleBarRightText)
     rightCallBack?.let {
-        leftTextView.visibility = View.VISIBLE
-        leftTextView.setOnClickListener { rightCallBack() }
+        rightTextView.visibility = View.VISIBLE
+        rightTextView.setOnClickListener { rightCallBack() }
+    }
+
+    val tempRightImageView = findViewById<ImageView>(R.id.titleBarRightImage)
+    rightImageView?.let {
+        tempRightImageView.visibility = View.VISIBLE
+        tempRightImageView.setOnClickListener { rightCallBack() }
     }
 }

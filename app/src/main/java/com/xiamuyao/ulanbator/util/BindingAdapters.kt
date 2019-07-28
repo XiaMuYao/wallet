@@ -127,4 +127,25 @@ object BindingAdapters {
 
     }
 
+    @BindingAdapter("registerSelect")
+    @JvmStatic
+    fun setRegisterSelect(view: ImageView, type: Boolean) {
+        view.isSelected = type
+    }
+
+    @BindingAdapter("upOrDown")
+    @JvmStatic
+    fun setupOrDown(view: TextView, type: String) {
+        if (type.isEmpty()) return
+        if (type.toDouble() >= 0) {
+            view.setBackgroundResource(R.drawable.shape_pair_up)
+            view.setText("+${type}%")
+
+        } else {
+            view.setBackgroundResource(R.drawable.shape_pair_down)
+            view.setText("-${type}%")
+
+
+        }
+    }
 }

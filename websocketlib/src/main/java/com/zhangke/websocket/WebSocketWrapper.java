@@ -1,26 +1,28 @@
 package com.zhangke.websocket;
 
 import android.text.TextUtils;
-
 import com.zhangke.websocket.request.Request;
-import com.zhangke.websocket.response.ByteBufferResponse;
 import com.zhangke.websocket.response.ErrorResponse;
 import com.zhangke.websocket.response.Response;
 import com.zhangke.websocket.response.ResponseFactory;
-import com.zhangke.websocket.response.TextResponse;
 import com.zhangke.websocket.util.LogUtil;
-
 import org.java_websocket.WebSocket;
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.drafts.Draft;
 import org.java_websocket.drafts.Draft_6455;
 import org.java_websocket.exceptions.WebsocketNotConnectedException;
 import org.java_websocket.framing.Framedata;
-import org.java_websocket.framing.PingFrame;
 import org.java_websocket.handshake.ServerHandshake;
 
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSocketFactory;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
 import java.net.URI;
 import java.nio.ByteBuffer;
+import java.security.SecureRandom;
+import java.security.cert.CertificateException;
+import java.security.cert.X509Certificate;
 import java.util.Map;
 
 /**
@@ -87,6 +89,30 @@ public class WebSocketWrapper {
                     if (mSetting.getProxy() != null) {
                         mWebSocket.setProxy(mSetting.getProxy());
                     }
+                    // wss需添加
+                    SSLContext sslContext = SSLContext.getInstance("TLS");
+                    sslContext.init(null, new TrustManager[] { new X509TrustManager() {
+
+
+                        @Override
+                        public void checkServerTrusted(X509Certificate[] chain,
+                                                       String authType) {
+
+                        }
+
+                        @Override
+                        public void checkClientTrusted(X509Certificate[] chain, String authType) throws CertificateException {
+
+                        }
+
+                        @Override
+                        public X509Certificate[] getAcceptedIssuers() {
+                            return new X509Certificate[0];
+                        }
+                    } }, new SecureRandom());
+
+                    SSLSocketFactory factory = sslContext.getSocketFactory();
+                    mWebSocket.setSocketFactory(factory);
                     mWebSocket.connect();
                     mWebSocket.setConnectionLostTimeout(mSetting.getConnectionLostTimeout());
                     if (needClose) {

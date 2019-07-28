@@ -1,9 +1,10 @@
 package com.xiamuyao.ulanbator.activity
 
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import com.gyf.immersionbar.ImmersionBar
 import com.xiamuyao.ulanbator.BR
 import com.xiamuyao.ulanbator.R
 import com.xiamuyao.ulanbator.base.BaseActivity
@@ -20,6 +21,20 @@ class NoLoginActivity : BaseActivity<ActivityNologinBinding, NoLoginViewModel>()
         binding.btnRegister.setOnClickListener {
             RegisterActivity.start(this)
         }
+
+        binding.mVideoView.setVideoURI(Uri.parse(viewModel.videoUrl))
+        binding.mVideoView.start()
+
+        binding.mVideoView.setOnPreparedListener {
+            it.start()
+            it.isLooping = true
+        }
+    }
+
+    override fun setImmersionBar() {
+        ImmersionBar.with(this)
+            .transparentStatusBar()
+            .init()
     }
 
     override fun initVVMObserver() {

@@ -3,9 +3,6 @@ package com.xiamuyao.ulanbator.model.bean
 import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
 import androidx.databinding.library.baseAdapters.BR
-import java.math.BigDecimal
-
-import java.util.ArrayList
 
 class MarketBean : BaseObservable() {
 
@@ -123,6 +120,13 @@ class MarketBean : BaseObservable() {
             set(sex) {
                 field = sex
                 notifyPropertyChanged(BR.pairName)
+            }
+
+        @get:Bindable
+        var upAndDown: String = ""
+            set(sex) {
+                field = sex
+                notifyPropertyChanged(BR.upAndDown)
             }
     }
 

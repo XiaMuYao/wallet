@@ -17,10 +17,24 @@
         android:background="@color/pageBackground"
         tools:context=".activity.ContractInto">
 
-        <include
-            android:id="@+id/titlebar"
-            layout="@layout/layout_titlebar" />
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline123"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.193" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/bg_02"
+            app:layout_constraintBottom_toBottomOf="@+id/guideline123"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <include
+            android:id="@+id/titleBar"
+            layout="@layout/layout_titlebar" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"
@@ -30,7 +44,7 @@
             android:background="@drawable/shape_onegray"
             app:layout_constraintLeft_toLeftOf="@id/guideline30"
             app:layout_constraintRight_toRightOf="@id/guideline35"
-            app:layout_constraintTop_toBottomOf="@+id/titlebar">
+            app:layout_constraintTop_toBottomOf="@+id/titleBar">
 
 
             <ImageView
@@ -41,7 +55,6 @@
                 android:background="@drawable/logo_01"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
-
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
@@ -120,6 +133,7 @@
 
             <EditText
                 android:id="@+id/editText"
+
                 android:layout_width="match_parent"
                 android:layout_height="65dp"
                 android:layout_marginLeft="@dimen/dimens_15dp"
@@ -129,6 +143,7 @@
                 android:hint="已满额"
                 android:textColor="#5D5C71"
                 android:textColorHint="#5D5C71"
+                android:textCursorDrawable="@drawable/shape_ed_color"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView28" />
@@ -165,24 +180,38 @@
                 app:layout_constraintEnd_toEndOf="@+id/editText" />
 
             <com.zhouyou.view.seekbar.SignSeekBar
-                android:id="@+id/seek_bar"
+                android:id="@+id/signSeekBar"
                 android:layout_width="match_parent"
-                android:layout_height="16dp"
-                android:layout_marginBottom="16dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:ssb_section_text_position="bottom_sides"
-                app:ssb_show_progress_in_float="false"
-                app:ssb_show_section_mark="false"
-                app:ssb_show_section_text="true"
+                app:layout_constraintTop_toBottomOf="@+id/textView30"
+                app:layout_constraintVertical_bias="0.264"
+                app:ssb_second_track_color="#413EF3"
                 app:ssb_show_sign="true"
-                app:ssb_show_thumb_text="false"
-                app:ssb_sign_arrow_height="5dp"
-                app:ssb_sign_arrow_width="10dp"
-                app:ssb_sign_border_size="1dp"
-                app:ssb_sign_show_border="true" />
+                app:ssb_sign_color="#5D5C71"
+                app:ssb_track_size="4dp" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$100"
+                android:textColor="#878DA8"
+                app:layout_constraintLeft_toLeftOf="@+id/signSeekBar"
+                app:layout_constraintTop_toBottomOf="@+id/signSeekBar" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$1000"
+                android:textColor="#878DA8"
+                app:layout_constraintRight_toRightOf="@+id/signSeekBar"
+                app:layout_constraintTop_toBottomOf="@+id/signSeekBar" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

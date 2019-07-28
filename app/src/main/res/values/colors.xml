@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#5CB1A8</color>
+    <color name="colorPrimary">#5D5C71</color>
     <color name="colorPrimaryDark">#19C23E</color>
     <color name="colorAccent">#1786B1</color>
     <color name="line">#343242</color>
@@ -13,8 +13,10 @@
     <color name="contraclnto">#393948</color>
     <color name="myitem">#1e202f</color>
     <color name="myPageColor">#1a1825</color>
-    <color name="textsubclor">#353343</color>
+    <color name="textsubclor">#5D5C71</color>
     <color name="suncolor">#878DA8</color>
     <color name="item_find_color">#242330</color>
     <color name="item_find_back">#2f313f</color>
+    <color name="phoneCode">#5856FF</color>
+    <color name="suntext">#878DA8 </color>
 </resources>

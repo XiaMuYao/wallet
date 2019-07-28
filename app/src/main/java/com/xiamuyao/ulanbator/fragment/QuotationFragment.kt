@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProviders
+import com.xiamuyao.ulanbator.App
 import com.xiamuyao.ulanbator.BR
 import com.xiamuyao.ulanbator.R
 import com.xiamuyao.ulanbator.databinding.FragmentMessageBinding
@@ -24,12 +25,8 @@ class QuotationFragment : BaseFragment<FragmentMessageBinding, QuotationViewMode
         }
     }
 
-    private val mainViewModel by lazy {
-        ViewModelProviders.of(activity!!).get(MainViewModel::class.java)
-    }
-
     private val marketAdapter by lazy {
-        BaseObservableNoChildClickAdapter(R.layout.item_market, mainViewModel.marketList, BR.marketBean)
+        BaseObservableNoChildClickAdapter(R.layout.item_market, App.marketList, BR.marketBean)
     }
 
     override fun initView() {

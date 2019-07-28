@@ -16,7 +16,7 @@ class LaunchActivity : BaseActivity<ActivityLaunchBinding, LaunchViewModel>() {
         lifecycleScope.launch {
 
             kotlinx.coroutines.delay(2000)
-            LoginActivity.start(this@LaunchActivity)
+            MainActivity.start(this@LaunchActivity)
             finish()
         }
 

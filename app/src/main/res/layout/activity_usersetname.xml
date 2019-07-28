@@ -31,6 +31,7 @@
 
 
             <EditText
+                android:textCursorDrawable="@drawable/shape_ed_color"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:background="@null"

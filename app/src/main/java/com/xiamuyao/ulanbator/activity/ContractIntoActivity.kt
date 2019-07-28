@@ -2,6 +2,7 @@ package com.xiamuyao.ulanbator.activity
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
@@ -9,8 +10,10 @@ import com.xiamuyao.ulanbator.BR
 import com.xiamuyao.ulanbator.R
 import com.xiamuyao.ulanbator.base.BaseActivity
 import com.xiamuyao.ulanbator.databinding.ActivityContractintoBinding
+import com.xiamuyao.ulanbator.util.setTitleBar
 import com.xiamuyao.ulanbator.view.CustomPopupWindow
 import com.xiamuyao.ulanbator.viewmodel.ContractIntoViewModel
+import com.zhouyou.view.seekbar.SignSeekBar
 
 
 /**
@@ -20,6 +23,7 @@ class ContractIntoActivity : BaseActivity<ActivityContractintoBinding, ContractI
 
 
     override fun initView() {
+        setTitleBar("转入", { finish() }, rightText = "邀请规则",titleBarColor = R.color.touming)
 
         binding.constraintLayout.setOnClickListener {
             val customPopupWindow = CustomPopupWindow(this, viewModel.pariList)
@@ -27,6 +31,11 @@ class ContractIntoActivity : BaseActivity<ActivityContractintoBinding, ContractI
         }
 
         viewModel.type.value = intent.getIntExtra("type", -1)
+
+        binding.signSeekBar.setValueFormatListener { progress -> "$$progress" }
+        binding.signSeekBar.configBuilder.signColor(Color.parseColor("#00FFFFFF"))
+            .build()
+
     }
 
     override fun initVVMObserver() {

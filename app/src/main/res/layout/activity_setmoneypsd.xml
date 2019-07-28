@@ -46,6 +46,8 @@
             <EditText
                 style="@style/style_set_user_psd_ed"
                 android:hint="请输入6位数字密码"
+                android:textCursorDrawable="@drawable/shape_ed_color"
+
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/guideline81"
                 app:layout_constraintStart_toStartOf="@+id/guideline75"
@@ -100,6 +102,8 @@
             <EditText
                 style="@style/style_set_user_psd_ed"
                 android:hint="再次输入资金密码"
+                android:textCursorDrawable="@drawable/shape_ed_color"
+
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/guideline84"
                 app:layout_constraintStart_toStartOf="@+id/guideline76"
@@ -213,6 +217,8 @@
                 android:id="@+id/editText2"
                 style="@style/style_set_user_psd_ed"
                 android:hint="输入手机验证码"
+                android:textCursorDrawable="@drawable/shape_ed_color"
+
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/guideline90"
                 app:layout_constraintStart_toStartOf="@+id/guideline79"
@@ -243,7 +249,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="获取验证码"
+                android:text="@string/getphoneCode"
                 android:textColor="#5856FF"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/guideline90"

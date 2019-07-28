@@ -4,7 +4,8 @@
     package="com.xiamuyao.ulanbator">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <dist:module dist:instant="true" />
 
     <application
@@ -17,6 +18,12 @@
         android:roundIcon="@mipmap/ic_icon_app_start"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".activity.ScanActivity" />
+        <activity android:name=".activity.SendSuccessActivity" />
+        <activity android:name=".activity.SendInfoActivity" />
+        <activity android:name=".activity.TransferAccountsActivity" />
+        <activity android:name=".activity.InMoneyActivity" />
+        <activity android:name=".activity.FirstSetMonPsdActivity" />
         <activity android:name=".activity.PrivacyActivity" />
         <activity android:name=".activity.ForgetActivity" />
         <activity android:name=".activity.HelpActivity" />
@@ -59,6 +66,7 @@
         <activity android:name=".activity.LoginActivity" />
         <activity android:name=".activity.SetMoneyPsdActivity" />
         <activity android:name=".activity.SelectCityActivity" />
+        <activity android:name=".activity.NoLoginActivity" />
     </application>
 
 </manifest>

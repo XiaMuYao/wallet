@@ -108,6 +108,7 @@
             android:layout_height="44dp"
             android:layout_marginStart="32dp"
             android:background="@null"
+            android:textCursorDrawable="@drawable/shape_ed_color"
             android:textColor="#FFFFFF"
             android:textColorHint="#5D5C71"
             android:textSize="14dp"
@@ -142,6 +143,7 @@
             android:layout_marginBottom="8dp"
             android:background="@null"
             android:textColor="#FFFFFF"
+            android:textCursorDrawable="@drawable/shape_ed_color"
             android:textColorHint="#5D5C71"
 
             android:textSize="14dp"
