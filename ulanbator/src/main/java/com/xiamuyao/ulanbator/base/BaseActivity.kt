@@ -2,11 +2,8 @@ package com.xiamuyao.ulanbator.base
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.Color
+import android.content.Intent
 import android.os.Bundle
-import android.view.View
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
@@ -64,6 +61,14 @@ abstract class BaseActivity<V : ViewDataBinding, VM : BaseViewModel> : AppCompat
 
         viewModel.finishStatus.observe(this, Observer { finish() })
 
+        viewModel.startActivityStatus.observe(this, Observer {
+            val clz = it["CLASS"] as Class<*>
+            if (null == it["BUNDLE"]) {
+                startActivity(clz, null)
+            } else {
+                startActivity(clz, it["BUNDLE"] as Bundle)
+            }
+        })
     }
 
     private fun initViewDataBinding(savedInstanceState: Bundle?) {
@@ -99,7 +104,7 @@ abstract class BaseActivity<V : ViewDataBinding, VM : BaseViewModel> : AppCompat
     /**
      * 初始化页面数据
      */
-    open  fun initData() {
+    open fun initData() {
         viewModel.initData()
     }
 
@@ -128,5 +133,13 @@ abstract class BaseActivity<V : ViewDataBinding, VM : BaseViewModel> : AppCompat
      * @return 继承BaseViewModel的ViewModel
      */
     abstract fun initViewModel(): Class<VM>
+
+    private fun startActivity(clz: Class<*>, bundle: Bundle? = null) {
+        val intent = Intent(this, clz)
+        if (bundle != null) {
+            intent.putExtras(bundle)
+        }
+        startActivity(intent)
+    }
 
 }

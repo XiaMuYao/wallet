@@ -1,35 +1,27 @@
 package com.xiamuyao.ulanbator.activity
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
-import com.xiamuyao.ulanbator.BR
+import com.king.zxing.CaptureActivity
 import com.xiamuyao.ulanbator.R
-import com.xiamuyao.ulanbator.base.BaseActivity
-import com.xiamuyao.ulanbator.databinding.ActivityScanBinding
-import com.xiamuyao.ulanbator.viewmodel.ScanViewModel
 
 /**
  * 二维码扫描
  */
-class ScanActivity : BaseActivity<ActivityScanBinding, ScanViewModel>() {
+class ScanActivity : CaptureActivity() {
 
-    override fun initView() {
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_scan)
     }
 
-    override fun initVVMObserver() {
+    companion object {
+        fun start(context: Context, message: String? = "") {
+            val starter = Intent(context, ScanActivity::class.java)
+            starter.putExtra("message", message)
+            context.startActivity(starter)
+        }
     }
-
-
-    override fun initContentView(savedInstanceState: Bundle?): Int {
-        return R.layout.activity_scan
-    }
-
-    override fun initVariableId(): Int {
-        return BR.scanViewModel
-    }
-
-    override fun initViewModel(): Class<ScanViewModel> {
-        return ScanViewModel::class.java
-    }
-
 }

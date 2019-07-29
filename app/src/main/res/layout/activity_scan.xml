@@ -5,29 +5,33 @@
 
     <data>
 
-        <variable
-            name="scanViewModel"
-            type="com.xiamuyao.ulanbator.viewmodel.ScanViewModel" />
     </data>
 
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".activity.Scan">
-        <com.journeyapps.barcodescanner.DecoratedBarcodeView
+
+        <SurfaceView
+            android:id="@+id/surfaceView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/dbv_custom"
-            app:zxing_framing_rect_width="200dp"
-            app:zxing_framing_rect_height="50dp"
+            android:layout_height="match_parent"/>
 
-            app:zxing_preview_scaling_strategy="fitXY"
-            app:zxing_use_texture_view="true"
-            android:layout_above="@+id/btn_switch"
-            android:layout_alignEnd="@+id/btn_hint2">
-        </com.journeyapps.barcodescanner.DecoratedBarcodeView>
+            <com.king.zxing.ViewfinderView
+                android:id="@+id/viewfinderView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:cornerColor="#967CFE"
+                app:frameColor="@color/colorPrimary"
+                app:labelText="将二维码置入框内，即可自动扫描"
+                app:labelTextLocation="bottom"
+                app:labelTextSize="14dp"
+                app:laserColor="#967CFE"
+                app:resultPointColor="#967CFE" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>
+
 
 </layout>

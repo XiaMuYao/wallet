@@ -49,6 +49,7 @@
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:src="@drawable/cancel"
+            android:onClick="@{() -> selectcityViewModel.finsh()}"
             app:layout_constraintBottom_toBottomOf="@+id/view23"
             app:layout_constraintLeft_toLeftOf="@id/guideline154"
             app:layout_constraintRight_toRightOf="parent"

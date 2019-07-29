@@ -1,12 +1,14 @@
 package com.xiamuyao.ulanbator.base
 
 import android.app.Application
+import android.os.Bundle
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.xiamuyao.ulanbator.utlis.SingleLiveEvent
-import kotlinx.coroutines.*
+import kotlinx.coroutines.launch
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.closestKodein
+
 
 abstract class BaseViewModel(application: Application) : AndroidViewModel(application), KodeinAware {
     override val kodein by closestKodein(application)
@@ -19,6 +21,11 @@ abstract class BaseViewModel(application: Application) : AndroidViewModel(applic
     val showDialogStatus = SingleLiveEvent<Boolean>()
     //销毁Dialog
     val disDialogStatus = SingleLiveEvent<Boolean>()
+    //跳转页面
+   val startActivityStatus= SingleLiveEvent<Map<String, Any>>()
+
+    private val startContainerActivityEvent: SingleLiveEvent<Map<String, Any>>? = null
+
     //上拉加载结束
     val loadMoreStatus = SingleLiveEvent<Boolean>()
     //下拉刷新结束
@@ -57,4 +64,28 @@ abstract class BaseViewModel(application: Application) : AndroidViewModel(applic
 //            }
 //        }
 //    }
+
+    /**
+     * 跳转页面
+     *
+     * @param clz 所跳转的目的Activity类
+     */
+    fun startActivity(clz: Class<*>) {
+        startActivity(clz, null)
+    }
+
+    /**
+     * 跳转页面
+     *
+     * @param clz    所跳转的目的Activity类
+     * @param bundle 跳转所携带的信息
+     */
+    fun startActivity(clz: Class<*>, bundle: Bundle? = null) {
+        val params = HashMap<String, Any>()
+        params["CLASS"] = clz
+        if (bundle != null) {
+            params["BUNDLE"] = bundle
+        }
+        startActivityStatus.postValue(params)
+    }
 }

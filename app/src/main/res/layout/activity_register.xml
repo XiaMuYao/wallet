@@ -68,6 +68,7 @@
             android:id="@+id/textView21"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@{registerViewModel.selectCityName}"
             android:textColor="#fff"
             android:textSize="14dp"
             app:layout_constraintStart_toStartOf="@+id/guideline145"
@@ -80,6 +81,7 @@
             android:layout_height="@dimen/dimens_20dp"
             android:layout_marginEnd="24dp"
             android:background="@drawable/chevron_down"
+            android:onClick="@{() -> registerViewModel.gotoSelectCity()}"
             app:layout_constraintBottom_toBottomOf="@+id/textView21"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/textView21"
@@ -102,18 +104,31 @@
             app:layout_constraintStart_toStartOf="@+id/guideline145"
             app:layout_constraintTop_toTopOf="@+id/guideline148" />
 
+
+        <TextView
+            android:id="@+id/textView23"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#fff"
+            android:textSize="14dp"
+            app:addPLus="@{registerViewModel.selectCityNum}"
+            app:layout_constraintStart_toStartOf="@+id/guideline145"
+            app:layout_constraintTop_toTopOf="@+id/guideline149"
+            tools:text="+86" />
+
         <EditText
-            android:layout_width="0dp"
+            android:layout_width="287dp"
             android:layout_height="44dp"
-            android:textCursorDrawable="@drawable/shape_ed_color"
+            android:layout_marginStart="32dp"
             android:background="@null"
+            android:maxLength="12"
+            android:text="@={registerViewModel.phoneNum}"
             android:textColor="#FFFFFF"
             android:textColorHint="#5D5C71"
+            android:textCursorDrawable="@drawable/shape_ed_color"
             android:textSize="14dp"
-            app:layout_constraintBottom_toTopOf="@+id/guideline39"
-            app:layout_constraintEnd_toStartOf="@+id/guideline147"
-            app:layout_constraintStart_toStartOf="@+id/guideline145"
-            app:layout_constraintTop_toTopOf="@+id/guideline149" />
+            app:layout_constraintBaseline_toBaselineOf="@+id/textView23"
+            app:layout_constraintStart_toEndOf="@+id/textView23" />
 
 
         <TextView
@@ -127,10 +142,13 @@
             android:id="@+id/editText3"
             android:layout_width="0dp"
             android:layout_height="44dp"
-            android:textCursorDrawable="@drawable/shape_ed_color"
             android:background="@null"
+            android:text="@={registerViewModel.phoneCode}"
             android:textColor="#FFFFFF"
             android:textColorHint="#5D5C71"
+
+
+            android:textCursorDrawable="@drawable/shape_ed_color"
             android:textSize="14dp"
             app:layout_constraintBottom_toTopOf="@+id/guideline158"
             app:layout_constraintEnd_toStartOf="@+id/phoneCode"
@@ -141,6 +159,7 @@
             android:id="@+id/phoneCode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="@{() -> registerViewModel.sendCode()}"
             android:text="@string/getphoneCode"
             android:textColor="@color/phoneCode"
             app:layout_constraintBaseline_toBaselineOf="@+id/editText3"
@@ -173,8 +192,8 @@
             android:id="@+id/imageView5"
             android:layout_width="14dp"
             android:layout_height="14dp"
-            android:src="@drawable/selector_box"
             android:onClick="@{() -> registerViewModel.selectRegister()}"
+            android:src="@drawable/selector_box"
             app:layout_constraintBottom_toBottomOf="@+id/button"
             app:layout_constraintStart_toStartOf="@+id/guideline145"
             app:layout_constraintTop_toTopOf="@+id/button"
@@ -185,6 +204,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:onClick="@{() -> registerViewModel.gotoPrivacyActivity()}"
             android:text="隐私政策"
             android:textColor="#fff"
             app:layout_constraintBaseline_toBaselineOf="@+id/btnLogin"
@@ -249,7 +269,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.345" />
+            app:layout_constraintGuide_percent="0.357" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline39"
@@ -310,11 +330,13 @@
         <EditText
             android:layout_width="0dp"
             android:layout_height="44dp"
-            android:textCursorDrawable="@drawable/shape_ed_color"
             android:background="@null"
+            android:text="@={registerViewModel.accountPsd}"
             android:textColor="#FFFFFF"
             android:textColorHint="#5D5C71"
+            android:textCursorDrawable="@drawable/shape_ed_color"
             android:textSize="14dp"
+android:inputType="textPassword"
             app:layout_constraintBottom_toTopOf="@+id/guideline161"
             app:layout_constraintEnd_toStartOf="@+id/guideline147"
             app:layout_constraintStart_toStartOf="@+id/guideline145"
@@ -351,11 +373,13 @@
         <EditText
             android:layout_width="0dp"
             android:layout_height="44dp"
-            android:textCursorDrawable="@drawable/shape_ed_color"
             android:background="@null"
+            android:text="@={registerViewModel.accountPsdConfirm}"
             android:textColor="#FFFFFF"
             android:textColorHint="#5D5C71"
+            android:textCursorDrawable="@drawable/shape_ed_color"
             android:textSize="14dp"
+            android:inputType="textPassword"
             app:layout_constraintBottom_toTopOf="@+id/guideline164"
             app:layout_constraintEnd_toStartOf="@+id/guideline147"
             app:layout_constraintStart_toStartOf="@+id/guideline145"
@@ -392,10 +416,11 @@
         <EditText
             android:layout_width="0dp"
             android:layout_height="44dp"
-            android:textCursorDrawable="@drawable/shape_ed_color"
             android:background="@null"
+            android:text="@={registerViewModel.invitationCode}"
             android:textColor="#FFFFFF"
             android:textColorHint="#5D5C71"
+            android:textCursorDrawable="@drawable/shape_ed_color"
             android:textSize="14dp"
             app:layout_constraintBottom_toTopOf="@+id/guideline167"
             app:layout_constraintEnd_toStartOf="@+id/guideline147"

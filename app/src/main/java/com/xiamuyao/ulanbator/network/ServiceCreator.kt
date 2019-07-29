@@ -1,7 +1,7 @@
 package com.xiamuyao.ulanbator.network
 
-import com.xiamuyao.ulanbator.constant.ProjectConstant
 import com.xiamuyao.ulanbator.LibApp
+import com.xiamuyao.ulanbator.constant.ProjectConstant
 import com.xiamuyao.ulanbator.net.interceptor.CacheInterceptor
 import com.xiamuyao.ulanbator.net.interceptor.CommonParamInterceptor
 import okhttp3.Cache
@@ -25,7 +25,7 @@ object ServiceCreator {
             .connectTimeout(10, TimeUnit.SECONDS)
             .writeTimeout(20, TimeUnit.SECONDS)
             .readTimeout(20, TimeUnit.SECONDS)
-            .addNetworkInterceptor(providerInterceptor()) //公共参数
+            .addInterceptor(providerInterceptor()) //公共参数
             .addInterceptor(providerNetworkInterceptor()) //日志拦截器
             .addInterceptor(providerCacheInterceptor()) //缓存拦截器
 

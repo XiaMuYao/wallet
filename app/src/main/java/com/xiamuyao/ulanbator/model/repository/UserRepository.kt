@@ -1,7 +1,7 @@
 package com.xiamuyao.ulanbator.model.repository
 
 import androidx.databinding.ObservableArrayList
-import com.xiamuyao.ulanbator.model.dd
+import com.xiamuyao.ulanbator.model.bean.response.CityListBean
 import com.xiamuyao.ulanbator.network.api.UserService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -9,12 +9,29 @@ import kotlinx.coroutines.withContext
 class UserRepository(private var userService: UserService) {
 
     suspend fun getCityList() = withContext(Dispatchers.IO) {
-        val tempList = ObservableArrayList<dd.DataBean.ListBean>()
+        val tempList = ObservableArrayList<CityListBean.DataBean.ListBean>()
         val cityList = userService.getCityList()
-//        if (!cityList.result.returnCode.equals("0")) return@withContext
-        tempList.addAll(cityList.data)
+        //todo 这里判断语言 showCityName
+        cityList.data.list.forEach {
+            it.showCityName = it.titleCN
+        }
+        tempList.addAll(cityList.data.list)
         return@withContext tempList
     }
+
+    suspend fun register(
+        countryCode: String,
+        dialingCode: String,
+        tel: String,
+        password: String,
+        passwordConfirm: String,
+        verifyKey: String,
+        verifyCode: String,
+        inviteCode: String) = withContext(Dispatchers.IO) {
+
+        return@withContext userService.registered(countryCode,dialingCode,tel,password,passwordConfirm,verifyKey,verifyCode,inviteCode)
+    }
+
 
     companion object {
 

@@ -95,7 +95,7 @@
             android:id="@+id/textView23"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{loginViewModel.selectCityNum}"
+            app:addPLus="@{loginViewModel.selectCityNum}"
             android:textColor="#fff"
             android:textSize="14dp"
             app:layout_constraintStart_toStartOf="@+id/guideline145"

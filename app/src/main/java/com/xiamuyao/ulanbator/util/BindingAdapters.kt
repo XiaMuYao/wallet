@@ -10,6 +10,7 @@ import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.bumptech.glide.request.RequestOptions
 import com.xiamuyao.ulanbator.App
 import com.xiamuyao.ulanbator.R
+import org.w3c.dom.Text
 
 object BindingAdapters {
 
@@ -131,6 +132,12 @@ object BindingAdapters {
     @JvmStatic
     fun setRegisterSelect(view: ImageView, type: Boolean) {
         view.isSelected = type
+    }
+
+    @BindingAdapter("addPLus")
+    @JvmStatic
+    fun setRegisterSelect(view: TextView, type: String) {
+        view.text = "+$type"
     }
 
     @BindingAdapter("upOrDown")

@@ -15,12 +15,6 @@ import com.xiamuyao.ulanbator.viewmodel.NoLoginViewModel
 class NoLoginActivity : BaseActivity<ActivityNologinBinding, NoLoginViewModel>() {
 
     override fun initView() {
-        binding.btnLogin.setOnClickListener {
-            LoginActivity.start(this)
-        }
-        binding.btnRegister.setOnClickListener {
-            RegisterActivity.start(this)
-        }
 
         binding.mVideoView.setVideoURI(Uri.parse(viewModel.videoUrl))
         binding.mVideoView.start()

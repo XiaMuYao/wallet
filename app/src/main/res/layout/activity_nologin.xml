@@ -30,6 +30,7 @@
             android:background="@drawable/shape_btn_jiechu"
             android:text="登陆"
             android:textColor="#fff"
+            android:onClick="@{() -> nologinViewModel.loginActivityStart()}"
             app:layout_constraintEnd_toStartOf="@+id/guideline30"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/guideline29" />
@@ -43,7 +44,7 @@
             android:background="@drawable/shape_btn"
             android:text="注册"
             android:textColor="#fff"
-
+            android:onClick="@{() -> nologinViewModel.registerActivityStart()}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline30"
             app:layout_constraintTop_toTopOf="@+id/guideline29" />

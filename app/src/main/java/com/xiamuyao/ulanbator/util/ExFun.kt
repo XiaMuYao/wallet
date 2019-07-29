@@ -42,16 +42,14 @@ fun <V : ViewDataBinding, VM : BaseViewModel> BaseActivity<V, VM>.setTitleBar(
         rtghtView.text = it
     }
 
-
-    val rightTextView = findViewById<TextView>(R.id.titleBarRightText)
     rightCallBack?.let {
-        rightTextView.visibility = View.VISIBLE
-        rightTextView.setOnClickListener { rightCallBack() }
+        rtghtView.visibility = View.VISIBLE
+        rtghtView.setOnClickListener { rightCallBack() }
     }
 
     val tempRightImageView = findViewById<ImageView>(R.id.titleBarRightImage)
     rightImageView?.let {
         tempRightImageView.visibility = View.VISIBLE
-        tempRightImageView.setOnClickListener { rightCallBack() }
+        tempRightImageView.setOnClickListener { rightCallBack!!() }
     }
 }

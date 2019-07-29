@@ -1,8 +1,8 @@
-package com.xiamuyao.ulanbator.model;
+package com.xiamuyao.ulanbator.model.bean.response;
 
 import java.util.List;
 
-public class dd {
+public class CityListBean {
 
     /**
      * result : {"returnCode":"0","returnUserMessage":"成功","returnMessage":"成功"}
@@ -93,6 +93,15 @@ public class dd {
             private String titleJP;
             private String countryId;
             private String dialingCode;
+            private String showCityName;
+
+            public String getShowCityName() {
+                return showCityName;
+            }
+
+            public void setShowCityName(String showCityName) {
+                this.showCityName = showCityName;
+            }
 
             public String getTitleEN() {
                 return titleEN;

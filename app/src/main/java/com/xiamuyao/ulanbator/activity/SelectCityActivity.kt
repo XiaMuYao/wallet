@@ -3,13 +3,16 @@ package com.xiamuyao.ulanbator.activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import androidx.core.widget.addTextChangedListener
 import com.xiamuyao.ulanbator.BR
 import com.xiamuyao.ulanbator.R
 import com.xiamuyao.ulanbator.base.BaseActivity
 import com.xiamuyao.ulanbator.base.adapter.BaseObservableNoChildClickAdapter
+import com.xiamuyao.ulanbator.constant.EventConstant
 import com.xiamuyao.ulanbator.databinding.ActivitySelectcityBinding
 import com.xiamuyao.ulanbator.extension.defaultStyle
 import com.xiamuyao.ulanbator.utlis.DataBus
+import com.xiamuyao.ulanbator.utlis.LL
 import com.xiamuyao.ulanbator.viewmodel.SelectCityViewModel
 
 
@@ -25,12 +28,16 @@ class SelectCityActivity : BaseActivity<ActivitySelectcityBinding, SelectCityVie
     override fun initView() {
         binding.cityRecyclerView.defaultStyle(contractAdapter)
 
-        binding.imageView4.setOnClickListener { finish() }
-
         contractAdapter.setOnItemClickListener { _, _, position ->
-            DataBus.postData("selectCityName", viewModel.cityList[position]?.titleEN.toString())
-            DataBus.postData("selectCityNum", viewModel.cityList[position]?.titleEN.toString())
+            DataBus.postData(EventConstant.selectCityName, viewModel.cityList[position]?.titleCN.toString())
+            DataBus.postData(EventConstant.selectCityNum, viewModel.cityList[position]?.dialingCode.toString())
+            DataBus.postData(EventConstant.countryCode, viewModel.cityList[position]?.countryCode.toString())
             finish()
+        }
+
+        //todo 选择国家筛选
+        binding.editText.addTextChangedListener {
+            LL.d("数据是${it?.toString()}")
         }
     }
 

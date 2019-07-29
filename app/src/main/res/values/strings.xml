@@ -80,4 +80,6 @@
     <string name="createTIme">创建时间</string>
     <string name="hasmap">交易哈希</string>
     <string name="sendsucess">发送成功</string>
+    <string name="pasdno">两次密码不一致</string>
+    <string name="datanull">有数据为空</string>
 </resources>

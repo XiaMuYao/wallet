@@ -65,21 +65,22 @@ class CommonParamInterceptor : Interceptor {
      * @return
      */
     private fun addPostBaseParams(request: Request): Request {
-        var tempRequest: Request? = null
+        var tempRequest: Request = request
         if (request.body is FormBody) {
             val formBody = request.body as FormBody
             val builder = FormBody.Builder()
 
-            for (i in 0..formBody.size) {
+            for (i in 0 until formBody.size) {
                 if (null != formBody.value(i)) {
                     builder.add(formBody.name(i), formBody.value(i))
                 }
             }
 
-            builder.add("platform", REQUEST_COMMON_PARAM_PLATFORM)
+            builder.addEncoded("appKey", "3b366f4ed1719695a67024a41d39676e")
+            builder.addEncoded("devicePlatform", "android")
 
-            tempRequest = request.newBuilder().post(formBody).build();
+            tempRequest = request.newBuilder().post(builder.build()).build()
         }
-        return tempRequest!!
+        return tempRequest
     }
 }

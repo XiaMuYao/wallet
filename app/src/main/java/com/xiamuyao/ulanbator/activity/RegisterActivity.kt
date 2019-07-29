@@ -7,12 +7,17 @@ import androidx.lifecycle.Observer
 import com.xiamuyao.ulanbator.BR
 import com.xiamuyao.ulanbator.R
 import com.xiamuyao.ulanbator.base.BaseActivity
+import com.xiamuyao.ulanbator.constant.EventConstant
 import com.xiamuyao.ulanbator.databinding.ActivityRegisterBinding
 import com.xiamuyao.ulanbator.util.CountTime
 import com.xiamuyao.ulanbator.util.setTitleBar
+import com.xiamuyao.ulanbator.utlis.DataBus
+import com.xiamuyao.ulanbator.utlis.DataBusObservable
 import com.xiamuyao.ulanbator.viewmodel.RegisterViewModel
 
-
+/**
+ * 注册
+ */
 class RegisterActivity : BaseActivity<ActivityRegisterBinding, RegisterViewModel>() {
 
     override fun initView() {
@@ -20,20 +25,32 @@ class RegisterActivity : BaseActivity<ActivityRegisterBinding, RegisterViewModel
             titleBarColor = R.color.touming,
             rightCallBack = { LoginActivity.start(this) })
 
-        //隐私政策
-        binding.button.setOnClickListener { PrivacyActivity.start(this) }
-
-        //倒计时
-        val countTime = CountTime(textView = binding.phoneCode)
-        binding.phoneCode.setOnClickListener {
-            if (!countTime.start) {
-                countTime.start()
-            }
-        }
     }
 
     override fun initVVMObserver() {
-        viewModel.settingMoney.observe(this, Observer {
+        DataBus.observeData(this, EventConstant.selectCityName, object : DataBusObservable<String> {
+            override fun dataBusDataCallBack(it: String) {
+                viewModel.selectCityName.value = it
+            }
+        })
+        DataBus.observeData(this, EventConstant.selectCityNum, object : DataBusObservable<String> {
+            override fun dataBusDataCallBack(it: String) {
+                viewModel.selectCityNum.value = it
+            }
+        })
+        DataBus.observeData(this, EventConstant.countryCode, object : DataBusObservable<String> {
+            override fun dataBusDataCallBack(it: String) {
+                viewModel.countryCode.value = it
+            }
+        })
+        //倒计时
+        val countTime = CountTime(textView = binding.phoneCode)
+
+        viewModel.sendCodeType.observe(this, Observer {
+
+            if (!countTime.start) {
+                countTime.start()
+            }
 
         })
     }
