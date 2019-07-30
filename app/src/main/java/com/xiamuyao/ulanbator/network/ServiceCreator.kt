@@ -3,7 +3,6 @@ package com.xiamuyao.ulanbator.network
 import com.xiamuyao.ulanbator.LibApp
 import com.xiamuyao.ulanbator.constant.ProjectConstant
 import com.xiamuyao.ulanbator.net.interceptor.CacheInterceptor
-import com.xiamuyao.ulanbator.net.interceptor.CommonParamInterceptor
 import okhttp3.Cache
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient

@@ -3,9 +3,12 @@ package com.xiamuyao.ulanbator.viewmodel
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import com.xiamuyao.ulanbator.R
+import com.xiamuyao.ulanbator.activity.FirstSetMonPsdActivity
+import com.xiamuyao.ulanbator.activity.MainActivity
 import com.xiamuyao.ulanbator.activity.PrivacyActivity
 import com.xiamuyao.ulanbator.activity.SelectCityActivity
 import com.xiamuyao.ulanbator.base.BaseViewModel
+import com.xiamuyao.ulanbator.extension.businessHandler
 import com.xiamuyao.ulanbator.model.repository.UserRepository
 import com.xiamuyao.ulanbator.util.Md5
 import com.xiamuyao.ulanbator.utlis.SingleLiveEvent
@@ -23,7 +26,6 @@ class RegisterViewModel(application: Application) : BaseViewModel(application) {
     var accountPsd = MutableLiveData<String>()
     var accountPsdConfirm = MutableLiveData<String>()
     var invitationCode = MutableLiveData<String>()
-    var verifyKey = MutableLiveData<String>()
     var sendCodeType = SingleLiveEvent<Boolean>()
 
     private val userRepository: UserRepository by instance()
@@ -32,9 +34,6 @@ class RegisterViewModel(application: Application) : BaseViewModel(application) {
         selectCityNum.value = "86"
         selectCityName.value = "中国"
         countryCode.value = "CN"
-        //todo 参数初期为 后期修改
-        verifyKey.value = "1154804387088957440"
-
         registerSelect.value = false
         invitationCode.value = ""
     }
@@ -55,27 +54,32 @@ class RegisterViewModel(application: Application) : BaseViewModel(application) {
             To.showToast(context.getString(R.string.pasdno))
             return
         }
-        if (phoneNum.value?.isEmpty()!! ||
-            phoneCode.value?.isEmpty()!! ||
-            accountPsd.value?.isEmpty()!! ||
-            accountPsdConfirm.value?.isEmpty()!!
+        if (phoneNum.value.isNullOrEmpty() ||
+            phoneCode.value.isNullOrEmpty() ||
+            accountPsd.value.isNullOrEmpty() ||
+            accountPsdConfirm.value.isNullOrEmpty()
         ) {
             To.showToast(context.getString(R.string.datanull))
             return
         }
 
         launch {
-            val register = userRepository.register(
-                countryCode.value!!,
-                selectCityNum.value!!,
-                phoneNum.value!!,
-                Md5.getMD5(accountPsd.value!!),
-                Md5.getMD5(accountPsdConfirm.value!!),
-                verifyKey.value!!,
-                phoneCode.value!!,
-                invitationCode.value!!
+            businessHandler(
+                userRepository.register(
+                    countryCode.value!!,
+                    selectCityNum.value!!,
+                    phoneNum.value!!,
+                    Md5.getMD5(accountPsd.value!!),
+                    Md5.getMD5(accountPsdConfirm.value!!),
+                    phoneCode.value!!,
+                    invitationCode.value!!
+                )
             )
-            register.result
+            {
+                startActivity(FirstSetMonPsdActivity::class.java)
+            }
+
+
         }
 
     }
@@ -84,7 +88,16 @@ class RegisterViewModel(application: Application) : BaseViewModel(application) {
      * 发送验证码
      */
     fun sendCode() {
-        sendCodeType.call()
+        if (phoneNum.value.isNullOrEmpty()) {
+            To.showToast(context.getString(R.string.pleaseInoutPhoe))
+            return
+        }
+        launch {
+            businessHandler(userRepository.sendTheVerificationCode("1", selectCityNum.value!!, phoneNum.value!!)) {
+                sendCodeType.call()
+            }
+
+        }
     }
 
     fun selectRegister() {

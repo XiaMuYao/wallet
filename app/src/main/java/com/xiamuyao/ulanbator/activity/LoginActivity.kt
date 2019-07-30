@@ -6,6 +6,8 @@ import android.os.Bundle
 import com.xiamuyao.ulanbator.BR
 import com.xiamuyao.ulanbator.R
 import com.xiamuyao.ulanbator.base.BaseActivity
+import com.xiamuyao.ulanbator.constant.EventConstant
+import com.xiamuyao.ulanbator.constant.EventConstant.selectCityName
 import com.xiamuyao.ulanbator.databinding.ActivityLoginBinding
 import com.xiamuyao.ulanbator.util.setTitleBar
 import com.xiamuyao.ulanbator.utlis.DataBus
@@ -22,27 +24,15 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
             titleBarColor = R.color.touming,
             rightText = "注册",
             rightCallBack = { RegisterActivity.start(this) })
-        //登录
-        binding.btnLogin.setOnClickListener {
-            MainActivity.start(this)
-        }
-        //选择国家
-        binding.selectCity.setOnClickListener {
-            SelectCityActivity.start(this)
-        }
-        //忘记密码
-        binding.button.setOnClickListener {
-            ForgetActivity.start(this)
-        }
     }
 
     override fun initVVMObserver() {
-        DataBus.observeData(this, "selectCityName", object : DataBusObservable<String> {
+        DataBus.observeData(this, selectCityName, object : DataBusObservable<String> {
             override fun dataBusDataCallBack(it: String) {
                 viewModel.selectCityName.value = it
             }
         })
-        DataBus.observeData(this, "selectCityNum", object : DataBusObservable<String> {
+        DataBus.observeData(this, EventConstant.selectCityNum, object : DataBusObservable<String> {
             override fun dataBusDataCallBack(it: String) {
                 viewModel.selectCityNum.value = it
             }

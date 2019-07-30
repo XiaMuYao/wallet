@@ -7,6 +7,8 @@ import kotlinx.coroutines.withContext
 class PlaceRepository(private var placeService: BusinessService) {
 
     suspend fun getProvinceListAsync() = withContext(Dispatchers.IO) {
+        val provinces = placeService.getProvinces()
+
         return@withContext placeService.getProvinces()
     }
 

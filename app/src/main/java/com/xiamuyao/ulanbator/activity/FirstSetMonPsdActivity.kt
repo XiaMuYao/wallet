@@ -6,6 +6,7 @@ import com.xiamuyao.ulanbator.BR
 import com.xiamuyao.ulanbator.R
 import com.xiamuyao.ulanbator.base.BaseActivity
 import com.xiamuyao.ulanbator.databinding.ActivityFirstsetmonpsdBinding
+import com.xiamuyao.ulanbator.util.setTitleBar
 import com.xiamuyao.ulanbator.viewmodel.FirstSetMonPsdViewModel
 
 
@@ -14,14 +15,13 @@ import com.xiamuyao.ulanbator.viewmodel.FirstSetMonPsdViewModel
  */
 class FirstSetMonPsdActivity : BaseActivity<ActivityFirstsetmonpsdBinding, FirstSetMonPsdViewModel>() {
 
-    override fun initView() {
 
+    override fun initView() {
+        setTitleBar(titleBarColor = R.color.touming, leftCallBack = { finish() })
     }
 
     override fun initVVMObserver() {
-        viewModel.gotoMainActivity.observe(this, Observer {
-            MainActivity.start(this)
-        })
+
     }
 
 

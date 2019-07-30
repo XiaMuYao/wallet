@@ -3,12 +3,18 @@ package com.xiamuyao.ulanbator.viewmodel
 import android.app.Application
 import androidx.databinding.ObservableArrayList
 import androidx.lifecycle.MutableLiveData
+import com.xiamuyao.ulanbator.App
 import com.xiamuyao.ulanbator.R
 import com.xiamuyao.ulanbator.base.BaseViewModel
 import com.xiamuyao.ulanbator.constant.ProjectConstant
+import com.xiamuyao.ulanbator.extension.businessHandler
 import com.xiamuyao.ulanbator.model.bean.MarketBean
+import com.xiamuyao.ulanbator.model.repository.WalletRepository
+import com.xiamuyao.ulanbator.util.RateUtli
+import org.kodein.di.generic.instance
 
 class MainViewModel(application: Application) : BaseViewModel(application) {
+    private val repository: WalletRepository by instance()
 
     //底部点击菜单控件List
     var bottomClickIdList = arrayListOf(
@@ -33,12 +39,23 @@ class MainViewModel(application: Application) : BaseViewModel(application) {
 
     init {
         fragmentIndex.value = 0
-
-
     }
 
     override fun initData() {
 
+    }
+
+
+    /**
+     * 获取汇率数据
+     */
+    fun getExchangeRateData() {
+        launch {
+            val obtainExchangeRate = repository.obtainExchangeRate()
+            businessHandler(obtainExchangeRate) {
+
+            }
+        }
     }
 
     /**

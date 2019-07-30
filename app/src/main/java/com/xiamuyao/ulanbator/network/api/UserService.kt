@@ -21,7 +21,7 @@ interface UserService {
      * 登录
      */
     @FormUrlEncoded
-    @POST("/common/login")
+    @POST("common/login")
     suspend fun logIn(
         @Field("dialingCode") dialingCode: String,
         @Field("tel") tel: String,
@@ -39,7 +39,6 @@ interface UserService {
         @Field("tel") tel: String,
         @Field("password") password: String,
         @Field("passwordConfirm") passwordConfirm: String,
-        @Field("verifyKey") verifyKey: String,
         @Field("verifyCode") verifyCode: String,
         @Field("inviteCode") inviteCode: String
 
@@ -67,7 +66,6 @@ interface UserService {
         @Field("tel") tel: String,
         @Field("password") password: String,
         @Field("passwordConfirm") passwordConfirm: String,
-        @Field("verifyKey") verifyKey: String,
         @Field("verifyCode") verifyCode: String
     ): BaseResponse<ForgetPsdBean.DataBean>
 

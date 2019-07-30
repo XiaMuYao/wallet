@@ -21,19 +21,10 @@
             android:id="@+id/include"
             layout="@layout/layout_titlebar" />
 
-        <TextView
-            android:text="@{messagelistinfoViewModel.messageBody}"
+        <WebView
+            android:id="@+id/messaeInfoWebViewmo"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="16dp"
-            android:textColor="#B9B9B9"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/include"
-            tools:text="4545655654654654654" />
+            android:layout_height="match_parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

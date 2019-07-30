@@ -20,9 +20,12 @@ import com.xiamuyao.ulanbator.viewmodel.MainViewModel
 import com.xiamuyao.ulanbator.base.BaseActivity
 import com.xiamuyao.ulanbator.base.BaseFragment
 import com.xiamuyao.ulanbator.base.BaseViewModel
+import com.xiamuyao.ulanbator.constant.EventConstant
 import com.xiamuyao.ulanbator.constant.ProjectConstant
 import com.xiamuyao.ulanbator.fragment.*
 import com.xiamuyao.ulanbator.model.bean.MarketBean
+import com.xiamuyao.ulanbator.utlis.DataBus
+import com.xiamuyao.ulanbator.utlis.DataBusObservable
 import com.xiamuyao.ulanbator.utlis.LL
 import com.zhangke.websocket.SimpleListener
 import com.zhangke.websocket.WebSocketHandler
@@ -85,6 +88,13 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), ViewPag
     }
 
     override fun initVVMObserver() {
+        //行情 - 改变汇率
+        DataBus.observeData(this, EventConstant.quote_Refresh, object : DataBusObservable<String> {
+            override fun dataBusDataCallBack(it: String) {
+                viewModel.getExchangeRateData()
+            }
+        })
+
     }
 
     override fun initData() {

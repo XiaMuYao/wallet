@@ -18,7 +18,9 @@ object ProjectConstant {
     const val SUB_STR_EOS = "{\n" + "  \"sub\": \"market.eosusdt.detail\"\n" + "}"
     const val SUB_STR_ETC = "{\n" + "  \"sub\": \"market.etcusdt.detail\"\n" + "}"
 
-    const val USER_TOKEN = "token"
+    const val USER_TOKEN = "userLoginToken"
+    //BTC 价格
+    const val BTC_PRICE = "BTC_PRICE"
 
 
 

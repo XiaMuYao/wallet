@@ -19,9 +19,10 @@ class FindMessageListFragment : BaseFragment<FragmentFindmessagelistBinding, Fin
     }
 
     override fun initView() {
+        viewModel.requesttype.value = arguments?.getString("title")!!
         binding.messageRecyclerView.defaultStyle(findMessageADapter)
         findMessageADapter.setOnItemClickListener { _, _, position ->
-            MessageListInfoActivity.start(context!!, viewModel.findMessage[position].id.toString())
+            MessageListInfoActivity.start(context!!, viewModel.findMessage[position].url.toString())
         }
     }
 

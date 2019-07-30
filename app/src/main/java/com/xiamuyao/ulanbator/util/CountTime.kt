@@ -4,9 +4,12 @@ import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.CountDownTimer
 import android.widget.TextView
+import androidx.core.content.ContextCompat
+import com.xiamuyao.ulanbator.App
 import com.xiamuyao.ulanbator.R
 
-class CountTime(millisInFuture: Long=60000, countDownInterval: Long=1000,var textView: TextView) : CountDownTimer(millisInFuture, countDownInterval) {
+class CountTime(millisInFuture: Long = 60000, countDownInterval: Long = 1000, var textView: TextView) :
+    CountDownTimer(millisInFuture, countDownInterval) {
 
     var start = false
     @SuppressLint("SetTextI18n")
@@ -20,7 +23,7 @@ class CountTime(millisInFuture: Long=60000, countDownInterval: Long=1000,var tex
     @SuppressLint("ResourceAsColor")
     override fun onFinish() {
         start = false
-        textView.setTextColor(R.color.phoneCode)
-        textView.text = "@string/getphoneCode"
+        textView.setTextColor(ContextCompat.getColor(App.CONTEXT, R.color.phoneCode))
+        textView.text = App.CONTEXT.getString(R.string.getphoneCode)
     }
 }

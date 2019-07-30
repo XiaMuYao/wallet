@@ -38,11 +38,11 @@ class RegisterActivity : BaseActivity<ActivityRegisterBinding, RegisterViewModel
                 viewModel.selectCityNum.value = it
             }
         })
-        DataBus.observeData(this, EventConstant.countryCode, object : DataBusObservable<String> {
-            override fun dataBusDataCallBack(it: String) {
-                viewModel.countryCode.value = it
-            }
-        })
+//        DataBus.observeData(this, EventConstant.countryCode, object : DataBusObservable<String> {
+//            override fun dataBusDataCallBack(it: String) {
+//                viewModel.countryCode.value = it
+//            }
+//        })
         //倒计时
         val countTime = CountTime(textView = binding.phoneCode)
 

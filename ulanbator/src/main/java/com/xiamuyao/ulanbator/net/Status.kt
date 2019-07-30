@@ -4,7 +4,7 @@ object Status {
     /**
      * 响应成功
      */
-    const val SUCCESS = 0
+    const val SUCCESS = "0"
 
     /**
      * 未知错误

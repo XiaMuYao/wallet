@@ -1,5 +1,7 @@
-package com.xiamuyao.ulanbator.net.interceptor
+package com.xiamuyao.ulanbator.network
 
+import com.xiamuyao.ulanbator.App
+import com.xiamuyao.ulanbator.util.getSpValue
 import okhttp3.FormBody
 import okhttp3.Interceptor
 import okhttp3.Request
@@ -78,6 +80,16 @@ class CommonParamInterceptor : Interceptor {
 
             builder.addEncoded("appKey", "3b366f4ed1719695a67024a41d39676e")
             builder.addEncoded("devicePlatform", "android")
+            builder.addEncoded("verifyKey", App.CONTEXT.getSpValue("verifyKey", ""))
+            builder.addEncoded("userLoginId", App.CONTEXT.getSpValue("userLoginId", ""))
+            builder.addEncoded("userLoginToken", App.CONTEXT.getSpValue("userLoginToken", ""))
+
+            builder.addEncoded("deviceNo", "")
+            builder.addEncoded("ipAddress", "")
+            builder.addEncoded("devicePlatformVersion", "")
+            builder.addEncoded("devicePlatformLanguage", "1")
+            builder.addEncoded("clientChannel", "1")
+            builder.addEncoded("clientVersion", "")
 
             tempRequest = request.newBuilder().post(builder.build()).build()
         }

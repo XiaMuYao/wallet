@@ -21,9 +21,7 @@ class MessageListInfoActivity : BaseActivity<ActivityMessagelistinfoBinding, Mes
     }
 
     override fun initVVMObserver() {
-        viewModel.messageId.observe(this, Observer {
-            viewModel.getPageData()
-        })
+        binding.messaeInfoWebViewmo.loadUrl(viewModel.messageId.value)
     }
 
     override fun initContentView(savedInstanceState: Bundle?): Int {

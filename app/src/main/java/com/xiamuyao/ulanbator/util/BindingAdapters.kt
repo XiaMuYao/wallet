@@ -151,8 +151,39 @@ object BindingAdapters {
         } else {
             view.setBackgroundResource(R.drawable.shape_pair_down)
             view.setText("-${type}%")
-
-
         }
+    }
+
+
+    @BindingAdapter("userLever")
+    @JvmStatic
+    fun setuserLever(view: ImageView, type: Int) {
+        var imageId = 0
+        when (type) {
+            0 -> {
+                imageId = R.drawable.icon_menu_my
+            }
+            1 -> {
+                imageId = R.drawable.icon_menu_my
+
+            }
+            2 -> {
+                imageId = R.drawable.icon_menu_my
+
+            }
+            3 -> {
+                imageId = R.drawable.icon_menu_my
+
+            }
+            4 -> {
+                imageId = R.drawable.icon_menu_my
+
+            }
+            5 -> {
+                imageId = R.drawable.icon_menu_my
+
+            }
+        }
+        view.setImageResource(imageId)
     }
 }

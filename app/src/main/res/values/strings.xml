@@ -82,4 +82,10 @@
     <string name="sendsucess">发送成功</string>
     <string name="pasdno">两次密码不一致</string>
     <string name="datanull">有数据为空</string>
+    <string name="pleaseInoutPhoe">请输入手机号码</string>
+    <string name="pleaseInPutPsd">请输入密码</string>
+    <string name="pleaseInPutPsdConig">请输入确认密码</string>
+    <string name="pleadzijinmima">请输入资金密码</string>
+    <string name="pldeazijinagre">请再次输入密码</string>
+    <string name="liangcinoagen">两次密码输入不一致</string>
 </resources>

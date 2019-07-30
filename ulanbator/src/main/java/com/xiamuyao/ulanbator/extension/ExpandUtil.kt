@@ -5,7 +5,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
 import com.scwang.smartrefresh.layout.api.RefreshLayout
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener
+import com.xiamuyao.ulanbator.base.BaseViewModel
 import com.xiamuyao.ulanbator.base.adapter.BaseObservableListAdapter
+import com.xiamuyao.ulanbator.net.BaseResponse
+import com.xiamuyao.ulanbator.net.Status.SUCCESS
+import com.xiamuyao.ulanbator.utlis.To
 
 /**
  * 通用拓展函数
@@ -59,19 +63,17 @@ fun SmartRefreshLayout.defaultRefreshLoadMoreFun(
 
 }
 
-//fun <T> BaseViewModel.businessHandler(data: BaseResponse<T>): T {
-//    //这里的错误代码 根据和后台约定重新建立常量类
-//    when (data.errorCode) {
-//        SUCCESS -> { //业务正常
-//
-//        }
-//        API_ERROR -> { //API解析异常
-//
-//        }
-//        else -> {
-//            //加载错误 未捕捉错误
-////            this.loadStatus.value = LibConstant.LOAD_ERROR
-//        }
-//    }
-//    return data.data
-//}
+fun <T> BaseViewModel.businessHandler(data: BaseResponse<T>, doingSom: (() -> Unit)? = null
+): T {
+    when (data.result.returnCode) {
+        SUCCESS -> {
+            doingSom?.let { it.invoke() }
+        }
+        else -> {
+            data.result.returnUserMessage?.let {
+                To.showToast(it)
+            }
+        }
+    }
+    return data.data
+}

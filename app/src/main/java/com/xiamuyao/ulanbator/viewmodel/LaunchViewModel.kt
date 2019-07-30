@@ -16,8 +16,6 @@ class LaunchViewModel(application: Application) : BaseViewModel(application) {
 
     override fun initData() {
         launch {
-            kotlinx.coroutines.delay(2000)
-
             //没有用户
             if (getSpValue(USER_TOKEN, "").isEmpty()) {
                 startActivity(NoLoginActivity::class.java)
