@@ -104,5 +104,9 @@ class ManagingMoneyFragment : BaseFragment<FragmentManagingMoneyBinding, Managin
             return findFragment
         }
     }
+    override fun onResume() {
+        super.onResume()
+        viewModel.initData()
+    }
 
 }

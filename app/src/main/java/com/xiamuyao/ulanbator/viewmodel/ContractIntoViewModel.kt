@@ -5,10 +5,14 @@ import androidx.databinding.ObservableArrayList
 import androidx.lifecycle.MutableLiveData
 import com.xiamuyao.ulanbator.base.BaseViewModel
 import com.xiamuyao.ulanbator.model.bean.PairListBean
+import com.xiamuyao.ulanbator.model.bean.response.GetMoneyShopBean
 
 class ContractIntoViewModel(application: Application) : BaseViewModel(application) {
 
     var pariList = ObservableArrayList<PairListBean>()
+    var tempBean = MutableLiveData<GetMoneyShopBean.DataBean.ListBean>()
+    var shopTitle = MutableLiveData<String>()
+    var from = ""
 
     // 1 已认购
     // 2 已满额

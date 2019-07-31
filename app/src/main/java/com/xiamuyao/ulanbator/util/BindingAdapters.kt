@@ -1,6 +1,7 @@
 package com.xiamuyao.ulanbator.util
 
 import android.annotation.SuppressLint
+import android.graphics.drawable.Drawable
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -12,6 +13,8 @@ import com.bumptech.glide.request.RequestOptions
 import com.xiamuyao.ulanbator.App
 import com.xiamuyao.ulanbator.R
 import org.w3c.dom.Text
+import androidx.databinding.BindingAdapter
+
 
 object BindingAdapters {
 
@@ -116,18 +119,15 @@ object BindingAdapters {
         when (type) {
             1 -> {
                 view.setBackgroundResource(R.drawable.shape_contract_yirenou)
-
                 view.text = "已认购"
             }
             2 -> {
                 view.text = "已满额"
-
-                R.drawable.shape_contract_yimane
+                view.setBackgroundResource(R.drawable.shape_contract_yimane)
             }
-            3 -> {
+            0 -> {
                 view.text = "可认购"
-
-                R.drawable.shape_contract_kerengou
+                view.setBackgroundResource(R.drawable.shape_contract_kerengou)
             }
         }
 
@@ -196,10 +196,29 @@ object BindingAdapters {
     @BindingAdapter("phoneFont")
     @JvmStatic
     fun setphoneFont(view: TextView, type: String) {
-if (type.isEmpty() ) return
+        if (type.isEmpty()) return
         var first = type.substring(0, 3)
 
         var after = type.substring(type.length - 4, type.length)
-        view.text ="$first****$after"
+        view.text = "$first****$after"
     }
+
+    @BindingAdapter(value = ["app:moneyFormatProcessing", "app:type"], requireAll = false)
+    fun setMoneyFormatProcessing(view: TextView, value: String, type: Int) {
+        val replace = value.replace("门槛", "").replace(":", "").replace("$", "")
+        val slice = replace.split("~")
+
+        when {
+            slice.isNotEmpty() -> {
+                view.text = slice[0]
+                if (type == 1) {
+                    return
+                }
+            }
+            slice.size == 2 -> {
+                view.text = slice[1]
+            }
+        }
+    }
+
 }

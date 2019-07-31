@@ -125,11 +125,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:text="买入 S1合约 日化 0.1%～0.2%"
+                android:text="@{contractintoViewModel.shopTitle}"
                 android:textColor="#FDFDFD"
                 android:textSize="16dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="买入 S1合约 日化 0.1%～0.2%" />
 
             <EditText
                 android:id="@+id/editText"
@@ -174,7 +175,7 @@
                 android:id="@+id/textView30"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="限额: $100 ~ $1000"
+                android:text="@{contractintoViewModel.tempBean.intro}"
                 android:textColor="#878DA8"
                 app:layout_constraintBaseline_toBaselineOf="@+id/textView29"
                 app:layout_constraintEnd_toEndOf="@+id/editText" />

@@ -100,6 +100,15 @@ public class GetMoenyInfoBean {
         private String tokenUSD;
         private String ltc;
         private String btcUSD;
+        private String sum;
+
+        public String getSum() {
+            return sum;
+        }
+
+        public void setSum(String sum) {
+            this.sum = sum;
+        }
 
         public String getEthUSD() {
             return ethUSD;

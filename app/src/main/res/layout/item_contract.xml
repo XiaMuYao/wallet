@@ -7,7 +7,7 @@
 
         <variable
             name="contractListBean"
-            type="com.xiamuyao.ulanbator.model.bean.ContractListBean" />
+            type="com.xiamuyao.ulanbator.model.bean.response.GetMoneyShopBean.DataBean.ListBean" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -59,7 +59,7 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{contractListBean.contractPercentage}"
+            android:text="@{contractListBean.shouyiText}"
             android:textColor="#FF8365FF"
             android:textSize="20dp"
             android:textStyle="bold"
@@ -72,7 +72,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="@{contractListBean.contractType}"
+            android:text="日化收益率"
             android:textColor="#47495C"
             android:textSize="12dp"
             app:layout_constraintStart_toStartOf="@+id/guideline31"
@@ -84,7 +84,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            android:text="@{contractListBean.contractLever}"
+            android:text="@{contractListBean.title}"
             android:textColor="#343443"
             android:textSize="75dp"
             android:textStyle="bold"
@@ -96,7 +96,6 @@
         <View
             android:layout_width="0.5dp"
             android:layout_height="50dp"
-
             android:layout_marginEnd="8dp"
             android:background="#33FFFFFF"
             app:layout_constraintBottom_toBottomOf="@+id/imageView2"
@@ -126,12 +125,11 @@
             android:id="@+id/textView18"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{contractListBean.contractLever}"
+            android:text="@{contractListBean.title}"
             android:textColor="#FFFFFF"
             android:textSize="25dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/textView"
-
             app:layout_constraintStart_toStartOf="@+id/guideline33"
             app:layout_constraintTop_toTopOf="@+id/textView"
             tools:text="12" />
@@ -140,7 +138,7 @@
             android:id="@+id/textView19"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{contractListBean.contractThreshold}"
+            android:text="@{contractListBean.intro}"
             android:textColor="#47495C"
             android:textSize="12dp"
             app:layout_constraintBottom_toBottomOf="@+id/textView2"
@@ -157,7 +155,7 @@
             android:gravity="center"
             android:textColor="#fff"
             android:textSize="11dp"
-            app:contractImageType="@{1}"
+            app:contractImageType="@{contractListBean.stateType}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

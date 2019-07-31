@@ -46,7 +46,7 @@
                 android:id="@+id/sumText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="23425.12"
+                android:text="@{accountdetailsViewModel.interestALL}"
                 android:textColor="#FFFFFFFF"
                 android:textSize="30dp"
                 android:textStyle="bold" />
@@ -58,19 +58,19 @@
                 android:layout_alignBaseline="@+id/sumText"
                 android:layout_marginLeft="@dimen/dimens_5dp"
                 android:layout_toRightOf="@+id/sumText"
+                android:text="MAX"
                 android:textColor="#FFFFFFFF"
-                android:textSize="15dp"
-                android:text="MAX" />
+                android:textSize="15dp" />
         </RelativeLayout>
 
         <TextView
             android:id="@+id/textView23"
+            style="@style/style_account_title"
             android:text="@string/sumprofit"
             app:layout_constraintHorizontal_bias="0.447"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="@+id/guideline29"
-            app:layout_constraintTop_toBottomOf="@+id/guideline120"
-            style="@style/style_account_title" />
+            app:layout_constraintTop_toBottomOf="@+id/guideline120" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline29"
@@ -81,11 +81,11 @@
 
         <TextView
             android:id="@+id/textView21"
+            style="@style/style_account_title"
             android:text="@string/sumMarkMoney"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline29"
-            app:layout_constraintTop_toBottomOf="@+id/guideline120"
-            style="@style/style_account_title" />
+            app:layout_constraintTop_toBottomOf="@+id/guideline120" />
 
         <LinearLayout
             android:id="@+id/linearLayout4"
@@ -97,16 +97,19 @@
             app:layout_constraintTop_toBottomOf="@+id/guideline121">
 
             <TextView
-                tools:text="23425.12"
-                style="@style/style_subtitle" />
+                style="@style/style_subtitle"
+                android:text="@{accountdetailsViewModel.interestShare}"
+                tools:text="23425.12" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="MAX"
+                android:layout_marginLeft="5dp"
+
                 android:textColor="#FFFFFF"
                 android:textSize="17.5dp"
-                android:textStyle="bold"
-                android:text="MAX" />
+                android:textStyle="bold" />
 
         </LinearLayout>
 
@@ -120,16 +123,18 @@
             app:layout_constraintTop_toBottomOf="@+id/guideline121">
 
             <TextView
-                tools:text="23425.12"
-                style="@style/style_subtitle" />
+                style="@style/style_subtitle"
+                android:text="@{accountdetailsViewModel.interestProduct}"
+                tools:text="23425.12" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="MAX"
+                android:layout_marginLeft="5dp"
                 android:textColor="#FFFFFF"
                 android:textSize="17.5dp"
-                android:textStyle="bold"
-                android:text="MAX" />
+                android:textStyle="bold" />
 
         </LinearLayout>
 
@@ -173,29 +178,32 @@
 
             <TextView
                 style="@style/accountMoney"
+                android:text="@{accountdetailsViewModel.interestLast}"
                 app:layout_constraintBottom_toBottomOf="@+id/textView22"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/textView22"
                 app:layout_constraintVertical_bias="0.0"
-                android:text="200.0 MAX" />
+                tools:text="200.0 MAX" />
 
 
             <TextView
                 style="@style/accountMoney"
+                android:text="@{accountdetailsViewModel.interestProductLast}"
                 app:layout_constraintBottom_toBottomOf="@+id/textView24"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/textView24"
                 app:layout_constraintVertical_bias="0.0"
-                android:text="200.0 MAX" />
+                tools:text="200.0 MAX" />
 
 
             <TextView
                 style="@style/accountMoney"
+                android:text="@{accountdetailsViewModel.interestShareLast}"
                 app:layout_constraintBottom_toBottomOf="@+id/textView25"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/textView25"
                 app:layout_constraintVertical_bias="0.0"
-                android:text="200.0 MAX" />
+                tools:text="200.0 MAX" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

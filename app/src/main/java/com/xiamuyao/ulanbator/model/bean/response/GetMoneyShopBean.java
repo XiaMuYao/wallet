@@ -1,8 +1,9 @@
 package com.xiamuyao.ulanbator.model.bean.response;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class GetMoneyShopBean {
+public class GetMoneyShopBean implements Serializable{
 
     /**
      * result : {"returnCode":"0","returnUserMessage":"成功","returnMessage":"成功"}
@@ -28,7 +29,7 @@ public class GetMoneyShopBean {
         this.data = data;
     }
 
-    public static class ResultBean {
+    public static class ResultBean implements Serializable{
         /**
          * returnCode : 0
          * returnUserMessage : 成功
@@ -64,7 +65,7 @@ public class GetMoneyShopBean {
         }
     }
 
-    public static class DataBean {
+    public static class DataBean implements Serializable{
         private List<ListBean> list;
 
         public List<ListBean> getList() {
@@ -75,7 +76,7 @@ public class GetMoneyShopBean {
             this.list = list;
         }
 
-        public static class ListBean {
+        public static class ListBean implements Serializable {
             /**
              * userAmountMin : 100
              * leaveRate : 5
@@ -103,6 +104,15 @@ public class GetMoneyShopBean {
             private int userAmountMax;
             private String leaveDay;
             private String productId;
+            private String shouyiText;
+
+            public String getShouyiText() {
+                return getInterestMin()+ "~" + getInterestMax();
+            }
+
+            public void setShouyiText(String shouyiText) {
+                this.shouyiText = shouyiText;
+            }
 
             public int getUserAmountMin() {
                 return userAmountMin;
@@ -120,8 +130,8 @@ public class GetMoneyShopBean {
                 this.leaveRate = leaveRate;
             }
 
-            public double getInterestMax() {
-                return interestMax;
+            public String getInterestMax() {
+                return interestMax+"%";
             }
 
             public void setInterestMax(double interestMax) {
@@ -136,8 +146,8 @@ public class GetMoneyShopBean {
                 this.intro = intro;
             }
 
-            public double getInterestMin() {
-                return interestMin;
+            public String getInterestMin() {
+                return interestMin+"%";
             }
 
             public void setInterestMin(double interestMin) {
