@@ -45,9 +45,11 @@
                 app:layout_constraintBottom_toBottomOf="parent" />
 
             <EditText
-                android:textCursorDrawable="@drawable/shape_ed_color"
                 style="@style/style_set_user_psd_ed"
                 android:hint="原登录密码"
+                android:inputType="textPassword"
+                android:text="@={setuserpsdViewModel.loginPassword}"
+                android:textCursorDrawable="@drawable/shape_ed_color"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/guideline81"
                 app:layout_constraintStart_toStartOf="@+id/guideline75"
@@ -100,10 +102,12 @@
                 app:layout_constraintBottom_toBottomOf="parent" />
 
             <EditText
-                android:textCursorDrawable="@drawable/shape_ed_color"
                 style="@style/style_set_user_psd_ed"
                 android:hint="新登录密码"
+                android:text="@={setuserpsdViewModel.password}"
+                android:textCursorDrawable="@drawable/shape_ed_color"
                 app:layout_constraintBottom_toBottomOf="parent"
+                android:inputType="textPassword"
                 app:layout_constraintEnd_toStartOf="@+id/guideline84"
                 app:layout_constraintStart_toStartOf="@+id/guideline76"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -157,8 +161,10 @@
             <EditText
                 style="@style/style_set_user_psd_ed"
                 android:hint="再次输入新登录密码"
+                android:text="@={setuserpsdViewModel.passwordConfirm}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/guideline86"
+                android:inputType="textPassword"
                 app:layout_constraintStart_toStartOf="@+id/guideline77"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -235,8 +241,9 @@
                 android:id="@+id/textView72"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="189****9712"
                 android:textColor="#FFFFFF"
+                tools:text="138****7894"
+                android:text="@{setuserpsdViewModel.tel}"
                 app:layout_constraintBottom_toTopOf="@+id/view20"
                 app:layout_constraintStart_toStartOf="@+id/guideline78"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -270,6 +277,7 @@
                 android:id="@+id/editText2"
                 style="@style/style_set_user_psd_ed"
                 android:hint="输入手机验证码"
+                android:text="@={setuserpsdViewModel.verifyCode}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/guideline90"
                 app:layout_constraintStart_toStartOf="@+id/guideline79"
@@ -298,16 +306,32 @@
                 app:layout_constraintGuide_percent="0.8" />
 
             <TextView
+                android:id="@+id/phoneCode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/getphoneCode"
                 android:textColor="#5856FF"
+                android:onClick="@{() -> setuserpsdViewModel.sendCde()}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/guideline90"
                 app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <Button
+            android:id="@+id/queding"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="@dimen/dp_10"
+            android:background="@drawable/shape_btn"
+            android:text="@string/queding"
+            android:onClick="@{() -> setuserpsdViewModel.setLoginPsd()}"
+            android:textColor="#ffff"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

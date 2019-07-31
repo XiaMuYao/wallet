@@ -23,6 +23,7 @@ class UserSetNameActivity : BaseActivity<ActivityUsersetnameBinding, UserSetName
         binding.cancel.setOnClickListener { finish() }
         binding.button3.setOnClickListener { viewModel.saveUserName() }
         binding.imageView9123.setOnClickListener { viewModel.cleanName() }
+
     }
 
     override fun initVVMObserver() {

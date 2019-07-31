@@ -32,7 +32,7 @@
             android:layout_height="45dp"
             android:layout_marginStart="15dp"
             android:layout_marginTop="78.5dp"
-            android:background="#f123"
+            app:netCircleImageLocal="@{3}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -41,7 +41,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
-            android:text="Benjamin"
+            android:text="@{myViewModel.nickName}"
+            tools:text="123456456415"
             android:textColor="#FFFFFF"
             android:textSize="18dp"
             app:layout_constraintStart_toEndOf="@+id/imageView6"
@@ -52,7 +53,7 @@
             android:layout_width="35dp"
             android:layout_height="15dp"
             android:layout_marginStart="5dp"
-            android:background="@drawable/vip1"
+            app:userLever="@{myViewModel.vipType}"
             app:layout_constraintBottom_toBottomOf="@+id/textView35"
             app:layout_constraintStart_toEndOf="@+id/textView35"
             app:layout_constraintTop_toTopOf="@+id/textView35" />
@@ -62,8 +63,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
-            android:text="TextView"
+            android:text="@{myViewModel.inviteCode}"
             android:textColor="#878DA8"
+            tools:text="TextView"
             android:textSize="13dp"
             app:layout_constraintBottom_toBottomOf="@+id/imageView6"
             app:layout_constraintStart_toEndOf="@+id/imageView6" />

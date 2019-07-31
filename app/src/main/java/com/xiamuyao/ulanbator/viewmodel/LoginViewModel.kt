@@ -9,6 +9,7 @@ import com.xiamuyao.ulanbator.activity.SelectCityActivity
 import com.xiamuyao.ulanbator.base.BaseViewModel
 import com.xiamuyao.ulanbator.extension.businessHandler
 import com.xiamuyao.ulanbator.model.repository.UserRepository
+import com.xiamuyao.ulanbator.utlis.ActivityStackManager
 import com.xiamuyao.ulanbator.utlis.To
 import org.kodein.di.generic.instance
 
@@ -43,6 +44,8 @@ class LoginViewModel(application: Application) : BaseViewModel(application) {
         launch {
             businessHandler(userRepository.logIn(selectCityNum.value!!, phoneNum.value!!, userPsd.value!!)){
                 startActivity(MainActivity::class.java)
+                ActivityStackManager.getInstance().finishAllActivity()
+
                 finishStatus.call()
             }
         }

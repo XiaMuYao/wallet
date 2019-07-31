@@ -9,10 +9,11 @@ import org.kodein.di.generic.instance
 class MessageListInfoViewModel(application: Application) : BaseViewModel(application) {
 
     var messageId = MutableLiveData<String>()
+    var id = MutableLiveData<String>()
     private val repository: FindRepository by instance()
 
     override fun initData() {
-        launch { repository.readInformation() }
+        launch { repository.readInformation(id.value!!) }
 
     }
 

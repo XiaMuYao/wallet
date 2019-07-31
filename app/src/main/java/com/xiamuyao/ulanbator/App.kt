@@ -11,15 +11,9 @@ import com.xiamuyao.ulanbator.constant.EventConstant
 import com.xiamuyao.ulanbator.constant.ProjectConstant
 import com.xiamuyao.ulanbator.constant.ProjectConstant.BTC_PRICE
 import com.xiamuyao.ulanbator.model.bean.MarketBean
-import com.xiamuyao.ulanbator.model.repository.FindRepository
-import com.xiamuyao.ulanbator.model.repository.PlaceRepository
-import com.xiamuyao.ulanbator.model.repository.UserRepository
-import com.xiamuyao.ulanbator.model.repository.WalletRepository
+import com.xiamuyao.ulanbator.model.repository.*
 import com.xiamuyao.ulanbator.network.ServiceCreator
-import com.xiamuyao.ulanbator.network.api.BusinessService
-import com.xiamuyao.ulanbator.network.api.FindService
-import com.xiamuyao.ulanbator.network.api.UserService
-import com.xiamuyao.ulanbator.network.api.WalletService
+import com.xiamuyao.ulanbator.network.api.*
 import com.xiamuyao.ulanbator.util.putSpValue
 import com.xiamuyao.ulanbator.utlis.DataBus
 import com.xiamuyao.ulanbator.utlis.LL
@@ -46,12 +40,16 @@ class App : Application(), KodeinAware {
         bind<UserService>() with singleton { ServiceCreator.create(UserService::class.java) }
         bind<WalletService>() with singleton { ServiceCreator.create(WalletService::class.java) }
         bind<FindService>() with singleton { ServiceCreator.create(FindService::class.java) }
+        bind<MyService>() with singleton { ServiceCreator.create(MyService::class.java) }
+        bind<MoneyService>() with singleton { ServiceCreator.create(MoneyService::class.java) }
 
         //从容器中选择
         bind<PlaceRepository>() with singleton { PlaceRepository.getInstance(instance()) }
         bind<UserRepository>() with singleton { UserRepository.getInstance(instance()) }
         bind<WalletRepository>() with singleton { WalletRepository.getInstance(instance()) }
         bind<FindRepository>() with singleton { FindRepository.getInstance(instance()) }
+        bind<MyUserRepository>() with singleton { MyUserRepository.getInstance(instance()) }
+        bind<MoneyRepository>() with singleton { MoneyRepository.getInstance(instance()) }
 
     }
 

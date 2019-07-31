@@ -50,12 +50,12 @@ class MainViewModel(application: Application) : BaseViewModel(application) {
      * 获取汇率数据
      */
     fun getExchangeRateData() {
-        launch {
-            val obtainExchangeRate = repository.obtainExchangeRate()
-            businessHandler(obtainExchangeRate) {
-
-            }
-        }
+//        launch {
+//            val obtainExchangeRate = repository.obtainExchangeRate()
+//            businessHandler(obtainExchangeRate) {
+//
+//            }
+//        }
     }
 
     /**

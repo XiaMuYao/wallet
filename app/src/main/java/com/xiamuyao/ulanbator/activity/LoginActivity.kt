@@ -27,6 +27,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
     }
 
     override fun initVVMObserver() {
+
         DataBus.observeData(this, selectCityName, object : DataBusObservable<String> {
             override fun dataBusDataCallBack(it: String) {
                 viewModel.selectCityName.value = it

@@ -1,5 +1,6 @@
 package com.xiamuyao.ulanbator.util
 
+import android.annotation.SuppressLint
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -38,12 +39,16 @@ object BindingAdapters {
             .into(view)
     }
 
+    /**
+     * 3 头像
+     */
     @BindingAdapter("netCircleImageLocal")
     @JvmStatic
     fun setImageViewWithLocalByCircle(view: ImageView, type: Int) {
         val tempId: Int = when (type) {
             1 -> R.drawable.logo_01
             2 -> R.drawable.logo_02
+            3 -> R.drawable.avatar_01
             else -> R.drawable.logo_01
         }
         Glide.with(App.CONTEXT)
@@ -158,32 +163,43 @@ object BindingAdapters {
     @BindingAdapter("userLever")
     @JvmStatic
     fun setuserLever(view: ImageView, type: Int) {
+
         var imageId = 0
         when (type) {
             0 -> {
-                imageId = R.drawable.icon_menu_my
+                return
             }
             1 -> {
-                imageId = R.drawable.icon_menu_my
+                imageId = R.drawable.vip1
 
             }
             2 -> {
-                imageId = R.drawable.icon_menu_my
+                imageId = R.drawable.vip2
 
             }
             3 -> {
-                imageId = R.drawable.icon_menu_my
+                imageId = R.drawable.vip3
 
             }
             4 -> {
-                imageId = R.drawable.icon_menu_my
+                imageId = R.drawable.vip4
 
             }
             5 -> {
-                imageId = R.drawable.icon_menu_my
+                imageId = R.drawable.vip5
 
             }
         }
-        view.setImageResource(imageId)
+        view.setBackgroundResource(imageId)
+    }
+
+    @BindingAdapter("phoneFont")
+    @JvmStatic
+    fun setphoneFont(view: TextView, type: String) {
+if (type.isEmpty() ) return
+        var first = type.substring(0, 3)
+
+        var after = type.substring(type.length - 4, type.length)
+        view.text ="$first****$after"
     }
 }

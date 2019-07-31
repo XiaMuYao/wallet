@@ -7,6 +7,7 @@ import com.xiamuyao.ulanbator.base.BaseViewModel
 import com.xiamuyao.ulanbator.constant.ProjectConstant.USER_TOKEN
 import com.xiamuyao.ulanbator.model.repository.PlaceRepository
 import com.xiamuyao.ulanbator.util.getSpValue
+import com.xiamuyao.ulanbator.utlis.ActivityStackManager
 import org.kodein.di.generic.instance
 
 class LaunchViewModel(application: Application) : BaseViewModel(application) {
@@ -22,6 +23,8 @@ class LaunchViewModel(application: Application) : BaseViewModel(application) {
             }else{
                 //主页
                 startActivity(MainActivity::class.java)
+                ActivityStackManager.getInstance().finishAllActivity()
+
             }
         }
     }

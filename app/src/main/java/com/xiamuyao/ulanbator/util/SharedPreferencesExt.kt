@@ -12,6 +12,7 @@ import java.io.ObjectOutputStream
 import java.net.URLDecoder
 import java.net.URLEncoder
 
+
 /**
  * Created by luyao
  * on 2019/7/8 14:56
@@ -117,6 +118,13 @@ fun <T> ViewModel.getSpValue(key: String, default: T, name: String = App.CONTEXT
         )
     }
     return result as T
+}
+
+fun Context.removeAllKey() {
+    val sp = sp(App.CONTEXT.packageName)
+    val editor = sp.edit()
+    editor.clear()
+    editor.apply()
 }
 
 private fun <T> serialize(obj: T): String {

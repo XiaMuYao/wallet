@@ -179,6 +179,8 @@
         <item name="android:paddingLeft">@dimen/dimens_5dp</item>
         <item name="android:textColorHint">@color/textsubclor</item>
         <item name="android:textSize">14dp</item>
+        <item name="android:textColor">#ffff</item>
+        <item name="android:inputType">textPassword</item>
     </style>
 
     <style name="style_select_image">

@@ -18,7 +18,7 @@ class UserInfoActivity : BaseActivity<ActivityUserinfoBinding, UserInfoViewModel
 
         //昵称
         binding.constraintLayout1.setOnClickListener {
-            UserSetNameActivity.start(this, viewModel.userName.value)
+            UserSetNameActivity.start(this, viewModel.nickName.value)
         }
     }
 
@@ -43,6 +43,11 @@ class UserInfoActivity : BaseActivity<ActivityUserinfoBinding, UserInfoViewModel
             starter.putExtra("message", message)
             context.startActivity(starter)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.initData()
     }
 
 }

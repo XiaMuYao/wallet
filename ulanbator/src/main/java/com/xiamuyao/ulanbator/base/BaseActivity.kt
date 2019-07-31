@@ -11,7 +11,10 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.gyf.immersionbar.ImmersionBar
 import com.xiamuyao.ulanbator.R
+import com.xiamuyao.ulanbator.utlis.ActivityStackManager
 import com.xiamuyao.ulanbator.utlis.LL
+
+
 
 
 abstract class BaseActivity<V : ViewDataBinding, VM : BaseViewModel> : AppCompatActivity() {
@@ -25,6 +28,7 @@ abstract class BaseActivity<V : ViewDataBinding, VM : BaseViewModel> : AppCompat
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mContext = this
+        ActivityStackManager.getInstance().addActivity(this)
         //私有的初始化 Data Binding 和 ViewModel 方法
         initViewDataBinding(savedInstanceState)
         //页面传参

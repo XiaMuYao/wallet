@@ -124,7 +124,7 @@
             android:id="@+id/textView81"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ID:231888"
+            android:text="@{managingMoneyViewModel.inviteCode}"
             android:textColor="#4DFFFFFF"
             app:layout_constraintEnd_toStartOf="@+id/guideline110"
             app:layout_constraintTop_toTopOf="@+id/guideline111" />

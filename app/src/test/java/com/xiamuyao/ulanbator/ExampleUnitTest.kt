@@ -1,6 +1,5 @@
 package com.xiamuyao.ulanbator
 
-import com.xiamuyao.ulanbator.util.UDID
 import org.junit.Test
 
 /**
@@ -11,7 +10,15 @@ import org.junit.Test
 class ExampleUnitTest {
     @Test
     fun addition_isCorrect() {
-        println(UDID.UDID())
+
+        var type = "18945715484"
+        var first = type.substring(0, 3)
+
+        var after = type.substring(type.length - 4, type.length)
+        var aaaa = "${first}****${after}"
+
+        println(aaaa)
+
     }
 
 

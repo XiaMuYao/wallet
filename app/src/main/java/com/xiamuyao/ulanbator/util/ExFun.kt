@@ -9,6 +9,8 @@ import androidx.databinding.ViewDataBinding
 import com.xiamuyao.ulanbator.R
 import com.xiamuyao.ulanbator.base.BaseActivity
 import com.xiamuyao.ulanbator.base.BaseViewModel
+import java.text.SimpleDateFormat
+import java.util.*
 
 @SuppressLint("ResourceAsColor")
 fun <V : ViewDataBinding, VM : BaseViewModel> BaseActivity<V, VM>.setTitleBar(
@@ -16,10 +18,10 @@ fun <V : ViewDataBinding, VM : BaseViewModel> BaseActivity<V, VM>.setTitleBar(
     leftCallBack: (() -> Unit)? = null,
     titleBarColor: Int = R.color.immersionBar,
     rightText: String = "",
-    rightImageView: Int?=null,
+    rightImageView: Int? = null,
     rightCallBack: (() -> Unit)? = null
 
-    ) {
+) {
     val titleView = findViewById<TextView>(R.id.titleBarTitle)
     title.takeIf { it.isNotEmpty() }?.let {
         titleView.visibility = View.VISIBLE
@@ -52,4 +54,14 @@ fun <V : ViewDataBinding, VM : BaseViewModel> BaseActivity<V, VM>.setTitleBar(
         tempRightImageView.visibility = View.VISIBLE
         tempRightImageView.setOnClickListener { rightCallBack!!() }
     }
+}
+
+@SuppressLint("SimpleDateFormat")
+fun String.toTime(from: String = "yyyy-MM-dd HH:mm:ss"): String? {
+
+
+    val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+    val sd = sdf.format(Date(this.toLong()))
+
+    return sd
 }

@@ -3,6 +3,7 @@ package com.xiamuyao.ulanbator.model.repository
 import androidx.databinding.ObservableArrayList
 import com.xiamuyao.ulanbator.model.bean.FindMessageBean
 import com.xiamuyao.ulanbator.network.api.FindService
+import com.xiamuyao.ulanbator.util.toTime
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -34,7 +35,7 @@ class FindRepository(private var findService: FindService) {
             discoveryPageInformation.data.list.forEach {
                 val findMessageBean = FindMessageBean()
                 findMessageBean.id = it.infoId
-                findMessageBean.messageTime = "${it.author} ${it.createTime}"
+                findMessageBean.messageTime = "${it.author} ${it.createTime.toTime()}"
                 findMessageBean.messageSubTitle = it.intro
                 findMessageBean.messageTitle = it.title
                 findMessageBean.url = it.url
@@ -48,8 +49,8 @@ class FindRepository(private var findService: FindService) {
     /**
      * 读取信息
      */
-    suspend fun readInformation() = withContext(Dispatchers.IO) {
-        return@withContext findService.readInformation()
+    suspend fun readInformation(value: String) = withContext(Dispatchers.IO) {
+        return@withContext findService.readInformation(value)
     }
 
 
