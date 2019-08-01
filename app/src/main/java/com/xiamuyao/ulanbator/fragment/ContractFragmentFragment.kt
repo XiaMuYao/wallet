@@ -3,7 +3,6 @@ package com.xiamuyao.ulanbator.fragment
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.os.bundleOf
 import com.xiamuyao.ulanbator.BR
 import com.xiamuyao.ulanbator.R
 import com.xiamuyao.ulanbator.activity.ContractIntoActivity
@@ -25,10 +24,11 @@ class ContractFragmentFragment : BaseFragment<FragmentContractfragmentBinding, C
     override fun initView() {
         binding.contractRecyclerView.defaultStyle(contractAdapter)
         contractAdapter.setOnItemClickListener { _, _, position ->
-            val bundle = Bundle()
-            bundle.putSerializable("data", contractAdapter.getItem(position))
-            bundle.putString("from", "1")
-            ContractIntoActivity.start(context!!, bundle)
+//            val bundle = Bundle()
+//            bundle.putSerializable("data", contractAdapter.getItem(position))
+//            bundle.putString("productId", contractAdapter.getItem(position)?.productId)
+            val item = contractAdapter.getItem(position)
+            ContractIntoActivity.start(context!!, item?.productId!!,item.shouyiText!!)
         }
     }
 

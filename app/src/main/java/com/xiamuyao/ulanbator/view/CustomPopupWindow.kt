@@ -12,7 +12,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.xiamuyao.ulanbator.BR
 import com.xiamuyao.ulanbator.R
 import com.xiamuyao.ulanbator.base.adapter.BaseObservableNoChildClickAdapter
+import com.xiamuyao.ulanbator.constant.EventConstant
 import com.xiamuyao.ulanbator.model.bean.PairListBean
+import com.xiamuyao.ulanbator.utlis.DataBus
 
 
 class CustomPopupWindow(var context: Context, var pairList: ObservableArrayList<PairListBean>) : PopupWindow(context) {
@@ -36,6 +38,13 @@ class CustomPopupWindow(var context: Context, var pairList: ObservableArrayList<
         viewById.adapter = cityListAdapter
 
         viewById.layoutManager = LinearLayoutManager(context.applicationContext)
+        cityListAdapter.setOnItemClickListener { _, _, position ->
+
+            DataBus.postData(EventConstant.SELECT_PAIRNAME, pairList[position].pairName)
+            DataBus.postData(EventConstant.SELECT_PAIR_PRICE, pairList[position].pairPrice)
+
+            dismiss()
+        }
     }
 
     /**

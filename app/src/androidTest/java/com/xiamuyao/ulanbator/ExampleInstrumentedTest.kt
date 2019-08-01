@@ -2,11 +2,10 @@ package com.xiamuyao.ulanbator
 
 import androidx.test.InstrumentationRegistry
 import androidx.test.runner.AndroidJUnit4
-
+import org.junit.Assert.assertEquals
 import org.junit.Test
 import org.junit.runner.RunWith
-
-import org.junit.Assert.*
+import java.time.LocalTime
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -17,8 +16,10 @@ import org.junit.Assert.*
 class ExampleInstrumentedTest {
     @Test
     fun useAppContext() {
+        var now = LocalTime.now()
+        println(LocalTime.now().hour)
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getTargetContext()
-        assertEquals("com.xiamuyao.scudmvvm", appContext.packageName)
+        assertEquals("com.xiamuyao.scudmvvm",now)
     }
 }

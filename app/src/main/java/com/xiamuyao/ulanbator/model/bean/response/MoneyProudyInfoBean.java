@@ -2,11 +2,12 @@ package com.xiamuyao.ulanbator.model.bean.response;
 
 import java.util.List;
 
-public class GetMoenyInfoBean {
+public class MoneyProudyInfoBean {
+
 
     /**
      * result : {"returnCode":"0","returnUserMessage":"成功","returnMessage":"成功"}
-     * data : {"nickname":"我是昵称","vipType":0,"listSymbolFrozen":[{"amount":"0.498842719","symbolName":"btc","symbolType":1},{"amount":"6","symbolName":"eth","symbolType":2},{"amount":"0","symbolName":"ltc","symbolType":3},{"amount":"0","symbolName":"eos","symbolType":4},{"amount":"0","symbolName":"etc","symbolType":5},{"amount":"0","symbolName":"usdt","symbolType":6},{"amount":"20,000","symbolName":"token","symbolType":7}],"listSymbolUsd":[{"amount":"4,743.577632","symbolName":"btc","symbolType":1},{"amount":"1,256.422368","symbolName":"eth","symbolType":2},{"amount":"0","symbolName":"ltc","symbolType":3},{"amount":"0","symbolName":"eos","symbolType":4},{"amount":"0","symbolName":"etc","symbolType":5},{"amount":"0","symbolName":"usdt","symbolType":6},{"amount":"400.12","symbolName":"token","symbolType":7}],"inviteCode":"53391699","listSymbolBalance":[{"amount":"9.501157281","symbolName":"btc","symbolType":1},{"amount":"14","symbolName":"eth","symbolType":2},{"amount":"30","symbolName":"ltc","symbolType":3},{"amount":"0","symbolName":"eos","symbolType":4},{"amount":"0","symbolName":"etc","symbolType":5},{"amount":"0","symbolName":"usdt","symbolType":6},{"amount":"9,980,000","symbolName":"token","symbolType":7}]}
+     * data : {"productId":"1","interestMax":0.2,"listSymbolUsd":[{"amount":"4,743.577632","symbolName":"btc","symbolType":1},{"amount":"1,256.422368","symbolName":"eth","symbolType":2},{"amount":"0","symbolName":"ltc","symbolType":3},{"amount":"0","symbolName":"eos","symbolType":4},{"amount":"0","symbolName":"etc","symbolType":5},{"amount":"0","symbolName":"usdt","symbolType":6},{"amount":"400.12","symbolName":"token","symbolType":7}],"stateType":2,"memo":"","title":"S1","leaveDay":"30","listSymbolBalance":[{"amount":"9.501157281","symbolName":"btc","symbolType":1},{"amount":"14","symbolName":"eth","symbolType":2},{"amount":"30","symbolName":"ltc","symbolType":3},{"amount":"0","symbolName":"eos","symbolType":4},{"amount":"0","symbolName":"etc","symbolType":5},{"amount":"0","symbolName":"usdt","symbolType":6},{"amount":"9,980,000","symbolName":"token","symbolType":7}],"userAmountMin":100,"listSymbolFrozen":[{"amount":"0.498842719","symbolName":"btc","symbolType":1},{"amount":"6","symbolName":"eth","symbolType":2},{"amount":"0","symbolName":"ltc","symbolType":3},{"amount":"0","symbolName":"eos","symbolType":4},{"amount":"0","symbolName":"etc","symbolType":5},{"amount":"0","symbolName":"usdt","symbolType":6},{"amount":"20,000","symbolName":"token","symbolType":7}],"leaveRate":5,"money":"1,000","intro":"门槛：$100~$1000","interestMin":0.1,"stateRate":100,"userAmountMax":200}
      */
 
     private ResultBean result;
@@ -66,60 +67,143 @@ public class GetMoenyInfoBean {
 
     public static class DataBean {
         /**
-         * nickname : 我是昵称
-         * vipType : 0
-         * listSymbolFrozen : [{"amount":"0.498842719","symbolName":"btc","symbolType":1},{"amount":"6","symbolName":"eth","symbolType":2},{"amount":"0","symbolName":"ltc","symbolType":3},{"amount":"0","symbolName":"eos","symbolType":4},{"amount":"0","symbolName":"etc","symbolType":5},{"amount":"0","symbolName":"usdt","symbolType":6},{"amount":"20,000","symbolName":"token","symbolType":7}]
+         * productId : 1
+         * interestMax : 0.2
          * listSymbolUsd : [{"amount":"4,743.577632","symbolName":"btc","symbolType":1},{"amount":"1,256.422368","symbolName":"eth","symbolType":2},{"amount":"0","symbolName":"ltc","symbolType":3},{"amount":"0","symbolName":"eos","symbolType":4},{"amount":"0","symbolName":"etc","symbolType":5},{"amount":"0","symbolName":"usdt","symbolType":6},{"amount":"400.12","symbolName":"token","symbolType":7}]
-         * inviteCode : 53391699
+         * stateType : 2
+         * memo :
+         * title : S1
+         * leaveDay : 30
          * listSymbolBalance : [{"amount":"9.501157281","symbolName":"btc","symbolType":1},{"amount":"14","symbolName":"eth","symbolType":2},{"amount":"30","symbolName":"ltc","symbolType":3},{"amount":"0","symbolName":"eos","symbolType":4},{"amount":"0","symbolName":"etc","symbolType":5},{"amount":"0","symbolName":"usdt","symbolType":6},{"amount":"9,980,000","symbolName":"token","symbolType":7}]
+         * userAmountMin : 100
+         * listSymbolFrozen : [{"amount":"0.498842719","symbolName":"btc","symbolType":1},{"amount":"6","symbolName":"eth","symbolType":2},{"amount":"0","symbolName":"ltc","symbolType":3},{"amount":"0","symbolName":"eos","symbolType":4},{"amount":"0","symbolName":"etc","symbolType":5},{"amount":"0","symbolName":"usdt","symbolType":6},{"amount":"20,000","symbolName":"token","symbolType":7}]
+         * leaveRate : 5
+         * money : 1,000
+         * intro : 门槛：$100~$1000
+         * interestMin : 0.1
+         * stateRate : 100
+         * userAmountMax : 200
          */
 
-        private String nickname;
-        private int vipType;
-        private String inviteCode;
-        private String sum;
-        private List<ListSymbolFrozenBean> listSymbolFrozen;
+        private String productId;
+        private double interestMax;
+        private int stateType;
+        private String memo;
+        private String title;
+        private String leaveDay;
+        private int userAmountMin;
+        private int leaveRate;
+        private String money;
+        private String intro;
+        private double interestMin;
+        private int stateRate;
+        private int userAmountMax;
         private List<ListSymbolUsdBean> listSymbolUsd;
         private List<ListSymbolBalanceBean> listSymbolBalance;
+        private List<ListSymbolFrozenBean> listSymbolFrozen;
 
-        public String getSum() {
-            return sum;
+        public String getProductId() {
+            return productId;
         }
 
-        public void setSum(String sum) {
-            this.sum = sum;
+        public void setProductId(String productId) {
+            this.productId = productId;
         }
 
-        public String getNickname() {
-            return nickname;
+        public double getInterestMax() {
+            return interestMax;
         }
 
-        public void setNickname(String nickname) {
-            this.nickname = nickname;
+        public void setInterestMax(double interestMax) {
+            this.interestMax = interestMax;
         }
 
-        public int getVipType() {
-            return vipType;
+        public int getStateType() {
+            return stateType;
         }
 
-        public void setVipType(int vipType) {
-            this.vipType = vipType;
+        public void setStateType(int stateType) {
+            this.stateType = stateType;
         }
 
-        public String getInviteCode() {
-            return inviteCode;
+        public String getMemo() {
+            return memo;
         }
 
-        public void setInviteCode(String inviteCode) {
-            this.inviteCode = inviteCode;
+        public void setMemo(String memo) {
+            this.memo = memo;
         }
 
-        public List<ListSymbolFrozenBean> getListSymbolFrozen() {
-            return listSymbolFrozen;
+        public String getTitle() {
+            return title;
         }
 
-        public void setListSymbolFrozen(List<ListSymbolFrozenBean> listSymbolFrozen) {
-            this.listSymbolFrozen = listSymbolFrozen;
+        public void setTitle(String title) {
+            this.title = title;
+        }
+
+        public String getLeaveDay() {
+            return leaveDay;
+        }
+
+        public void setLeaveDay(String leaveDay) {
+            this.leaveDay = leaveDay;
+        }
+
+        public int getUserAmountMin() {
+            return userAmountMin;
+        }
+
+        public void setUserAmountMin(int userAmountMin) {
+            this.userAmountMin = userAmountMin;
+        }
+
+        public int getLeaveRate() {
+            return leaveRate;
+        }
+
+        public void setLeaveRate(int leaveRate) {
+            this.leaveRate = leaveRate;
+        }
+
+        public String getMoney() {
+            return money;
+        }
+
+        public void setMoney(String money) {
+            this.money = money;
+        }
+
+        public String getIntro() {
+            return intro;
+        }
+
+        public void setIntro(String intro) {
+            this.intro = intro;
+        }
+
+        public double getInterestMin() {
+            return interestMin;
+        }
+
+        public void setInterestMin(double interestMin) {
+            this.interestMin = interestMin;
+        }
+
+        public int getStateRate() {
+            return stateRate;
+        }
+
+        public void setStateRate(int stateRate) {
+            this.stateRate = stateRate;
+        }
+
+        public int getUserAmountMax() {
+            return userAmountMax;
+        }
+
+        public void setUserAmountMax(int userAmountMax) {
+            this.userAmountMax = userAmountMax;
         }
 
         public List<ListSymbolUsdBean> getListSymbolUsd() {
@@ -138,40 +222,12 @@ public class GetMoenyInfoBean {
             this.listSymbolBalance = listSymbolBalance;
         }
 
-        public static class ListSymbolFrozenBean {
-            /**
-             * amount : 0.498842719
-             * symbolName : btc
-             * symbolType : 1
-             */
+        public List<ListSymbolFrozenBean> getListSymbolFrozen() {
+            return listSymbolFrozen;
+        }
 
-            private String amount;
-            private String symbolName;
-            private int symbolType;
-
-            public String getAmount() {
-                return amount;
-            }
-
-            public void setAmount(String amount) {
-                this.amount = amount;
-            }
-
-            public String getSymbolName() {
-                return symbolName;
-            }
-
-            public void setSymbolName(String symbolName) {
-                this.symbolName = symbolName;
-            }
-
-            public int getSymbolType() {
-                return symbolType;
-            }
-
-            public void setSymbolType(int symbolType) {
-                this.symbolType = symbolType;
-            }
+        public void setListSymbolFrozen(List<ListSymbolFrozenBean> listSymbolFrozen) {
+            this.listSymbolFrozen = listSymbolFrozen;
         }
 
         public static class ListSymbolUsdBean {
@@ -213,6 +269,42 @@ public class GetMoenyInfoBean {
         public static class ListSymbolBalanceBean {
             /**
              * amount : 9.501157281
+             * symbolName : btc
+             * symbolType : 1
+             */
+
+            private String amount;
+            private String symbolName;
+            private int symbolType;
+
+            public String getAmount() {
+                return amount;
+            }
+
+            public void setAmount(String amount) {
+                this.amount = amount;
+            }
+
+            public String getSymbolName() {
+                return symbolName;
+            }
+
+            public void setSymbolName(String symbolName) {
+                this.symbolName = symbolName;
+            }
+
+            public int getSymbolType() {
+                return symbolType;
+            }
+
+            public void setSymbolType(int symbolType) {
+                this.symbolType = symbolType;
+            }
+        }
+
+        public static class ListSymbolFrozenBean {
+            /**
+             * amount : 0.498842719
              * symbolName : btc
              * symbolType : 1
              */

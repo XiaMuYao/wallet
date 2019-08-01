@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:set="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -62,6 +63,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dp_10"
+                android:text="@{contractintoViewModel.selectPairName}"
                 android:textColor="#FFFFFF"
                 android:textSize="@dimen/dimens_24dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -89,7 +91,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="17.5dp"
-            android:text="可用: 1.0000 BTC"
+            android:text="@{contractintoViewModel.showPrice}"
             android:textColor="#FF878DA8"
             android:textSize="14dp"
             app:layout_constraintLeft_toLeftOf="@+id/guideline30"
@@ -103,6 +105,7 @@
             android:layout_marginTop="17.5dp"
             android:background="@drawable/shape_gray"
             android:gravity="center"
+            android:onClick="@{() -> contractintoViewModel.transferAll()}"
             android:text="全部转入"
             android:textColor="#FF878DA8"
             android:textSize="12dp"
@@ -134,7 +137,6 @@
 
             <EditText
                 android:id="@+id/editText"
-
                 android:layout_width="match_parent"
                 android:layout_height="65dp"
                 android:layout_marginLeft="@dimen/dimens_15dp"
@@ -142,7 +144,9 @@
                 android:layout_marginRight="@dimen/dimens_15dp"
                 android:background="@null"
                 android:hint="已满额"
-                android:textColor="#5D5C71"
+                android:inputType="numberDecimal"
+                android:text="@={contractintoViewModel.inoutMoney}"
+                android:textColor="#FFFFFF"
                 android:textColorHint="#5D5C71"
                 android:textCursorDrawable="@drawable/shape_ed_color"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -165,17 +169,29 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:text="≈ $0 "
+                android:text="≈ $"
                 android:textColor="#878DA8"
                 android:textSize="18dp"
                 app:layout_constraintStart_toStartOf="@+id/editText"
+                app:layout_constraintTop_toBottomOf="@+id/view3" />
+
+
+            <TextView
+                android:id="@+id/textView35"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="15dp"
+                android:text="@={contractintoViewModel.nowSelectPrice}"
+                android:textColor="#878DA8"
+                android:textSize="18dp"
+                app:layout_constraintLeft_toRightOf="@+id/textView29"
                 app:layout_constraintTop_toBottomOf="@+id/view3" />
 
             <TextView
                 android:id="@+id/textView30"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{contractintoViewModel.tempBean.intro}"
                 android:textColor="#878DA8"
                 app:layout_constraintBaseline_toBaselineOf="@+id/textView29"
                 app:layout_constraintEnd_toEndOf="@+id/editText" />
@@ -194,13 +210,24 @@
                 app:ssb_second_track_color="#413EF3"
                 app:ssb_show_sign="true"
                 app:ssb_sign_color="#5D5C71"
+                app:ssb_touch_to_seek="false"
                 app:ssb_track_size="4dp" />
 
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:layout_constraintBottom_toBottomOf="@+id/signSeekBar"
+                app:layout_constraintLeft_toLeftOf="@+id/signSeekBar"
+                app:layout_constraintRight_toRightOf="@+id/signSeekBar"
+                app:layout_constraintTop_toTopOf="@+id/signSeekBar" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="$100"
+                android:text="@{`$` + contractintoViewModel.low}"
                 android:textColor="#878DA8"
                 app:layout_constraintLeft_toLeftOf="@+id/signSeekBar"
                 app:layout_constraintTop_toBottomOf="@+id/signSeekBar" />
@@ -209,7 +236,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="$1000"
+                android:text="@{`$` + contractintoViewModel.high}"
                 android:textColor="#878DA8"
                 app:layout_constraintRight_toRightOf="@+id/signSeekBar"
                 app:layout_constraintTop_toBottomOf="@+id/signSeekBar" />
@@ -272,6 +299,7 @@
             android:layout_marginRight="@dimen/dimens_15dp"
             android:layout_marginBottom="16dp"
             android:background="@drawable/shape_btn_jiechu"
+            android:onClick="@{() -> contractintoViewModel.contactContract()}"
             android:text="@string/jiechuheyue"
             android:textColor="#FFFFFF"
             android:visibility="gone"
@@ -287,8 +315,10 @@
             android:layout_marginLeft="@dimen/dimens_10dp"
             android:layout_marginBottom="16dp"
             android:background="@drawable/shape_btn"
+            android:onClick="@{() -> contractintoViewModel.buyProduct()}"
             android:text="@string/shoping"
             android:textColor="#fff"
+
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="@+id/guideline36"
@@ -301,7 +331,9 @@
             android:layout_height="44dp"
             android:layout_marginRight="@dimen/dimens_10dp"
             android:layout_marginBottom="16dp"
+
             android:background="@drawable/shape_btn_jiechu"
+            android:onClick="@{() -> contractintoViewModel.contactContract()}"
             android:text="@string/jiechuheyue"
             android:textColor="#FFFFFF"
             android:visibility="gone"

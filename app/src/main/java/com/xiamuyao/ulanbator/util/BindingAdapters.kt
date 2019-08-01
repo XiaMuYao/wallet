@@ -12,8 +12,8 @@ import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.bumptech.glide.request.RequestOptions
 import com.xiamuyao.ulanbator.App
 import com.xiamuyao.ulanbator.R
-import org.w3c.dom.Text
-import androidx.databinding.BindingAdapter
+import com.zhouyou.view.seekbar.SignSeekBar
+import com.zhouyou.view.seekbar.SignConfigBuilder
 
 
 object BindingAdapters {
@@ -203,22 +203,5 @@ object BindingAdapters {
         view.text = "$first****$after"
     }
 
-    @BindingAdapter(value = ["app:moneyFormatProcessing", "app:type"], requireAll = false)
-    fun setMoneyFormatProcessing(view: TextView, value: String, type: Int) {
-        val replace = value.replace("门槛", "").replace(":", "").replace("$", "")
-        val slice = replace.split("~")
-
-        when {
-            slice.isNotEmpty() -> {
-                view.text = slice[0]
-                if (type == 1) {
-                    return
-                }
-            }
-            slice.size == 2 -> {
-                view.text = slice[1]
-            }
-        }
-    }
 
 }

@@ -13,24 +13,7 @@ class MoneyRepository(private var moneyService: MoneyService) {
         val provinces = moneyService.financialHomeInformation()
         val data = provinces.data
         if (provinces.result.returnCode == "0") {
-            var sum = with(data) {
-                val a = data.ethUSD.toBigDecimal().plus(
-                    usdtUSD.toBigDecimal().plus(
-                        eosUSD.toBigDecimal().plus(
-                            ltcUSD.toBigDecimal().plus(
-                                ethUSD.toBigDecimal().plus(
-                                    tokenUSD.toBigDecimal().plus(
-                                        btcUSD.toBigDecimal()
-                                    )
-                                )
-                            )
-
-                        )
-                    )
-                )
-                return@with a.toString()
-            }
-            provinces.data.sum = sum
+            data.sum = data.listSymbolUsd.sumByDouble { it.amount.toBigDecimal().toDouble() }.toString()
         }
         return@withContext provinces
     }
@@ -54,16 +37,25 @@ class MoneyRepository(private var moneyService: MoneyService) {
     /**
      * 购买理财产品
      */
-    suspend fun buyingWealthManagementProducts() = withContext(Dispatchers.IO) {
-        val provinces = moneyService.buyingWealthManagementProducts()
-        return@withContext provinces
-    }
+    suspend fun buyingWealthManagementProducts(productId: String, amount: String, symbolType: String) =
+        withContext(Dispatchers.IO) {
+            val provinces = moneyService.buyingWealthManagementProducts(productId, amount, symbolType)
+            return@withContext provinces
+        }
 
     /**
      * 解除合约
      */
-    suspend fun transfer() = withContext(Dispatchers.IO) {
-        val provinces = moneyService.transfer()
+    suspend fun transfer(value: String) = withContext(Dispatchers.IO) {
+        val provinces = moneyService.transfer(value)
+        return@withContext provinces
+    }
+
+    /**
+     * 获取理财详情
+     */
+    suspend fun getFinancialManagementDetails(productId: String) = withContext(Dispatchers.IO) {
+        val provinces = moneyService.getFinancialManagementDetails(productId)
         return@withContext provinces
     }
 

@@ -25,6 +25,7 @@ interface MoneyService {
     suspend fun getFinancialAccountDetails(
         @Field("niu") niu: String = ""
     ): BaseResponse<MoneyAccountInfoBean.DataBean>
+
     /**
      * 获取理财产品
      */
@@ -35,6 +36,7 @@ interface MoneyService {
         @Field("start") start: String = "",
         @Field("index") index: String = ""
     ): BaseResponse<GetMoneyShopBean.DataBean>
+
     /**
      * 购买理财产品
      */
@@ -45,6 +47,7 @@ interface MoneyService {
         @Field("amount") amount: String = "",
         @Field("symbolType") symbolType: String = ""
     ): BaseResponse<ByMoneyShopBean.DataBean>
+
     /**
      * 解除合约
      */
@@ -53,4 +56,13 @@ interface MoneyService {
     suspend fun transfer(
         @Field("productId") productId: String = ""
     ): BaseResponse<CancelBean>
+
+    /**
+     * 获取理财详情
+     */
+    @FormUrlEncoded
+    @POST("product/getProductDetail")
+    suspend fun getFinancialManagementDetails(
+        @Field("productId") productId: String = ""
+    ): BaseResponse<MoneyProudyInfoBean.DataBean>
 }
