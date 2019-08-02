@@ -6,7 +6,11 @@ import com.xiamuyao.ulanbator.model.bean.WalletListBean
 import com.xiamuyao.ulanbator.model.bean.response.WalletHomeLocalOptationBean
 import com.xiamuyao.ulanbator.net.BaseResponse
 import com.xiamuyao.ulanbator.network.api.WalletService
+import com.xiamuyao.ulanbator.util.JSONUtils
+import com.xiamuyao.ulanbator.util.RateUtli
+import com.xiamuyao.ulanbator.util.RateUtli.getSelectCurrency
 import com.xiamuyao.ulanbator.util.putSpValue
+import com.xiamuyao.ulanbator.utlis.LL
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -22,17 +26,16 @@ class WalletRepository(private var walletService: WalletService) {
 
         if (theWalletAssetHomepage.result.returnCode == "0") {
             //货币余额处理
-            observableArrayList.add(WalletListBean("BTC", "", "", data.btc, ""))
-            observableArrayList.add(WalletListBean("ETC", "", "", data.etc, ""))
-            observableArrayList.add(WalletListBean("ETH", "", "", data.eth, ""))
-            observableArrayList.add(WalletListBean("EOS", "", "", data.eos, ""))
-            observableArrayList.add(WalletListBean("USDT", "", "", data.usdt, ""))
-            observableArrayList.add(WalletListBean("LTC", "", "", data.ltc, ""))
-            observableArrayList.add(WalletListBean("TOKEN", "", "", data.token, ""))
-            //用户信息保存
-            App.CONTEXT.putSpValue("nickname", data.nickname)
-            App.CONTEXT.putSpValue("inviteCode", data.inviteCode)
-            App.CONTEXT.putSpValue("vipType", data.vipType)
+            data.list.forEach {
+                observableArrayList.add(
+                    WalletListBean(
+                        it.symbolName.toUpperCase(),
+                        it.amount.replace(",",""),
+                        it.symbolType.toString(), "", "",
+                        it.symbolName.toUpperCase() + "USDT","","",getSelectCurrency()
+                    )
+                )
+            }
         }
 
         val walletHomeLocalOptationBean = WalletHomeLocalOptationBean()
@@ -40,9 +43,13 @@ class WalletRepository(private var walletService: WalletService) {
         //装载List
         dataBean.list = observableArrayList
         //总资产折合
-        dataBean.userSumMoney = dataBean.list.sumByDouble { it.pariPrice.replace(",", "").toDouble() }.toString()
+        if (dataBean.list.isNotEmpty()) {
+            dataBean.userSumMoney =
+                dataBean.list.sumByDouble {
+                    it.pariAmount.replace(",", "").toBigDecimal().stripTrailingZeros().toDouble()
+                }.toString()
+        }
         //总资产折合-估值
-
         walletHomeLocalOptationBean.data = dataBean
         BaseResponse(theWalletAssetHomepage.result, walletHomeLocalOptationBean)
     }
@@ -52,9 +59,11 @@ class WalletRepository(private var walletService: WalletService) {
      */
     suspend fun obtainExchangeRate() = withContext(Dispatchers.IO) {
         val obtainExchangeRate = walletService.obtainExchangeRate()
-        val data = obtainExchangeRate.data
-        App.marketList.forEach {
-            it.pairAndToName
+        if (obtainExchangeRate.result.returnCode == "0") {
+            val toJson = JSONUtils.toJson(obtainExchangeRate.data.list)
+            LL.d("汇率Json:$toJson")
+            //保存内存和缓存的数据
+            RateUtli.saveRateList(obtainExchangeRate.data.list)
         }
         obtainExchangeRate
     }
@@ -74,4 +83,5 @@ class WalletRepository(private var walletService: WalletService) {
             return instance!!
         }
     }
+
 }

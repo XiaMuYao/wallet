@@ -12,6 +12,7 @@ import com.xiamuyao.ulanbator.viewmodel.QuotationViewModel
 import com.xiamuyao.ulanbator.base.BaseFragment
 import com.xiamuyao.ulanbator.base.adapter.BaseObservableNoChildClickAdapter
 import com.xiamuyao.ulanbator.extension.defaultStyle
+import com.xiamuyao.ulanbator.util.RateUtli
 import com.xiamuyao.ulanbator.viewmodel.MainViewModel
 
 
@@ -26,7 +27,7 @@ class QuotationFragment : BaseFragment<FragmentMessageBinding, QuotationViewMode
     }
 
     private val marketAdapter by lazy {
-        BaseObservableNoChildClickAdapter(R.layout.item_market, App.marketList, BR.marketBean)
+        BaseObservableNoChildClickAdapter(R.layout.item_market, RateUtli.getPriceList(), BR.marketBean)
     }
 
     override fun initView() {

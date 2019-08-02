@@ -146,6 +146,7 @@
             android:layout_height="wrap_content"
             android:tag="@{walletViewModel.priceSum}"
             android:text="@{walletViewModel.priceSum}"
+            android:maxLength="15"
             android:textColor="#FFFFFF"
             tools:text="321.23143212"
             android:textSize="30dp"

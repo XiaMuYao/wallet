@@ -3,6 +3,7 @@ package com.xiamuyao.ulanbator.activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import androidx.lifecycle.Observer
 import com.xiamuyao.ulanbator.BR
 import com.xiamuyao.ulanbator.R
 import com.xiamuyao.ulanbator.base.BaseActivity
@@ -29,11 +30,15 @@ class ReturnMoneyInfoActivity : BaseActivity<ActivityReturnmoneyinfoBinding, Ret
     override fun initView() {
         setTitleBar("返佣详情", { finish() })
 
+        viewModel.itemId.value = intent.getStringExtra("message")
         binding.returnMoneyInforecyclerView.defaultStyle(returnMoneyInfoAdapter)
 
     }
 
     override fun initVVMObserver() {
+        viewModel.itemId.observe(this, Observer {
+            viewModel.getPageData()
+        })
     }
 
 

@@ -75,9 +75,9 @@ public class GetMoenyInfoBean {
          */
 
         private String nickname;
+        private String sum;
         private int vipType;
         private String inviteCode;
-        private String sum;
         private List<ListSymbolFrozenBean> listSymbolFrozen;
         private List<ListSymbolUsdBean> listSymbolUsd;
         private List<ListSymbolBalanceBean> listSymbolBalance;

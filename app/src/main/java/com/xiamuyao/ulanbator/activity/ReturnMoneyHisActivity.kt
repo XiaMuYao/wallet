@@ -28,7 +28,7 @@ class ReturnMoneyHisActivity : BaseActivity<ActivityReturnmoneyhisBinding, Retur
 
         //返佣详情
         returnMoneyHisAdapter.setOnItemClickListener { _, _, position ->
-            ReturnMoneyInfoActivity.start(this)
+            ReturnMoneyInfoActivity.start(this,returnMoneyHisAdapter.getItem(position)?.id)
         }
     }
 

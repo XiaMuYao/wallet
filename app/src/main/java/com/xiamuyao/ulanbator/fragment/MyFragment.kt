@@ -66,7 +66,6 @@ class MyFragment : BaseFragment<FragmentMyBinding, MyViewModel>() {
 
     override fun onResume() {
         super.onResume()
-        viewModel.initData()
     }
 
     override fun initContentView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): Int {

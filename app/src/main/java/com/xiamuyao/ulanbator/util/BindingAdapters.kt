@@ -14,6 +14,7 @@ import com.xiamuyao.ulanbator.App
 import com.xiamuyao.ulanbator.R
 import com.zhouyou.view.seekbar.SignSeekBar
 import com.zhouyou.view.seekbar.SignConfigBuilder
+import java.text.NumberFormat
 
 
 object BindingAdapters {
@@ -23,6 +24,14 @@ object BindingAdapters {
     fun setViewPagerCurrentTab(view: ViewPager, index: Int) {
         view.setCurrentItem(index, false)
     }
+
+//    @SuppressLint("SetTextI18n")
+//    @BindingAdapter("roundOffTheZeroAfterTheDecimalPoint")
+//    @JvmStatic
+//    fun roundOffTheZeroAfterTheDecimalPoint(view: TextView, value: String) {
+//        if (value.isEmpty()) return
+//        view.text = value.toBigDecimal().stripTrailingZeros().toString()
+//    }
 
     @BindingAdapter("netImage")
     @JvmStatic
@@ -105,7 +114,7 @@ object BindingAdapters {
             "EOS" -> {
                 view.setImageResource(R.drawable.btc)
             }
-            "DTC" -> {
+            "ETC" -> {
                 view.setImageResource(R.drawable.btc)
             }
         }
@@ -152,7 +161,6 @@ object BindingAdapters {
         if (type.toDouble() >= 0) {
             view.setBackgroundResource(R.drawable.shape_pair_up)
             view.setText("+${type}%")
-
         } else {
             view.setBackgroundResource(R.drawable.shape_pair_down)
             view.setText("-${type}%")

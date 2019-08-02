@@ -26,8 +26,7 @@
             android:layout_marginStart="25dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:netCircleImage="@{walletListBean.pairImage}" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -49,7 +48,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
-            android:text="@{walletListBean.pariPrice}"
+            android:text="@{walletListBean.pariAmount}"
             android:textColor="#FFFFFF"
             android:textSize="16dp"
             android:textStyle="bold"
@@ -106,7 +105,7 @@
             android:textSize="12dp"
 
             android:layout_marginEnd="8dp"
-            android:text="@{walletListBean.pairToName}"
+            android:text="@{walletListBean.showPair}"
             android:textColor="#FF878DA8"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView10"

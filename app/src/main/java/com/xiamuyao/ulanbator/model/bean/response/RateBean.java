@@ -1,10 +1,12 @@
 package com.xiamuyao.ulanbator.model.bean.response;
 
+import java.util.List;
+
 public class RateBean {
 
     /**
      * result : {"returnCode":"0","returnUserMessage":"成功","returnMessage":"成功"}
-     * data : {"BTCKRW":"11333002.8521569400000000","USDJPY":"109.6089456000000000","USDTUSD":"0.9986000000000000","BTCCNY":"65922.4458000000000000","USDCNY":"6.9400000000000000","USDKRW":"1193.4651762600000000","USDTCNY":"6.9200000000000000","BTCUSD":"9511.4640445000000000","USDTKRW":"1189.6460876900000000","USDTJPY":"109.2581969700000000","BTCJPY":"1040833.4635781100000000"}
+     * data : {"BTCKRW":"11781855.3899584600000000","USDTUSD":"1.0013000000000000","BTCCNY":"68730.6585000000000000","BTCUSD":"9981.7071272500000000","list":[{"rateName":"USDTCNY","rate":"6.9000000000000000"},{"rateName":"USDTUSD","rate":"1.0013000000000000"},{"rateName":"USDTKRW","rate":"1182.8026089800000000"},{"rateName":"USDTJPY","rate":"108.6892635700000000"},{"rateName":"BTCCNY","rate":"68730.6585000000000000"},{"rateName":"BTCUSD","rate":"9981.7071272500000000"},{"rateName":"BTCKRW","rate":"11781855.3899584600000000"},{"rateName":"BTCJPY","rate":"1082649.9502965400000000"},{"rateName":"USDCNY","rate":"6.8800000000000000"},{"rateName":"USDKRW","rate":"1180.9131479500000000"},{"rateName":"USDJPY","rate":"108.5156385500000000"},{"rateName":"TOKENUSDT","rate":0.02}],"USDJPY":"108.5156385500000000","TOKENUSDT":0.02,"USDCNY":"6.8800000000000000","USDKRW":"1180.9131479500000000","USDTCNY":"6.9000000000000000","USDTKRW":"1182.8026089800000000","USDTJPY":"108.6892635700000000","BTCJPY":"1082649.9502965400000000"}
      */
 
     private ResultBean result;
@@ -64,30 +66,34 @@ public class RateBean {
 
     public static class DataBean {
         /**
-         * BTCKRW : 11333002.8521569400000000
-         * BTCJPY : 1040833.4635781100000000
-         * BTCCNY : 65922.4458000000000000
-         * BTCUSD : 9511.4640445000000000
-         * USDJPY : 109.6089456000000000
-         * USDTUSD : 0.9986000000000000
-         * USDCNY : 6.9400000000000000
-         * USDKRW : 1193.4651762600000000
-         * USDTCNY : 6.9200000000000000
-         * USDTKRW : 1189.6460876900000000
-         * USDTJPY : 109.2581969700000000
+         * BTCKRW : 11781855.3899584600000000
+         * USDTUSD : 1.0013000000000000
+         * BTCCNY : 68730.6585000000000000
+         * BTCUSD : 9981.7071272500000000
+         * list : [{"rateName":"USDTCNY","rate":"6.9000000000000000"},{"rateName":"USDTUSD","rate":"1.0013000000000000"},{"rateName":"USDTKRW","rate":"1182.8026089800000000"},{"rateName":"USDTJPY","rate":"108.6892635700000000"},{"rateName":"BTCCNY","rate":"68730.6585000000000000"},{"rateName":"BTCUSD","rate":"9981.7071272500000000"},{"rateName":"BTCKRW","rate":"11781855.3899584600000000"},{"rateName":"BTCJPY","rate":"1082649.9502965400000000"},{"rateName":"USDCNY","rate":"6.8800000000000000"},{"rateName":"USDKRW","rate":"1180.9131479500000000"},{"rateName":"USDJPY","rate":"108.5156385500000000"},{"rateName":"TOKENUSDT","rate":0.02}]
+         * USDJPY : 108.5156385500000000
+         * TOKENUSDT : 0.02
+         * USDCNY : 6.8800000000000000
+         * USDKRW : 1180.9131479500000000
+         * USDTCNY : 6.9000000000000000
+         * USDTKRW : 1182.8026089800000000
+         * USDTJPY : 108.6892635700000000
+         * BTCJPY : 1082649.9502965400000000
          */
 
         private String BTCKRW;
-        private String USDJPY;
         private String USDTUSD;
         private String BTCCNY;
+        private String BTCUSD;
+        private String USDJPY;
+        private double TOKENUSDT;
         private String USDCNY;
         private String USDKRW;
         private String USDTCNY;
-        private String BTCUSD;
         private String USDTKRW;
         private String USDTJPY;
         private String BTCJPY;
+        private List<ListBean> list;
 
         public String getBTCKRW() {
             return BTCKRW;
@@ -95,14 +101,6 @@ public class RateBean {
 
         public void setBTCKRW(String BTCKRW) {
             this.BTCKRW = BTCKRW;
-        }
-
-        public String getUSDJPY() {
-            return USDJPY;
-        }
-
-        public void setUSDJPY(String USDJPY) {
-            this.USDJPY = USDJPY;
         }
 
         public String getUSDTUSD() {
@@ -119,6 +117,30 @@ public class RateBean {
 
         public void setBTCCNY(String BTCCNY) {
             this.BTCCNY = BTCCNY;
+        }
+
+        public String getBTCUSD() {
+            return BTCUSD;
+        }
+
+        public void setBTCUSD(String BTCUSD) {
+            this.BTCUSD = BTCUSD;
+        }
+
+        public String getUSDJPY() {
+            return USDJPY;
+        }
+
+        public void setUSDJPY(String USDJPY) {
+            this.USDJPY = USDJPY;
+        }
+
+        public double getTOKENUSDT() {
+            return TOKENUSDT;
+        }
+
+        public void setTOKENUSDT(double TOKENUSDT) {
+            this.TOKENUSDT = TOKENUSDT;
         }
 
         public String getUSDCNY() {
@@ -145,14 +167,6 @@ public class RateBean {
             this.USDTCNY = USDTCNY;
         }
 
-        public String getBTCUSD() {
-            return BTCUSD;
-        }
-
-        public void setBTCUSD(String BTCUSD) {
-            this.BTCUSD = BTCUSD;
-        }
-
         public String getUSDTKRW() {
             return USDTKRW;
         }
@@ -175,6 +189,40 @@ public class RateBean {
 
         public void setBTCJPY(String BTCJPY) {
             this.BTCJPY = BTCJPY;
+        }
+
+        public List<ListBean> getList() {
+            return list;
+        }
+
+        public void setList(List<ListBean> list) {
+            this.list = list;
+        }
+
+        public static class ListBean {
+            /**
+             * rateName : USDTCNY
+             * rate : 6.9000000000000000
+             */
+
+            private String rateName;
+            private String rate;
+
+            public String getRateName() {
+                return rateName;
+            }
+
+            public void setRateName(String rateName) {
+                this.rateName = rateName;
+            }
+
+            public String getRate() {
+                return rate;
+            }
+
+            public void setRate(String rate) {
+                this.rate = rate;
+            }
         }
     }
 }

@@ -3,6 +3,7 @@ package com.xiamuyao.ulanbator.viewmodel
 import android.app.Application
 import androidx.databinding.ObservableArrayList
 import androidx.lifecycle.MutableLiveData
+import com.xiamuyao.ulanbator.R
 import com.xiamuyao.ulanbator.base.BaseViewModel
 import com.xiamuyao.ulanbator.extension.businessHandler
 import com.xiamuyao.ulanbator.model.bean.PairListBean
@@ -10,6 +11,8 @@ import com.xiamuyao.ulanbator.model.bean.response.MoneyProudyInfoBean
 import com.xiamuyao.ulanbator.model.repository.MoneyRepository
 import com.xiamuyao.ulanbator.util.TimeUtli
 import com.xiamuyao.ulanbator.utlis.SingleLiveEvent
+import com.xiamuyao.ulanbator.utlis.To
+import org.kodein.di.TT
 import org.kodein.di.generic.instance
 
 class ContractIntoViewModel(application: Application) : BaseViewModel(application) {
@@ -51,8 +54,8 @@ class ContractIntoViewModel(application: Application) : BaseViewModel(applicatio
     override fun initData() {
 
         earningsStartTime.value = TimeUtli.getTime()
-        incomeArrivalTime.value = TimeUtli.checkOption(earningsStartTime.value!!, "next")
-        dueTransferTime.value = TimeUtli.checkOption(earningsStartTime.value!!, "next")
+        incomeArrivalTime.value = TimeUtli.checkOption("next",earningsStartTime.value!!)
+        dueTransferTime.value = TimeUtli.getDayOfDay()
     }
 
     fun getPageData(productId: String) {
@@ -128,6 +131,10 @@ class ContractIntoViewModel(application: Application) : BaseViewModel(applicatio
      * 购买产品
      */
     fun buyProduct() {
+        if (inoutMoney.value.isNullOrEmpty()) {
+            To.showToast(context.getString(R.string.inputNotNull))
+            return
+        }
         launch {
             val buyingWealthManagementProducts =
                 repository.buyingWealthManagementProducts(productId.value!!, inoutMoney.value!!, selectPairID.value!!)

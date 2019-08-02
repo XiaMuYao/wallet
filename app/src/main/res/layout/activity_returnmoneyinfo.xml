@@ -250,8 +250,9 @@
             android:id="@+id/textView73"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
+            tools:text="TextView"
             android:textColor="#FFFFFF"
+            android:text="@{returnmoneyinfoViewModel.userName}"
             app:layout_constraintEnd_toStartOf="@+id/guideline80"
             app:layout_constraintTop_toTopOf="@+id/guideline76" />
 
@@ -259,7 +260,8 @@
             android:id="@+id/textView74"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
+            tools:text="TextView"
+            android:text="@{returnmoneyinfoViewModel.itemId}"
 
             android:textColor="#FFFFFF"
             app:layout_constraintEnd_toStartOf="@+id/guideline80"
@@ -269,7 +271,8 @@
             android:id="@+id/textView75"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
+            tools:text="TextView"
+            android:text="@{returnmoneyinfoViewModel.userType}"
 
             android:textColor="#FFFFFF"
             app:layout_constraintEnd_toStartOf="@+id/guideline80"
@@ -279,9 +282,9 @@
             android:id="@+id/textView76"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
+            tools:text="TextView"
             android:textColor="#FFFFFF"
-
+            android:text="@{returnmoneyinfoViewModel.sum}"
             app:layout_constraintEnd_toStartOf="@+id/guideline80"
             app:layout_constraintTop_toTopOf="@+id/guideline79" />
 

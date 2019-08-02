@@ -2,9 +2,9 @@ package com.xiamuyao.ulanbator.util
 
 import android.annotation.SuppressLint
 import android.text.format.DateUtils
-import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
+import java.text.ParseException as ParseException1
 
 
 object TimeUtli {
@@ -48,18 +48,6 @@ object TimeUtli {
         return temeTime
     }
 
-    fun addZeroInHead(toString: String, num: Int = 2): String {
-        var sb = StringBuffer()
-        if (toString.length < num) {
-            for (i in 1..num - toString.length) {
-                sb.append("0")
-            }
-            return sb.append(toString).toString()
-        } else {
-            return toString
-        }
-
-    }
 
     @SuppressLint("SimpleDateFormat")
     fun parse(source: String, toFormat: String = DEFAULT_TO_DATE, fromFormat: String = DEFAULT_FROM_DATE_TIME): String {
@@ -77,7 +65,7 @@ object TimeUtli {
 
         try {
             date = sdf.parse(_date) as Date
-        } catch (e: ParseException) {
+        } catch (e: ParseException1) {
             e.printStackTrace()
         }
 
@@ -96,26 +84,34 @@ object TimeUtli {
         return sdf.format(date)
     }
 
-//    fun getDayOfDay(num: Int=30): String {
-//        val date = DateUtils.addDays(Date(), 10)   //
-//        System.out.println("当前时间为:" + DateFormatUtils.format(Date(), "yyyy-MM-dd HH:mm:ss"))
-//        val format = DateFormatUtils.format(date, "yyyy-MM-dd HH:mm:ss")
-//        println("当前时间加上10天后:$format")
-//
-//    }
+    /**
+     * 获取置顶天数以后的时间
+     * @param num Int
+     * @return String
+     */
+    fun getDayOfDay(num: Int = 30): String {
+        val toTime = System.currentTimeMillis().toString().toTime()
+        val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+        val dt = sdf.parse(toTime)
+        val rightNow = Calendar.getInstance()
+        rightNow.time = dt
+        rightNow.add(Calendar.DAY_OF_YEAR, num)
+        val dt1 = rightNow.time
+        val reStr = sdf.format(dt1)
+        return reStr
+    }
 
+
+    fun addZeroInHead(str: String, expectLenght: Int = 2): String {
+        val sb = StringBuffer()
+        for (i in 0 until expectLenght - str.length) {
+            sb.append("0")
+        }
+        return sb.toString() + str
+    }
 
     @JvmStatic
     fun main(args: Array<String>) {
-        val sdf = SimpleDateFormat("yyyyMMdd")
-        val str = "20110823"
-        val dt = sdf.parse(str)
-        val rightNow = Calendar.getInstance()
-        rightNow.time = dt
-        rightNow.add(Calendar.DAY_OF_YEAR, 30)//日期加10天
-        val dt1 = rightNow.time
-        val reStr = sdf.format(dt1)
-        println(reStr)
-        println(getDayOfDay(30))
+        println(getDayOfDay())
     }
 }

@@ -70,6 +70,52 @@ class MyUserRepository(private var myService: MyService) {
         return@withContext provinces
     }
 
+    /**
+     * 获取邀请返佣统计
+     */
+    suspend fun getInvitationRebateStatistics() = withContext(Dispatchers.IO) {
+        val provinces = myService.getInvitationRebateStatistics()
+        if (provinces.result.returnCode == "0") {
+            val sumBy = provinces.data.list.sumBy { it.vipQty.toInt() }
+            if (sumBy > 0) {
+                val i = provinces.data.userQtyALL.toInt() - sumBy
+                provinces.data.sum = i.toString()
+            }
+        }
+        return@withContext provinces
+    }
+
+    /**
+     * 获取邀请记录
+     */
+    suspend fun getTheInvitationRecord(start: String, index: String) = withContext(Dispatchers.IO) {
+        val provinces = myService.getTheInvitationRecord(start, index)
+        if (provinces.result.returnCode == "0") {
+        }
+        return@withContext provinces
+    }
+
+    /**
+     * 获取返佣记录
+     */
+    suspend fun getARebateRecord(start: String, index: String) = withContext(Dispatchers.IO) {
+        val provinces = myService.getARebateRecord(start, index)
+        if (provinces.result.returnCode == "0") {
+        }
+        return@withContext provinces
+    }
+
+    /**
+     * 获取返佣详情
+     */
+    suspend fun getRebateDetails(inviteCode: String, start: String, index: String) = withContext(Dispatchers.IO) {
+        val provinces = myService.getRebateDetails(inviteCode, start, index)
+        if (provinces.result.returnCode == "0") {
+        }
+        return@withContext provinces
+    }
+
+
     companion object {
 
         private var instance: MyUserRepository? = null

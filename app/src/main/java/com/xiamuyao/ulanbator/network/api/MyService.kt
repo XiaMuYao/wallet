@@ -1,9 +1,7 @@
 package com.xiamuyao.ulanbator.network.api
 
 import com.xiamuyao.ulanbator.model.bean.WanAndroidBean
-import com.xiamuyao.ulanbator.model.bean.response.GetVerSion
-import com.xiamuyao.ulanbator.model.bean.response.MyUserBean
-import com.xiamuyao.ulanbator.model.bean.response.SetUserBean
+import com.xiamuyao.ulanbator.model.bean.response.*
 import com.xiamuyao.ulanbator.net.BaseResponse
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -49,5 +47,45 @@ interface MyService {
         @Field("passwordConfirm") passwordConfirm: String,
         @Field("verifyCode") verifyCode: String
     ): BaseResponse<SetUserBean>
+
+
+    /**
+     * 获取邀请返佣统计
+     */
+    @FormUrlEncoded
+    @POST("me/getInviteStatistics")
+    suspend fun getInvitationRebateStatistics(@Field("null") niu: String = ""): BaseResponse<GetInviteStatisticsBean.DataBean>
+
+    /**
+     * 获取邀请记录
+     */
+    @FormUrlEncoded
+    @POST("me/getInvite")
+    suspend fun getTheInvitationRecord(
+        @Field("start") start: String,
+        @Field("index") index: String
+
+    ): BaseResponse<GetInviteListBean.DataBean>
+
+    /**
+     * 获取返佣记录
+     */
+    @FormUrlEncoded
+    @POST("me/getInviteCommission")
+    suspend fun getARebateRecord(
+        @Field("start") start: String,
+        @Field("index") index: String
+    ): BaseResponse<GetInviteCommissionBean.DataBean>
+
+    /**
+     * 获取返佣详情
+     */
+    @FormUrlEncoded
+    @POST("me/getInviteCommissionDetail")
+    suspend fun getRebateDetails(
+        @Field("inviteCode") inviteCode: String,
+        @Field("start") start: String,
+        @Field("index") index: String
+    ): BaseResponse<GetInviteCommissionDetailBean.DataBean>
 
 }

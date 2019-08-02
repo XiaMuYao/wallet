@@ -38,10 +38,10 @@
             android:id="@+id/imageView12"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:background="#f123"
             app:layout_constraintEnd_toStartOf="@+id/guideline43"
             app:layout_constraintStart_toStartOf="@+id/guideline42"
-            app:layout_constraintTop_toTopOf="@+id/guideline41" />
+            app:layout_constraintTop_toTopOf="@+id/guideline41"
+            app:netCircleImageLocal="@{3}" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline41"
@@ -90,24 +90,36 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:textSize="@dimen/dimens_20dp"
+            android:text="@{invitationandreturnmoneyViewModel.userNeme}"
             android:textColor="#fff"
-            android:text="TextView"
+            android:textSize="@dimen/dimens_20dp"
             app:layout_constraintEnd_toEndOf="@+id/imageView12"
             app:layout_constraintStart_toStartOf="@+id/imageView12"
-            app:layout_constraintTop_toBottomOf="@+id/imageView12" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView12"
+            tools:text="4654654" />
+
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="35dp"
+            android:layout_height="10dp"
+            android:layout_marginStart="5dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView41"
+            app:layout_constraintStart_toEndOf="@+id/textView41"
+            app:layout_constraintTop_toTopOf="@+id/textView41"
+            app:userLever="@{invitationandreturnmoneyViewModel.userLever}" />
 
         <TextView
             android:id="@+id/textView42"
             android:layout_width="wrap_content"
-            android:textSize="12dp"
-            android:textColor="@color/suncolor"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
-            android:text="TextView"
+            android:text="@{invitationandreturnmoneyViewModel.userid}"
+            android:textColor="@color/suncolor"
+            android:textSize="12dp"
             app:layout_constraintEnd_toEndOf="@+id/textView41"
             app:layout_constraintStart_toStartOf="@+id/textView41"
-            app:layout_constraintTop_toBottomOf="@+id/textView41" />
+            app:layout_constraintTop_toBottomOf="@+id/textView41"
+            tools:text="4654654" />
 
         <LinearLayout
             android:id="@+id/linearLayout7"
@@ -121,10 +133,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="300"
+                android:text="@{invitationandreturnmoneyViewModel.cumulativeRebate}"
                 android:textColor="#fff"
+
                 android:textSize="22dp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:text="300" />
 
             <TextView
                 style="@style/style_item_num"
@@ -161,10 +175,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="36"
+                android:text="@{invitationandreturnmoneyViewModel.totalNumberOfInvitations}"
                 android:textColor="#fff"
                 android:textSize="22dp"
-                android:textStyle="bold" />
+
+                android:textStyle="bold"
+                tools:text="36" />
 
             <TextView
                 style="@style/style_item_num"
@@ -444,9 +460,11 @@
             android:id="@+id/textView51"
             style="@style/style_item_num"
             android:layout_marginEnd="2dp"
-            android:text="30"
+            android:text="@{invitationandreturnmoneyViewModel.generalUser}"
             app:layout_constraintEnd_toStartOf="@+id/textView50"
-            app:layout_constraintTop_toTopOf="@+id/guideline54" />
+
+            app:layout_constraintTop_toTopOf="@+id/guideline54"
+            tools:text="30" />
 
         <TextView
             android:id="@+id/textView52"
@@ -491,41 +509,47 @@
         <TextView
             android:id="@+id/textView57"
             style="@style/style_item_num"
-            android:text="TextView"
+            android:text="@{invitationandreturnmoneyViewModel.vip1}"
             app:layout_constraintEnd_toStartOf="@+id/textView52"
-            app:layout_constraintTop_toTopOf="@+id/guideline55" />
+
+            app:layout_constraintTop_toTopOf="@+id/guideline55"
+            tools:text="30" />
 
         <TextView
             android:id="@+id/textView58"
 
             style="@style/style_item_num"
-            android:text="TextView"
+            android:text="@{invitationandreturnmoneyViewModel.vip2}"
             app:layout_constraintEnd_toStartOf="@+id/textView53"
-            app:layout_constraintTop_toTopOf="@+id/guideline56" />
+            app:layout_constraintTop_toTopOf="@+id/guideline56"
+            tools:text="30" />
 
         <TextView
             android:id="@+id/textView59"
 
             style="@style/style_item_num"
-            android:text="TextView"
+            android:text="@{invitationandreturnmoneyViewModel.vip3}"
             app:layout_constraintEnd_toStartOf="@+id/textView54"
-            app:layout_constraintTop_toTopOf="@+id/guideline57" />
+            app:layout_constraintTop_toTopOf="@+id/guideline57"
+            tools:text="30" />
 
         <TextView
             android:id="@+id/textView60"
 
             style="@style/style_item_num"
-            android:text="TextView"
+            android:text="@{invitationandreturnmoneyViewModel.vip4}"
             app:layout_constraintEnd_toStartOf="@+id/textView55"
-            app:layout_constraintTop_toTopOf="@+id/guideline58" />
+            app:layout_constraintTop_toTopOf="@+id/guideline58"
+            tools:text="30" />
 
         <TextView
             android:id="@+id/textView61"
 
             style="@style/style_item_num"
-            android:text="TextView"
+            android:text="@{invitationandreturnmoneyViewModel.vip5}"
             app:layout_constraintEnd_toStartOf="@+id/textView56"
-            app:layout_constraintTop_toTopOf="@+id/guideline59" />
+            app:layout_constraintTop_toTopOf="@+id/guideline59"
+            tools:text="30" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline106"

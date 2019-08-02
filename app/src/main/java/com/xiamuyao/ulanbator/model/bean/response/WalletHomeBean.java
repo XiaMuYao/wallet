@@ -1,10 +1,12 @@
 package com.xiamuyao.ulanbator.model.bean.response;
 
+import java.util.List;
+
 public class WalletHomeBean {
 
     /**
      * result : {"returnCode":"0","returnUserMessage":"成功","returnMessage":"成功"}
-     * data : {"btc":"0","etc":"0","inviteCode":"","nickname":"MAX","eth":"0","eos":"0","usdt":"0","ltc":"0","token":"0","vipType":0}
+     * data : {"btc":"0","etc":"0","inviteCode":"09263012","nickname":"MAX","eth":"0","eos":"0","usdt":"0","vipType":0,"ltc":"0","list":[{"amount":"0","symbolName":"btc","symbolType":1},{"amount":"0","symbolName":"eth","symbolType":2},{"amount":"0","symbolName":"ltc","symbolType":3},{"amount":"0","symbolName":"eos","symbolType":4},{"amount":"0","symbolName":"etc","symbolType":5},{"amount":"0","symbolName":"usdt","symbolType":6},{"amount":"0","symbolName":"token","symbolType":7}],"token":"0"}
      */
 
     private ResultBean result;
@@ -66,14 +68,15 @@ public class WalletHomeBean {
         /**
          * btc : 0
          * etc : 0
-         * inviteCode :
+         * inviteCode : 09263012
          * nickname : MAX
          * eth : 0
          * eos : 0
          * usdt : 0
-         * ltc : 0
-         * token : 0
          * vipType : 0
+         * ltc : 0
+         * list : [{"amount":"0","symbolName":"btc","symbolType":1},{"amount":"0","symbolName":"eth","symbolType":2},{"amount":"0","symbolName":"ltc","symbolType":3},{"amount":"0","symbolName":"eos","symbolType":4},{"amount":"0","symbolName":"etc","symbolType":5},{"amount":"0","symbolName":"usdt","symbolType":6},{"amount":"0","symbolName":"token","symbolType":7}]
+         * token : 0
          */
 
         private String btc;
@@ -83,9 +86,10 @@ public class WalletHomeBean {
         private String eth;
         private String eos;
         private String usdt;
+        private int vipType;
         private String ltc;
         private String token;
-        private int vipType;
+        private List<ListBean> list;
 
         public String getBtc() {
             return btc;
@@ -143,6 +147,14 @@ public class WalletHomeBean {
             this.usdt = usdt;
         }
 
+        public int getVipType() {
+            return vipType;
+        }
+
+        public void setVipType(int vipType) {
+            this.vipType = vipType;
+        }
+
         public String getLtc() {
             return ltc;
         }
@@ -159,12 +171,48 @@ public class WalletHomeBean {
             this.token = token;
         }
 
-        public int getVipType() {
-            return vipType;
+        public List<ListBean> getList() {
+            return list;
         }
 
-        public void setVipType(int vipType) {
-            this.vipType = vipType;
+        public void setList(List<ListBean> list) {
+            this.list = list;
+        }
+
+        public static class ListBean {
+            /**
+             * amount : 0
+             * symbolName : btc
+             * symbolType : 1
+             */
+
+            private String amount;
+            private String symbolName;
+            private int symbolType;
+
+            public String getAmount() {
+                return amount;
+            }
+
+            public void setAmount(String amount) {
+                this.amount = amount;
+            }
+
+            public String getSymbolName() {
+                return symbolName;
+            }
+
+            public void setSymbolName(String symbolName) {
+                this.symbolName = symbolName;
+            }
+
+            public int getSymbolType() {
+                return symbolType;
+            }
+
+            public void setSymbolType(int symbolType) {
+                this.symbolType = symbolType;
+            }
         }
     }
 }

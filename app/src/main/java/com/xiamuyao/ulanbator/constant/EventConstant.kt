@@ -12,4 +12,16 @@ object EventConstant {
     val SELECT_PAIRNAME = "SELECT_PAIRNAME"
     val SELECT_PAIR_PRICE = "SELECT_PAIR_PRICE"
     val SELECT_PAIR_ID = "SELECT_PAIR_ID"
+
+    //选择的国家
+    val SELECT_CITY = "SELECT_CITY"
+    //选择的计价货币
+    val SELECT_CURRENCY = "SELECT_CURRENCY"
+    //汇率数据存储
+    val RATE_DATA = "RATE_DATA"
+    //行情数据
+    val PRICE_LIST = "PRICE_LIST"
+    //平台币名称
+    val TOKEN = "TOKEN"
+
 }

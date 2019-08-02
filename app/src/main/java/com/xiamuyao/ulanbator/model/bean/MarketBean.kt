@@ -121,6 +121,12 @@ class MarketBean : BaseObservable() {
                 field = sex
                 notifyPropertyChanged(BR.pairName)
             }
+        @get:Bindable
+        var pairToPrice: String = ""
+            set(sex) {
+                field = sex
+                notifyPropertyChanged(BR.pairToPrice)
+            }
 
         @get:Bindable
         var upAndDown: String = ""

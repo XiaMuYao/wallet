@@ -45,19 +45,14 @@ class WalletFragment : BaseFragment<FragmentHomeBinding, WalletViewModel>() {
 
     override fun initVVMObserver() {
 
-        DataBus.observeData(this, EventConstant.BTC_Refresh, object : DataBusObservable<String> {
+        DataBus.observeData(this, EventConstant.quote_Refresh, object : DataBusObservable<String> {
             override fun dataBusDataCallBack(it: String) {
-
+                viewModel.setTheSumOfAssets()
             }
         })
 
     }
 
-
-    override fun onResume() {
-        super.onResume()
-        viewModel.initData()
-    }
     override fun initContentView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): Int {
         return R.layout.fragment_home
     }

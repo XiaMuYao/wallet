@@ -88,4 +88,5 @@
     <string name="pleadzijinmima">请输入资金密码</string>
     <string name="pldeazijinagre">请再次输入密码</string>
     <string name="liangcinoagen">两次密码输入不一致</string>
+    <string name="inputNotNull">输入金额不能为空</string>
 </resources>

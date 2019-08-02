@@ -11,9 +11,11 @@ import com.xiamuyao.ulanbator.constant.EventConstant
 import com.xiamuyao.ulanbator.constant.ProjectConstant
 import com.xiamuyao.ulanbator.constant.ProjectConstant.BTC_PRICE
 import com.xiamuyao.ulanbator.model.bean.MarketBean
+import com.xiamuyao.ulanbator.model.bean.response.RateBean
 import com.xiamuyao.ulanbator.model.repository.*
 import com.xiamuyao.ulanbator.network.ServiceCreator
 import com.xiamuyao.ulanbator.network.api.*
+import com.xiamuyao.ulanbator.util.RateUtli
 import com.xiamuyao.ulanbator.util.putSpValue
 import com.xiamuyao.ulanbator.utlis.DataBus
 import com.xiamuyao.ulanbator.utlis.LL
@@ -53,88 +55,22 @@ class App : Application(), KodeinAware {
 
     }
 
-    init {
-        //设置行情数据
-        //todo 先写5种 以后优化
-        val btcusdt = MarketBean.TickBean()
-        btcusdt.cch = "market.btcusdt.detail"
-        btcusdt.pairName = "BTC"
-        btcusdt.pairAndToName = "BTCUSTD"
-
-        val ethusdt = MarketBean.TickBean()
-        ethusdt.cch = "market.ethusdt.detail"
-        ethusdt.pairName = "ETH"
-        btcusdt.pairAndToName = "ETHUSTD"
-
-        val ltcusdt = MarketBean.TickBean()
-        ltcusdt.cch = "market.ltcusdt.detail"
-        ltcusdt.pairName = "LTC"
-        btcusdt.pairAndToName = "LTCUSTD"
-
-        val eosusdt = MarketBean.TickBean()
-        eosusdt.cch = "market.eosusdt.detail"
-        eosusdt.pairName = "EOS"
-        btcusdt.pairAndToName = "EOSUSTD"
-
-        val etcusdt = MarketBean.TickBean()
-        etcusdt.cch = "market.etcusdt.detail"
-        etcusdt.pairName = "ETC"
-        btcusdt.pairAndToName = "ETCUSTD"
-
-        val BTCKRW = MarketBean.TickBean()
-        BTCKRW.pairAndToName = "BTCKRW"
-        val BTCJPY = MarketBean.TickBean()
-        BTCJPY.pairAndToName = "BTCJPY"
-        val BTCCNY = MarketBean.TickBean()
-        BTCCNY.pairAndToName = "BTCCNY"
-        val BTCUSD = MarketBean.TickBean()
-        BTCUSD.pairAndToName = "BTCUSD"
-        val USDJPY = MarketBean.TickBean()
-        USDJPY.pairAndToName = "USDJPY"
-        val USDTUSD = MarketBean.TickBean()
-        USDTUSD.pairAndToName = "USDTUSD"
-        val USDCNY = MarketBean.TickBean()
-        USDCNY.pairAndToName = "USDCNY"
-        val USDKRW = MarketBean.TickBean()
-        USDKRW.pairAndToName = "USDKRW"
-        val USDTCNY = MarketBean.TickBean()
-        USDTCNY.pairAndToName = "USDTCNY"
-        val USDTKRW = MarketBean.TickBean()
-        USDTKRW.pairAndToName = "USDTKRW"
-        val USDTJPY = MarketBean.TickBean()
-        USDTJPY.pairAndToName = "USDTJPY"
-
-        marketList.add(btcusdt)
-        marketList.add(ethusdt)
-        marketList.add(ltcusdt)
-        marketList.add(eosusdt)
-        marketList.add(etcusdt)
-
-        marketList.add(BTCKRW)
-        marketList.add(BTCJPY)
-        marketList.add(BTCCNY)
-        marketList.add(BTCUSD)
-        marketList.add(USDJPY)
-        marketList.add(USDTUSD)
-        marketList.add(USDCNY)
-        marketList.add(USDKRW)
-        marketList.add(USDTCNY)
-        marketList.add(USDTKRW)
-        marketList.add(USDTJPY)
-
-
-    }
 
     companion object {
         var CONTEXT: Context by Delegates.notNull()
+        //行情数据
+//        var marketList = ObservableArrayList<MarketBean.TickBean>()
         var marketList = ObservableArrayList<MarketBean.TickBean>()
-
+        //服务器的汇率
+//        var fromCloudRate : MutableList<RateBean.DataBean.ListBean> = arrayListOf()
+        var fromCloudRate: MutableList<RateBean.DataBean.ListBean> = mutableListOf()
     }
 
     override fun onCreate() {
         super.onCreate()
         CONTEXT = applicationContext
-
+        fromCloudRate = RateUtli.getRateList()
+        marketList = RateUtli.getPriceList()
         LibApp.init(CONTEXT)
 
         initWebSocket()
@@ -212,6 +148,7 @@ class App : Application(), KodeinAware {
             println("接收到文本消息：$message")
         }
 
+        @Synchronized
         override fun <T> onMessage(bytes: ByteBuffer, data: T) {
 
             var pong = ""
@@ -226,12 +163,13 @@ class App : Application(), KodeinAware {
             } else {
                 val fromJson = Gson().fromJson(pong, MarketBean::class.java)
                 if (null != fromJson.getTick()) {
-//                    //寻找数据插入还是修改
-                    for ((index, indexData) in marketList.withIndex()) {
+                    //寻找数据插入还是修改
+                    for ((index, indexData) in RateUtli.getPriceList().withIndex()) {
                         if (indexData.cch == fromJson.getCh()) {
                             fromJson.getTick()?.cch = indexData.cch
                             fromJson.getTick()?.pairName = indexData.pairName
-                            marketList[index] = fromJson.getTick()
+                            fromJson.getTick()?.pairAndToName = indexData.pairName+"USDT"
+                            RateUtli.getPriceList()[index] = fromJson.getTick()
                             //保存比特币价格
                             if (fromJson.getTick()?.pairName == "BTC") {
                                 CONTEXT.putSpValue(BTC_PRICE, fromJson.getTick()?.close)
@@ -239,13 +177,18 @@ class App : Application(), KodeinAware {
                                 DataBus.postData(EventConstant.BTC_Refresh, fromJson.getTick()?.close!!)
                             }
                             //已经得到最后数 计算
-                            val tickBean = marketList[index]
+                            val tickBean = RateUtli.getPriceList()[index]
                             val subtract = tickBean.close.toBigDecimal().subtract(tickBean.open.toBigDecimal())
                             val multiply = subtract.div(tickBean.open.toBigDecimal()).multiply(100.toBigDecimal())
-                            marketList[index].upAndDown = "${multiply.toString()}"
+                            RateUtli.getPriceList()[index].upAndDown = multiply.stripTrailingZeros().toString()
+                            //计算行情相应的汇率数据
+                            RateUtli.getPriceList()[index].pairToPrice =
+                                RateUtli.selectPairByWeb(RateUtli.getPriceList()[index])
                             break
                         }
                     }
+                    //保存行情整体数据 下次读取
+                    RateUtli.SavePriceList(RateUtli.getPriceList())
                 }
                 DataBus.postData(EventConstant.quote_Refresh, "")
             }

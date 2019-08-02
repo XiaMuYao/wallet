@@ -103,6 +103,8 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), ViewPag
             currentItem = viewModel.fragmentIndex.value!!
             addOnPageChangeListener(this@MainActivity)
         }
+        //获取汇率数据
+        viewModel.getExchangeRateData()
 
     }
 

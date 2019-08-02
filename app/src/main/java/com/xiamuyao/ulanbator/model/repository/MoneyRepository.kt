@@ -13,7 +13,10 @@ class MoneyRepository(private var moneyService: MoneyService) {
         val provinces = moneyService.financialHomeInformation()
         val data = provinces.data
         if (provinces.result.returnCode == "0") {
-            data.sum = data.listSymbolUsd.sumByDouble { it.amount.toBigDecimal().toDouble() }.toString()
+            data.sum =
+                data.listSymbolUsd.sumByDouble {
+                    it.amount.replace(",", "").toBigDecimal().toDouble()
+                }.toString()
         }
         return@withContext provinces
     }
