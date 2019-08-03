@@ -15,7 +15,6 @@ import com.xiamuyao.ulanbator.databinding.ActivityContractintoBinding
 import com.xiamuyao.ulanbator.util.setTitleBar
 import com.xiamuyao.ulanbator.utlis.DataBus
 import com.xiamuyao.ulanbator.utlis.DataBusObservable
-import com.xiamuyao.ulanbator.utlis.LL
 import com.xiamuyao.ulanbator.view.CustomPopupWindow
 import com.xiamuyao.ulanbator.viewmodel.ContractIntoViewModel
 
@@ -39,10 +38,13 @@ class ContractIntoActivity : BaseActivity<ActivityContractintoBinding, ContractI
         //设置进度条
         binding.signSeekBar.setValueFormatListener { progress -> "$$progress" }
         binding.signSeekBar.configBuilder.signColor(Color.parseColor("#00FFFFFF")).build()
-        binding.editText.addTextChangedListener {
 
-            LL.d("计算试试汇率钱数")
-            viewModel.nowSelectPrice.value = it.toString().toBigDecimal().multiply(2.toBigDecimal()).toString()
+        binding.editText.addTextChangedListener {
+            if (it.isNullOrEmpty()) {
+                viewModel.nowSelectPrice.value = "0"
+                return@addTextChangedListener
+            }
+            viewModel.calculateTheAmountAfterTheInput(viewModel.inoutMoney.value?.toBigDecimal()!!)
         }
 
     }
@@ -84,6 +86,8 @@ class ContractIntoActivity : BaseActivity<ActivityContractintoBinding, ContractI
         DataBus.observeData(this, EventConstant.SELECT_PAIRNAME, object : DataBusObservable<String> {
             override fun dataBusDataCallBack(it: String) {
                 viewModel.selectPairName.value = it
+                if (viewModel.inoutMoney.value.isNullOrEmpty()) return
+                viewModel.calculateTheAmountAfterTheInput(viewModel.inoutMoney.value?.toBigDecimal()!!)
             }
         })
         DataBus.observeData(this, EventConstant.SELECT_PAIR_PRICE, object : DataBusObservable<String> {

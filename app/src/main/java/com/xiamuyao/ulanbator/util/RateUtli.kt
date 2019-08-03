@@ -6,8 +6,10 @@ import com.google.gson.reflect.TypeToken
 import com.xiamuyao.ulanbator.App
 import com.xiamuyao.ulanbator.constant.EventConstant
 import com.xiamuyao.ulanbator.constant.EventConstant.PRICE_LIST
+import com.xiamuyao.ulanbator.constant.EventConstant.RATE_DATA
 import com.xiamuyao.ulanbator.constant.EventConstant.SELECT_CITY
 import com.xiamuyao.ulanbator.constant.EventConstant.SELECT_CURRENCY
+import com.xiamuyao.ulanbator.constant.ProjectConstant
 import com.xiamuyao.ulanbator.constant.ProjectConstant.USDTToExchangeRate
 import com.xiamuyao.ulanbator.constant.ProjectConstant.inMemoryCurrency
 import com.xiamuyao.ulanbator.model.bean.MarketBean
@@ -40,8 +42,8 @@ object RateUtli {
         val tempPrice = value.close.toBigDecimal()
         var lastPrice = ""
         var pairToPrice = ""
-        if (USDTToExchangeRate.isEmpty()) return ""
-        lastPrice = tempPrice.multiply(USDTToExchangeRate.toBigDecimal()).stripTrailingZeros().toString()
+        if (getUSDTToExchangeRate().isEmpty()) return ""
+        lastPrice = tempPrice.multiply(getUSDTToExchangeRate().toBigDecimal()).stripTrailingZeros().toString()
 //        getRateList().forEach {
 //            if (it.rateName.startsWith("USDT") && it.rateName.endsWith(getSelectCurrency())) {
 //                pairToPrice = it.rate
@@ -72,7 +74,8 @@ object RateUtli {
     fun getSelectCurrency(): String {
         return if (inMemoryCurrency.isEmpty()) {
             val temp = App.CONTEXT.getSpValue(SELECT_CURRENCY, "CNY")
-            temp
+            inMemoryCurrency = temp
+            inMemoryCurrency
         } else {
             inMemoryCurrency
         }
@@ -82,8 +85,8 @@ object RateUtli {
      * 保存计价货币
      */
     fun SaveSelectCurrency(selectPair: String) {
-        App.CONTEXT.putSpValue(SELECT_CURRENCY, selectPair)
         inMemoryCurrency = selectPair
+        App.CONTEXT.putSpValue(SELECT_CURRENCY, selectPair)
     }
 
     /**
@@ -127,7 +130,7 @@ object RateUtli {
      */
     fun getRateList(): MutableList<RateBean.DataBean.ListBean> {
         return if (App.fromCloudRate.isNullOrEmpty()) {
-            val temp = App.CONTEXT.getSpValue(SELECT_CURRENCY, "")
+            val temp = App.CONTEXT.getSpValue(RATE_DATA, "")
             if (temp.isEmpty()) return ObservableArrayList()
             App.fromCloudRate.addAll(
                 Gson().fromJson<List<RateBean.DataBean.ListBean>>(
@@ -135,7 +138,6 @@ object RateUtli {
                     object : TypeToken<List<RateBean.DataBean.ListBean>>() {}.type
                 )
             )
-
             App.fromCloudRate
         } else {
             App.fromCloudRate
@@ -147,14 +149,15 @@ object RateUtli {
      */
     fun saveRateList(obtainExchangeRate: MutableList<RateBean.DataBean.ListBean>) {
 
-        obtainExchangeRate.forEach {
+        for (it in obtainExchangeRate) {
+
             if (it.rateName.startsWith("USDT") && it.rateName.endsWith(getSelectCurrency())) {
                 //更改计价货币的实时汇率
-                USDTToExchangeRate = it.rate
-                return@forEach
+                saveUSDTToExchangeRate(it.rate)
+                break
             }
-
         }
+
         val toJson = JSONUtils.toJson(obtainExchangeRate)
         //保存本地数据
         App.CONTEXT.putSpValue(EventConstant.RATE_DATA, toJson)
@@ -214,4 +217,27 @@ object RateUtli {
         }
         return "0"
     }
+
+    /**
+     * 获取计价货币对应的汇率
+     */
+    fun getUSDTToExchangeRate(): String {
+        return if (ProjectConstant.USDTToExchangeRate.isEmpty()) {
+            val spValue = App.CONTEXT.getSpValue(EventConstant.USDTToExchangeRate, "0")
+            ProjectConstant.USDTToExchangeRate = spValue
+            ProjectConstant.USDTToExchangeRate
+        } else {
+            ProjectConstant.USDTToExchangeRate
+        }
+    }
+
+    /**
+     * 保存计价货币对应的汇率
+     */
+    fun saveUSDTToExchangeRate(value: String) {
+        App.CONTEXT.putSpValue(USDTToExchangeRate, value)
+        USDTToExchangeRate = value
+    }
+
+
 }

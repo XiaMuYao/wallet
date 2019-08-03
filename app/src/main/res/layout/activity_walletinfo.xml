@@ -17,10 +17,6 @@
         android:background="@color/pageBackground"
         tools:context=".activity.WalletInfo">
 
-        <include
-            android:id="@+id/titleBar"
-            layout="@layout/layout_titlebar" />
-
 
         <View
             android:layout_width="match_parent"
@@ -29,6 +25,10 @@
             app:layout_constraintBottom_toBottomOf="@+id/guideline123"
             app:layout_constraintTop_toTopOf="parent" />
 
+
+        <include
+            android:id="@+id/titleBar"
+            layout="@layout/layout_titlebar" />
 
         <View
             android:layout_width="0dp"
@@ -43,50 +43,55 @@
         <ImageView
             android:layout_width="@dimen/dp_40"
             android:layout_height="@dimen/dp_40"
-            android:background="#ff12"
+            app:setpairImage="@{walletinfoViewModel.walletListBean.pairName}"
             app:layout_constraintLeft_toLeftOf="@id/guideline128"
             app:layout_constraintTop_toTopOf="@id/guideline130" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="BTC"
+            android:text="@{walletinfoViewModel.walletListBean.pairName}"
             android:textColor="#fff"
             android:textSize="20dp"
             android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="@id/guideline128"
-            app:layout_constraintTop_toTopOf="@+id/guideline123" />
+            app:layout_constraintTop_toTopOf="@+id/guideline123"
+            tools:text="BTC" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="¥ 72,585.86"
+            android:text="@{`￥` + walletinfoViewModel.walletListBean.pairToUSDT}"
             android:textColor="#fff"
             android:textSize="12dp"
             app:layout_constraintLeft_toLeftOf="@id/guideline128"
-            app:layout_constraintTop_toTopOf="@+id/guideline131" />
+            app:layout_constraintTop_toTopOf="@+id/guideline131"
+            tools:text="¥ 72,585.86" />
 
         <TextView
             android:id="@+id/textView89"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="0"
+            android:text="@{walletinfoViewModel.available}"
             android:textColor="#fff"
             android:textSize="18dp"
             android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="@+id/guideline129"
-            app:layout_constraintTop_toTopOf="@+id/guideline130" />
+            app:layout_constraintTop_toTopOf="@+id/guideline130"
+            tools:text="0" />
 
 
         <TextView
             android:layout_width="32dp"
             android:layout_height="16dp"
+            android:layout_marginLeft="@dimen/dimens_5dp"
             android:background="@drawable/shape_wallet_yes"
+            android:gravity="center"
             android:text="可用"
             android:textColor="#fff"
             android:textSize="12dp"
             app:layout_constraintBaseline_toBaselineOf="@+id/textView89"
-            app:layout_constraintLeft_toRightOf="@+id/guideline136" />
+            app:layout_constraintLeft_toRightOf="@+id/textView89" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline123"
@@ -197,41 +202,46 @@
             android:id="@+id/textView90"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="≈ 0 CNY"
+            android:text="@{`≈` +` `+ walletinfoViewModel.availablePrice}"
             android:textColor="#878DA8"
             app:layout_constraintStart_toStartOf="@+id/guideline129"
-            app:layout_constraintTop_toTopOf="@+id/guideline132" />
+            app:layout_constraintTop_toTopOf="@+id/guideline132"
+            tools:text="≈ 0 CNY" />
 
         <TextView
             android:id="@+id/textView91"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="0"
+            android:text="@{walletinfoViewModel.freeze}"
             android:textColor="#fff"
             android:textSize="18dp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/guideline129"
-            app:layout_constraintTop_toTopOf="@+id/guideline134" />
+            app:layout_constraintTop_toTopOf="@+id/guideline134"
+            tools:text="0" />
 
 
         <TextView
             android:id="@+id/textView92"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="≈ 0 CNY"
+            android:text="@{`≈` +` `+walletinfoViewModel.freezePrice}"
             android:textColor="#878DA8"
             app:layout_constraintStart_toStartOf="@+id/guideline129"
-            app:layout_constraintTop_toTopOf="@+id/guideline135" />
+            app:layout_constraintTop_toTopOf="@+id/guideline135"
+            tools:text="≈ 0 CNY" />
 
         <TextView
             android:layout_width="32dp"
             android:layout_height="16dp"
+            android:layout_marginLeft="@dimen/dimens_5dp"
             android:background="@drawable/shape_wallet_no"
+            android:gravity="center"
             android:text="冻结"
             android:textColor="#fff"
             android:textSize="12dp"
             app:layout_constraintBaseline_toBaselineOf="@+id/textView91"
-            app:layout_constraintLeft_toRightOf="@+id/guideline136" />
+            app:layout_constraintLeft_toRightOf="@+id/textView91" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline138"
@@ -273,6 +283,7 @@
             android:layout_marginBottom="5dp"
             android:background="@drawable/shape_btn"
             app:layout_constraintBottom_toBottomOf="parent"
+            android:onClick="@{() -> walletinfoViewModel.transfer()}"
             app:layout_constraintLeft_toLeftOf="@+id/guideline125"
             app:layout_constraintRight_toRightOf="@+id/guideline140">
 
@@ -313,6 +324,7 @@
             android:layout_width="0dp"
             android:layout_height="@dimen/dp_40"
             android:layout_marginLeft="@dimen/dimens_15dp"
+            android:onClick="@{() -> walletinfoViewModel.receipt()}"
             android:layout_marginBottom="5dp"
             android:background="@drawable/shape_btn_jiechu"
 

@@ -24,9 +24,6 @@ class ContractFragmentFragment : BaseFragment<FragmentContractfragmentBinding, C
     override fun initView() {
         binding.contractRecyclerView.defaultStyle(contractAdapter)
         contractAdapter.setOnItemClickListener { _, _, position ->
-//            val bundle = Bundle()
-//            bundle.putSerializable("data", contractAdapter.getItem(position))
-//            bundle.putString("productId", contractAdapter.getItem(position)?.productId)
             val item = contractAdapter.getItem(position)
             ContractIntoActivity.start(context!!, item?.productId!!,item.shouyiText!!)
         }

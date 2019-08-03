@@ -31,7 +31,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:src="@drawable/progress_01"
+            android:src="@drawable/progress_03"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/guideline190" />
@@ -97,12 +97,14 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimens_20dp"
             android:orientation="vertical"
+            android:visibility="gone"
             app:layout_constraintLeft_toLeftOf="@+id/guideline194"
             app:layout_constraintRight_toRightOf="@+id/guideline195"
             app:layout_constraintTop_toTopOf="@+id/guideline191">
 
             <RelativeLayout
                 android:layout_width="match_parent"
+
                 android:layout_height="wrap_content">
 
                 <TextView

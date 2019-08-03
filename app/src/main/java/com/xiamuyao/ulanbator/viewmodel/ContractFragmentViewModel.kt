@@ -24,7 +24,6 @@ class ContractFragmentViewModel(application: Application) : BaseViewModel(applic
     }
 
     private fun getContractList() {
-
         launch {
             val accessToWealthManagementProducts = repository.accessToWealthManagementProducts(1.toString())
             businessHandler(accessToWealthManagementProducts) {
@@ -32,11 +31,6 @@ class ContractFragmentViewModel(application: Application) : BaseViewModel(applic
             }
 
         }
-//        for (i in 1..8) {
-//            val contractListBean = ContractListBean()
-//            contractList.add(contractListBean)
-//        }
-
     }
 
 }

@@ -5,15 +5,17 @@ import androidx.databinding.ObservableArrayList
 import androidx.lifecycle.MutableLiveData
 import com.xiamuyao.ulanbator.R
 import com.xiamuyao.ulanbator.base.BaseViewModel
+import com.xiamuyao.ulanbator.constant.EventConstant.TOKEN
 import com.xiamuyao.ulanbator.extension.businessHandler
 import com.xiamuyao.ulanbator.model.bean.PairListBean
 import com.xiamuyao.ulanbator.model.bean.response.MoneyProudyInfoBean
 import com.xiamuyao.ulanbator.model.repository.MoneyRepository
+import com.xiamuyao.ulanbator.util.RateUtli.getRateList
 import com.xiamuyao.ulanbator.util.TimeUtli
 import com.xiamuyao.ulanbator.utlis.SingleLiveEvent
 import com.xiamuyao.ulanbator.utlis.To
-import org.kodein.di.TT
 import org.kodein.di.generic.instance
+import java.math.BigDecimal
 
 class ContractIntoViewModel(application: Application) : BaseViewModel(application) {
     private val repository: MoneyRepository by instance()
@@ -54,7 +56,7 @@ class ContractIntoViewModel(application: Application) : BaseViewModel(applicatio
     override fun initData() {
 
         earningsStartTime.value = TimeUtli.getTime()
-        incomeArrivalTime.value = TimeUtli.checkOption("next",earningsStartTime.value!!)
+        incomeArrivalTime.value = TimeUtli.checkOption("next", earningsStartTime.value!!)
         dueTransferTime.value = TimeUtli.getDayOfDay()
     }
 
@@ -140,6 +142,41 @@ class ContractIntoViewModel(application: Application) : BaseViewModel(applicatio
                 repository.buyingWealthManagementProducts(productId.value!!, inoutMoney.value!!, selectPairID.value!!)
             businessHandler(buyingWealthManagementProducts) {
                 finishStatus.call()
+            }
+        }
+    }
+
+    /**
+     * 计算输入之后的金额
+     */
+    fun calculateTheAmountAfterTheInput(inputValue: BigDecimal) {
+
+        for (it in getRateList()) {
+            //如果是平台币
+            if (selectPairName.value == TOKEN) {
+                //todo 一次循环
+                val TOKENUSDT = getRateList().find { it.rateName == "TOKENUSDT" }
+                //平台币兑换USDT
+                val tokenToUSDTPrice = inputValue.multiply(TOKENUSDT?.rate?.toBigDecimal()?.stripTrailingZeros())
+
+                //USDT 兑换 USD
+                val USDTUSD = getRateList().find { it.rateName == "USDTUSD" }
+                val tokenToUSDT =
+                    tokenToUSDTPrice.multiply(USDTUSD?.rate?.toBigDecimal()?.stripTrailingZeros()).toPlainString()
+                nowSelectPrice.value = tokenToUSDT
+                break
+
+            } else {
+                val find = getRateList().find { it.rateName == selectPairName.value?.toUpperCase() + "USD" }
+
+                if (null != find) {
+
+                    val tokenToUSDT =
+                        inputValue.multiply(find.rate?.toBigDecimal()?.stripTrailingZeros()).toPlainString()
+                    nowSelectPrice.value = tokenToUSDT
+                    break
+                }
+
             }
         }
     }

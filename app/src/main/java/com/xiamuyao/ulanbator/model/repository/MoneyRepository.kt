@@ -4,7 +4,7 @@ import com.xiamuyao.ulanbator.network.api.MoneyService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class MoneyRepository(private var moneyService: MoneyService) {
+class  MoneyRepository(private var moneyService: MoneyService) {
 
     /**
      * 理财首页信息

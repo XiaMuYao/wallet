@@ -9,13 +9,15 @@ object To {
 
     fun showToast(text: String) {
 
-        if (mToast == null) {
-            mToast = Toast.makeText(LibApp.getContext(), text, Toast.LENGTH_SHORT)
-        } else {
-            mToast!!.setText(text)
-            mToast!!.duration = Toast.LENGTH_SHORT
-        }
-        mToast!!.show()
+//        if (mToast == null) {
+//            mToast = Toast.makeText(LibApp.getContext(), text, Toast.LENGTH_SHORT)
+//        }
+//        else {
+//            mToast!!.setText(text)
+//            mToast!!.duration = Toast.LENGTH_SHORT
+//        }
+//        mToast!!.show()
+        Toast.makeText(LibApp.getContext(),text,Toast.LENGTH_SHORT).show()
     }
 
 

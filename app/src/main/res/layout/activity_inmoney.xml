@@ -82,7 +82,8 @@
             android:background="@drawable/shape_btn"
             android:text="复制地址"
             android:textColor="#fff"
-            android:visibility="gone"
+            android:onClick="@{() -> inmoneyViewModel.copyAddress()}"
+            app:setViewShowHide="@{!inmoneyViewModel.pageType}"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="@+id/guideline185" />
@@ -129,18 +130,25 @@
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.53" />
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="@+id/guideline175"
+            app:layout_constraintEnd_toStartOf="@+id/guideline176"
+            app:layout_constraintTop_toTopOf="@+id/guideline172"
+            android:layout_height="wrap_content">
+
         <TextView
             android:id="@+id/textView97"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            android:text="Benjamin"
+            android:text="@{inmoneyViewModel.nickName}"
             android:textColor="#fff"
             android:textSize="@dimen/dimens_20dp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline176"
-            app:layout_constraintStart_toStartOf="@+id/guideline175"
-            app:layout_constraintTop_toTopOf="@+id/guideline172" />
+
+            tools:text="Benjamin" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -149,9 +157,8 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:src="@drawable/vip1"
-            app:layout_constraintBottom_toTopOf="@+id/guideline123"
-            app:layout_constraintStart_toEndOf="@+id/textView97"
-            app:layout_constraintTop_toTopOf="@+id/guideline172" />
+            app:userLever="@{inmoneyViewModel.vipType}" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/textView99"
@@ -159,12 +166,14 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            android:text="ID:231888"
+            android:text="@{inmoneyViewModel.inviteCode}"
             android:textColor="@color/suntext"
+
             android:textSize="12dp"
             app:layout_constraintEnd_toStartOf="@+id/guideline176"
             app:layout_constraintStart_toStartOf="@+id/guideline175"
-            app:layout_constraintTop_toTopOf="@+id/guideline173" />
+            app:layout_constraintTop_toTopOf="@+id/guideline173"
+            tools:text="ID:231888" />
 
         <ImageView
             android:id="@+id/imageView30"
@@ -230,6 +239,7 @@
             android:layout_marginEnd="8dp"
             android:background="@drawable/shape_back_gray_circle"
             android:gravity="center"
+            android:text="@{inmoneyViewModel.pairAddress}"
             android:textColor="#fff"
             android:textSize="13dp"
             app:layout_constraintEnd_toStartOf="@+id/guideline179"
@@ -243,12 +253,15 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
+            android:onClick="@{() -> inmoneyViewModel.copyAddress()}"
             android:text="@string/copyAddress"
             android:textColor="@color/phoneCode"
             android:textSize="13dp"
+
             app:layout_constraintEnd_toStartOf="@+id/guideline176"
             app:layout_constraintStart_toStartOf="@+id/guideline175"
-            app:layout_constraintTop_toTopOf="@+id/guideline181" />
+            app:layout_constraintTop_toTopOf="@+id/guideline181"
+            app:setViewShowHide="@{inmoneyViewModel.pageType}" />
 
         <TextView
             android:id="@+id/textView102"
@@ -256,13 +269,15 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
+            android:onClick="@{() -> inmoneyViewModel.copyAddress()}"
             android:text="@string/copyMemo"
             android:textColor="@color/phoneCode"
-
             android:textSize="13dp"
+
             app:layout_constraintEnd_toStartOf="@+id/guideline176"
             app:layout_constraintStart_toStartOf="@+id/guideline175"
-            app:layout_constraintTop_toTopOf="@+id/guideline183" />
+            app:layout_constraintTop_toTopOf="@+id/guideline183"
+            app:setViewShowHide="@{inmoneyViewModel.pageType}" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline184"
@@ -279,12 +294,13 @@
             android:layout_marginEnd="8dp"
             android:background="@drawable/shape_back_gray_circle"
             android:gravity="center"
-            android:text="TextView"
+            android:text="@{inmoneyViewModel.momoAddress}"
             android:textColor="#fff"
             android:textSize="13dp"
             app:layout_constraintEnd_toStartOf="@+id/guideline179"
             app:layout_constraintStart_toStartOf="@+id/guideline178"
             app:layout_constraintTop_toTopOf="@+id/guideline184"
+            app:setViewShowHide="@{inmoneyViewModel.pageType}"
             tools:text="Memo: 2336945" />
 
         <RelativeLayout
@@ -318,6 +334,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.663" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

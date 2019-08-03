@@ -105,9 +105,12 @@
             tools:text="1231231231" />
 
         <ProgressBar
+            style="@android:style/Widget.ProgressBar.Horizontal"
             android:id="@+id/progressBar"
-            style="?android:attr/progressBarStyleHorizontal"
+           android:progressDrawable="@drawable/progressbar"
             android:layout_width="0dp"
+            android:progress="@{contractListBean.stateRate}"
+            android:max="100"
             android:layout_height="2dp"
             android:layout_marginBottom="@dimen/dp_10"
             app:layout_constraintBottom_toBottomOf="parent"

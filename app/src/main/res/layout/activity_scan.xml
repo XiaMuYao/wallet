@@ -24,7 +24,7 @@
                 android:layout_height="match_parent"
                 app:cornerColor="#967CFE"
                 app:frameColor="@color/colorPrimary"
-                app:labelText="将二维码置入框内，即可自动扫描"
+                app:labelText="@string/autoSacn"
                 app:labelTextLocation="bottom"
                 app:labelTextSize="14dp"
                 app:laserColor="#967CFE"

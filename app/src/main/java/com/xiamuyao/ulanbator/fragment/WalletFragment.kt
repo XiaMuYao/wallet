@@ -37,8 +37,9 @@ class WalletFragment : BaseFragment<FragmentHomeBinding, WalletViewModel>() {
             viewModel.showOrHideListData()
         }
         wallerAdapter.setOnItemClickListener { _, _, position ->
-
-            WalletInfoActivity.start(context!!)
+            val bundle = Bundle()
+            bundle.putSerializable("data", wallerAdapter.getItem(position))
+            WalletInfoActivity.start(context!!, bundle)
         }
 
     }
@@ -47,9 +48,22 @@ class WalletFragment : BaseFragment<FragmentHomeBinding, WalletViewModel>() {
 
         DataBus.observeData(this, EventConstant.quote_Refresh, object : DataBusObservable<String> {
             override fun dataBusDataCallBack(it: String) {
-                viewModel.setTheSumOfAssets()
+                if (viewModel.calculationStatus.value!!) {
+                    viewModel.calculationStatus.value = false
+                    viewModel.setTheSumOfAssets()
+                    viewModel.calculationStatus.value = true
+
+                }
             }
         })
+
+
+        DataBus.observeData(this, EventConstant.valuationCurrencyRefresh, object : DataBusObservable<String> {
+            override fun dataBusDataCallBack(it: String) {
+                viewModel.refreshCurrency()
+            }
+        })
+
 
     }
 

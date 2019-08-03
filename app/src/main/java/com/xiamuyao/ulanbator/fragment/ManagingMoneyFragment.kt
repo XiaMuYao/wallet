@@ -42,7 +42,6 @@ class ManagingMoneyFragment : BaseFragment<FragmentManagingMoneyBinding, Managin
         binding.managingViewPager.setSlide(true)
         binding.managingViewPager.adapter = managingMoneyAdapter
         binding.view.setOnClickListener {
-
             AccountDetailsActivity.start(context!!)
         }
     }
@@ -103,10 +102,6 @@ class ManagingMoneyFragment : BaseFragment<FragmentManagingMoneyBinding, Managin
             findFragment.arguments = bundle
             return findFragment
         }
-    }
-    override fun onResume() {
-        super.onResume()
-        viewModel.initData()
     }
 
 }

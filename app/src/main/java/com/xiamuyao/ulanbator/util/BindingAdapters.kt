@@ -2,6 +2,7 @@ package com.xiamuyao.ulanbator.util
 
 import android.annotation.SuppressLint
 import android.graphics.drawable.Drawable
+import android.media.Image
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -25,13 +26,15 @@ object BindingAdapters {
         view.setCurrentItem(index, false)
     }
 
-//    @SuppressLint("SetTextI18n")
-//    @BindingAdapter("roundOffTheZeroAfterTheDecimalPoint")
-//    @JvmStatic
-//    fun roundOffTheZeroAfterTheDecimalPoint(view: TextView, value: String) {
-//        if (value.isEmpty()) return
-//        view.text = value.toBigDecimal().stripTrailingZeros().toString()
-//    }
+    @BindingAdapter("selectType")
+    @JvmStatic
+    fun setselectType(view: ImageView, index: Int) {
+        if (view.tag == index.toString()) {
+            view.setImageResource(R.drawable.check)
+        } else {
+            view.setImageResource(0)
+        }
+    }
 
     @BindingAdapter("netImage")
     @JvmStatic
@@ -76,12 +79,11 @@ object BindingAdapters {
         view.isSelected = type
     }
 
-    @BindingAdapter("setTextWalletShow")
+    @BindingAdapter(value = ["setTextWalletShow", "valueis"], requireAll = false)
     @JvmStatic
-    fun setTextWalletShow(view: TextView, type: Boolean) {
-        if (null == view.tag) return
-        if (type) {
-            view.text = view.tag.toString()
+    fun setTextWalletShow(view: TextView, setTextWalletShow: Boolean, valueis: String) {
+        if (setTextWalletShow) {
+            view.text = valueis
         } else {
             view.text = "******"
         }
@@ -106,16 +108,16 @@ object BindingAdapters {
                 view.setImageResource(R.drawable.btc)
             }
             "ETH" -> {
-                view.setImageResource(R.drawable.btc)
+                view.setImageResource(R.drawable.eth)
             }
             "LTC" -> {
-                view.setImageResource(R.drawable.btc)
+                view.setImageResource(R.drawable.ltc)
             }
             "EOS" -> {
-                view.setImageResource(R.drawable.btc)
+                view.setImageResource(R.drawable.eos)
             }
             "ETC" -> {
-                view.setImageResource(R.drawable.btc)
+                view.setImageResource(R.drawable.etc)
             }
         }
     }

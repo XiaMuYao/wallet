@@ -49,6 +49,7 @@
             android:gravity="center"
             android:text="外"
             android:textColor="#878DA8"
+            android:visibility="gone"
             android:textSize="10dp"
             app:layout_constraintBaseline_toBaselineOf="@+id/textView94"
             app:layout_constraintStart_toEndOf="@+id/textView94" />
@@ -84,7 +85,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{walletListInfoBean.state}"
-
+tools:text="接受成功"
             android:textColor="#878DA8"
             app:layout_constraintBaseline_toBaselineOf="@+id/textView96"
             app:layout_constraintRight_toRightOf="parent" />

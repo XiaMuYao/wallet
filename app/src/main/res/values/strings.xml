@@ -89,4 +89,8 @@
     <string name="pldeazijinagre">请再次输入密码</string>
     <string name="liangcinoagen">两次密码输入不一致</string>
     <string name="inputNotNull">输入金额不能为空</string>
+    <string name="copy">复制成功</string>
+    <string name="inmoney">收款</string>
+    <string name="gotoAddress">转账</string>
+    <string name="autoSacn">将二维码置入框内，即可自动扫描</string>
 </resources>

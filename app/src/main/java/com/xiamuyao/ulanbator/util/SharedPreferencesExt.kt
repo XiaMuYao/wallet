@@ -46,29 +46,6 @@ fun <T> Context.putSpValue(key: String, value: T, name: String = packageName) = 
     }
 }
 
-fun <T> Activity.putSpValue(key: String, value: T, name: String = packageName) = sp(name).edit {
-    when (value) {
-        is Long -> putLong(key, value)
-        is String -> putString(key, value)
-        is Int -> putInt(key, value)
-        is Boolean -> putBoolean(key, value)
-        is Float -> putFloat(key, value)
-        else -> putString(key, serialize(value))
-    }
-}
-
-fun <T> ViewModel.putSpValue(key: String, value: T, name: String = App.CONTEXT.packageName) = sp(name).edit {
-    when (value) {
-        is Long -> putLong(key, value)
-        is String -> putString(key, value)
-        is Int -> putInt(key, value)
-        is Boolean -> putBoolean(key, value)
-        is Float -> putFloat(key, value)
-        else -> putString(key, serialize(value))
-    }
-}
-
-
 fun <T> Context.getSpValue(key: String, default: T, name: String = packageName): T = sp(name).run {
     val result = when (default) {
         is Long -> getLong(key, default)

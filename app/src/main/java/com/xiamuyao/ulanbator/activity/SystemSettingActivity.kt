@@ -6,8 +6,11 @@ import android.os.Bundle
 import com.xiamuyao.ulanbator.BR
 import com.xiamuyao.ulanbator.R
 import com.xiamuyao.ulanbator.base.BaseActivity
+import com.xiamuyao.ulanbator.constant.EventConstant
 import com.xiamuyao.ulanbator.databinding.ActivitySystemsettingBinding
 import com.xiamuyao.ulanbator.util.setTitleBar
+import com.xiamuyao.ulanbator.utlis.DataBus
+import com.xiamuyao.ulanbator.utlis.DataBusObservable
 import com.xiamuyao.ulanbator.viewmodel.SystemSettingViewModel
 
 
@@ -20,6 +23,11 @@ class SystemSettingActivity : BaseActivity<ActivitySystemsettingBinding, SystemS
     }
 
     override fun initVVMObserver() {
+        DataBus.observeData(this, EventConstant.valuationCurrencyRefresh, object : DataBusObservable<String> {
+            override fun dataBusDataCallBack(it: String) {
+                viewModel.initData()
+            }
+        })
     }
 
 

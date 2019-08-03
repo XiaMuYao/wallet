@@ -33,7 +33,7 @@ interface WalletService {
         @Field("symbolType") symbolType: String = "",
         @Field("start") start: String = "",
         @Field("index") index: String = ""
-    ): BaseResponse<CityListBean.DataBean>
+    ): BaseResponse<GetSymbolDetailBean.DataBean>
     /**
      * 获取用户钱包地址
      */
@@ -46,7 +46,7 @@ interface WalletService {
      * 转账
      */
     @FormUrlEncoded
-    @POST("/wallet/transfer")
+    @POST("wallet/transfer")
     suspend fun transfer(
         @Field("symbolType") symbolType: String = "",
         @Field("verifyCode") verifyCode: String = "",

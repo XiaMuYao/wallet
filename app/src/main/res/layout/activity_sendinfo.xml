@@ -48,8 +48,9 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:text="1.9 EOS"
+                    tools:text="1.9 EOS"
                     android:textColor="#fff"
+                    android:text="@{sendinfoViewModel.money}"
                     android:textSize="14dp" />
 
                 <View
@@ -80,8 +81,10 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:text="1.9 EOS"
+                    tools:text="1.9 EOS"
                     android:textColor="#fff"
+                    android:text="@{sendinfoViewModel.address}"
+
                     android:textSize="14dp" />
 
                 <View
@@ -112,8 +115,10 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:text="1.9 EOS"
+                    tools:text="1.9 EOS"
                     android:textColor="#fff"
+                    android:text="@{sendinfoViewModel.memoAddress}"
+
                     android:textSize="14dp" />
 
                 <View
@@ -144,7 +149,8 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:text="1.9 EOS"
+                    tools:text="1.9 EOS"
+                    android:text="@{sendinfoViewModel.userSymbolFeeRate}"
                     android:textColor="#fff"
                     android:textSize="14dp" />
             </RelativeLayout>
@@ -176,6 +182,7 @@
                     android:layout_marginLeft="100dp"
                     android:background="@null"
                     android:hint="@string/inmoneypsd"
+                    android:text="@={sendinfoViewModel.fundPassword}"
                     android:textColor="#FFFFFF"
                     android:textColorHint="#5D5C71"
                     android:textCursorDrawable="@drawable/shape_ed_color"
@@ -183,6 +190,7 @@
 
                 <TextView
                     android:layout_width="wrap_content"
+                    android:onClick="@{() -> sendinfoViewModel.forgetPassword()}"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
@@ -220,17 +228,20 @@
                     android:layout_marginLeft="100dp"
                     android:background="@null"
                     android:hint="@string/inphoneCode"
+                    android:text="@={sendinfoViewModel.phoneCode}"
                     android:textColor="#FFFFFF"
                     android:textColorHint="#5D5C71"
                     android:textCursorDrawable="@drawable/shape_ed_color"
                     android:textSize="14dp" />
 
                 <TextView
+                    android:id="@+id/phoneCode"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:text="@string/getphoneCode"
+                    android:onClick="@{() -> sendinfoViewModel.sendCode()}"
                     android:textColor="@color/phoneCode"
                     android:textSize="14dp" />
 
@@ -242,6 +253,36 @@
             </RelativeLayout>
 
         </LinearLayout>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline171"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.04" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline186"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.96" />
+
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/shape_btn"
+            android:onClick="@{() -> sendinfoViewModel.send()}"
+            android:text="@string/send"
+            android:textColor="#fff"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline186"
+            app:layout_constraintStart_toStartOf="@+id/guideline171"
+            app:layout_goneMarginBottom="@dimen/dp_10" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

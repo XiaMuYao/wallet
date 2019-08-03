@@ -6,6 +6,7 @@ import com.xiamuyao.ulanbator.App
 import com.xiamuyao.ulanbator.base.BaseViewModel
 import com.xiamuyao.ulanbator.extension.businessHandler
 import com.xiamuyao.ulanbator.model.repository.MoneyRepository
+import com.xiamuyao.ulanbator.util.UsetUtli
 import com.xiamuyao.ulanbator.util.getSpValue
 import org.kodein.di.generic.instance
 
@@ -18,7 +19,7 @@ class ManagingMoneyViewModel(application: Application) : BaseViewModel(applicati
     private val repository: MoneyRepository by instance()
 
     override fun initData() {
-        inviteCode.value = "ID:${App.CONTEXT.getSpValue("inviteCode", "")}"
+        inviteCode.value =UsetUtli.getUserId()
 
         getfinancialHomeInformation()
     }

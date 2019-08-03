@@ -24,16 +24,20 @@
             layout="@layout/layout_titlebar" />
 
         <RelativeLayout
-            android:layout_marginTop="@dimen/dp_10"
             android:layout_width="match_parent"
             android:layout_height="51dp"
-            android:background="@color/myitem">
+            android:layout_marginTop="@dimen/dp_10"
+            android:background="@color/myitem"
+            android:onClick="@{() -> selectpairViewModel.saveTheCurrency(0)}">
 
             <TextView
                 style="@style/style_select_text"
                 android:text="人民币(CNY)" />
 
-            <ImageView style="@style/style_select_image" />
+            <ImageView style="@style/style_select_image"
+                android:tag="0"
+                app:selectType="@{selectpairViewModel.slectIndex}"
+                />
 
             <View
                 android:layout_width="match_parent"
@@ -45,13 +49,18 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="51dp"
-            android:background="@color/myitem">
+            android:background="@color/myitem"
+
+            android:onClick="@{() -> selectpairViewModel.saveTheCurrency(1)}">
 
             <TextView
                 style="@style/style_select_text"
                 android:text="美元(USD)" />
 
-            <ImageView style="@style/style_select_image" />
+            <ImageView style="@style/style_select_image"
+
+                android:tag="1"
+                app:selectType="@{selectpairViewModel.slectIndex}"/>
 
             <View
                 android:layout_width="match_parent"
@@ -63,13 +72,19 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="51dp"
-            android:background="@color/myitem">
+            android:background="@color/myitem"
+            android:onClick="@{() -> selectpairViewModel.saveTheCurrency(2)}">
 
             <TextView
                 style="@style/style_select_text"
                 android:text="日元(JPY)" />
 
-            <ImageView style="@style/style_select_image" />
+            <ImageView style="@style/style_select_image"
+
+
+                android:tag="2"
+                app:selectType="@{selectpairViewModel.slectIndex}"
+                />
 
             <View
                 android:layout_width="match_parent"
@@ -81,13 +96,18 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="51dp"
-            android:background="@color/myitem">
+            android:background="@color/myitem"
+            android:onClick="@{() -> selectpairViewModel.saveTheCurrency(3)}">
 
             <TextView
                 style="@style/style_select_text"
                 android:text="韩元(KRW)" />
 
-            <ImageView style="@style/style_select_image" />
+            <ImageView style="@style/style_select_image"
+
+
+                android:tag="3"
+                app:selectType="@{selectpairViewModel.slectIndex}"/>
 
             <View
                 android:layout_width="match_parent"

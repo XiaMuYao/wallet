@@ -3,6 +3,7 @@ package com.xiamuyao.ulanbator.model.repository
 import com.xiamuyao.ulanbator.App
 import com.xiamuyao.ulanbator.network.api.MyService
 import com.xiamuyao.ulanbator.util.Md5
+import com.xiamuyao.ulanbator.util.UsetUtli
 import com.xiamuyao.ulanbator.util.putSpValue
 import com.xiamuyao.ulanbator.util.removeAllKey
 import kotlinx.coroutines.Dispatchers
@@ -17,11 +18,11 @@ class MyUserRepository(private var myService: MyService) {
         val provinces = myService.getUserInformation()
         val data = provinces.data
         if (provinces.result.returnCode == "0") {
-            App.CONTEXT.putSpValue("nickname", data.nickname)
+            UsetUtli.saveUserName(data.nickname)
             App.CONTEXT.putSpValue("vipType", data.vipType)
             App.CONTEXT.putSpValue("tel", data.tel)
             App.CONTEXT.putSpValue("dialingCode", data.dialingCode)
-            App.CONTEXT.putSpValue("inviteCode", data.inviteCode)
+            UsetUtli.saveUserId(data.inviteCode)
         }
         return@withContext myService.getUserInformation()
     }
@@ -32,7 +33,7 @@ class MyUserRepository(private var myService: MyService) {
     suspend fun modifyUserInformation(nickname: String) = withContext(Dispatchers.IO) {
         val provinces = myService.modifyUserInformation(nickname)
         if (provinces.result.returnCode == "0") {
-            App.CONTEXT.putSpValue("nickname", nickname)
+            UsetUtli.saveUserName(nickname)
         }
         return@withContext provinces
     }

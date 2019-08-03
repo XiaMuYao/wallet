@@ -1,5 +1,6 @@
 package com.xiamuyao.ulanbator.activity
 
+import android.Manifest
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
@@ -7,6 +8,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
+import androidx.core.app.ActivityCompat
 import androidx.core.net.toUri
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.lifecycleScope
@@ -50,6 +52,13 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), ViewPag
         )
     }
 
+    var permissions = arrayOf<String>(
+        Manifest.permission.CAMERA,
+        Manifest.permission.WRITE_EXTERNAL_STORAGE,
+        Manifest.permission.CALL_PHONE
+    )
+
+
     private val markerAdapter by lazy {
         SectionsPagerAdapter(supportFragmentManager, mFragmentList)
     }
@@ -73,6 +82,8 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), ViewPag
         binding.include2.mainBottomTabFour.setOnClickListener(this)
         binding.include2.mainBottomTabFive.setOnClickListener(this)
         selectorBottomImage(viewModel.fragmentIndex.value!!)
+        ActivityCompat.requestPermissions(this,permissions, 1)
+
     }
 
     override fun onPageScrollStateChanged(state: Int) {
@@ -91,7 +102,9 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), ViewPag
         //行情 - 改变汇率
         DataBus.observeData(this, EventConstant.quote_Refresh, object : DataBusObservable<String> {
             override fun dataBusDataCallBack(it: String) {
-                viewModel.getExchangeRateData()
+                if (viewModel.loadOk.value!!){
+                    viewModel.getExchangeRateData()
+                }
             }
         })
 

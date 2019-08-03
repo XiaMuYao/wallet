@@ -21,6 +21,8 @@ import org.kodein.di.generic.instance
 class MainViewModel(application: Application) : BaseViewModel(application) {
     private val repository: WalletRepository by instance()
 
+    var loadOk = MutableLiveData<Boolean>()
+
     //底部点击菜单控件List
     var bottomClickIdList = arrayListOf(
         R.id.mainBottomTabOne,
@@ -44,6 +46,7 @@ class MainViewModel(application: Application) : BaseViewModel(application) {
 
     init {
         fragmentIndex.value = 0
+        loadOk.value = true
     }
 
     override fun initData() {
@@ -55,9 +58,12 @@ class MainViewModel(application: Application) : BaseViewModel(application) {
     /**
      * 获取汇率数据
      */
+    @Synchronized
     fun getExchangeRateData() {
+        loadOk.value = false
         launch {
             repository.obtainExchangeRate()
+            loadOk.value = true
         }
     }
 

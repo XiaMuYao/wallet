@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.xiamuyao.ulanbator.base.BaseViewModel
 import com.xiamuyao.ulanbator.extension.businessHandler
 import com.xiamuyao.ulanbator.model.repository.MyUserRepository
+import com.xiamuyao.ulanbator.util.UsetUtli
 import com.xiamuyao.ulanbator.util.getSpValue
 import org.kodein.di.generic.instance
 
@@ -26,9 +27,9 @@ class MyViewModel(application: Application) : BaseViewModel(application) {
     }
 
     private fun initUsetData() {
-        nickName.value = getSpValue("nickName", "")
+        nickName.value =UsetUtli.getUserName()
         vipType.value = getSpValue("vipType", 1)
-        inviteCode.value = getSpValue("inviteCode", "")
+        inviteCode.value = UsetUtli.getUserId()
     }
 
     private fun getUserInfo() {

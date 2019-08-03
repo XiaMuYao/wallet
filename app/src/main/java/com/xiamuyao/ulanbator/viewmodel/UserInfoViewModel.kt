@@ -3,6 +3,7 @@ package com.xiamuyao.ulanbator.viewmodel
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import com.xiamuyao.ulanbator.base.BaseViewModel
+import com.xiamuyao.ulanbator.util.UsetUtli
 import com.xiamuyao.ulanbator.util.getSpValue
 
 class UserInfoViewModel(application: Application) : BaseViewModel(application) {
@@ -14,12 +15,12 @@ class UserInfoViewModel(application: Application) : BaseViewModel(application) {
 
 
     override fun initData() {
-        nickName.value = getSpValue("nickname", "")
+        nickName.value = UsetUtli.getUserName()
         vipType.value = getSpValue("vipType", 0)
-        if (getSpValue("inviteCode", "").isEmpty()) {
+        if (UsetUtli.getUserId().isEmpty()) {
             inviteCode.value = ""
         } else {
-            inviteCode.value = "ID:${getSpValue("inviteCode", "")}"
+            inviteCode.value = UsetUtli.getUserId()
         }
     }
 
