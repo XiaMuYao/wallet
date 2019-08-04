@@ -1,5 +1,6 @@
 package com.xiamuyao.ulanbator.utlis
 
+
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import kotlin.reflect.KClass

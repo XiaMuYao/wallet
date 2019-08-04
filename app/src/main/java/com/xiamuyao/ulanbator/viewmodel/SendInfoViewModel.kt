@@ -1,6 +1,7 @@
 package com.xiamuyao.ulanbator.viewmodel
 
 import android.app.Application
+import androidx.core.os.bundleOf
 import androidx.lifecycle.MutableLiveData
 import com.xiamuyao.ulanbator.activity.ForgetActivity
 import com.xiamuyao.ulanbator.activity.SendSuccessActivity
@@ -24,6 +25,7 @@ class SendInfoViewModel(application: Application) : BaseViewModel(application) {
     var userSymbolFeeRate = MutableLiveData<String>()
     var pairName = MutableLiveData<String>()
     var pairType = MutableLiveData<String>()
+    var type = MutableLiveData<Boolean>()
 
     var fundPassword = MutableLiveData<String>()
     var phoneCode = MutableLiveData<String>()
@@ -49,18 +51,27 @@ class SendInfoViewModel(application: Application) : BaseViewModel(application) {
 
     fun send() {
         launch {
+            var addressd = ""
+            addressd = if (type.value!!){
+                address.value+","+memoAddress.value
+            }else{
+                address.value!!
+            }
             val modifyTheFundPassword =
                 repository.transfer(
                     pairType.value!!,
                     phoneCode.value!!,
-                    address.value!!,
+                    addressd,
                     money.value!!,
                     fundPassword.value!!
                 )
 
             businessHandler(modifyTheFundPassword) {
                 if (modifyTheFundPassword.result.returnCode == "0") {
-                    startActivity(SendSuccessActivity::class.java)
+                    startActivity(
+                        SendSuccessActivity::class.java,
+                        bundleOf("type" to type.value, "pairName" to pairName.value, "money" to money.value)
+                    )
                 }
             }
 

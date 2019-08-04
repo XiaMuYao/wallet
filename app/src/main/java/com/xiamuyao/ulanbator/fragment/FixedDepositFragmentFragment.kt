@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.xiamuyao.ulanbator.BR
 import com.xiamuyao.ulanbator.R
+import com.xiamuyao.ulanbator.activity.ContractIntoActivity
 import com.xiamuyao.ulanbator.base.BaseFragment
 import com.xiamuyao.ulanbator.base.adapter.BaseObservableNoChildClickAdapter
 import com.xiamuyao.ulanbator.databinding.FragmentFixeddepositfragmentBinding
@@ -24,6 +25,12 @@ class FixedDepositFragmentFragment :
 
     override fun initView() {
         binding.fixedRecyclerView.defaultStyle(fixedAdapter)
+
+        fixedAdapter.setOnItemClickListener { _, _, position ->
+            val item = fixedAdapter.getItem(position)
+            ContractIntoActivity.start(context!!, item?.productId!!,item.interestMax!!,"2")
+        }
+
     }
 
     override fun initVVMObserver() {

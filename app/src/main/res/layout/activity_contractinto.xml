@@ -106,7 +106,7 @@
             android:background="@drawable/shape_gray"
             android:gravity="center"
             android:onClick="@{() -> contractintoViewModel.transferAll()}"
-            android:text="全部转入"
+            android:text="@string/allin"
             android:textColor="#FF878DA8"
             android:textSize="12dp"
             app:layout_constraintEnd_toStartOf="@+id/guideline35"
@@ -192,6 +192,7 @@
                 android:id="@+id/textView30"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="@{contractintoViewModel.xiane}"
                 android:textColor="#878DA8"
                 app:layout_constraintBaseline_toBaselineOf="@+id/textView29"
                 app:layout_constraintEnd_toEndOf="@+id/editText" />
@@ -263,10 +264,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="预计预计预计预计预计预计预计"
             android:textColor="#5D5C71"
             app:layout_constraintStart_toStartOf="@+id/guideline30"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
+
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline36"
@@ -283,6 +284,7 @@
             android:layout_marginRight="@dimen/dimens_15dp"
             android:layout_marginBottom="16dp"
             android:background="@drawable/shape_btn"
+            android:onClick="@{() -> contractintoViewModel.buyProduct()}"
             android:text="@string/shoping"
             android:textColor="#FFFFFF"
             android:visibility="gone"
@@ -340,6 +342,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="@id/guideline30"
             app:layout_constraintRight_toRightOf="@id/guideline36" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

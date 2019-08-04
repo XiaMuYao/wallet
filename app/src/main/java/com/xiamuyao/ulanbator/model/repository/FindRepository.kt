@@ -1,6 +1,8 @@
 package com.xiamuyao.ulanbator.model.repository
 
 import androidx.databinding.ObservableArrayList
+import com.xiamuyao.ulanbator.App
+import com.xiamuyao.ulanbator.R
 import com.xiamuyao.ulanbator.model.bean.FindMessageBean
 import com.xiamuyao.ulanbator.network.api.FindService
 import com.xiamuyao.ulanbator.util.toTime
@@ -15,13 +17,13 @@ class FindRepository(private var findService: FindService) {
     suspend fun getDiscoveryPageInformation(value: String) = withContext(Dispatchers.IO) {
         var temp = 0
         when (value) {
-            "公告" -> {
+            App.CONTEXT.getString(R.string.gonggao) -> {
                 temp = 1
             }
-            "资讯" -> {
+            App.CONTEXT.getString(R.string.zixun) -> {
                 temp = 2
             }
-            "帮助中心" -> {
+            App.CONTEXT.getString(R.string.bangzhuzhongxin) -> {
                 temp = 3
             }
             "DAPP" -> {

@@ -108,6 +108,8 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), ViewPag
             }
         })
 
+
+
     }
 
     override fun initData() {

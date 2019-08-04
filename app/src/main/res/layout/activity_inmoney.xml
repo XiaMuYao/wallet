@@ -80,7 +80,7 @@
             android:layout_width="165dp"
             android:layout_height="44dp"
             android:background="@drawable/shape_btn"
-            android:text="复制地址"
+            android:text="@string/copyAddress"
             android:textColor="#fff"
             android:onClick="@{() -> inmoneyViewModel.copyAddress()}"
             app:setViewShowHide="@{!inmoneyViewModel.pageType}"

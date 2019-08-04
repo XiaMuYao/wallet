@@ -93,6 +93,13 @@ class UserRepository(private var userService: UserService) {
     }
 
 
+    suspend fun quit() = withContext(Dispatchers.IO) {
+        val transactionPassword = userService.quit()
+        return@withContext transactionPassword
+    }
+
+
+
 
     companion object {
 

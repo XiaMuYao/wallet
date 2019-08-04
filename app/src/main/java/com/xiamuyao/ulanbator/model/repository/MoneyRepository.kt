@@ -1,10 +1,11 @@
 package com.xiamuyao.ulanbator.model.repository
 
 import com.xiamuyao.ulanbator.network.api.MoneyService
+import com.xiamuyao.ulanbator.util.BigDecimalUtils
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class  MoneyRepository(private var moneyService: MoneyService) {
+class MoneyRepository(private var moneyService: MoneyService) {
 
     /**
      * 理财首页信息
@@ -13,10 +14,10 @@ class  MoneyRepository(private var moneyService: MoneyService) {
         val provinces = moneyService.financialHomeInformation()
         val data = provinces.data
         if (provinces.result.returnCode == "0") {
-            data.sum =
-                data.listSymbolUsd.sumByDouble {
-                    it.amount.replace(",", "").toBigDecimal().toDouble()
-                }.toString()
+            data.sum = "0"
+            for (it in data.listSymbolUsd) {
+                data.sum =   BigDecimalUtils.add(data.sum,it.amount.replace(",", ""))
+            }
         }
         return@withContext provinces
     }

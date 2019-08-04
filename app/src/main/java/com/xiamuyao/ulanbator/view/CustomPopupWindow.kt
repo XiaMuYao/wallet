@@ -42,6 +42,7 @@ class CustomPopupWindow(var context: Context, var pairList: ObservableArrayList<
 
             DataBus.postData(EventConstant.SELECT_PAIRNAME, pairList[position].pairName)
             DataBus.postData(EventConstant.SELECT_PAIR_PRICE, pairList[position].pairPrice)
+            DataBus.postData(EventConstant.SELECT_PAIR_INDEX, position)
 
             dismiss()
         }

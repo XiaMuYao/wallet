@@ -126,7 +126,7 @@
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:text="总资产折合"
+            android:text="@string/sumToPrice"
             android:textColor="#FFFFFF"
             android:textSize="16dp"
             app:layout_constraintBottom_toTopOf="@+id/guideline11"

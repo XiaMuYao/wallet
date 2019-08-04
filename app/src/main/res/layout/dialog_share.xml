@@ -88,7 +88,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:text="注册邀请码"
+        android:text="@string/sharecode"
         android:textColor="#ffff"
         app:layout_constraintEnd_toStartOf="@+id/guideline103"
         app:layout_constraintStart_toStartOf="@+id/guideline102"
@@ -128,7 +128,7 @@
         android:layout_height="50dp"
         android:background="@color/pageBackground"
         android:gravity="center"
-        android:text="取消"
+        android:text="@string/quxiaoquxiao"
         android:textColor="@color/suncolor"
         app:layout_constraintBottom_toBottomOf="parent" />
 

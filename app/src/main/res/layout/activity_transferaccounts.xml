@@ -107,7 +107,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:text="地址"
+                    android:text="@string/address"
                     android:textColor="#878DA8"
                     android:textSize="14dp" />
 
@@ -139,7 +139,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:text="金额"
+                    android:text="@string/moneym"
                     android:textColor="#878DA8"
                     android:textSize="14dp" />
 
@@ -165,6 +165,7 @@
 
             <RelativeLayout
                 android:layout_width="wrap_content"
+                app:setViewShowHide="@{transferaccountsViewModel.type}"
                 android:layout_height="66dp"
                 android:layout_marginLeft="@dimen/dimens_15dp"
                 android:layout_marginRight="@dimen/dimens_15dp">
@@ -206,7 +207,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:text="手续费"
+                    android:text="@string/heanmondy"
                     android:textColor="#878DA8"
                     android:textSize="14dp" />
 
@@ -237,7 +238,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="17.5dp"
-            android:text="可用:"
+            android:text="@string/keyongdian"
             android:textColor="#FF878DA8"
             android:textSize="14dp"
             app:layout_constraintLeft_toLeftOf="@+id/guideline171"
@@ -276,7 +277,7 @@
             android:background="@drawable/shape_gray"
             android:gravity="center"
             android:onClick="@{() -> transferaccountsViewModel.allIn()}"
-            android:text="全部转入"
+            android:text="@string/allin"
             android:textColor="#FF878DA8"
             android:textSize="12dp"
             app:layout_constraintEnd_toStartOf="@+id/guideline186"

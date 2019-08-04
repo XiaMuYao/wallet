@@ -9,6 +9,7 @@ import com.xiamuyao.ulanbator.constant.EventConstant.TOKEN
 import com.xiamuyao.ulanbator.extension.businessHandler
 import com.xiamuyao.ulanbator.model.bean.WalletListBean
 import com.xiamuyao.ulanbator.model.repository.WalletRepository
+import com.xiamuyao.ulanbator.util.BigDecimalUtils
 import com.xiamuyao.ulanbator.util.RateUtli
 import com.xiamuyao.ulanbator.util.RateUtli.getUSDTToExchangeRate
 import com.xiamuyao.ulanbator.util.UsetUtli
@@ -54,8 +55,9 @@ class WalletViewModel(application: Application) : BaseViewModel(application) {
      * 刷新货币
      */
     fun refreshCurrency() {
+
         priceToName.value = RateUtli.getSelectCurrency()
-        setTheSumOfAssets()
+        initData()
     }
 
     /**
@@ -66,6 +68,7 @@ class WalletViewModel(application: Application) : BaseViewModel(application) {
             val theWalletAssetHomepage = repository.getTheWalletAssetHomepage()
             businessHandler(theWalletAssetHomepage) {
                 theWalletAssetHomepage.data.let {
+                    walletList.clear()
                     walletList.addAll(it.data.list)
                     //币种个数 一起转换USDT = BTC shuliang
                     inviteCode.value = UsetUtli.getUserId()
@@ -87,7 +90,6 @@ class WalletViewModel(application: Application) : BaseViewModel(application) {
     /**
      * 刷新资产总和
      */
-    //todo 这里关闭了同步计算
     fun setTheSumOfAssets() {
         LL.d("刷新资产总和")
         var tempSum = "0"
@@ -105,9 +107,7 @@ class WalletViewModel(application: Application) : BaseViewModel(application) {
                     if (it.rateName.startsWith(TOKEN)) {
                         //平台币转换 USDT
                         that.pairToUSDT =
-                            it.rate.replace(",", "").toBigDecimal()
-                                .multiply(that.pariAmount.replace(",", "").toBigDecimal()).stripTrailingZeros()
-                                .toPlainString()
+                            BigDecimalUtils.mul(it.rate.replace(",", ""), that.pariAmount.replace(",", ""))
                         //USDT 转换 BTC
                         that.PairToBTC = USDTtoBtc(that.pairToUSDT)
                         //USDT 转计价货币
@@ -124,8 +124,7 @@ class WalletViewModel(application: Application) : BaseViewModel(application) {
                 if (that.pairToName == it.pairAndToName) {
                     //当前货币 转 USDT
                     that.pairToUSDT =
-                        that.pariAmount.replace(",", "").toBigDecimal().multiply(it.close.toBigDecimal())
-                            .stripTrailingZeros().toPlainString()
+                        BigDecimalUtils.mul(that.pariAmount.replace(",", ""), it.close)
 
                     //USDT 转 BTC
                     that.PairToBTC = USDTtoBtc(that.pairToUSDT)
@@ -146,14 +145,14 @@ class WalletViewModel(application: Application) : BaseViewModel(application) {
             if (that.PairToBTC.isEmpty()) {
                 tempSum += 0
             } else {
-                tempSum = tempSum.toBigDecimal().add(that.PairToBTC.toBigDecimal()).stripTrailingZeros().toPlainString()
+                tempSum = BigDecimalUtils.add(tempSum, that.PairToBTC)
             }
             //计算计价货币综合价值
             if (that.pariToPrice.isNullOrEmpty()) {
                 tempMoney += 0
             } else {
                 tempMoney =
-                    tempMoney.toBigDecimal().add(that.pariToPrice?.toBigDecimal()).stripTrailingZeros().toPlainString()
+                    BigDecimalUtils.add(tempMoney, that.pariToPrice!!)
 
             }
         }
@@ -168,8 +167,7 @@ class WalletViewModel(application: Application) : BaseViewModel(application) {
      * USDT 转 BTC
      */
     private fun USDTtoBtc(pairToUSDT: String): String {
-        val toPlainString = pairToUSDT.toBigDecimal().div(RateUtli.BtcToUsdt().toBigDecimal()).stripTrailingZeros()
-            .toPlainString()
+        val toPlainString = BigDecimalUtils.div(pairToUSDT, RateUtli.BtcToUsdt())
         if (toPlainString.isEmpty()) return "0"
         return toPlainString
     }
@@ -178,9 +176,7 @@ class WalletViewModel(application: Application) : BaseViewModel(application) {
      * USDT 转计价货币
      */
     private fun USDTtoChangeRate(pairToUSDT: String): String {
-        val stripTrailingZeros =
-            pairToUSDT.toBigDecimal().multiply(getUSDTToExchangeRate().toBigDecimal()).stripTrailingZeros()
-                .toPlainString()
+        val stripTrailingZeros = BigDecimalUtils.mul(pairToUSDT, getUSDTToExchangeRate())
         if (stripTrailingZeros.isEmpty()) return "0"
         return stripTrailingZeros
     }

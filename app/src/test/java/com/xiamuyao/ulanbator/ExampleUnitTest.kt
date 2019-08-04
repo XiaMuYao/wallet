@@ -20,6 +20,14 @@ class ExampleUnitTest {
         println(aaaa)
 
     }
+    @Test
+    fun addition_isCorredct() {
+
+        var type = "0.000000000000000000"
+
+        println(        type.toBigDecimal().stripTrailingZeros().toPlainString())
+
+    }
 
 
 }

@@ -6,8 +6,12 @@ import android.os.Bundle
 import com.xiamuyao.ulanbator.BR
 import com.xiamuyao.ulanbator.R
 import com.xiamuyao.ulanbator.base.BaseActivity
+import com.xiamuyao.ulanbator.constant.EventConstant
 import com.xiamuyao.ulanbator.databinding.ActivityUserinfoBinding
+import com.xiamuyao.ulanbator.util.UsetUtli
 import com.xiamuyao.ulanbator.util.setTitleBar
+import com.xiamuyao.ulanbator.utlis.DataBus
+import com.xiamuyao.ulanbator.utlis.DataBusObservable
 import com.xiamuyao.ulanbator.viewmodel.UserInfoViewModel
 
 
@@ -23,6 +27,11 @@ class UserInfoActivity : BaseActivity<ActivityUserinfoBinding, UserInfoViewModel
     }
 
     override fun initVVMObserver() {
+        DataBus.observeData(this, EventConstant.SetName, object : DataBusObservable<String> {
+            override fun dataBusDataCallBack(it: String) {
+               viewModel. nickName.value = UsetUtli.getUserName()
+            }
+        })
     }
 
     override fun initContentView(savedInstanceState: Bundle?): Int {
@@ -43,11 +52,6 @@ class UserInfoActivity : BaseActivity<ActivityUserinfoBinding, UserInfoViewModel
             starter.putExtra("message", message)
             context.startActivity(starter)
         }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        viewModel.initData()
     }
 
 }

@@ -15,6 +15,7 @@ import com.xiamuyao.ulanbator.model.bean.response.RateBean
 import com.xiamuyao.ulanbator.model.repository.*
 import com.xiamuyao.ulanbator.network.ServiceCreator
 import com.xiamuyao.ulanbator.network.api.*
+import com.xiamuyao.ulanbator.util.BigDecimalUtils
 import com.xiamuyao.ulanbator.util.RateUtli
 import com.xiamuyao.ulanbator.util.putSpValue
 import com.xiamuyao.ulanbator.utlis.DataBus
@@ -36,7 +37,6 @@ import kotlin.properties.Delegates
 class App : Application(), KodeinAware {
 
     override val kodein = Kodein.lazy {
-
         //创建
         bind<BusinessService>() with singleton { ServiceCreator.create(BusinessService::class.java) }
         bind<UserService>() with singleton { ServiceCreator.create(UserService::class.java) }
@@ -52,7 +52,6 @@ class App : Application(), KodeinAware {
         bind<FindRepository>() with singleton { FindRepository.getInstance(instance()) }
         bind<MyUserRepository>() with singleton { MyUserRepository.getInstance(instance()) }
         bind<MoneyRepository>() with singleton { MoneyRepository.getInstance(instance()) }
-
     }
 
 
@@ -168,7 +167,7 @@ class App : Application(), KodeinAware {
                         if (indexData.cch == fromJson.getCh()) {
                             fromJson.getTick()?.cch = indexData.cch
                             fromJson.getTick()?.pairName = indexData.pairName
-                            fromJson.getTick()?.pairAndToName = indexData.pairName+"USDT"
+                            fromJson.getTick()?.pairAndToName = indexData.pairName + "USDT"
                             RateUtli.getPriceList()[index] = fromJson.getTick()
                             //保存比特币价格
                             if (fromJson.getTick()?.pairName == "BTC") {
@@ -178,8 +177,10 @@ class App : Application(), KodeinAware {
                             }
                             //已经得到最后数 计算
                             val tickBean = RateUtli.getPriceList()[index]
-                            val subtract = tickBean.close.toBigDecimal().subtract(tickBean.open.toBigDecimal())
-                            val multiply = subtract.div(tickBean.open.toBigDecimal()).multiply(100.toBigDecimal())
+                            val subtract = BigDecimalUtils.sub(tickBean.close, tickBean.open)
+                            val multiply =
+//                                BigDecimalUtils.mul(BigDecimalUtils.div(subtract, tickBean.open), "100").toBigDecimal()
+                                subtract.toBigDecimal().div(tickBean.open.toBigDecimal()).multiply(100.toBigDecimal())
                             RateUtli.getPriceList()[index].upAndDown = multiply.stripTrailingZeros().toString()
                             //计算行情相应的汇率数据
                             RateUtli.getPriceList()[index].pairToPrice =

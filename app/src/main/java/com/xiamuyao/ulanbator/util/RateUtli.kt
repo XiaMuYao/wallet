@@ -172,27 +172,27 @@ object RateUtli {
         val btcusdt = MarketBean.TickBean()
         btcusdt.cch = "market.btcusdt.detail"
         btcusdt.pairName = "BTC"
-        btcusdt.pairAndToName = "BTCUSTD"
+        btcusdt.pairAndToName = "BTCUSDT"
 
         val ethusdt = MarketBean.TickBean()
         ethusdt.cch = "market.ethusdt.detail"
         ethusdt.pairName = "ETH"
-        btcusdt.pairAndToName = "ETHUSTD"
+        btcusdt.pairAndToName = "ETHUSDT"
 
         val ltcusdt = MarketBean.TickBean()
         ltcusdt.cch = "market.ltcusdt.detail"
         ltcusdt.pairName = "LTC"
-        btcusdt.pairAndToName = "LTCUSTD"
+        btcusdt.pairAndToName = "LTCUSDT"
 
         val eosusdt = MarketBean.TickBean()
         eosusdt.cch = "market.eosusdt.detail"
         eosusdt.pairName = "EOS"
-        btcusdt.pairAndToName = "EOSUSTD"
+        btcusdt.pairAndToName = "EOSUSDT"
 
         val etcusdt = MarketBean.TickBean()
         etcusdt.cch = "market.etcusdt.detail"
         etcusdt.pairName = "ETC"
-        btcusdt.pairAndToName = "ETCUSTD"
+        btcusdt.pairAndToName = "ETCUSDT"
 
 
         val observableArrayList = ObservableArrayList<MarketBean.TickBean>()

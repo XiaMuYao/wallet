@@ -12,6 +12,7 @@ object EventConstant {
     val SELECT_PAIRNAME = "SELECT_PAIRNAME"
     val SELECT_PAIR_PRICE = "SELECT_PAIR_PRICE"
     val SELECT_PAIR_ID = "SELECT_PAIR_ID"
+    val SELECT_PAIR_INDEX = "SELECT_PAIR_INDEX"
 
     //选择的国家
     val SELECT_CITY = "SELECT_CITY"
@@ -27,5 +28,7 @@ object EventConstant {
     val USDTToExchangeRate = "USDTToExchangeRate"
     //计价货币刷新
     val valuationCurrencyRefresh = "valuationCurrencyRefresh"
+    //修改名字
+    val SetName = "SetName"
 
 }

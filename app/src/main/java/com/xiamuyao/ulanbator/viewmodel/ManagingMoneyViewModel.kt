@@ -6,6 +6,8 @@ import com.xiamuyao.ulanbator.App
 import com.xiamuyao.ulanbator.base.BaseViewModel
 import com.xiamuyao.ulanbator.extension.businessHandler
 import com.xiamuyao.ulanbator.model.repository.MoneyRepository
+import com.xiamuyao.ulanbator.util.BigDecimalUtils
+import com.xiamuyao.ulanbator.util.RateUtli.getRateList
 import com.xiamuyao.ulanbator.util.UsetUtli
 import com.xiamuyao.ulanbator.util.getSpValue
 import org.kodein.di.generic.instance
@@ -15,11 +17,12 @@ class ManagingMoneyViewModel(application: Application) : BaseViewModel(applicati
     val titleList = arrayListOf("合约", "定存")
     var inviteCode = MutableLiveData<String>()
     var sum = MutableLiveData<String>()
+    var priceSum = MutableLiveData<String>()
 
     private val repository: MoneyRepository by instance()
 
     override fun initData() {
-        inviteCode.value =UsetUtli.getUserId()
+        inviteCode.value = UsetUtli.getUserId()
 
         getfinancialHomeInformation()
     }
@@ -33,7 +36,20 @@ class ManagingMoneyViewModel(application: Application) : BaseViewModel(applicati
             businessHandler(financialHomeInformation) {
                 sum.value = financialHomeInformation.data.sum
                 inviteCode.value = "ID:${financialHomeInformation.data.inviteCode}"
+                //计算USDToBTC
+                calculateUSDToBTC()
             }
         }
+    }
+
+    /**
+     * 计算USDToBTC
+     */
+    fun calculateUSDToBTC() {
+        val find = getRateList().find { it.rateName == "BTCUSD" }
+        val div = BigDecimalUtils.div(sum.value!!, find?.rate!!)
+
+        priceSum.value = div
+
     }
 }

@@ -86,18 +86,19 @@ public class MoneyProudyInfoBean {
          */
 
         private String productId;
-        private double interestMax;
+        private String interestMax;
         private int stateType;
         private String memo;
         private String title;
         private String leaveDay;
-        private int userAmountMin;
+        private String userAmountMin;
         private int leaveRate;
         private String money;
         private String intro;
-        private double interestMin;
+        private String interestMin;
         private int stateRate;
-        private int userAmountMax;
+        private String userAmountMax;
+        private String userAmountMaxSum;
         private List<ListSymbolUsdBean> listSymbolUsd;
         private List<ListSymbolBalanceBean> listSymbolBalance;
         private List<ListSymbolFrozenBean> listSymbolFrozen;
@@ -110,12 +111,28 @@ public class MoneyProudyInfoBean {
             this.productId = productId;
         }
 
-        public double getInterestMax() {
+        public String getUserAmountMaxSum() {
+            return userAmountMaxSum;
+        }
+
+        public void setUserAmountMaxSum(String userAmountMaxSum) {
+            this.userAmountMaxSum = userAmountMaxSum;
+        }
+
+        public String getInterestMax() {
             return interestMax;
         }
 
-        public void setInterestMax(double interestMax) {
+        public void setInterestMax(String interestMax) {
             this.interestMax = interestMax;
+        }
+
+        public void setInterestMin(String interestMin) {
+            this.interestMin = interestMin;
+        }
+
+        public void setUserAmountMax(String userAmountMax) {
+            this.userAmountMax = userAmountMax;
         }
 
         public int getStateType() {
@@ -150,11 +167,11 @@ public class MoneyProudyInfoBean {
             this.leaveDay = leaveDay;
         }
 
-        public int getUserAmountMin() {
+        public String getUserAmountMin() {
             return userAmountMin;
         }
 
-        public void setUserAmountMin(int userAmountMin) {
+        public void setUserAmountMin(String userAmountMin) {
             this.userAmountMin = userAmountMin;
         }
 
@@ -182,12 +199,8 @@ public class MoneyProudyInfoBean {
             this.intro = intro;
         }
 
-        public double getInterestMin() {
+        public String getInterestMin() {
             return interestMin;
-        }
-
-        public void setInterestMin(double interestMin) {
-            this.interestMin = interestMin;
         }
 
         public int getStateRate() {
@@ -198,12 +211,8 @@ public class MoneyProudyInfoBean {
             this.stateRate = stateRate;
         }
 
-        public int getUserAmountMax() {
+        public String getUserAmountMax() {
             return userAmountMax;
-        }
-
-        public void setUserAmountMax(int userAmountMax) {
-            this.userAmountMax = userAmountMax;
         }
 
         public List<ListSymbolUsdBean> getListSymbolUsd() {

@@ -24,6 +24,7 @@ class TransferAccountsActivity : BaseActivity<ActivityTransferaccountsBinding, T
 
         viewModel.pairType.value = intent.getStringExtra("pairType")
         viewModel.pairName.value = intent.getStringExtra("pairName")
+        viewModel.type.value = intent.getBooleanExtra("type",false)
 
         viewModel.msymbolFeeRate.value = intent.getStringExtra("msymbolFeeRate")
         viewModel.mbalance.value = intent.getStringExtra("balance")

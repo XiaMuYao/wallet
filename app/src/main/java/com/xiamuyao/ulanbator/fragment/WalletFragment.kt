@@ -11,6 +11,7 @@ import com.xiamuyao.ulanbator.base.adapter.BaseObservableNoChildClickAdapter
 import com.xiamuyao.ulanbator.constant.EventConstant
 import com.xiamuyao.ulanbator.databinding.FragmentHomeBinding
 import com.xiamuyao.ulanbator.extension.defaultStyle
+import com.xiamuyao.ulanbator.util.RateUtli
 import com.xiamuyao.ulanbator.utlis.DataBus
 import com.xiamuyao.ulanbator.utlis.DataBusObservable
 import com.xiamuyao.ulanbator.viewmodel.WalletViewModel
@@ -57,13 +58,11 @@ class WalletFragment : BaseFragment<FragmentHomeBinding, WalletViewModel>() {
             }
         })
 
-
         DataBus.observeData(this, EventConstant.valuationCurrencyRefresh, object : DataBusObservable<String> {
             override fun dataBusDataCallBack(it: String) {
                 viewModel.refreshCurrency()
             }
         })
-
 
     }
 
@@ -79,5 +78,9 @@ class WalletFragment : BaseFragment<FragmentHomeBinding, WalletViewModel>() {
         return WalletViewModel::class.java
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.initData()
+    }
 
 }

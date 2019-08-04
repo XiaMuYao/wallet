@@ -7,7 +7,11 @@ import com.xiamuyao.ulanbator.BR
 import com.xiamuyao.ulanbator.R
 import com.xiamuyao.ulanbator.activity.*
 import com.xiamuyao.ulanbator.base.BaseFragment
+import com.xiamuyao.ulanbator.constant.EventConstant
 import com.xiamuyao.ulanbator.databinding.FragmentMyBinding
+import com.xiamuyao.ulanbator.util.UsetUtli
+import com.xiamuyao.ulanbator.utlis.DataBus
+import com.xiamuyao.ulanbator.utlis.DataBusObservable
 import com.xiamuyao.ulanbator.view.ShareDialog
 import com.xiamuyao.ulanbator.viewmodel.MyViewModel
 
@@ -61,12 +65,13 @@ class MyFragment : BaseFragment<FragmentMyBinding, MyViewModel>() {
 
     override fun initVVMObserver() {
 
-
+        DataBus.observeData(this, EventConstant.SetName, object : DataBusObservable<String> {
+            override fun dataBusDataCallBack(it: String) {
+                viewModel. nickName.value = UsetUtli.getUserName()
+            }
+        })
     }
 
-    override fun onResume() {
-        super.onResume()
-    }
 
     override fun initContentView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): Int {
         return R.layout.fragment_my

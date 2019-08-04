@@ -17,6 +17,7 @@ class TransferAccountsViewModel(application: Application) : BaseViewModel(applic
 
     var pairType = MutableLiveData<String>()
     var pairName = MutableLiveData<String>()
+    var type = MutableLiveData<Boolean>()
 
     var address = MutableLiveData<String>()
     var money = MutableLiveData<String>()
@@ -63,7 +64,8 @@ class TransferAccountsViewModel(application: Application) : BaseViewModel(applic
                 "memoAddress" to memoAddress.value,
                 "userSymbolFeeRate" to userSymbolFeeRate.value,
                 "pairName" to pairName.value,
-                "pairType" to pairType.value
+                "pairType" to pairType.value,
+                "type" to type.value
 
 
             )

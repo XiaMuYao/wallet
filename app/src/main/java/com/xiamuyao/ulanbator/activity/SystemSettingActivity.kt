@@ -17,7 +17,7 @@ import com.xiamuyao.ulanbator.viewmodel.SystemSettingViewModel
 class SystemSettingActivity : BaseActivity<ActivitySystemsettingBinding, SystemSettingViewModel>() {
 
     override fun initView() {
-        setTitleBar("系统设置", { finish() })
+        setTitleBar(getString(R.string.xitongshezhi), { finish() })
         binding.constraintLayout1.setOnClickListener { SelectLaunageActivity.start(this) }
         binding.constraintLayout2.setOnClickListener { SelectPairActivity.start(this) }
     }

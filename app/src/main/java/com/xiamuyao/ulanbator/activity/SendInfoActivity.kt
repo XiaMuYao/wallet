@@ -19,12 +19,13 @@ class SendInfoActivity : BaseActivity<ActivitySendinfoBinding, SendInfoViewModel
 
         viewModel.pairName.value = intent.getStringExtra("pairName")
         viewModel.pairType.value = intent.getStringExtra("pairType")
+        viewModel.type.value = intent.getBooleanExtra("type",false)
 
 
-        viewModel.money.value = intent.getStringExtra("money") + " " + viewModel.pairName.value
+        viewModel.money.value = intent.getStringExtra("money")
         viewModel.address.value = intent.getStringExtra("address")
         viewModel.memoAddress.value = intent.getStringExtra("memoAddress")
-        viewModel.userSymbolFeeRate.value = intent.getStringExtra("userSymbolFeeRate") + " " + viewModel.pairName.value
+        viewModel.userSymbolFeeRate.value = intent.getStringExtra("userSymbolFeeRate")
 
         setTitleBar(
             leftCallBack = { finish() },

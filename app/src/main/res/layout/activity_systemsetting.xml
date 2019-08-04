@@ -32,7 +32,7 @@
 
             <TextView
                 style="@style/style_seetting_text"
-                android:text="选择语言"
+                android:text="@string/selectlaung"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toRightOf="@+id/guideline82"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -54,7 +54,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
-                android:text="简体中文"
+                android:text="@string/jiantizhongwen"
                 android:textColor="#878DA8"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintRight_toLeftOf="@+id/image"
@@ -86,7 +86,7 @@
 
             <TextView
                 style="@style/style_seetting_text"
-                android:text="计价货币"
+                android:text="@string/jijiahuobi"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toRightOf="@+id/guideline83"
                 app:layout_constraintTop_toTopOf="parent" />

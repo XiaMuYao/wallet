@@ -63,11 +63,15 @@ fun SmartRefreshLayout.defaultRefreshLoadMoreFun(
 
 }
 
-fun <T> BaseViewModel.businessHandler(data: BaseResponse<T>, doingSom: (() -> Unit)? = null
+fun <T> BaseViewModel.businessHandler(
+    data: BaseResponse<T>,
+    doingSom: (() -> Unit)? = null
 ): T {
     when (data.result.returnCode) {
         SUCCESS -> {
-            doingSom?.let { it.invoke() }
+            doingSom?.let {
+                it.invoke()
+            }
         }
         else -> {
             data.result.returnUserMessage?.let {

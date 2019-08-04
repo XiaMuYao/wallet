@@ -130,14 +130,14 @@ object BindingAdapters {
         when (type) {
             1 -> {
                 view.setBackgroundResource(R.drawable.shape_contract_yirenou)
-                view.text = "已认购"
+                view.text = App.CONTEXT.getString(R.string.yirengou)
             }
             2 -> {
-                view.text = "已满额"
+                view.text = App.CONTEXT.getString(R.string.yimane)
                 view.setBackgroundResource(R.drawable.shape_contract_yimane)
             }
             0 -> {
-                view.text = "可认购"
+                view.text = App.CONTEXT.getString(R.string.yirengoul)
                 view.setBackgroundResource(R.drawable.shape_contract_kerengou)
             }
         }

@@ -4,7 +4,9 @@ import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import com.xiamuyao.ulanbator.base.BaseViewModel
 import com.xiamuyao.ulanbator.constant.EventConstant
+import com.xiamuyao.ulanbator.util.RateUtli
 import com.xiamuyao.ulanbator.util.RateUtli.SaveSelectCurrency
+import com.xiamuyao.ulanbator.util.RateUtli.getRateList
 import com.xiamuyao.ulanbator.util.RateUtli.getSelectCurrency
 import com.xiamuyao.ulanbator.utlis.DataBus
 import com.xiamuyao.ulanbator.utlis.LL
@@ -35,6 +37,8 @@ class SelectPairViewModel(application: Application) : BaseViewModel(application)
         val s = pairList[value]
         SaveSelectCurrency(s)
         DataBus.postData(EventConstant.valuationCurrencyRefresh,"")
+        //刷新汇率数据
+        RateUtli.saveRateList(getRateList())
         finishStatus.call()
     }
 }

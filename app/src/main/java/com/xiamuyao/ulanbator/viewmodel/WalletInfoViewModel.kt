@@ -11,6 +11,7 @@ import com.xiamuyao.ulanbator.extension.businessHandler
 import com.xiamuyao.ulanbator.model.bean.WalletListBean
 import com.xiamuyao.ulanbator.model.bean.WalletListInfoBean
 import com.xiamuyao.ulanbator.model.repository.WalletRepository
+import com.xiamuyao.ulanbator.util.BigDecimalUtils
 import com.xiamuyao.ulanbator.util.RateUtli.getSelectCurrency
 import com.xiamuyao.ulanbator.util.RateUtli.getUSDTToExchangeRate
 import com.xiamuyao.ulanbator.util.toTime
@@ -41,6 +42,17 @@ class WalletInfoViewModel(application: Application) : BaseViewModel(application)
 
     override fun initData() {
         pricingCurrency.value = getSelectCurrency()
+        //当前货币 兑换方USDT 的价格
+        currentCurrencyExchangeCurrency()
+    }
+
+    /**
+     * 当前货币兑换法币
+     */
+    private fun currentCurrencyExchangeCurrency() {
+        if (walletListBean.value?.pariAmount.isNullOrEmpty() || walletListBean.value?.pariAmount == "0") return
+        walletListBean.value?.pairToUSDT =
+            BigDecimalUtils.div(walletListBean.value?.pariToPrice!!, walletListBean.value?.pariAmount!!)
     }
 
     fun getPageData() {
@@ -85,29 +97,37 @@ class WalletInfoViewModel(application: Application) : BaseViewModel(application)
      */
     fun currentCurrencyPairCurrency(value: String): String {
         val multiply =
-            value.toBigDecimal().multiply(walletListBean.value?.PairToUSDTPrice?.toBigDecimal())?.stripTrailingZeros()
+            BigDecimalUtils.mul(value, walletListBean.value?.PairToUSDTPrice!!)
         val toPlainString =
-            multiply?.multiply(getUSDTToExchangeRate().toBigDecimal())?.stripTrailingZeros()?.toPlainString()
-        return toPlainString!! + " " + pricingCurrency.value
+            BigDecimalUtils.mul(multiply, getUSDTToExchangeRate())
+        return toPlainString + " " + pricingCurrency.value
     }
 
     /**
      * 收款
      */
     fun receipt() {
-        startActivity(InMoneyActivity::class.java, bundleOf("pairType" to walletListBean.value?.pariId,"pairName" to walletListBean.value?.pairName ))
+        startActivity(
+            InMoneyActivity::class.java,
+            bundleOf("pairType" to walletListBean.value?.pariId, "pairName" to walletListBean.value?.pairName)
+        )
     }
 
     /**
      * 转账
      */
     fun transfer() {
-        startActivity(TransferAccountsActivity::class.java,bundleOf(
-            "pairType" to walletListBean.value?.pariId,
-            "pairName" to walletListBean.value?.pairName,
-            "msymbolFeeRate" to msymbolFeeRate.value,
-            "balance" to mbalance.value
-            ))
+        var type = false
+        type = walletListBean.value?.pairName?.toString()?.contains("EOS")!!
+        startActivity(
+            TransferAccountsActivity::class.java, bundleOf(
+                "pairType" to walletListBean.value?.pariId,
+                "pairName" to walletListBean.value?.pairName,
+                "msymbolFeeRate" to msymbolFeeRate.value,
+                "balance" to mbalance.value,
+                "type" to type
+            )
+        )
     }
 
 }

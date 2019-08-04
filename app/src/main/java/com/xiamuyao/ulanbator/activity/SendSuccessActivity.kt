@@ -15,6 +15,8 @@ import com.xiamuyao.ulanbator.viewmodel.SendSuccessViewModel
 class SendSuccessActivity : BaseActivity<ActivitySendsuccessBinding, SendSuccessViewModel>() {
 
     override fun initView() {
+        viewModel.money.value = intent.getStringExtra("money")
+        viewModel.pairName.value = intent.getStringExtra("pairName")
 
     }
 

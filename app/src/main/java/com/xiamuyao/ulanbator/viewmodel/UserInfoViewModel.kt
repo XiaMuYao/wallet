@@ -2,11 +2,19 @@ package com.xiamuyao.ulanbator.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
+import com.xiamuyao.ulanbator.activity.LoginActivity
 import com.xiamuyao.ulanbator.base.BaseViewModel
+import com.xiamuyao.ulanbator.extension.businessHandler
+import com.xiamuyao.ulanbator.model.repository.MyUserRepository
+import com.xiamuyao.ulanbator.model.repository.UserRepository
 import com.xiamuyao.ulanbator.util.UsetUtli
 import com.xiamuyao.ulanbator.util.getSpValue
+import com.xiamuyao.ulanbator.utlis.ActivityStackManager
+import org.kodein.di.generic.instance
 
 class UserInfoViewModel(application: Application) : BaseViewModel(application) {
+
+    private val userRepository: UserRepository by instance()
 
 
     var nickName = MutableLiveData<String>()
@@ -22,6 +30,20 @@ class UserInfoViewModel(application: Application) : BaseViewModel(application) {
         } else {
             inviteCode.value = UsetUtli.getUserId()
         }
+    }
+
+    fun logout() {
+        launch {
+
+
+            val quit = userRepository.quit()
+
+            businessHandler(quit) {
+                startActivity(LoginActivity::class.java)
+                ActivityStackManager.getInstance().finishAllActivity()
+            }
+        }
+
     }
 
 }

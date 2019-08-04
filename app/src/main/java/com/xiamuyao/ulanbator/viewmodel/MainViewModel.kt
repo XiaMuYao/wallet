@@ -1,21 +1,11 @@
 package com.xiamuyao.ulanbator.viewmodel
 
 import android.app.Application
-import androidx.databinding.ObservableArrayList
 import androidx.lifecycle.MutableLiveData
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
-import com.xiamuyao.ulanbator.App
 import com.xiamuyao.ulanbator.R
 import com.xiamuyao.ulanbator.base.BaseViewModel
-import com.xiamuyao.ulanbator.constant.EventConstant.RATE_DATA
 import com.xiamuyao.ulanbator.constant.ProjectConstant
-import com.xiamuyao.ulanbator.extension.businessHandler
-import com.xiamuyao.ulanbator.model.bean.MarketBean
-import com.xiamuyao.ulanbator.model.bean.response.RateBean
 import com.xiamuyao.ulanbator.model.repository.WalletRepository
-import com.xiamuyao.ulanbator.util.RateUtli
-import com.xiamuyao.ulanbator.util.getSpValue
 import org.kodein.di.generic.instance
 
 class MainViewModel(application: Application) : BaseViewModel(application) {
@@ -58,7 +48,6 @@ class MainViewModel(application: Application) : BaseViewModel(application) {
     /**
      * 获取汇率数据
      */
-    @Synchronized
     fun getExchangeRateData() {
         loadOk.value = false
         launch {

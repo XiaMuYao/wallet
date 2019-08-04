@@ -153,7 +153,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4.5dp"
-            android:text="累计返佣"
+            android:text="@string/leijifanyong"
             android:textColor="#FF878DA8"
             android:textSize="14dp"
             app:layout_constraintEnd_toEndOf="@+id/linearLayout7"
@@ -195,7 +195,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4.5dp"
-            android:text="邀请总人数"
+            android:text="@string/yaoqigzongrenshu"
             android:textColor="#FF878DA8"
             android:textSize="14dp"
             app:layout_constraintEnd_toEndOf="@+id/linearLayout8"
@@ -405,7 +405,7 @@
         <TextView
             android:id="@+id/textView44"
             style="@style/style_inviation_item"
-            android:text="邀请普通用户数"
+            android:text="@string/yao1"
             app:layout_constraintStart_toStartOf="@+id/guideline60"
             app:layout_constraintTop_toTopOf="@+id/guideline54" />
 
@@ -413,7 +413,7 @@
             android:id="@+id/textView45"
             style="@style/style_inviation_item"
 
-            android:text="邀请 VIP1 人数"
+            android:text="@string/yao2"
             app:layout_constraintStart_toStartOf="@+id/guideline60"
             app:layout_constraintTop_toTopOf="@+id/guideline55" />
 
@@ -421,7 +421,7 @@
             android:id="@+id/textView46"
 
             style="@style/style_inviation_item"
-            android:text="邀请 VIP2 人数"
+            android:text="@string/yzo3"
             app:layout_constraintStart_toStartOf="@+id/guideline60"
             app:layout_constraintTop_toTopOf="@+id/guideline56" />
 
@@ -429,7 +429,7 @@
             android:id="@+id/textView47"
             style="@style/style_inviation_item"
 
-            android:text="邀请 VIP3 人数"
+            android:text="@string/yao4"
             app:layout_constraintStart_toStartOf="@+id/guideline60"
             app:layout_constraintTop_toTopOf="@+id/guideline57" />
 
@@ -437,7 +437,7 @@
             android:id="@+id/textView48"
             style="@style/style_inviation_item"
 
-            android:text="邀请 VIP4 人数"
+            android:text="@string/yao5"
             app:layout_constraintStart_toStartOf="@+id/guideline60"
             app:layout_constraintTop_toTopOf="@+id/guideline58" />
 
@@ -445,7 +445,7 @@
             android:id="@+id/textView49"
             style="@style/style_inviation_item"
 
-            android:text="邀请 VIP5 人数"
+            android:text="@string/yao3"
             app:layout_constraintStart_toStartOf="@+id/guideline60"
             app:layout_constraintTop_toTopOf="@+id/guideline59" />
 

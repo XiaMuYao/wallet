@@ -42,7 +42,6 @@ object TimeUtli {
     fun getTime(): String {
         val cal = Calendar.getInstance()
         val temeTime =
-            "${cal.get(Calendar.YEAR)}-" +
                     "${addZeroInHead((cal.get(Calendar.MONTH) + 1).toString())}-" +
                     addZeroInHead(cal.get(Calendar.DATE).toString())
         return temeTime
@@ -58,8 +57,8 @@ object TimeUtli {
         }
     }
 
-    fun checkOption(option: String, _date: String): String {
-        val sdf = SimpleDateFormat("yyyy-MM-dd")
+    fun checkOption(option: String, _date: String,num: Int=1): String {
+        val sdf = SimpleDateFormat("MM-dd")
         val cl = Calendar.getInstance()
         var date: Date? = null
 
@@ -72,11 +71,11 @@ object TimeUtli {
         cl.time = date
         if ("pre" == option) {
             // 时间减一天
-            cl.add(Calendar.DAY_OF_MONTH, -1)
+            cl.add(Calendar.DAY_OF_MONTH, -num)
 
         } else if ("next" == option) {
             // 时间加一天
-            cl.add(Calendar.DAY_OF_YEAR, 1)
+            cl.add(Calendar.DAY_OF_YEAR, num)
         } else {
             // do nothing
         }
