@@ -127,7 +127,7 @@
             android:id="@+id/textView65"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="时间"
+            android:text="@string/shijiantitile"
             android:textColor="#878DA8"
             app:layout_constraintBottom_toTopOf="@+id/guideline71"
             app:layout_constraintStart_toStartOf="@+id/guideline65"
@@ -137,7 +137,7 @@
             android:id="@+id/textView66"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="返佣类型"
+            android:text="@string/fanyongleixing"
             android:textColor="#878DA8"
 
             app:layout_constraintBottom_toTopOf="@+id/guideline71"
@@ -148,7 +148,7 @@
             android:id="@+id/textView67"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="返佣金额"
+            android:text="@string/fanyongjine"
             android:textColor="#878DA8"
 
             app:layout_constraintBottom_toTopOf="@+id/guideline71"
@@ -204,7 +204,7 @@
             android:id="@+id/textView68"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="昵称"
+            android:text="@string/nicheng"
             android:textColor="#878DA8"
             app:layout_constraintStart_toStartOf="@+id/guideline72"
             app:layout_constraintTop_toTopOf="@+id/guideline76" />
@@ -223,7 +223,7 @@
             android:id="@+id/textView70"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="用户类型"
+            android:text="@string/yonghuleixing"
             android:textColor="#878DA8"
 
             app:layout_constraintStart_toStartOf="@+id/guideline72"
@@ -233,7 +233,7 @@
             android:id="@+id/textView71"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="返佣总数"
+            android:text="@string/fanyongzongshu"
             android:textColor="#878DA8"
 
             app:layout_constraintStart_toStartOf="@+id/guideline72"

@@ -154,7 +154,7 @@
                 android:id="@+id/textView22"
                 style="@style/acconutDetails"
                 android:layout_marginTop="45.5dp"
-                android:text="昨日总收益"
+                android:text="@string/zuorizogshouyi"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -163,7 +163,7 @@
                 android:id="@+id/textView24"
                 style="@style/acconutDetails"
                 android:layout_marginTop="30.5dp"
-                android:text="昨日理财收益"
+                android:text="@string/zuorilicaishouyi"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView22" />
 
@@ -171,7 +171,7 @@
                 android:id="@+id/textView25"
                 style="@style/acconutDetails"
                 android:layout_marginTop="30.5dp"
-                android:text="昨日邀请收益"
+                android:text="@string/zuoyiyaoqingshouyi"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView24" />
 

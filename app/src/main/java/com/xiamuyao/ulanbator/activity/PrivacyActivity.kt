@@ -3,12 +3,14 @@ package com.xiamuyao.ulanbator.activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.text.method.ScrollingMovementMethod
 import com.xiamuyao.ulanbator.BR
 import com.xiamuyao.ulanbator.R
 import com.xiamuyao.ulanbator.base.BaseActivity
 import com.xiamuyao.ulanbator.databinding.ActivityPrivacyBinding
 import com.xiamuyao.ulanbator.util.setTitleBar
 import com.xiamuyao.ulanbator.viewmodel.PrivacyViewModel
+import kotlinx.android.synthetic.main.activity_privacy.*
 
 
 /**
@@ -18,8 +20,11 @@ class PrivacyActivity : BaseActivity<ActivityPrivacyBinding, PrivacyViewModel>()
 
     override fun initView() {
         setTitleBar(leftCallBack = { finish() },
-            title = "隐私政策",
+            title = getString(R.string.yinsizhengce),
                     rightCallBack = { LoginActivity.start(this) })
+
+
+        yinzitextv8u.movementMethod = ScrollingMovementMethod.getInstance();
     }
 
     override fun initVVMObserver() {

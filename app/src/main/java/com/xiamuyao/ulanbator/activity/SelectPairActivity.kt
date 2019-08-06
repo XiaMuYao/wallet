@@ -17,7 +17,7 @@ import com.xiamuyao.ulanbator.viewmodel.SelectPairViewModel
 class SelectPairActivity : BaseActivity<ActivitySelectpairBinding, SelectPairViewModel>() {
 
     override fun initView() {
-        setTitleBar("计价货币", { finish() })
+        setTitleBar(getString(R.string.jijiahuobi), { finish() })
 
     }
 

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="base_black">#393F52</color>
+    <color name="lvse">#04a68a</color>
 
     <color name="base_title_white">#F0F0F0</color>
     <color name="immersionBar">#1E202F</color>

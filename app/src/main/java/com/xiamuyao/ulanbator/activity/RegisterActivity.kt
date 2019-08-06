@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.lifecycle.Observer
+import com.xiamuyao.ulanbator.App
 import com.xiamuyao.ulanbator.BR
 import com.xiamuyao.ulanbator.R
 import com.xiamuyao.ulanbator.base.BaseActivity
@@ -21,7 +22,7 @@ import com.xiamuyao.ulanbator.viewmodel.RegisterViewModel
 class RegisterActivity : BaseActivity<ActivityRegisterBinding, RegisterViewModel>() {
 
     override fun initView() {
-        setTitleBar(leftCallBack = { finish() }, rightText = "登录",
+        setTitleBar(leftCallBack = { finish() }, rightText =App.CONTEXT.getString(R.string.login),
             titleBarColor = R.color.touming,
             rightCallBack = { LoginActivity.start(this) })
 

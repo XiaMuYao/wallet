@@ -23,7 +23,7 @@ object EventConstant {
     //行情数据
     val PRICE_LIST = "PRICE_LIST"
     //平台币名称
-    val TOKEN = "TOKEN"
+    val TOKEN = "MFT"
     //计价货币对应的汇率
     val USDTToExchangeRate = "USDTToExchangeRate"
     //计价货币刷新

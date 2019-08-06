@@ -119,6 +119,11 @@ object BindingAdapters {
             "ETC" -> {
                 view.setImageResource(R.drawable.etc)
             }
+            "BCH"->{view.setImageResource(R.drawable.bch)}
+            "DASH"->{view.setImageResource(R.drawable.dash)}
+            "DOGE"->{view.setImageResource(R.drawable.doge)}
+            "TRX"->{view.setImageResource(R.drawable.trx)}
+            "XRP"->{view.setImageResource(R.drawable.xrp)}
         }
     }
 

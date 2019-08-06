@@ -23,7 +23,7 @@ class ReturnMoneyHisActivity : BaseActivity<ActivityReturnmoneyhisBinding, Retur
     }
 
     override fun initView() {
-        setTitleBar("返佣记录", { finish() })
+        setTitleBar(getString(R.string.fanyongji), { finish() })
         binding.returnMoneyRecyclerView.defaultStyle(returnMoneyHisAdapter)
 
         //返佣详情

@@ -1,7 +1,6 @@
 package com.xiamuyao.ulanbator.viewmodel
 
 import android.app.Application
-import android.graphics.Color
 import androidx.databinding.ObservableArrayList
 import androidx.lifecycle.MutableLiveData
 import com.xiamuyao.ulanbator.R
@@ -18,11 +17,10 @@ import com.xiamuyao.ulanbator.utlis.SingleLiveEvent
 import com.xiamuyao.ulanbator.utlis.To
 import org.kodein.di.generic.instance
 import java.math.BigDecimal
-import android.text.Spanned.SPAN_INCLUSIVE_EXCLUSIVE
-import android.graphics.Color.parseColor
-import android.text.SpannableString
-import android.text.Spanned
-import android.text.style.ForegroundColorSpan
+import com.blankj.utilcode.util.TimeUtils
+import com.xiamuyao.ulanbator.App
+import com.xiamuyao.ulanbator.util.ArithUtil
+import com.xiamuyao.ulanbator.util.BigDecimalUtils
 
 
 class ContractIntoViewModel(application: Application) : BaseViewModel(application) {
@@ -36,6 +34,7 @@ class ContractIntoViewModel(application: Application) : BaseViewModel(applicatio
     var low = MutableLiveData<String>()
     var high = MutableLiveData<String>()
     var usermoney = MutableLiveData<String>()
+    var usermoneyjindu = MutableLiveData<Int>()
     //输入的钱
     var inoutMoney = MutableLiveData<String>()
     //计算后的钱
@@ -48,6 +47,7 @@ class ContractIntoViewModel(application: Application) : BaseViewModel(applicatio
     var loadOk = SingleLiveEvent<Boolean>()
 
     var selectPairName = MutableLiveData<String>()
+    var thisleaveDay = MutableLiveData<String>()
     var selectPairPrice = MutableLiveData<String>()
     var selectPairID = MutableLiveData<String>()
     var showPrice = MutableLiveData<String>()
@@ -63,14 +63,12 @@ class ContractIntoViewModel(application: Application) : BaseViewModel(applicatio
     //到期转入时间
     var dueTransferTime = MutableLiveData<String>()
 
-    var yujishijian = MutableLiveData<String>()
-
-
     override fun initData() {
         low.value = "0"
         nowSelectPrice.value = "0"
-        earningsStartTime.value = TimeUtli.getTime()
-        incomeArrivalTime.value = TimeUtli.checkOption("next", earningsStartTime.value!!)
+        earningsStartTime.value = TimeUtli.checkOption("next", TimeUtli.getTime())
+
+        incomeArrivalTime.value = TimeUtli.checkOption("next", TimeUtli.getTime(), 2)
 
 
     }
@@ -83,33 +81,38 @@ class ContractIntoViewModel(application: Application) : BaseViewModel(applicatio
                     with(financialManagementDetails.data) {
                         type.value = stateType
                         usermoney.value = money
+                        usermoneyjindu.value = stateRate
                         setTitle(this)
                         listSymbolFrozen.forEach {
                             pariList.add(PairListBean(it.symbolName.toUpperCase(), it.amount, it.symbolType.toString()))
                         }
 
+                        thisleaveDay.value = leaveDay
 
                         if (from.value == "2") {
 
-                            val find = listSymbolFrozen.find { it.symbolName.toUpperCase() == TOKEN }
-                            selectPairName.value = find?.symbolName?.toUpperCase()
-                            selectPairPrice.value = find?.amount
-                            selectPairID.value = find?.symbolType!!.toString()
+                            var index = -1
+                            for ((indexx, data) in listSymbolFrozen.withIndex()) {
+                                if (data.symbolName.toUpperCase() == TOKEN) {
+                                    index = indexx
+                                    break
+                                }
+                            }
 
+                            val millis2String = TimeUtils.millis2String(System.currentTimeMillis())
                             dueTransferTime.value =
-                                TimeUtli.checkOption("next", earningsStartTime.value!!, leaveRate.toInt())
+                                TimeUtli.checkOptionAll("next", millis2String, thisleaveDay.value?.toInt()!!)
+
+                            setTitle1(index)
 
                         } else {
 
-                            selectPairName.value = pariList[0].pairName.toUpperCase()
-                            selectPairPrice.value = pariList[0].pairPrice
-                            selectPairID.value = pariList[0].pairID
+                            setTitle1(0)
+
                         }
 
-                        setTitle1(0)
                         high.value = userAmountMaxSum
-                        xiane.value =
-                            intro.replace(context.getString(R.string.menkan), context.getString(R.string.xiane))
+                        xiane.value = context.getString(R.string.xianexx) + "$$userAmountMin ~ $$userAmountMax"
                         introintro.value = intro
 
                         loadOk.call()
@@ -121,29 +124,43 @@ class ContractIntoViewModel(application: Application) : BaseViewModel(applicatio
     }
 
     private fun setTitle(dataBean: MoneyProudyInfoBean.DataBean) {
+
+
         if (dataBean.title.contains("S")) {
-            shopTitle.value = "买入 ${dataBean.title}合约 日化 ${shouyiText.value}"
+            shopTitle.value =
+                "${App.CONTEXT.getString(R.string.maorururu)} ${dataBean.title}${App.CONTEXT.getString(R.string.heyueheyue)} ${App.CONTEXT.getString(
+                    R.string.rihuarihua
+                )} ${shouyiText.value}"
 
         } else if (dataBean.title.contains("X")) {
-            shopTitle.value = "买入 ${dataBean.intro} 月化 ${shouyiText.value}"
+            shopTitle.value =
+                "${App.CONTEXT.getString(R.string.maorururu)} ${dataBean.intro} ${App.CONTEXT.getString(R.string.yuehuayuehua)} ${shouyiText.value}"
 
         }
+
+
     }
 
     /**
      * 投资额度
      */
     fun setTitle1(toInt: Int) {
-        selectPairID.value = pariList[toInt].pairID
-        showPrice.value = context.getString(R.string.keyong) + pariList[toInt].pairPrice + " " + selectPairName.value
 
+        val pairListBean = pariList[toInt]
+
+        selectPairID.value = pairListBean.pairID
+        showPrice.value = context.getString(R.string.keyong) + pairListBean.pairPrice + " " + pairListBean.pairName
+
+        selectPairName.value = pairListBean.pairName.toUpperCase()
+        selectPairPrice.value = pairListBean.pairPrice
+        selectPairID.value = pairListBean.pairID
     }
 
     /**
      * 全部转入
      */
     fun transferAll() {
-        inoutMoney.value = selectPairPrice.value
+        inoutMoney.value = selectPairPrice.value?.replace(",", "")
     }
 
     /**
@@ -184,15 +201,22 @@ class ContractIntoViewModel(application: Application) : BaseViewModel(applicatio
         for (it in getRateList()) {
             //如果是平台币
             if (selectPairName.value == TOKEN) {
-                val TOKENUSDT = getRateList().find { it.rateName == "TOKENUSDT" }
-                //平台币兑换USDT
-                val tokenToUSDTPrice = inputValue.multiply(TOKENUSDT?.rate?.toBigDecimal()?.stripTrailingZeros())
+                val TOKENUSDT = getPriceList().find { it.pairName == TOKEN + "KRWT" }
+                //平台币兑换KRWT
+                val tokenToKRWTPrice =
+                    inputValue.multiply(TOKENUSDT?.close?.toBigDecimal()?.stripTrailingZeros()).toPlainString()
+                //查找usdt to 韩元
+                val USDTKRW = getRateList().find { it.rateName == "USDT" + "KRW" }
+                //USDT
+                val KRWTToUSDTPrice = BigDecimalUtils.div(tokenToKRWTPrice, USDTKRW?.rate!!)
 
                 //USDT 兑换 USD
                 val USDTUSD = getRateList().find { it.rateName == "USDTUSD" }
                 val tokenToUSDT =
-                    tokenToUSDTPrice.multiply(USDTUSD?.rate?.toBigDecimal()?.stripTrailingZeros()).toPlainString()
-                nowSelectPrice.value = tokenToUSDT
+                    KRWTToUSDTPrice.toBigDecimal().multiply(USDTUSD?.rate?.toBigDecimal()?.stripTrailingZeros())
+                        .toPlainString()
+                nowSelectPrice.value = ArithUtil.convertNumber3(tokenToUSDT, 2)
+
                 break
 
             } else {
@@ -208,14 +232,9 @@ class ContractIntoViewModel(application: Application) : BaseViewModel(applicatio
 
 
                     val toPlainString =
-//                        tokenToUSDT.toBigDecimal().multiply(find?.rate?.toBigDecimal()?.stripTrailingZeros())
-//                            .toPlainString()
                         tokenToUSDT.toBigDecimal().div(find?.rate!!.toBigDecimal()).stripTrailingZeros().toPlainString()
-//                    BigDecimalUtils.div(tokenToUSDT,find?.rate!!)
 
-                    nowSelectPrice.value = toPlainString
-
-
+                    nowSelectPrice.value = ArithUtil.convertNumber3(toPlainString, 2)
 
                     break
                 }

@@ -24,7 +24,6 @@ class LaunchViewModel(application: Application) : BaseViewModel(application) {
                 //主页
                 startActivity(MainActivity::class.java)
                 ActivityStackManager.getInstance().finishAllActivity()
-
             }
         }
     }

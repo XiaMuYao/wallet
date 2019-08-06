@@ -143,7 +143,7 @@
                 android:layout_marginTop="@dimen/dimens_15dp"
                 android:layout_marginRight="@dimen/dimens_15dp"
                 android:background="@null"
-                android:hint="已满额"
+                android:hint="@string/shurushuliang"
                 android:inputType="numberDecimal"
                 android:text="@={contractintoViewModel.inoutMoney}"
                 android:textColor="#FFFFFF"

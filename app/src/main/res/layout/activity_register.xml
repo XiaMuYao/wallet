@@ -122,6 +122,11 @@
             android:layout_marginStart="32dp"
             android:background="@null"
             android:maxLength="12"
+
+            android:imeOptions="actionNext"
+            android:singleLine="true"
+            android:nextFocusForward="@+id/editText3"
+
             android:text="@={registerViewModel.phoneNum}"
             android:textColor="#FFFFFF"
             android:textColorHint="#5D5C71"
@@ -146,6 +151,10 @@
             android:text="@={registerViewModel.phoneCode}"
             android:textColor="#FFFFFF"
             android:textColorHint="#5D5C71"
+
+            android:imeOptions="actionNext"
+            android:singleLine="true"
+            android:nextFocusForward="@+id/pwdpwdpwdpwd"
 
 
             android:textCursorDrawable="@drawable/shape_ed_color"
@@ -328,6 +337,7 @@
             app:layout_constraintGuide_percent="0.613" />
 
         <EditText
+            android:id="@+id/pwdpwdpwdpwd"
             android:layout_width="0dp"
             android:layout_height="44dp"
             android:background="@null"
@@ -337,6 +347,13 @@
             android:textCursorDrawable="@drawable/shape_ed_color"
             android:textSize="14dp"
 android:inputType="textPassword"
+
+
+            android:imeOptions="actionNext"
+            android:singleLine="true"
+            android:nextFocusForward="@+id/pwdpwdpwdpwdpwdpwdpwpd"
+
+
             app:layout_constraintBottom_toTopOf="@+id/guideline161"
             app:layout_constraintEnd_toStartOf="@+id/guideline147"
             app:layout_constraintStart_toStartOf="@+id/guideline145"
@@ -371,6 +388,7 @@ android:inputType="textPassword"
 
 
         <EditText
+            android:id="@+id/pwdpwdpwdpwdpwdpwdpwpd"
             android:layout_width="0dp"
             android:layout_height="44dp"
             android:background="@null"
@@ -380,6 +398,13 @@ android:inputType="textPassword"
             android:textCursorDrawable="@drawable/shape_ed_color"
             android:textSize="14dp"
             android:inputType="textPassword"
+
+
+            android:imeOptions="actionNext"
+            android:singleLine="true"
+            android:nextFocusForward="@+id/yaoqingma"
+
+
             app:layout_constraintBottom_toTopOf="@+id/guideline164"
             app:layout_constraintEnd_toStartOf="@+id/guideline147"
             app:layout_constraintStart_toStartOf="@+id/guideline145"
@@ -414,6 +439,7 @@ android:inputType="textPassword"
 
 
         <EditText
+            android:id="@+id/yaoqingma"
             android:layout_width="0dp"
             android:layout_height="44dp"
             android:background="@null"
@@ -422,6 +448,7 @@ android:inputType="textPassword"
             android:textColorHint="#5D5C71"
             android:textCursorDrawable="@drawable/shape_ed_color"
             android:textSize="14dp"
+            android:hint="@string/qingtianxieyaoqingma"
             app:layout_constraintBottom_toTopOf="@+id/guideline167"
             app:layout_constraintEnd_toStartOf="@+id/guideline147"
             app:layout_constraintStart_toStartOf="@+id/guideline145"

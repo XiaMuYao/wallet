@@ -25,7 +25,15 @@ class ContractFragmentFragment : BaseFragment<FragmentContractfragmentBinding, C
         binding.contractRecyclerView.defaultStyle(contractAdapter)
         contractAdapter.setOnItemClickListener { _, _, position ->
             val item = contractAdapter.getItem(position)
-            ContractIntoActivity.start(context!!, item?.productId!!,item.shouyiText!!,"1")
+            ContractIntoActivity.start(
+                context!!,
+                item?.productId!!,
+                item.shouyiText!!,
+                "1",
+                item.stateRate,
+                item.userAmountMaxSum.replace(",", "").toInt(),
+                item.money
+            )
         }
     }
 

@@ -67,7 +67,7 @@
             android:id="@+id/textView78"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Maxflow是一款全新的数字货币钱包"
+            android:text="@string/aboutabout"
             app:layout_constraintEnd_toEndOf="parent"
             android:textSize="18dp"
             android:textColor="#878DA8"

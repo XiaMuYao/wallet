@@ -26,7 +26,7 @@
             <TextView
                 style="@style/style_bottom_menu_text"
                 android:layout_below="@+id/bottom_tab_iv_one"
-                android:text="钱包" />
+                android:text="@string/qiabao" />
         </RelativeLayout>
 
 
@@ -44,7 +44,7 @@
             <TextView
                 style="@style/style_bottom_menu_text"
                 android:layout_below="@+id/bottom_tab_iv_two"
-                android:text="行情" />
+                android:text="@string/hangqing" />
 
         </RelativeLayout>
 
@@ -64,7 +64,7 @@
             <TextView
                 style="@style/style_bottom_menu_text"
                 android:layout_below="@+id/bottom_tab_iv_there"
-                android:text="理财" />
+                android:text="@string/lica" />
         </RelativeLayout>
 
 
@@ -83,7 +83,7 @@
             <TextView
                 style="@style/style_bottom_menu_text"
                 android:layout_below="@+id/bottom_tab_iv_four"
-                android:text="发现" />
+                android:text="@string/findfind" />
 
         </RelativeLayout>
 
@@ -102,7 +102,7 @@
             <TextView
                 style="@style/style_bottom_menu_text"
                 android:layout_below="@+id/bottom_tab_iv_five"
-                android:text="我的" />
+                android:text="@string/wode" />
 
         </RelativeLayout>
 

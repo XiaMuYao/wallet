@@ -1,6 +1,8 @@
 package com.xiamuyao.ulanbator.network
 
+import com.blankj.utilcode.util.DeviceUtils
 import com.xiamuyao.ulanbator.App
+import com.xiamuyao.ulanbator.util.CityUtli
 import com.xiamuyao.ulanbator.util.getSpValue
 import okhttp3.FormBody
 import okhttp3.Interceptor
@@ -84,10 +86,10 @@ class CommonParamInterceptor : Interceptor {
             builder.addEncoded("userLoginId", App.CONTEXT.getSpValue("userLoginId", ""))
             builder.addEncoded("userLoginToken", App.CONTEXT.getSpValue("userLoginToken", ""))
 
-            builder.addEncoded("deviceNo", "")
+            builder.addEncoded("deviceNo", DeviceUtils.getMacAddress())
             builder.addEncoded("ipAddress", "")
             builder.addEncoded("devicePlatformVersion", "")
-            builder.addEncoded("devicePlatformLanguage", "1")
+            builder.addEncoded("devicePlatformLanguage", CityUtli.getLanguage().toString())
             builder.addEncoded("clientChannel", "1")
             builder.addEncoded("clientVersion", "")
 

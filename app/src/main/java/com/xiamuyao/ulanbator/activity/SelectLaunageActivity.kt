@@ -17,7 +17,7 @@ import com.xiamuyao.ulanbator.viewmodel.SelectLaunageViewModel
 class SelectLaunageActivity : BaseActivity<ActivitySelectlaunageBinding, SelectLaunageViewModel>() {
 
     override fun initView() {
-        setTitleBar("选择语言", { finish() })
+        setTitleBar(getString(R.string.xuanzeyyuyan), { finish() })
 
     }
 

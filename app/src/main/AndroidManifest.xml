@@ -4,10 +4,9 @@
     package="com.xiamuyao.ulanbator">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
 
     <dist:module dist:instant="true" />
 
@@ -21,6 +20,7 @@
         android:roundIcon="@mipmap/ic_icon_app_start"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".activity.TestActivity" />
         <activity android:name=".activity.ScanActivity" />
         <activity android:name=".activity.SendSuccessActivity" />
         <activity android:name=".activity.SendInfoActivity" />
@@ -72,7 +72,7 @@
         <activity android:name=".activity.NoLoginActivity" />
         <activity
             android:name="com.king.zxing.CaptureActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

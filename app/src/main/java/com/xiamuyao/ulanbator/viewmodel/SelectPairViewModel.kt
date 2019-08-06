@@ -27,7 +27,6 @@ class SelectPairViewModel(application: Application) : BaseViewModel(application)
 
         }
 
-
     }
 
     /**

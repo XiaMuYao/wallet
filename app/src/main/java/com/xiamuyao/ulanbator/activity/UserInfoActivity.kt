@@ -18,7 +18,7 @@ import com.xiamuyao.ulanbator.viewmodel.UserInfoViewModel
 class UserInfoActivity : BaseActivity<ActivityUserinfoBinding, UserInfoViewModel>() {
 
     override fun initView() {
-        setTitleBar("个人信息", { finish() })
+        setTitleBar(getString(R.string.gerenxinxi), { finish() })
 
         //昵称
         binding.constraintLayout1.setOnClickListener {

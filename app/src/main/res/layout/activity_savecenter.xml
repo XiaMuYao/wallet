@@ -33,7 +33,7 @@
             <TextView
                 style="@style/style_my_item_text"
                 android:layout_marginLeft="0dp"
-                android:text="修改登录密码"
+                android:text="@string/xiugaidenglumima"
                 android:textSize="14dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toRightOf="@+id/guideline82"
@@ -78,7 +78,7 @@
                 android:id="@+id/textView41"
                 style="@style/style_my_item_text"
                 android:layout_marginLeft="0dp"
-                android:text="修改资金密码"
+                android:text="@string/xiugaizijinmimia"
                 android:textSize="14dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toRightOf="@+id/guideline83"

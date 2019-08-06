@@ -11,6 +11,8 @@ import com.xiamuyao.ulanbator.model.bean.WalletListBean
 import com.xiamuyao.ulanbator.model.repository.WalletRepository
 import com.xiamuyao.ulanbator.util.BigDecimalUtils
 import com.xiamuyao.ulanbator.util.RateUtli
+import com.xiamuyao.ulanbator.util.RateUtli.getPriceList
+import com.xiamuyao.ulanbator.util.RateUtli.getRateList
 import com.xiamuyao.ulanbator.util.RateUtli.getUSDTToExchangeRate
 import com.xiamuyao.ulanbator.util.UsetUtli
 import com.xiamuyao.ulanbator.util.getSpValue
@@ -103,18 +105,29 @@ class WalletViewModel(application: Application) : BaseViewModel(application) {
 
             //平台币使用汇率接口
             if (that.pairToName == TOKEN + "USDT") {
-                for (it in RateUtli.getRateList()) {
-                    if (it.rateName.startsWith(TOKEN)) {
-                        //平台币转换 USDT
+                //在行情数据中 找到 平台币 —> 韩元
+                for (it in getPriceList()) {
+                    //平台币 —> 韩元
+                    if (it.pairAndToName == TOKEN + "KRWT") {
+
+                        //平台币 -> 韩元
+                        val mul = BigDecimalUtils.mul(it.close, that.pariAmount.replace(",", ""))
+
+                        //韩元 -> USDT
+                        val find = getRateList().find { it.rateName == "USDTKRW" }
                         that.pairToUSDT =
-                            BigDecimalUtils.mul(it.rate.replace(",", ""), that.pariAmount.replace(",", ""))
+                            BigDecimalUtils.div(mul.replace(",", ""),find?.rate?.replace(",", "")!! )
+
                         //USDT 转换 BTC
                         that.PairToBTC = USDTtoBtc(that.pairToUSDT)
                         //USDT 转计价货币
                         that.pariToPrice = USDTtoChangeRate(that.pairToUSDT)
+
+                        //当前货币对toUSDT的价格
+                        that.PairToUSDTPrice = it.close
+
+                        break
                     }
-                    //当前货币对toUSDT的价格
-                    that.PairToUSDTPrice = it.rate
                 }
 
             }

@@ -28,7 +28,15 @@ class FixedDepositFragmentFragment :
 
         fixedAdapter.setOnItemClickListener { _, _, position ->
             val item = fixedAdapter.getItem(position)
-            ContractIntoActivity.start(context!!, item?.productId!!,item.interestMax!!,"2")
+            ContractIntoActivity.start(
+                context!!,
+                item?.productId!!,
+                item.interestMax!!,
+                "2",
+                item.stateRate,
+                item.userAmountMaxSum.replace(",","").toInt(),
+                item.money
+            )
         }
 
     }

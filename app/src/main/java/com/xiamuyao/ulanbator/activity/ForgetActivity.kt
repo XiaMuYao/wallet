@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.lifecycle.Observer
+import com.xiamuyao.ulanbator.App
 import com.xiamuyao.ulanbator.BR
 import com.xiamuyao.ulanbator.R
 import com.xiamuyao.ulanbator.base.BaseActivity
@@ -22,7 +23,7 @@ class ForgetActivity : BaseActivity<ActivityForgetBinding, ForgetViewModel>() {
         setTitleBar(
             leftCallBack = { finish() },
             titleBarColor = R.color.touming,
-            rightText = "注册",
+            rightText = App.CONTEXT.getString(R.string.register),
             rightCallBack = { RegisterActivity.start(this) })
 
 

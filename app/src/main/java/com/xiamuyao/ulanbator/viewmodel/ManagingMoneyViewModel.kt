@@ -3,6 +3,7 @@ package com.xiamuyao.ulanbator.viewmodel
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import com.xiamuyao.ulanbator.App
+import com.xiamuyao.ulanbator.R
 import com.xiamuyao.ulanbator.base.BaseViewModel
 import com.xiamuyao.ulanbator.extension.businessHandler
 import com.xiamuyao.ulanbator.model.repository.MoneyRepository
@@ -14,7 +15,7 @@ import org.kodein.di.generic.instance
 
 class ManagingMoneyViewModel(application: Application) : BaseViewModel(application) {
 
-    val titleList = arrayListOf("合约", "定存")
+    val titleList = arrayListOf(context.getString(R.string.heyutitle), context.getString(R.string.dingcuntitle))
     var inviteCode = MutableLiveData<String>()
     var sum = MutableLiveData<String>()
     var priceSum = MutableLiveData<String>()

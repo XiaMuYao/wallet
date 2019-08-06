@@ -31,14 +31,13 @@ class SelectCityActivity : BaseActivity<ActivitySelectcityBinding, SelectCityVie
         contractAdapter.setOnItemClickListener { _, _, position ->
             DataBus.postData(EventConstant.selectCityName, viewModel.cityList[position]?.titleCN.toString())
             DataBus.postData(EventConstant.selectCityNum, viewModel.cityList[position]?.dialingCode.toString())
-            //todo 检查一下这个参数还有有没有使用
-            DataBus.postData(EventConstant.countryCode, viewModel.cityList[position]?.countryCode.toString())
             finish()
         }
 
         //todo 选择国家筛选
         binding.editText.addTextChangedListener {
-            LL.d("数据是${it?.toString()}")
+
+//            viewModel.cityList=     viewModel.cityList.filter { it.countryCode == it.toString() }
         }
     }
 

@@ -54,27 +54,27 @@
 
             <TextView
                 android:id="@+id/textView43"
+                style="@style/style_item_invation_title"
                 android:text="ID"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/guideline53"
-                app:layout_constraintTop_toTopOf="parent"
-                style="@style/style_item_invation_title" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/textView62"
-                android:text="时间"
+                style="@style/style_item_invation_title"
+                android:text="@string/shijiantitile"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/guideline62"
-                app:layout_constraintTop_toTopOf="parent"
-                style="@style/style_item_invation_title" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/textView63"
-                android:text="用户类型"
+                style="@style/style_item_invation_title"
+                android:text="@string/yonghuleixing"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/guideline63"
-                app:layout_constraintTop_toTopOf="parent"
-                style="@style/style_item_invation_title" />
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.recyclerview.widget.RecyclerView

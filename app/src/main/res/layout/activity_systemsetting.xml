@@ -54,7 +54,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
-                android:text="@string/jiantizhongwen"
+                android:text="@{systemsettingViewModel.selectCity}"
                 android:textColor="#878DA8"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintRight_toLeftOf="@+id/image"
@@ -109,11 +109,11 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 android:text="@{systemsettingViewModel.selectPair}"
-                tools:text="CNY"
                 android:textColor="#878DA8"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintRight_toLeftOf="@+id/image1"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="CNY" />
 
             <View
                 android:id="@+id/view7"

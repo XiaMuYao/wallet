@@ -11,6 +11,7 @@ import com.xiamuyao.ulanbator.constant.EventConstant
 import com.xiamuyao.ulanbator.constant.ProjectConstant
 import com.xiamuyao.ulanbator.constant.ProjectConstant.BTC_PRICE
 import com.xiamuyao.ulanbator.model.bean.MarketBean
+import com.xiamuyao.ulanbator.model.bean.SocketReBean
 import com.xiamuyao.ulanbator.model.bean.response.RateBean
 import com.xiamuyao.ulanbator.model.repository.*
 import com.xiamuyao.ulanbator.network.ServiceCreator
@@ -89,7 +90,7 @@ class App : Application(), KodeinAware {
 
     private fun initWebSocket() {
         val setting = WebSocketSetting()
-        setting.connectUrl = "wss://api.huobipro.com/ws"
+        setting.connectUrl = "wss://ws.bitzon.com/kline-api/ws"
 
         //设置连接超时时间
         setting.connectTimeout = 15 * 1000
@@ -127,6 +128,14 @@ class App : Application(), KodeinAware {
             WebSocketHandler.getDefault().send(ProjectConstant.SUB_STR_EOS)
             WebSocketHandler.getDefault().send(ProjectConstant.SUB_STR_ETC)
 
+            WebSocketHandler.getDefault().send(ProjectConstant.SUB_STR_DASH)
+            WebSocketHandler.getDefault().send(ProjectConstant.SUB_STR_BCH)
+            WebSocketHandler.getDefault().send(ProjectConstant.SUB_STR_XRP)
+            WebSocketHandler.getDefault().send(ProjectConstant.SUB_STR_TRX)
+            WebSocketHandler.getDefault().send(ProjectConstant.SUB_STR_DOGE)
+            WebSocketHandler.getDefault().send(ProjectConstant.SUB_STR_MFTKRWT)
+
+
         }
 
         override fun onConnectFailed(e: Throwable?) {
@@ -160,7 +169,23 @@ class App : Application(), KodeinAware {
                 val replace = pong.replace("ping", "pong")
                 WebSocketHandler.getDefault().send(replace)
             } else {
-                val fromJson = Gson().fromJson(pong, MarketBean::class.java)
+                val fromJso = Gson().fromJson(pong, SocketReBean::class.java)
+                val fromJson = MarketBean()
+
+                val tickBean1 = MarketBean.TickBean()
+
+                tickBean1.open = fromJso.tick.open
+                tickBean1.close = fromJso.tick.close
+                tickBean1.amount = fromJso.tick.amount
+                tickBean1.high = fromJso.tick.high
+                tickBean1.low = fromJso.tick.low
+                tickBean1.cch = fromJso.channel
+
+                fromJson.setTick(tickBean1)
+
+                fromJson.setTs(fromJso.ts.toString())
+                fromJson.setCh(fromJso.channel)
+
                 if (null != fromJson.getTick()) {
                     //寻找数据插入还是修改
                     for ((index, indexData) in RateUtli.getPriceList().withIndex()) {
@@ -179,9 +204,8 @@ class App : Application(), KodeinAware {
                             val tickBean = RateUtli.getPriceList()[index]
                             val subtract = BigDecimalUtils.sub(tickBean.close, tickBean.open)
                             val multiply =
-//                                BigDecimalUtils.mul(BigDecimalUtils.div(subtract, tickBean.open), "100").toBigDecimal()
                                 subtract.toBigDecimal().div(tickBean.open.toBigDecimal()).multiply(100.toBigDecimal())
-                            RateUtli.getPriceList()[index].upAndDown = multiply.stripTrailingZeros().toString()
+                            RateUtli.getPriceList()[index].upAndDown = multiply.stripTrailingZeros().toPlainString()
                             //计算行情相应的汇率数据
                             RateUtli.getPriceList()[index].pairToPrice =
                                 RateUtli.selectPairByWeb(RateUtli.getPriceList()[index])

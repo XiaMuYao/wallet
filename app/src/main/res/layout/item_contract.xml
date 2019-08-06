@@ -105,14 +105,14 @@
             tools:text="1231231231" />
 
         <ProgressBar
-            style="@android:style/Widget.ProgressBar.Horizontal"
             android:id="@+id/progressBar"
-           android:progressDrawable="@drawable/progressbar"
+            style="@android:style/Widget.ProgressBar.Horizontal"
             android:layout_width="0dp"
-            android:progress="@{contractListBean.stateRate}"
-            android:max="100"
             android:layout_height="2dp"
             android:layout_marginBottom="@dimen/dp_10"
+            android:max="100"
+            android:progress="@{contractListBean.stateRate}"
+            android:progressDrawable="@drawable/progressbar"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/guideline34"
             app:layout_constraintStart_toStartOf="@+id/guideline28" />

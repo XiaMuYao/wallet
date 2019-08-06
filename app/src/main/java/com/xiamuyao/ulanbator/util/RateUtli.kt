@@ -73,7 +73,7 @@ object RateUtli {
      */
     fun getSelectCurrency(): String {
         return if (inMemoryCurrency.isEmpty()) {
-            val temp = App.CONTEXT.getSpValue(SELECT_CURRENCY, "CNY")
+            val temp = App.CONTEXT.getSpValue(SELECT_CURRENCY, "USD")
             inMemoryCurrency = temp
             inMemoryCurrency
         } else {
@@ -170,30 +170,65 @@ object RateUtli {
      */
     fun getDefPriceList(): ObservableArrayList<MarketBean.TickBean> {
         val btcusdt = MarketBean.TickBean()
-        btcusdt.cch = "market.btcusdt.detail"
+        btcusdt.cch = "market_btcusdt_ticker"
         btcusdt.pairName = "BTC"
         btcusdt.pairAndToName = "BTCUSDT"
 
         val ethusdt = MarketBean.TickBean()
-        ethusdt.cch = "market.ethusdt.detail"
+        ethusdt.cch = "market_ethusdt_ticker"
         ethusdt.pairName = "ETH"
         btcusdt.pairAndToName = "ETHUSDT"
 
         val ltcusdt = MarketBean.TickBean()
-        ltcusdt.cch = "market.ltcusdt.detail"
+        ltcusdt.cch = "market_ltcusdt_ticker"
         ltcusdt.pairName = "LTC"
-        btcusdt.pairAndToName = "LTCUSDT"
+        ltcusdt.pairAndToName = "LTCUSDT"
 
         val eosusdt = MarketBean.TickBean()
-        eosusdt.cch = "market.eosusdt.detail"
+        eosusdt.cch = "market_eosusdt_ticker"
         eosusdt.pairName = "EOS"
-        btcusdt.pairAndToName = "EOSUSDT"
+        eosusdt.pairAndToName = "EOSUSDT"
 
         val etcusdt = MarketBean.TickBean()
-        etcusdt.cch = "market.etcusdt.detail"
+        etcusdt.cch = "market_etcusdt_ticker"
         etcusdt.pairName = "ETC"
-        btcusdt.pairAndToName = "ETCUSDT"
+        etcusdt.pairAndToName = "ETCUSDT"
 
+        val dashusdt = MarketBean.TickBean()
+        dashusdt.cch = "market_dashusdt_ticker"
+        dashusdt.pairName = "DASH"
+        dashusdt.pairAndToName = "DASHUSDT"
+
+        val bchusdt = MarketBean.TickBean()
+        bchusdt.cch = "market_bchusdt_ticker"
+        bchusdt.pairName = "BCH"
+        bchusdt.pairAndToName = "BCHUSDT"
+
+        val xrpusdt = MarketBean.TickBean()
+        xrpusdt.cch = "market_xrpusdt_ticker"
+        xrpusdt.pairName = "XRP"
+        xrpusdt.pairAndToName = "XRPUSDT"
+
+        val trxusdt = MarketBean.TickBean()
+        trxusdt.cch = "market_trxusdt_ticker"
+        trxusdt.pairName = "TRX"
+        trxusdt.pairAndToName = "TRXUSDT"
+
+        val dogeusdt = MarketBean.TickBean()
+        dogeusdt.cch = "market_dogeusdt_ticker"
+        dogeusdt.pairName = "DOGE"
+        dogeusdt.pairAndToName = "DOGEUSDT"
+
+        val mftkrwt = MarketBean.TickBean()
+        mftkrwt.cch = "market_mftkrwt_ticker"
+        mftkrwt.pairName = "MFTKRWT"
+        mftkrwt.pairAndToName = "MFTKRWT"
+
+        mftkrwt.close="100"
+        mftkrwt.high="100"
+        mftkrwt.low="10"
+        mftkrwt.amount="1000"
+        mftkrwt.open="1000"
 
         val observableArrayList = ObservableArrayList<MarketBean.TickBean>()
 
@@ -202,6 +237,13 @@ object RateUtli {
         observableArrayList.add(ltcusdt)
         observableArrayList.add(eosusdt)
         observableArrayList.add(etcusdt)
+
+        observableArrayList.add(dashusdt)
+        observableArrayList.add(bchusdt)
+        observableArrayList.add(xrpusdt)
+        observableArrayList.add(trxusdt)
+        observableArrayList.add(dogeusdt)
+        observableArrayList.add(mftkrwt)
 
         return observableArrayList
     }

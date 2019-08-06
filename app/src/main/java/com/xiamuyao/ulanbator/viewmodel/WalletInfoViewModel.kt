@@ -50,7 +50,7 @@ class WalletInfoViewModel(application: Application) : BaseViewModel(application)
      * 当前货币兑换法币
      */
     private fun currentCurrencyExchangeCurrency() {
-        if (walletListBean.value?.pariAmount.isNullOrEmpty() || walletListBean.value?.pariAmount == "0") return
+        if (walletListBean.value?.pariAmount.isNullOrEmpty() || walletListBean.value?.pariAmount == "0" || walletListBean.value?.pariToPrice.isNullOrEmpty() || walletListBean.value?.pariToPrice=="0") return
         walletListBean.value?.pairToUSDT =
             BigDecimalUtils.div(walletListBean.value?.pariToPrice!!, walletListBean.value?.pariAmount!!)
     }

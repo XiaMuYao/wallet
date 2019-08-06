@@ -16,7 +16,7 @@ class UserSetNameActivity : BaseActivity<ActivityUsersetnameBinding, UserSetName
     override fun initView() {
 
 
-        setTitleBar("昵称", { finish() })
+        setTitleBar(getString(R.string.nichengasd), { finish() })
 
         viewModel.userName.value = intent.getStringExtra("userName")
 

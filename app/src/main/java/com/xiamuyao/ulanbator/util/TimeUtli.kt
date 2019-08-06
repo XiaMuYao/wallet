@@ -48,6 +48,15 @@ object TimeUtli {
     }
 
 
+    fun getTimeAll(): String {
+        val cal = Calendar.getInstance()
+        val temeTime =
+            "${cal.get(Calendar.YEAR)}-" +
+                    "${addZeroInHead((cal.get(Calendar.MONTH) + 1).toString())}-" +
+                    addZeroInHead(cal.get(Calendar.DATE).toString())
+        return temeTime
+    }
+
     @SuppressLint("SimpleDateFormat")
     fun parse(source: String, toFormat: String = DEFAULT_TO_DATE, fromFormat: String = DEFAULT_FROM_DATE_TIME): String {
         return if (source.isNotEmpty()) {
@@ -59,6 +68,31 @@ object TimeUtli {
 
     fun checkOption(option: String, _date: String,num: Int=1): String {
         val sdf = SimpleDateFormat("MM-dd")
+        val cl = Calendar.getInstance()
+        var date: Date? = null
+
+        try {
+            date = sdf.parse(_date) as Date
+        } catch (e: ParseException1) {
+            e.printStackTrace()
+        }
+
+        cl.time = date
+        if ("pre" == option) {
+            // 时间减一天
+            cl.add(Calendar.DAY_OF_MONTH, -num)
+
+        } else if ("next" == option) {
+            // 时间加一天
+            cl.add(Calendar.DAY_OF_YEAR, num)
+        } else {
+            // do nothing
+        }
+        date = cl.time
+        return sdf.format(date)
+    }
+    fun checkOptionAll(option: String, _date: String,num: Int=1): String {
+        val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
         val cl = Calendar.getInstance()
         var date: Date? = null
 

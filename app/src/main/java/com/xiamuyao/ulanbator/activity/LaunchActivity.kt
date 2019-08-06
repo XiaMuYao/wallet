@@ -15,8 +15,7 @@ import kotlinx.coroutines.launch
 class LaunchActivity : BaseActivity<ActivityLaunchBinding, LaunchViewModel>() {
 
     override fun initView() {
-        //todo 判断app升级
-
+//        TestActivity.start(this,"")
     }
 
     override fun initVVMObserver() {
