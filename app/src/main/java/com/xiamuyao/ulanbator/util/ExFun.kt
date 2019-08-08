@@ -6,9 +6,16 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.ViewDataBinding
+import com.xiamuyao.ulanbator.App
 import com.xiamuyao.ulanbator.R
+import com.xiamuyao.ulanbator.activity.LoginActivity
 import com.xiamuyao.ulanbator.base.BaseActivity
 import com.xiamuyao.ulanbator.base.BaseViewModel
+import com.xiamuyao.ulanbator.constant.ProjectConstant
+import com.xiamuyao.ulanbator.net.BaseResponse
+import com.xiamuyao.ulanbator.net.Status
+import com.xiamuyao.ulanbator.utlis.ActivityStackManager
+import com.xiamuyao.ulanbator.utlis.To
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -64,4 +71,29 @@ fun String.toTime(from: String = "yyyy-MM-dd HH:mm:ss"): String? {
     val sd = sdf.format(Date(this.toLong()))
 
     return sd
+}
+
+fun <T> BaseViewModel.businessHandler(
+    data: BaseResponse<T>,
+    doingSom: (() -> Unit)? = null
+): T {
+    when (data.result.returnCode!!.toInt()) {
+        Status.SUCCESS -> {
+            doingSom?.let {
+                it.invoke()
+            }
+        }
+        in 10030..10034 -> {
+            App.CONTEXT.putSpValue(ProjectConstant.USER_TOKEN, "")
+            startActivity(LoginActivity::class.java)
+            ActivityStackManager.getInstance().finishAllActivity()
+            To.showToast(data.result.returnUserMessage!!)
+        }
+        else -> {
+            data.result.returnUserMessage?.let {
+                To.showToast(it)
+            }
+        }
+    }
+    return data.data
 }

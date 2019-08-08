@@ -149,7 +149,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="70dp"
-                    android:hint="最小发送金额0.001"
+                    android:hint="@string/qingshuruzhuanzhangjine"
 
                     android:inputType="numberDecimal"
 

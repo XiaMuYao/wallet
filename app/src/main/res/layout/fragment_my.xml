@@ -84,6 +84,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout3"
             style="@style/style_my_item"
+            android:visibility="gone"
             app:layout_constraintTop_toBottomOf="@id/imageView7">
 
             <ImageView

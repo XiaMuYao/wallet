@@ -4,6 +4,8 @@ import androidx.databinding.ObservableArrayList
 import com.xiamuyao.ulanbator.App
 import com.xiamuyao.ulanbator.model.bean.response.CityListBean
 import com.xiamuyao.ulanbator.network.api.UserService
+import com.xiamuyao.ulanbator.util.CityUtli.getLanguage
+import com.xiamuyao.ulanbator.util.CityUtli.geyLanguageBySys
 import com.xiamuyao.ulanbator.util.Md5
 import com.xiamuyao.ulanbator.util.putSpValue
 import kotlinx.coroutines.Dispatchers
@@ -14,9 +16,23 @@ class UserRepository(private var userService: UserService) {
     suspend fun getCityList() = withContext(Dispatchers.IO) {
         val tempList = ObservableArrayList<CityListBean.DataBean.ListBean>()
         val cityList = userService.getCityList()
-        //todo 这里判断语言 showCityName
         cityList.data.list.forEach {
-            it.showCityName = it.titleCN
+            val language = getLanguage()
+            when (language) {
+                1 -> {
+                    it.showCityName = it.titleCN
+                }
+                2 -> {
+                    it.showCityName = it.titleEN
+                }
+                3 -> {
+                    it.showCityName = it.titleKO
+                }
+                4 -> {
+                    it.showCityName = it.titleJP
+                }
+            }
+
         }
         tempList.addAll(cityList.data.list)
         return@withContext tempList
@@ -97,9 +113,6 @@ class UserRepository(private var userService: UserService) {
         val transactionPassword = userService.quit()
         return@withContext transactionPassword
     }
-
-
-
 
     companion object {
 

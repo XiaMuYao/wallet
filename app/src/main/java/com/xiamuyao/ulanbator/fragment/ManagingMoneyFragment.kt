@@ -13,6 +13,7 @@ import com.xiamuyao.ulanbator.adapter.fragmentAdapter.SectionsPagerAdapter
 import com.xiamuyao.ulanbator.base.BaseFragment
 import com.xiamuyao.ulanbator.base.BaseViewModel
 import com.xiamuyao.ulanbator.databinding.FragmentManagingMoneyBinding
+import com.xiamuyao.ulanbator.databinding.FragmentManagingMoneyOldBinding
 import com.xiamuyao.ulanbator.view.ScaleTransitionPagerTitleView
 import com.xiamuyao.ulanbator.viewmodel.ManagingMoneyViewModel
 import net.lucode.hackware.magicindicator.ViewPagerHelper
@@ -24,7 +25,7 @@ import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerTit
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.indicators.LinePagerIndicator
 
 
-class ManagingMoneyFragment : BaseFragment<FragmentManagingMoneyBinding, ManagingMoneyViewModel>() {
+class ManagingMoneyFragment : BaseFragment<FragmentManagingMoneyOldBinding, ManagingMoneyViewModel>() {
 
     private val mFragmentList: Array<BaseFragment<out ViewDataBinding, out BaseViewModel>> by lazy {
         arrayOf(
@@ -50,7 +51,7 @@ class ManagingMoneyFragment : BaseFragment<FragmentManagingMoneyBinding, Managin
     }
 
     override fun initContentView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): Int {
-        return R.layout.fragment_managing_money
+        return R.layout.fragment_managing_money_old
     }
 
     override fun initVariableId(): Int {

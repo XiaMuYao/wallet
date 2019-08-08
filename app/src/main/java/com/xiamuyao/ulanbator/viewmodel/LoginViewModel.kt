@@ -7,8 +7,8 @@ import com.xiamuyao.ulanbator.activity.ForgetActivity
 import com.xiamuyao.ulanbator.activity.MainActivity
 import com.xiamuyao.ulanbator.activity.SelectCityActivity
 import com.xiamuyao.ulanbator.base.BaseViewModel
-import com.xiamuyao.ulanbator.extension.businessHandler
 import com.xiamuyao.ulanbator.model.repository.UserRepository
+import com.xiamuyao.ulanbator.util.businessHandler
 import com.xiamuyao.ulanbator.utlis.ActivityStackManager
 import com.xiamuyao.ulanbator.utlis.To
 import org.kodein.di.generic.instance
@@ -24,11 +24,16 @@ class LoginViewModel(application: Application) : BaseViewModel(application) {
     private val userRepository: UserRepository by instance()
 
     init {
-        selectCityNum.value = "86"
-        selectCityName.value = "中国"
+        selectCityNum.value = ""
+        selectCityName.value = ""
     }
 
     override fun initData() {
+
+        launch {
+            selectCityName.value = userRepository.getCityList()[0].showCityName
+            selectCityNum.value = userRepository.getCityList()[0].dialingCode
+        }
 
     }
 

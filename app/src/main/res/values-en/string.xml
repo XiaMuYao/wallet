@@ -1,0 +1,199 @@
+<resources>
+    <string name="app_name">Max Flow</string>
+    <string name="titleBarLeftText">return </string>
+    <string name="item_skit_text">Christina Photo by @FransLanting Wonderful color ! To let tourists get a better view,the bus drove slowly.What a beautiful town! </string>
+    <string name="sum">cumulative total revenue</string>
+    <string name="sumprofit">cumulative invitation revenue</string>
+    <string name="sumMarkMoney"> cumulative financial income </string>
+    <string name="shoping">buy </string>
+    <string name="jiechuheyue">release the contract </string>
+    <string name="login">login </string>
+    <string name="fopsd">Forgot your password? </string>
+    <string name="selelcyCity">Select country </string>
+    <string name="phoneNumber">mobile number </string>
+    <string name="loginPsd">login password </string>
+    <string name="phoneNumberCode"> phone verification code </string>
+    <string name="aginPsd">Confirm password </string>
+    <string name="InvitationCode"> invitation code (optional) </string>
+    <string name="privacyPolicy">Privacy Policy</string>
+    <string name="rehister">register </string>
+    <string name="phonecode">verification code </string>
+    <string name="vip">VIP interest </string>
+    <string name="Invitecommission">Invite rebate</string>
+    <string name="SafetyCenter"> Security Center </string>
+    <string name="SystemSettings"> system settings </string>
+    <string name="ShareAPP">Share MFT</string>
+    <string name="help">Help and feedback</string>
+    <string name="about">about us</string>
+    <string name="headImage">avatar </string>
+    <string name="id">ID</string>
+    <string name="name">nickname </string>
+    <string name="cancel">Cancel </string>
+    <string name="save">Save </string>
+    <string name="yaoqinghis">Invitation record </string>
+    <string name="saveimage">Save picture </string>
+    <string name="wx">WeChat </string>
+    <string name="wxFirend">Friends circle </string>
+    <string name="register">register </string>
+    <string name="send">send </string>
+    <string name="queding">OK</string>
+    <string name="wangjimima">forgot password </string>
+    <string name="yinsixieyi">You understand that this policy and other relevant regulations apply to my blockchain and the DApps owned by my blockchain on my blockchain.
+First, what information do we collect from you\n\n
+Please understand that we collect the following information from you to meet your needs in my blockchain service, and we value the protection of your privacy. When we collect your information, we will strictly abide by the principle of “legal, just, necessary”. And you understand that if you do not provide the relevant information required for our services, your service experience in my blockchain may be affected as a result. \n\n
+
+1. We will collect personal information such as your mobile device information, operation history, transaction history, wallet address, etc. \n\n
+
+2. In order to meet your specific service needs, we will collect your name, bank card number, mobile phone number, email address and other information. \n\n
+
+3. You know that your wallet password, private key, mnemonic, and Keystore on my blockchain are not stored or synced to my blockchain server. My blockchain does not provide a service to retrieve your wallet password, private key, mnemonic, or Keystore. \n
+
+4. In addition to the above, you understand that when you use certain features of my blockchain, we will give you special tips to collect more personal information from you before collecting your personal information. If you choose not to agree, you are deemed to have abandoned this particular feature of my blockchain. \n
+
+5. When you jump to a third-party DApp, a third-party DApp collects personal information from you. My blockchain does not hold personal information collected by third party DApps. \n\n
+6. To the extent permitted by laws and regulations, my blockchain may collect and use your personal information in the following circumstances without your consent:\n\n
+(1) related to national security and national defense security; \n\n
+
+(2) related to public safety, public health, and major public interests; \n\n
+
+(3) related to criminal investigation, prosecution, trial and execution of judgments;\n\n
+
+(4) The personal information collected is disclosed to the public by yourself;\n\n
+
+(5) Collecting your personal information from legally publicly disclosed information, such as legitimate news reports, government information disclosure, etc.;</string>
+
+
+    <string name="agranRegister">Please agree to the privacy policy </string>
+    <string name="setMoney"> set the funding password </string>
+    <string name="setmoenyagen">Enter the funds password again </string>
+    <string name="copyAddress">copy address </string>
+    <string name="copyMemo">Copy Memo</string>
+    <string name="senNUm">send the number </string>
+    <string name="toAddress">party address </string>
+    <string name="memo">Memo</string>
+    <string name="headmoney">handling fee</string>
+    <string name="moenypsd">fund password </string>
+    <string name="phoneCode"> SMS verification </string>
+    <string name="inphoneCode">Please enter SMS verification code </string>
+    <string name="inmoneypsd">Please enter the funding password </string>
+    <string name="getphoneCode">Get the verification code </string>
+    <string name="type">type </string>
+    <string name="createTIme">Create time </string>
+    <string name="hasmap">transaction hash </string>
+    <string name="sendsucess">Send successfully </string>
+    <string name="pasdno"> two password inconsistencies</string>
+    <string name="datanull">The data is empty</string>
+    <string name="pleaseInoutPhoe">Please enter your mobile number </string>
+
+
+    <string name="pleaseInPutPsd">Please enter a password</string>
+    <string name="pleaseInPutPsdConig">Please enter the confirmation password </string>
+    <string name="pleadzijinmima">Please enter the funding password </string>
+    <string name="pldeazijinagre">Please enter the password again </string>
+    <string name="liangcinoagen"> two password input inconsistencies </string>
+    <string name="inputNotNull"> input amount can not be empty </string>
+    <string name="copy">copy success </string>
+    <string name="inmoney">receiving </string>
+    <string name="gotoAddress">transfer </string>
+    <string name="autoSacn"> put the QR code into the box, you can automatically scan </string>
+    <string name="menkan"> threshold </string>
+    <string name="xiane">limit </string>
+    <string name="keyong">Available: </string>
+    <string name="sumToPrice"> total assets equivalent </string>
+    <string name="jiaoyijil">transaction record </string>
+    <string name="usd">available</string>
+    <string name="unusd">freeze </string>
+    <string name="tomoney">transfer </string>
+    <string name="keyongdian">Available: </string>
+    <string name="address">address </string>
+    <string name="moneym">amount </string>
+    <string name="heanmondy">handling fee</string>
+    <string name="allin">all transferred to </string>
+    <string name="hangqing">quote </string>
+    <string name="moneyType"> currency </string>
+    <string name="price">price </string>
+    <string name="upordown">Ups and downs </string>
+    <string name="twomoneyto"> total assets of financial assets </string>
+    <string name="waifinfo"> account details </string>
+    <string name="yirengou"> has subscribed </string>
+    <string name="yimane">full amount </string>
+
+
+    <string name="yirengoul">can be subscribed </string>
+    <string name="rihuashoulilv">Daily Yield </string>
+    <string name="yuehuashouliyi">monthly rate of return </string>
+    <string name="gonggao">announcement </string>
+    <string name="zixun">information</string>
+    <string name="bangzhuzhongxin">Help Center</string>
+    <string name="yaoqingguize">Invite rules</string>
+    <string name="yaoqingfanyong">Invite rebate</string>
+    <string name="yao1">Invite the number of ordinary users</string>
+    <string name="yao2">Invite VIP1 number </string>
+    <string name="yzo3">Invite VIP2 number </string>
+    <string name="yao4">Invite VIP3 number </string>
+    <string name="yao5">Invite VIP4 number </string>
+    <string name="yao3">Invite VIP5 number </string>
+    <string name="yaoqigzongrenshu">Inviting the total number of people</string>
+    <string name="leijifanyong">cumulative rebate</string>
+    <string name="xitongshezhi">System Settings </string>
+    <string name="selectlaung">Select language </string>
+    <string name="jijiahuobi"> pricing currency </string>
+    <string name="jiantizhongwen">Simplified Chinese</string>
+    <string name="sharecode">Register invitation code </string>
+    <string name="quxiaoquxiao">Cancel </string>
+    <string name="chaina">中文</string>
+    <string name="english">English</string>
+    <string name="hanyu">한국어</string>
+    <string name="riyu">日本語</string>
+    <string name="xuanzeyyuyan">Select language </string>
+    <string name="wode">my </string>
+    <string name="lica">财财</string>
+    <string name="qiabao">Home </string>
+    <string name="gerenxinxi">personal information</string>
+    <string name="tuichudengou"> logout </string>
+    <string name="nicheng">nickname </string>
+    <string name="yonghuleixing">user type </string>
+    <string name="fanyongzongshu">the total number of rebates</string>
+
+    <string name="fanyongleixing"> rebate type </string>
+    <string name="shijiantitile">time </string>
+    <string name="fanyongjine"> rebate amount </string>
+    <string name="nichengasd">nickname </string>
+    <string name="aboutabout">Maxflow is a brand new digital currency wallet</string>
+    <string name="findfind">discover </string>
+    <string name="maorururu">buy </string>
+    <string name="heyueheyue">contract </string>
+    <string name="rihuarihua">daily</string>
+    <string name="yuehuayuehua">monthly </string>
+    <string name="yuejishijian">expected </string>
+    <string name="femhnoqo">closed period </string>
+    <string name="yujishouyi">, expected earnings </string>
+    <string name="cjamsjemhsjpiuo"> generate revenue, </string>
+    <string name="shouyicaozhang">revenue to account </string>
+    <string name="manqizhuanru"> expired transfer </string>
+    <string name="huoqi">current </string>
+    <string name="zhuanruheyu">transfer </string>
+    <string name="heyutitle">contract </string>
+    <string name="dingcuntitle">storage </string>
+
+    <string name="zuorizogshouyi"> yesterday total income </string>
+    <string name="zuorilicaishouyi"> yesterdays financial income </string>
+    <string name="zuoyiyaoqingshouyi">Invited income yesterday </string>
+    <string name="fanyongji">return record</string>
+    <string name="caozuoanniyu">Operation </string>
+    <string name="xiugaidenglumima"> modify the login password </string>
+    <string name="xiugaizijinmimia"> modify the fund password </string>
+    <string name="yijingmane">full amount </string>
+    <string name="qingtianxieyaoqingma">Please fill in the invitation code </string>
+    <string name="xianexx">limit: </string>
+    <string name="shurushuliang">Enter the number </string>
+    <string name="yinsizhengce">Privacy Policy</string>
+    <string name="yijingbaocun">has been saved </string>
+
+    <string name="shenghuo">life </string>
+    <string name="allallal">all </string>
+    <string name="gamegame">game </string>
+    <string name="saveSuccess">Save successfully!</string>
+    <string name="qingshuruzhuanzhangjine">Please enter the amount of transfer.</string>
+    <string name="putuser">Ordinary users</string>
+</resources>

@@ -1,6 +1,7 @@
 package com.xiamuyao.ulanbator.viewmodel
 
 import android.app.Application
+import androidx.databinding.ObservableArrayList
 import androidx.lifecycle.MutableLiveData
 import com.xiamuyao.ulanbator.R
 import com.xiamuyao.ulanbator.activity.FirstSetMonPsdActivity
@@ -8,9 +9,11 @@ import com.xiamuyao.ulanbator.activity.MainActivity
 import com.xiamuyao.ulanbator.activity.PrivacyActivity
 import com.xiamuyao.ulanbator.activity.SelectCityActivity
 import com.xiamuyao.ulanbator.base.BaseViewModel
-import com.xiamuyao.ulanbator.extension.businessHandler
+import com.xiamuyao.ulanbator.model.bean.response.CityListBean
 import com.xiamuyao.ulanbator.model.repository.UserRepository
 import com.xiamuyao.ulanbator.util.Md5
+import com.xiamuyao.ulanbator.util.RateUtli
+import com.xiamuyao.ulanbator.util.businessHandler
 import com.xiamuyao.ulanbator.utlis.SingleLiveEvent
 import com.xiamuyao.ulanbator.utlis.To
 import org.kodein.di.generic.instance
@@ -30,15 +33,25 @@ class RegisterViewModel(application: Application) : BaseViewModel(application) {
 
     private val userRepository: UserRepository by instance()
 
+    var showOrHideDialog = SingleLiveEvent<Boolean>()
     init {
-        selectCityNum.value = "86"
-        selectCityName.value = "中国"
-        countryCode.value = "CN"
         registerSelect.value = false
         invitationCode.value = ""
+
+        selectCityName.value = ""
+        selectCityNum.value = ""
+        countryCode.value = ""
     }
 
     override fun initData() {
+
+
+        launch {
+            selectCityName.value = userRepository.getCityList()[0].showCityName
+            selectCityNum.value = userRepository.getCityList()[0].dialingCode
+            countryCode.value = userRepository.getCityList()[0].countryCode
+        }
+
 
     }
 
@@ -88,15 +101,21 @@ class RegisterViewModel(application: Application) : BaseViewModel(application) {
      * 发送验证码
      */
     fun sendCode() {
+
+
         if (phoneNum.value.isNullOrEmpty()) {
             To.showToast(context.getString(R.string.pleaseInoutPhoe))
             return
         }
         launch {
+            showOrHideDialog.value = true
+
             businessHandler(userRepository.sendTheVerificationCode("1", selectCityNum.value!!, phoneNum.value!!)) {
                 sendCodeType.call()
-            }
 
+
+            }
+            showOrHideDialog.value = false
         }
     }
 

@@ -1,0 +1,190 @@
+<resources>
+    <string name="app_name">Max Flow</string>
+    <string name="titleBarLeftText">返回</string>
+    <string name="item_skit_text">Christina Photo by @FransLanting Wonderful color ! To let tourists get a better view，the bus drove slowly.What a beautiful town！</string>
+    <string name="sum">累计总收益</string>
+    <string name="sumprofit">累计邀请收益</string>
+    <string name="sumMarkMoney">累计理财收益</string>
+    <string name="shoping">购买</string>
+    <string name="jiechuheyue">解除合约</string>
+    <string name="login">登录</string>
+    <string name="fopsd">忘记密码？</string>
+    <string name="selelcyCity">选择国家</string>
+    <string name="phoneNumber">手机号码</string>
+    <string name="loginPsd">登录密码</string>
+    <string name="phoneNumberCode">手机验证码</string>
+    <string name="aginPsd">确认密码</string>
+    <string name="InvitationCode">邀请码(选填)</string>
+    <string name="privacyPolicy">隐私政策</string>
+    <string name="rehister">注册</string>
+    <string name="phonecode">验证码</string>
+    <string name="vip">VIP权益</string>
+    <string name="Invitecommission">邀请返佣</string>
+    <string name="SafetyCenter">安全中心</string>
+    <string name="SystemSettings">系统设置</string>
+    <string name="ShareAPP">分享MFT</string>
+    <string name="help">帮助与反馈</string>
+    <string name="about">关于我们</string>
+    <string name="headImage">头像</string>
+    <string name="id">ID</string>
+    <string name="name">昵称</string>
+    <string name="cancel">取消</string>
+    <string name="save">保存</string>
+    <string name="yaoqinghis">邀请记录</string>
+    <string name="saveimage">保存图片</string>
+    <string name="wx">微信</string>
+    <string name="wxFirend">朋友圈</string>
+    <string name="register">注册</string>
+    <string name="send">发送</string>
+    <string name="queding">确定</string>
+    <string name="wangjimima">忘记密码</string>
+    <string name="yinsixieyi">您知悉本政策及其他有关规定适用于我的区块链及我的区块链上我的区块链所自主拥有的DApp。
+一、 我们收集您的哪些信息\n\n
+请您知悉，我们收集您的以下信息是出于满足您在我的区块链服务需要的目的，且我们十分重视对您隐私的保护。在我们收集您的信息时，将严格遵守“合法、正当、必要”的原则。且您知悉，若您不提供我们服务所需的相关信息，您在我的区块链的服务体验可能因此而受到影响。\n\n
+
+1. 我们将收集您的移动设备信息、操作记录、交易记录、钱包地址等个人信息。\n\n
+
+2.  为满足您的特定服务需求，我们将收集您的姓名、银行卡号、手机号码、邮件地址等信息。\n\n
+
+3.  您知悉：您在我的区块链 上的钱包密码、私钥、助记词、Keystore并不存储或同步至我的区块链服务器。我的区块链不提供找回您的钱包密码、私钥、助记词、Keystore的服务。\n
+
+4.  除上述内容之外，您知悉在您使用我的区块链特定功能时，我们将在收集您的个人信息前向您作出特别提示，要求向您收集更多的个人信息。如您选择不同意，则视为您放弃使用我的区块链该特定功能。\n
+
+5.  当您跳转到第三方DApp后，第三方DApp会向您收集个人信息。我的区块链不持有第三方DApp向您收集的个人信息。\n\n
+6. 在法律法规允许的范围内，我的区块链可能会在以下情形中收集并使用您的个人信息无需征得您的授权同意：\n\n
+（1） 与国家安全、国防安全有关的；\n\n
+
+（2） 与公共安全、公共卫生、重大公共利益有关的；\n\n
+
+（3） 与犯罪侦查、起诉、审判和判决执行等有关的；\n\n
+
+（4） 所收集的个人信息是您自行向社会公众公开的；\n\n
+
+（5） 从合法公开披露的信息中收集您的个人信息，如合法的新闻报道，政府信息公开等渠道；</string>
+    <string name="agranRegister">请同意隐私政策</string>
+    <string name="setMoney">设置资金密码</string>
+    <string name="setmoenyagen">再次输入资金密码</string>
+    <string name="copyAddress">复制地址</string>
+    <string name="copyMemo">复制Memo</string>
+    <string name="senNUm">发送数量</string>
+    <string name="toAddress">对方地址</string>
+    <string name="memo">Memo</string>
+    <string name="headmoney">手续费</string>
+    <string name="moenypsd">资金密码</string>
+    <string name="phoneCode">短信验证</string>
+    <string name="inphoneCode">请输入短信验证码</string>
+    <string name="inmoneypsd">请输入资金密码</string>
+    <string name="getphoneCode">获取验证码</string>
+    <string name="type">类型</string>
+    <string name="createTIme">创建时间</string>
+    <string name="hasmap">交易哈希</string>
+    <string name="sendsucess">发送成功</string>
+    <string name="pasdno">两次密码不一致</string>
+    <string name="datanull">有数据为空</string>
+    <string name="pleaseInoutPhoe">请输入手机号码</string>
+    <string name="pleaseInPutPsd">请输入密码</string>
+    <string name="pleaseInPutPsdConig">请输入确认密码</string>
+    <string name="pleadzijinmima">请输入资金密码</string>
+    <string name="pldeazijinagre">请再次输入密码</string>
+    <string name="liangcinoagen">两次密码输入不一致</string>
+    <string name="inputNotNull">输入金额不能为空</string>
+    <string name="copy">复制成功</string>
+    <string name="inmoney">收款</string>
+    <string name="gotoAddress">转账</string>
+    <string name="autoSacn">将二维码置入框内，即可自动扫描</string>
+    <string name="menkan">门槛</string>
+    <string name="xiane">限额</string>
+    <string name="keyong">可用:</string>
+    <string name="sumToPrice">总资产折合</string>
+    <string name="jiaoyijil">交易记录</string>
+    <string name="usd">可用</string>
+    <string name="unusd">冻结</string>
+    <string name="tomoney">转账</string>
+    <string name="keyongdian">可用:</string>
+    <string name="address">地址</string>
+    <string name="moneym">金额</string>
+    <string name="heanmondy">手续费</string>
+    <string name="allin">全部转入</string>
+    <string name="hangqing">行情</string>
+    <string name="moneyType">币种</string>
+    <string name="price">价格</string>
+    <string name="upordown">涨跌榜</string>
+    <string name="twomoneyto">理财资产总折合</string>
+    <string name="waifinfo">账户详情</string>
+    <string name="yirengou">已认购</string>
+    <string name="yimane">已满额</string>
+    <string name="yirengoul">可认购</string>
+    <string name="rihuashoulilv">日化收益率</string>
+    <string name="yuehuashouliyi">月化收益率</string>
+    <string name="gonggao">公告</string>
+    <string name="zixun">资讯</string>
+    <string name="bangzhuzhongxin">帮助中心</string>
+    <string name="yaoqingguize">邀请规则</string>
+    <string name="yaoqingfanyong">邀请返佣</string>
+    <string name="yao1">邀请普通用户数</string>
+    <string name="yao2">邀请 VIP1 人数</string>
+    <string name="yzo3">邀请 VIP2 人数</string>
+    <string name="yao4">邀请 VIP3 人数</string>
+    <string name="yao5">邀请 VIP4 人数</string>
+    <string name="yao3">邀请 VIP5 人数</string>
+    <string name="yaoqigzongrenshu">邀请总人数</string>
+    <string name="leijifanyong">累计返佣</string>
+    <string name="xitongshezhi">系统设置</string>
+    <string name="selectlaung">选择语言</string>
+    <string name="jijiahuobi">计价货币</string>
+    <string name="jiantizhongwen">简体中文</string>
+    <string name="sharecode">注册邀请码</string>
+    <string name="quxiaoquxiao">取消</string>
+    <string name="chaina">中文</string>
+    <string name="english">English</string>
+    <string name="hanyu">한국어</string>
+    <string name="riyu">日本語</string>
+    <string name="xuanzeyyuyan">选择语言</string>
+    <string name="wode">我的</string>
+    <string name="lica">理财</string>
+    <string name="qiabao">首页</string>
+    <string name="gerenxinxi">个人信息</string>
+    <string name="tuichudengou">退出登录</string>
+    <string name="nicheng">昵称</string>
+    <string name="yonghuleixing">用户类型</string>
+    <string name="fanyongzongshu">返佣总数</string>
+    <string name="fanyongleixing">返佣类型</string>
+    <string name="shijiantitile">时间</string>
+    <string name="fanyongjine">返佣金额</string>
+    <string name="nichengasd">昵称</string>
+    <string name="aboutabout">Maxflow是一款全新的数字货币钱包</string>
+    <string name="findfind">发现</string>
+    <string name="maorururu">买入</string>
+    <string name="heyueheyue">合约</string>
+    <string name="rihuarihua">日化</string>
+    <string name="yuehuayuehua">月化</string>
+    <string name="yuejishijian">预计</string>
+    <string name="femhnoqo">封闭期</string>
+    <string name="yujishouyi">,预计收益</string>
+    <string name="cjamsjemhsjpiuo">产生收益，</string>
+    <string name="shouyicaozhang">收益到账</string>
+    <string name="manqizhuanru">期满转入</string>
+    <string name="huoqi">活期</string>
+    <string name="zhuanruheyu">转入</string>
+    <string name="heyutitle">合约</string>
+    <string name="dingcuntitle">定存</string>
+    <string name="zuorizogshouyi">昨日总收益</string>
+    <string name="zuorilicaishouyi">昨日理财收益</string>
+    <string name="zuoyiyaoqingshouyi">昨日邀请收益</string>
+    <string name="fanyongji">返佣记录</string>
+    <string name="caozuoanniyu">操作</string>
+    <string name="xiugaidenglumima">修改登录密码</string>
+    <string name="xiugaizijinmimia">修改资金密码</string>
+    <string name="yijingmane">已满额</string>
+    <string name="qingtianxieyaoqingma">请填写邀请码</string>
+    <string name="xianexx">限额:</string>
+    <string name="shurushuliang">输入数量</string>
+    <string name="yinsizhengce">隐私政策</string>
+    <string name="yijingbaocun">已经保存</string>
+    <string name="shenghuo">生活</string>
+    <string name="allallal">全部</string>
+    <string name="gamegame">游戏</string>
+    <string name="saveSuccess">保存成功!</string>
+    <string name="qingshuruzhuanzhangjine">请输入转账金额</string>
+    <string name="putuser">普通用户</string>
+</resources>

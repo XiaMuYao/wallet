@@ -42,6 +42,11 @@ class ContractFragmentFragment : BaseFragment<FragmentContractfragmentBinding, C
     }
 
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.getContractList()
+    }
+
     override fun initContentView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): Int {
         return R.layout.fragment_contractfragment
     }

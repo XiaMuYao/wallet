@@ -9,6 +9,7 @@ import com.xiamuyao.ulanbator.base.BaseViewModel
 import com.xiamuyao.ulanbator.base.adapter.BaseObservableListAdapter
 import com.xiamuyao.ulanbator.net.BaseResponse
 import com.xiamuyao.ulanbator.net.Status.SUCCESS
+import com.xiamuyao.ulanbator.net.Status.SignatureError
 import com.xiamuyao.ulanbator.utlis.To
 
 /**
@@ -63,21 +64,4 @@ fun SmartRefreshLayout.defaultRefreshLoadMoreFun(
 
 }
 
-fun <T> BaseViewModel.businessHandler(
-    data: BaseResponse<T>,
-    doingSom: (() -> Unit)? = null
-): T {
-    when (data.result.returnCode) {
-        SUCCESS -> {
-            doingSom?.let {
-                it.invoke()
-            }
-        }
-        else -> {
-            data.result.returnUserMessage?.let {
-                To.showToast(it)
-            }
-        }
-    }
-    return data.data
-}
+

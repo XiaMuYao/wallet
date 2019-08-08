@@ -3,9 +3,9 @@ package com.xiamuyao.ulanbator.viewmodel
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import com.xiamuyao.ulanbator.base.BaseViewModel
-import com.xiamuyao.ulanbator.extension.businessHandler
 import com.xiamuyao.ulanbator.model.repository.MyUserRepository
 import com.xiamuyao.ulanbator.model.repository.UserRepository
+import com.xiamuyao.ulanbator.util.businessHandler
 import com.xiamuyao.ulanbator.util.getSpValue
 import com.xiamuyao.ulanbator.utlis.SingleLiveEvent
 import org.kodein.di.generic.instance
@@ -20,7 +20,13 @@ class SetMoneyPsdViewModel(application: Application) : BaseViewModel(application
     var passwordConfirm = MutableLiveData<String>()
     var verifyCode = MutableLiveData<String>()
 
+    var showOrHideDialog = SingleLiveEvent<Boolean>()
+
+
+
     override fun initData() {
+        showOrHideDialog.value = false
+
         tel.value = getSpValue("tel", "")
     }
 
@@ -47,8 +53,11 @@ class SetMoneyPsdViewModel(application: Application) : BaseViewModel(application
      */
     fun sendCode() {
         launch {
+            showOrHideDialog.value = true
+
             userRepository.sendTheVerificationCode(4.toString(), getSpValue("dialingCode", ""), tel.value!!)
             sendCodeType.call()
+            showOrHideDialog.value = false
         }
     }
 }

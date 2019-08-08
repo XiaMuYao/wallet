@@ -194,7 +194,7 @@ class ContractIntoActivity : BaseActivity<ActivityContractintoBinding, ContractI
                         viewModel.thisleaveDay.value + "天" +
                         getString(R.string.yujishouyi) +
                         viewModel.nowSelectPrice.value +
-                        " MAX," +
+                        " MFT," +
                         viewModel.dueTransferTime.value +
                         getString(R.string.manqizhuanru) +
                         "S1" +
@@ -208,7 +208,7 @@ class ContractIntoActivity : BaseActivity<ActivityContractintoBinding, ContractI
             val endTime2 = startTime2 + viewModel.nowSelectPrice.value?.length!!
 
 
-            val startTime3 = endTime2 + " MAX,".length
+            val startTime3 = endTime2 + " MFT,".length
             val endTime3 = startTime3 + viewModel.dueTransferTime.value?.length!!
 
             builder.setSpan(

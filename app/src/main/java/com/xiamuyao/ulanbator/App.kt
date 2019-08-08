@@ -3,11 +3,14 @@ package com.xiamuyao.ulanbator
 import android.app.Application
 import android.content.Context
 import androidx.databinding.ObservableArrayList
+import com.blankj.utilcode.util.LanguageUtils
 import com.google.gson.Gson
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter
 import com.scwang.smartrefresh.layout.header.ClassicsHeader
+import com.xiamuyao.ulanbator.activity.LaunchActivity
 import com.xiamuyao.ulanbator.constant.EventConstant
+import com.xiamuyao.ulanbator.constant.EventConstant.TOKEN
 import com.xiamuyao.ulanbator.constant.ProjectConstant
 import com.xiamuyao.ulanbator.constant.ProjectConstant.BTC_PRICE
 import com.xiamuyao.ulanbator.model.bean.MarketBean
@@ -16,9 +19,9 @@ import com.xiamuyao.ulanbator.model.bean.response.RateBean
 import com.xiamuyao.ulanbator.model.repository.*
 import com.xiamuyao.ulanbator.network.ServiceCreator
 import com.xiamuyao.ulanbator.network.api.*
-import com.xiamuyao.ulanbator.util.BigDecimalUtils
-import com.xiamuyao.ulanbator.util.RateUtli
-import com.xiamuyao.ulanbator.util.putSpValue
+import com.xiamuyao.ulanbator.util.*
+import com.xiamuyao.ulanbator.util.CityUtli.geyLanguageBySys
+import com.xiamuyao.ulanbator.utlis.ActivityStackManager
 import com.xiamuyao.ulanbator.utlis.DataBus
 import com.xiamuyao.ulanbator.utlis.LL
 import com.zhangke.websocket.SimpleListener
@@ -32,10 +35,13 @@ import org.kodein.di.generic.bind
 import org.kodein.di.generic.instance
 import org.kodein.di.generic.singleton
 import java.nio.ByteBuffer
+import java.util.*
 import kotlin.properties.Delegates
 
 
 class App : Application(), KodeinAware {
+
+    var type = true
 
     override val kodein = Kodein.lazy {
         //创建
@@ -69,8 +75,11 @@ class App : Application(), KodeinAware {
     override fun onCreate() {
         super.onCreate()
         CONTEXT = applicationContext
+
         fromCloudRate = RateUtli.getRateList()
         marketList = RateUtli.getPriceList()
+        //设置语言
+
         LibApp.init(CONTEXT)
 
         initWebSocket()
@@ -85,6 +94,27 @@ class App : Application(), KodeinAware {
             //指定为经典Footer，默认是 BallPulseFooter
             ClassicsFooter(context).setDrawableSize(20f)
         }
+
+
+//        //如果没有手动设置过语言
+        if (CityUtli.getLanguage() == -1) {
+            val language = Locale.getDefault().getLanguage()
+            val find = CityUtli.cityList.find { it.cityType == language }
+
+            CityUtli.saveLanguage(find?.cityId!!)
+            LanguageUtils.applySystemLanguage(LaunchActivity::class.java)
+            ActivityStackManager.getInstance().finishAllActivity()
+
+        } else {
+            val language = CityUtli.getLanguage()
+            val find = CityUtli.cityList.find { it.cityId == language }
+
+            LanguageUtils.applyLanguage(geyLanguageBySys(find?.cityId!!)!!, LaunchActivity::class.java)
+//            updateLocale(this,geyLanguageBySys(find?.cityId!!)!!)
+            ActivityStackManager.getInstance().finishAllActivity()
+        }
+//        updateLocale(this, Locale.CHINESE)
+
 
     }
 
@@ -168,56 +198,83 @@ class App : Application(), KodeinAware {
             if (pong.length < 30) {
                 val replace = pong.replace("ping", "pong")
                 WebSocketHandler.getDefault().send(replace)
+                return
+            }
+
+            val fromJso = Gson().fromJson(pong, SocketReBean::class.java)
+            val fromJson = MarketBean()
+            val tickBean1 = MarketBean.TickBean()
+
+            if (type) {
+
+                tickBean1.open = ""
+                tickBean1.close = "1"
+                tickBean1.amount = ""
+                tickBean1.cch = "market_mftkrwt_ticker"
+                tickBean1.rose = "0"
+                fromJson.setCh("market_mftkrwt_ticker")
+                type = false
+
             } else {
-                val fromJso = Gson().fromJson(pong, SocketReBean::class.java)
-                val fromJson = MarketBean()
-
-                val tickBean1 = MarketBean.TickBean()
-
                 tickBean1.open = fromJso.tick.open
                 tickBean1.close = fromJso.tick.close
                 tickBean1.amount = fromJso.tick.amount
                 tickBean1.high = fromJso.tick.high
                 tickBean1.low = fromJso.tick.low
                 tickBean1.cch = fromJso.channel
-
-                fromJson.setTick(tickBean1)
-
-                fromJson.setTs(fromJso.ts.toString())
+                tickBean1.rose = fromJso.tick.rose
                 fromJson.setCh(fromJso.channel)
-
-                if (null != fromJson.getTick()) {
-                    //寻找数据插入还是修改
-                    for ((index, indexData) in RateUtli.getPriceList().withIndex()) {
-                        if (indexData.cch == fromJson.getCh()) {
-                            fromJson.getTick()?.cch = indexData.cch
-                            fromJson.getTick()?.pairName = indexData.pairName
-                            fromJson.getTick()?.pairAndToName = indexData.pairName + "USDT"
-                            RateUtli.getPriceList()[index] = fromJson.getTick()
-                            //保存比特币价格
-                            if (fromJson.getTick()?.pairName == "BTC") {
-                                CONTEXT.putSpValue(BTC_PRICE, fromJson.getTick()?.close)
-                                //发送比特币数据
-                                DataBus.postData(EventConstant.BTC_Refresh, fromJson.getTick()?.close!!)
-                            }
-                            //已经得到最后数 计算
-                            val tickBean = RateUtli.getPriceList()[index]
-                            val subtract = BigDecimalUtils.sub(tickBean.close, tickBean.open)
-                            val multiply =
-                                subtract.toBigDecimal().div(tickBean.open.toBigDecimal()).multiply(100.toBigDecimal())
-                            RateUtli.getPriceList()[index].upAndDown = multiply.stripTrailingZeros().toPlainString()
-                            //计算行情相应的汇率数据
-                            RateUtli.getPriceList()[index].pairToPrice =
-                                RateUtli.selectPairByWeb(RateUtli.getPriceList()[index])
-                            break
-                        }
-                    }
-                    //保存行情整体数据 下次读取
-                    RateUtli.SavePriceList(RateUtli.getPriceList())
-                }
-                DataBus.postData(EventConstant.quote_Refresh, "")
             }
 
+
+            fromJson.setTick(tickBean1)
+
+            fromJson.setTs(fromJso.ts.toString())
+
+            if (null != fromJson.getTick()) {
+                //寻找数据插入还是修改
+                for ((index, indexData) in RateUtli.getPriceList().withIndex()) {
+                    if (index / 3 == 2 && index > 5) {
+                        type = true
+                    }
+                    if (indexData.cch == fromJson.getCh()) {
+                        fromJson.getTick()?.cch = indexData.cch
+                        fromJson.getTick()?.pairName = indexData.pairName
+                        fromJson.getTick()?.pairAndToName = indexData.pairName + "USDT"
+                        RateUtli.getPriceList()[index] = fromJson.getTick()
+
+                        //保存比特币价格
+                        if (fromJson.getTick()?.pairName == "BTC") {
+                            CONTEXT.putSpValue(BTC_PRICE, fromJson.getTick()?.close)
+                            //发送比特币数据
+                            DataBus.postData(EventConstant.BTC_Refresh, fromJson.getTick()?.close!!)
+                        }
+
+                        //已经得到最后数 计算 涨跌幅
+                        val tickBean = RateUtli.getPriceList()[index]
+                        val mul = BigDecimalUtils.mul(tickBean.rose, "10000")
+                        val convertNumber3 = ArithUtil.convertNumber3(mul, 2)
+                        val mul1 = BigDecimalUtils.div(convertNumber3, "100")
+                        val mul2 = ArithUtil.convertNumber3(mul1, 2)
+                        RateUtli.getPriceList()[index].upAndDown = mul2
+
+                        //如果是平台币
+                        if (RateUtli.getPriceList()[index].pairName == TOKEN) {
+                            //计算行情相应的汇率数据
+                            RateUtli.getPriceList()[index].close =
+                                RateUtli.getUSDT(RateUtli.getPriceList()[index].close)
+                        }
+                        //计算行情相应的汇率数据
+                        RateUtli.getPriceList()[index].pairToPrice =
+                            RateUtli.selectPairByWeb(RateUtli.getPriceList()[index])
+
+                        break
+                    }
+                }
+                //保存行情整体数据 下次读取
+                RateUtli.SavePriceList(RateUtli.getPriceList())
+            }
+            DataBus.postData(EventConstant.quote_Refresh, "")
         }
     }
 

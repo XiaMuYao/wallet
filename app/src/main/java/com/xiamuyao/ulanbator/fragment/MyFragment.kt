@@ -12,6 +12,7 @@ import com.xiamuyao.ulanbator.databinding.FragmentMyBinding
 import com.xiamuyao.ulanbator.util.UsetUtli
 import com.xiamuyao.ulanbator.utlis.DataBus
 import com.xiamuyao.ulanbator.utlis.DataBusObservable
+import com.xiamuyao.ulanbator.utlis.To
 import com.xiamuyao.ulanbator.view.ShareDialog
 import com.xiamuyao.ulanbator.viewmodel.MyViewModel
 
@@ -54,7 +55,7 @@ class MyFragment : BaseFragment<FragmentMyBinding, MyViewModel>() {
         }
 
         binding.constraintLayout8.setOnClickListener {
-            //            HelpActivity.start(context!!)
+                        HelpActivity.start(context!!)
         }
         //关于我们
         binding.constraintLayout9.setOnClickListener {
@@ -68,6 +69,12 @@ class MyFragment : BaseFragment<FragmentMyBinding, MyViewModel>() {
         DataBus.observeData(this, EventConstant.SetName, object : DataBusObservable<String> {
             override fun dataBusDataCallBack(it: String) {
                 viewModel. nickName.value = UsetUtli.getUserName()
+            }
+        })
+
+        DataBus.observeData(this, EventConstant.DialogCLOSE, object : DataBusObservable<String> {
+            override fun dataBusDataCallBack(it: String) {
+                To.showToast(getString(R.string.saveSuccess))
             }
         })
     }

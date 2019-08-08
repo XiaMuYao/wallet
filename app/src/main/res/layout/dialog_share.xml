@@ -145,6 +145,7 @@
         android:layout_height="41dp"
         android:layout_marginTop="@dimen/dimens_15dp"
         android:src="@drawable/download"
+        android:visibility="gone"
         app:layout_constraintLeft_toRightOf="@+id/guideline97"
         app:layout_constraintTop_toTopOf="@+id/view21" />
 
@@ -154,6 +155,7 @@
         android:layout_marginTop="8dp"
         android:text="@string/saveimage"
         android:textColor="@color/suncolor"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="@+id/imageView22"
         app:layout_constraintStart_toStartOf="@+id/imageView22"
         app:layout_constraintTop_toBottomOf="@+id/imageView22" />
@@ -164,7 +166,7 @@
         android:layout_width="41dp"
         android:layout_height="41dp"
         android:layout_marginTop="@dimen/dimens_15dp"
-        android:src="@drawable/wechat"
+        android:src="@drawable/download"
         app:layout_constraintLeft_toLeftOf="@+id/guideline105"
         app:layout_constraintRight_toRightOf="@+id/guideline105"
         app:layout_constraintTop_toTopOf="@+id/view21" />
@@ -173,7 +175,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="@string/wx"
+        android:text="@string/saveimage"
         android:textColor="@color/suncolor"
         app:layout_constraintEnd_toEndOf="@+id/imageView23"
         app:layout_constraintStart_toStartOf="@+id/imageView23"
@@ -186,6 +188,8 @@
         android:layout_height="41dp"
         android:layout_marginTop="@dimen/dimens_15dp"
         android:src="@drawable/wechat"
+        android:visibility="gone"
+
         app:layout_constraintRight_toRightOf="@+id/guideline98"
         app:layout_constraintTop_toTopOf="@+id/view21" />
 
@@ -194,7 +198,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="@string/wxFirend"
+
         android:textColor="@color/suncolor"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="@+id/imageView24"
         app:layout_constraintStart_toStartOf="@+id/imageView24"
         app:layout_constraintTop_toBottomOf="@+id/imageView24" />

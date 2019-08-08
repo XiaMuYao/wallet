@@ -48,6 +48,10 @@ class FixedDepositFragmentFragment :
         return R.layout.fragment_fixeddepositfragment
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.getFixedList()
+    }
     override fun initVariableId(): Int {
         return BR.fixeddepositfragmentViewModel
     }

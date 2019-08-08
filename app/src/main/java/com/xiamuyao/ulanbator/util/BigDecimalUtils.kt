@@ -56,9 +56,8 @@ object BigDecimalUtils {
      * @return 两个参数的商
      */
     fun div(v1: String, v2: String): String {
-
-        var v11 = v1 .toBigDecimal().stripTrailingZeros().toPlainString()
-        var v22 = v2 .toBigDecimal().stripTrailingZeros().toPlainString()
+        var v11 = v1.replace(",","") .toBigDecimal().stripTrailingZeros().toPlainString()
+        var v22 = v2.replace(",","") .toBigDecimal().stripTrailingZeros().toPlainString()
 
         val b1 = BigDecimal(v11)
         val b2 = BigDecimal(v22)

@@ -7,13 +7,14 @@ import androidx.lifecycle.MutableLiveData
 import com.xiamuyao.ulanbator.activity.InMoneyActivity
 import com.xiamuyao.ulanbator.activity.TransferAccountsActivity
 import com.xiamuyao.ulanbator.base.BaseViewModel
-import com.xiamuyao.ulanbator.extension.businessHandler
 import com.xiamuyao.ulanbator.model.bean.WalletListBean
 import com.xiamuyao.ulanbator.model.bean.WalletListInfoBean
 import com.xiamuyao.ulanbator.model.repository.WalletRepository
+import com.xiamuyao.ulanbator.util.ArithUtil
 import com.xiamuyao.ulanbator.util.BigDecimalUtils
 import com.xiamuyao.ulanbator.util.RateUtli.getSelectCurrency
 import com.xiamuyao.ulanbator.util.RateUtli.getUSDTToExchangeRate
+import com.xiamuyao.ulanbator.util.businessHandler
 import com.xiamuyao.ulanbator.util.toTime
 import org.kodein.di.generic.instance
 
@@ -50,7 +51,7 @@ class WalletInfoViewModel(application: Application) : BaseViewModel(application)
      * 当前货币兑换法币
      */
     private fun currentCurrencyExchangeCurrency() {
-        if (walletListBean.value?.pariAmount.isNullOrEmpty() || walletListBean.value?.pariAmount == "0" || walletListBean.value?.pariToPrice.isNullOrEmpty() || walletListBean.value?.pariToPrice=="0") return
+        if (walletListBean.value?.pariAmount.isNullOrEmpty() || walletListBean.value?.pariAmount == "0" || walletListBean.value?.pariToPrice.isNullOrEmpty() || walletListBean.value?.pariToPrice == "0") return
         walletListBean.value?.pairToUSDT =
             BigDecimalUtils.div(walletListBean.value?.pariToPrice!!, walletListBean.value?.pariAmount!!)
     }
@@ -73,8 +74,22 @@ class WalletInfoViewModel(application: Application) : BaseViewModel(application)
                     msymbolFeeRate.value = symbolFeeRate
                     mbalance.value = balance
 
-                    availablePrice.value = currentCurrencyPairCurrency(available.value!!.replace(",", ""))
-                    freezePrice.value = currentCurrencyPairCurrency(freeze.value!!.replace(",", ""))
+
+                    val mul = BigDecimalUtils.mul(
+                        available.value!!.replace(",", ""),
+                        walletListBean.value?.pairToUSDT!!.replace(",", "")
+                    )
+                    val mul1 = BigDecimalUtils.mul(
+                        freeze.value!!.replace(",", ""),
+                        walletListBean.value?.pairToUSDT!!.replace(",", "")
+                    )
+//                    if (mul == null || mul1 == null) return@businessHandler
+//
+//                    val convertNumber3 = ArithUtil.convertNumber3(mul, 4)
+//                    val convertNumber4 = ArithUtil.convertNumber3(mul1, 4)
+
+                    availablePrice.value = setTextee(mul)
+                    freezePrice.value =setTextee(mul1)
 
                     list.forEach {
                         val walletListInfoBean = WalletListInfoBean()
@@ -128,6 +143,33 @@ class WalletInfoViewModel(application: Application) : BaseViewModel(application)
                 "type" to type
             )
         )
+    }
+
+    fun setTextee(type: String): String {
+
+
+        var tempPair = ArithUtil.convertNumber3(type, 4)
+        //        人民币￥，美金$，韩币₩，日元¥
+        val tempPrirName = getSelectCurrency()
+
+        when {
+            tempPrirName.contains("CNY") -> {
+                return "￥$tempPair CNY"
+            }
+            tempPrirName.contains("USD") -> {
+                return "$$tempPair USD"
+
+            }
+            tempPrirName.contains("JPY") -> {
+                return "₩$tempPair JPY"
+
+            }
+            tempPrirName.contains("KRW") -> {
+                return "¥$tempPair KRW "
+
+            }
+        }
+        return ""
     }
 
 }

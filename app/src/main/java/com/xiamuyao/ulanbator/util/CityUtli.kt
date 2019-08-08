@@ -2,6 +2,7 @@ package com.xiamuyao.ulanbator.util
 
 import com.xiamuyao.ulanbator.App
 import com.xiamuyao.ulanbator.R
+import com.xiamuyao.ulanbator.utlis.LL
 import java.util.*
 
 object CityUtli {
@@ -14,22 +15,23 @@ object CityUtli {
     const val KOREAN = 3
     //日语
     const val JAPANESE = 4
-     var cityList = arrayListOf<cityBean>(
-        cityBean(CHINESE, App.CONTEXT.getString(R.string.chaina)),
-        cityBean(ENGLISH, App.CONTEXT.getString(R.string.english)),
-        cityBean(KOREAN, App.CONTEXT.getString(R.string.hanyu)),
-        cityBean(JAPANESE, App.CONTEXT.getString(R.string.riyu))
+    var cityList = arrayListOf<cityBean>(
+        cityBean(CHINESE, App.CONTEXT.getString(R.string.chaina), "zh", ""),
+        cityBean(ENGLISH, App.CONTEXT.getString(R.string.english), "en", ""),
+        cityBean(JAPANESE, App.CONTEXT.getString(R.string.riyu), "jq", ""),
+        cityBean(KOREAN, App.CONTEXT.getString(R.string.hanyu), "ko", "")
     )
 
     fun saveLanguage(index: Int) {
+        LL.d("SELECITY:$index")
         App.CONTEXT.putSpValue("SELECITY", index)
     }
 
     fun getLanguage(): Int {
-        return App.CONTEXT.getSpValue("SELECITY", CHINESE)
+        return App.CONTEXT.getSpValue("SELECITY", -1)
     }
 
-    fun geyLanguageBySys(value:Int): Locale? {
+    fun geyLanguageBySys(value: Int): Locale? {
 
         return when (value) {
             CHINESE -> {
@@ -49,7 +51,7 @@ object CityUtli {
 
     }
 
-    class cityBean(var cityId: Int, var cityName: String)
+    class cityBean(var cityId: Int, var cityName: String, var cityType: String, var cityZName: String)
 
 
 }

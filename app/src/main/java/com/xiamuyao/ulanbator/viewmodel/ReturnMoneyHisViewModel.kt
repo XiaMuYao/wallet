@@ -3,9 +3,9 @@ package com.xiamuyao.ulanbator.viewmodel
 import android.app.Application
 import androidx.databinding.ObservableArrayList
 import com.xiamuyao.ulanbator.base.BaseViewModel
-import com.xiamuyao.ulanbator.extension.businessHandler
 import com.xiamuyao.ulanbator.model.bean.ReturnMoneyHisBean
 import com.xiamuyao.ulanbator.model.repository.MyUserRepository
+import com.xiamuyao.ulanbator.util.businessHandler
 import org.kodein.di.generic.instance
 
 class ReturnMoneyHisViewModel(application: Application) : BaseViewModel(application) {

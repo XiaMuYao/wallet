@@ -76,7 +76,7 @@
             android:layout_height="wrap_content"
             android:textSize="12dp"
             android:layout_marginEnd="8dp"
-            android:text="@{walletListBean.pariToPrice}"
+            app:currencyFormatting="@{walletListBean.pariToPrice}"
             android:textColor="#FF878DA8"
             app:layout_constraintBaseline_toBaselineOf="@+id/textView11"
             app:layout_constraintEnd_toStartOf="@+id/textView11"

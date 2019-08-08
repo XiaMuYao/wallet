@@ -146,4 +146,8 @@ abstract class BaseActivity<V : ViewDataBinding, VM : BaseViewModel> : AppCompat
         startActivity(intent)
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        ActivityStackManager.getInstance().removeActivity(this)
+    }
 }

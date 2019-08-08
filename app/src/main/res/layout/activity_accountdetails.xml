@@ -58,7 +58,7 @@
                 android:layout_alignBaseline="@+id/sumText"
                 android:layout_marginLeft="@dimen/dimens_5dp"
                 android:layout_toRightOf="@+id/sumText"
-                android:text="MAX"
+                android:text="@string/MFT"
                 android:textColor="#FFFFFFFF"
                 android:textSize="15dp" />
         </RelativeLayout>
@@ -104,7 +104,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="MAX"
+                android:text="@string/MFT"
                 android:layout_marginLeft="5dp"
 
                 android:textColor="#FFFFFF"
@@ -130,7 +130,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="MAX"
+                android:text="@string/MFT"
                 android:layout_marginLeft="5dp"
                 android:textColor="#FFFFFF"
                 android:textSize="17.5dp"

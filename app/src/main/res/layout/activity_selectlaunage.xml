@@ -76,14 +76,14 @@
             android:layout_height="51dp"
             android:background="@color/myitem"
 
-            android:onClick="@{() -> selectlaunageViewModel.saveTheCurrency(3)}">
+            android:onClick="@{() -> selectlaunageViewModel.saveTheCurrency(4)}">
 
             <TextView
                 style="@style/style_select_text"
                 android:text="日本語" />
 
             <ImageView
-                android:tag="3"
+                android:tag="4"
 
                 style="@style/style_select_image"
                 app:selectType="@{selectlaunageViewModel.slectIndex}" />
@@ -100,7 +100,7 @@
             android:layout_height="51dp"
             android:layout_alignParentStart="true"
             android:background="@color/myitem"
-            android:onClick="@{() -> selectlaunageViewModel.saveTheCurrency(4)}">
+            android:onClick="@{() -> selectlaunageViewModel.saveTheCurrency(3)}">
 
             <TextView
                 style="@style/style_select_text"
@@ -109,7 +109,7 @@
             <ImageView
                 style="@style/style_select_image"
 
-                android:tag="4"
+                android:tag="3"
                 app:selectType="@{selectlaunageViewModel.slectIndex}" />
 
             <View

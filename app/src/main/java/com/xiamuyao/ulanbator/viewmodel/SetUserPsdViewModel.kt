@@ -4,9 +4,9 @@ import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import com.xiamuyao.ulanbator.activity.LoginActivity
 import com.xiamuyao.ulanbator.base.BaseViewModel
-import com.xiamuyao.ulanbator.extension.businessHandler
 import com.xiamuyao.ulanbator.model.repository.MyUserRepository
 import com.xiamuyao.ulanbator.model.repository.UserRepository
+import com.xiamuyao.ulanbator.util.businessHandler
 import com.xiamuyao.ulanbator.util.getSpValue
 import com.xiamuyao.ulanbator.utlis.ActivityStackManager
 import com.xiamuyao.ulanbator.utlis.SingleLiveEvent
@@ -23,9 +23,10 @@ class SetUserPsdViewModel(application: Application) : BaseViewModel(application)
     var verifyCode = MutableLiveData<String>()
     var tel = MutableLiveData<String>()
     var sendCodeType = SingleLiveEvent<Boolean>()
-
+    var showOrHideDialog = SingleLiveEvent<Boolean>()
     override fun initData() {
         tel.value = getSpValue("tel", "")
+        showOrHideDialog.value = false
     }
 
     fun setLoginPsd() {
@@ -49,8 +50,10 @@ class SetUserPsdViewModel(application: Application) : BaseViewModel(application)
 
     fun sendCde() {
         launch {
+            showOrHideDialog.value = true
             userRepository.sendTheVerificationCode(3.toString(), getSpValue("dialingCode", ""), tel.value!!)
             sendCodeType.call()
+            showOrHideDialog.value = false
         }
     }
 

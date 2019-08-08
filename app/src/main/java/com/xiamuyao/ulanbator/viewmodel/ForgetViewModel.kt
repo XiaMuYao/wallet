@@ -6,8 +6,8 @@ import com.xiamuyao.ulanbator.R
 import com.xiamuyao.ulanbator.activity.MainActivity
 import com.xiamuyao.ulanbator.activity.SelectCityActivity
 import com.xiamuyao.ulanbator.base.BaseViewModel
-import com.xiamuyao.ulanbator.extension.businessHandler
 import com.xiamuyao.ulanbator.model.repository.UserRepository
+import com.xiamuyao.ulanbator.util.businessHandler
 import com.xiamuyao.ulanbator.utlis.SingleLiveEvent
 import com.xiamuyao.ulanbator.utlis.To
 import org.kodein.di.generic.instance
@@ -20,18 +20,23 @@ class ForgetViewModel(application: Application) : BaseViewModel(application) {
     var accountPsd = MutableLiveData<String>()
     var accountPsdConfirm = MutableLiveData<String>()
     var sendCodeType = SingleLiveEvent<Boolean>()
+    var showOrHideDialog = SingleLiveEvent<Boolean>()
 
     private val userRepository: UserRepository by instance()
 
 
     init {
-        selectCityNum.value = "86"
-        selectCityName.value = "中国"
+        selectCityName.value = ""
+        selectCityNum.value = ""
+        showOrHideDialog.value = false
     }
 
 
     override fun initData() {
-
+        launch {
+            selectCityName.value = userRepository.getCityList()[0].showCityName
+            selectCityNum.value = userRepository.getCityList()[0].dialingCode
+        }
     }
 
     /**
@@ -43,10 +48,13 @@ class ForgetViewModel(application: Application) : BaseViewModel(application) {
             return
         }
         launch {
+            showOrHideDialog.value = true
             businessHandler(userRepository.sendTheVerificationCode("2", selectCityNum.value!!, phoneNum.value!!)) {
                 sendCodeType.call()
-            }
 
+
+            }
+            showOrHideDialog.value = false
         }
     }
 

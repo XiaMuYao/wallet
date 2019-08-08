@@ -4,7 +4,7 @@ public class MyUserBean {
 
     /**
      * result : {"returnCode":"0","returnUserMessage":"成功","returnMessage":"成功"}
-     * data : {"nickname":"MAX","vipType":0,"tel":"15000000001","dialingCode":"86","inviteCode":"53391699"}
+     * data : {"nickname":"MAX33","vipType":0,"tel":"18945709503","shareUrl":"http://www.maxflow.com/share/","dialingCode":"86","inviteCode":"09263012"}
      */
 
     private ResultBean result;
@@ -64,16 +64,18 @@ public class MyUserBean {
 
     public static class DataBean {
         /**
-         * nickname : MAX
+         * nickname : MAX33
          * vipType : 0
-         * tel : 15000000001
+         * tel : 18945709503
+         * shareUrl : http://www.maxflow.com/share/
          * dialingCode : 86
-         * inviteCode : 53391699
+         * inviteCode : 09263012
          */
 
         private String nickname;
         private int vipType;
         private String tel;
+        private String shareUrl;
         private String dialingCode;
         private String inviteCode;
 
@@ -99,6 +101,14 @@ public class MyUserBean {
 
         public void setTel(String tel) {
             this.tel = tel;
+        }
+
+        public String getShareUrl() {
+            return shareUrl;
+        }
+
+        public void setShareUrl(String shareUrl) {
+            this.shareUrl = shareUrl;
         }
 
         public String getDialingCode() {

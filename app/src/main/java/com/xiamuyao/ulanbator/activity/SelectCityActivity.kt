@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.core.widget.addTextChangedListener
+import androidx.lifecycle.Observer
 import com.xiamuyao.ulanbator.BR
 import com.xiamuyao.ulanbator.R
 import com.xiamuyao.ulanbator.base.BaseActivity
@@ -29,19 +30,27 @@ class SelectCityActivity : BaseActivity<ActivitySelectcityBinding, SelectCityVie
         binding.cityRecyclerView.defaultStyle(contractAdapter)
 
         contractAdapter.setOnItemClickListener { _, _, position ->
-            DataBus.postData(EventConstant.selectCityName, viewModel.cityList[position]?.titleCN.toString())
+            DataBus.postData(EventConstant.selectCityName, viewModel.cityList[position]?.showCityName.toString())
             DataBus.postData(EventConstant.selectCityNum, viewModel.cityList[position]?.dialingCode.toString())
             finish()
         }
 
-        //todo 选择国家筛选
-        binding.editText.addTextChangedListener {
-
-//            viewModel.cityList=     viewModel.cityList.filter { it.countryCode == it.toString() }
-        }
     }
 
     override fun initVVMObserver() {
+        viewModel.text.observe(this, Observer {
+
+            viewModel.cityList.clear()
+            if (viewModel.text.value.isNullOrEmpty()) {
+                viewModel.cityList.addAll(viewModel.cityListCopy)
+
+            } else {
+                viewModel.cityList.addAll(
+                    viewModel.cityListCopy.filter { it.dialingCode == viewModel.text.value }
+                )
+            }
+
+        })
     }
 
 

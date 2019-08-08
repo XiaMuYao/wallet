@@ -6,10 +6,9 @@ import com.xiamuyao.ulanbator.App
 import com.xiamuyao.ulanbator.activity.LoginActivity
 import com.xiamuyao.ulanbator.base.BaseViewModel
 import com.xiamuyao.ulanbator.constant.ProjectConstant
-import com.xiamuyao.ulanbator.extension.businessHandler
-import com.xiamuyao.ulanbator.model.repository.MyUserRepository
 import com.xiamuyao.ulanbator.model.repository.UserRepository
 import com.xiamuyao.ulanbator.util.UsetUtli
+import com.xiamuyao.ulanbator.util.businessHandler
 import com.xiamuyao.ulanbator.util.getSpValue
 import com.xiamuyao.ulanbator.util.putSpValue
 import com.xiamuyao.ulanbator.utlis.ActivityStackManager

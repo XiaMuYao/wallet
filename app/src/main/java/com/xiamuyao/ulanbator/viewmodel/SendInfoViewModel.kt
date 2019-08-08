@@ -6,10 +6,9 @@ import androidx.lifecycle.MutableLiveData
 import com.xiamuyao.ulanbator.activity.ForgetActivity
 import com.xiamuyao.ulanbator.activity.SendSuccessActivity
 import com.xiamuyao.ulanbator.base.BaseViewModel
-import com.xiamuyao.ulanbator.extension.businessHandler
-import com.xiamuyao.ulanbator.model.repository.MoneyRepository
 import com.xiamuyao.ulanbator.model.repository.UserRepository
 import com.xiamuyao.ulanbator.model.repository.WalletRepository
+import com.xiamuyao.ulanbator.util.businessHandler
 import com.xiamuyao.ulanbator.util.getSpValue
 import com.xiamuyao.ulanbator.utlis.SingleLiveEvent
 import org.kodein.di.generic.instance
@@ -31,7 +30,15 @@ class SendInfoViewModel(application: Application) : BaseViewModel(application) {
     var phoneCode = MutableLiveData<String>()
     var tel = MutableLiveData<String>()
     var sendCodeType = SingleLiveEvent<Boolean>()
+    var showOrHideDialog = SingleLiveEvent<Boolean>()
+    init {
 
+        showOrHideDialog.value = false
+
+
+
+
+    }
     override fun initData() {
         tel.value = getSpValue("tel", "")
 
@@ -39,8 +46,10 @@ class SendInfoViewModel(application: Application) : BaseViewModel(application) {
 
     fun sendCode() {
         launch {
+            showOrHideDialog.value = true
             userRepository.sendTheVerificationCode(5.toString(), getSpValue("dialingCode", ""), tel.value!!)
             sendCodeType.call()
+            showOrHideDialog.value = false
         }
 
     }
@@ -66,6 +75,7 @@ class SendInfoViewModel(application: Application) : BaseViewModel(application) {
                     fundPassword.value!!
                 )
 
+            showOrHideDialog.value = true
             businessHandler(modifyTheFundPassword) {
                 if (modifyTheFundPassword.result.returnCode == "0") {
                     startActivity(
@@ -73,6 +83,7 @@ class SendInfoViewModel(application: Application) : BaseViewModel(application) {
                         bundleOf("type" to type.value, "pairName" to pairName.value, "money" to money.value)
                     )
                 }
+                showOrHideDialog.value = false
             }
 
         }

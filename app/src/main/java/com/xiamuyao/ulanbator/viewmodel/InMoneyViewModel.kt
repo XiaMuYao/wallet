@@ -8,7 +8,6 @@ import com.king.zxing.util.CodeUtils
 import com.xiamuyao.ulanbator.App
 import com.xiamuyao.ulanbator.R
 import com.xiamuyao.ulanbator.base.BaseViewModel
-import com.xiamuyao.ulanbator.extension.businessHandler
 import com.xiamuyao.ulanbator.model.repository.WalletRepository
 import com.xiamuyao.ulanbator.util.getSpValue
 import com.xiamuyao.ulanbator.utlis.SingleLiveEvent
@@ -20,6 +19,7 @@ import android.content.Context
 import android.content.Context.CLIPBOARD_SERVICE
 import androidx.core.content.ContextCompat.getSystemService
 import com.xiamuyao.ulanbator.util.UsetUtli
+import com.xiamuyao.ulanbator.util.businessHandler
 
 
 class InMoneyViewModel(application: Application) : BaseViewModel(application) {

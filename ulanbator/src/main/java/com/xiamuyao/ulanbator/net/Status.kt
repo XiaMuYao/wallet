@@ -4,7 +4,7 @@ object Status {
     /**
      * 响应成功
      */
-    const val SUCCESS = "0"
+    const val SUCCESS = 0
 
     /**
      * 未知错误
@@ -34,4 +34,9 @@ object Status {
      * API解析异常（或者第三方数据结构更改）等其他异常
      */
     const val API_ERROR = 1005
+
+    /**
+     * 签名错误
+     */
+    const val SignatureError = 1005
 }

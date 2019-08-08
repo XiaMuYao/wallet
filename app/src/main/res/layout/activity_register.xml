@@ -30,11 +30,9 @@
 
         <ImageView
             android:id="@+id/imageView29"
-            android:layout_width="75dp"
-            android:layout_height="52.5dp"
-            android:scaleType="center"
-            android:src="@mipmap/ic_icon_app_start"
+            style="@style/UserLogo"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/guideline143" />
 
@@ -486,7 +484,18 @@ android:inputType="textPassword"
             app:layout_constraintLeft_toLeftOf="@+id/guideline145"
             app:layout_constraintRight_toRightOf="@+id/guideline147"
             app:layout_constraintTop_toBottomOf="@id/guideline167" />
-
+        <ProgressBar
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:setViewShowHide="@{registerViewModel.showOrHideDialog}"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

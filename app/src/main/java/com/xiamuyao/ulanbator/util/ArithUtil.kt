@@ -28,7 +28,7 @@ object ArithUtil {
      * value:1.23 num:4
      * result:1.2300
      */
-    fun convertNumber3(value: String, num: Int = 6): String {
+    fun convertNumber3(value: String, num: Int = 4): String {
         val pattern = StringBuffer()
         for (i in (0 until num)) {
             pattern.append("0")
@@ -44,5 +44,9 @@ object ArithUtil {
         return DecimalFormat("#,##0.$pattern").format(BigDecimal(value.trim()))
     }
 
+    @JvmStatic
+    fun main(args: Array<String>) {
+        println(convertNumber3("4657702.88123"))
+    }
 
 }

@@ -3,8 +3,8 @@ package com.xiamuyao.ulanbator.viewmodel
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import com.xiamuyao.ulanbator.base.BaseViewModel
-import com.xiamuyao.ulanbator.extension.businessHandler
 import com.xiamuyao.ulanbator.model.repository.MoneyRepository
+import com.xiamuyao.ulanbator.util.businessHandler
 import org.kodein.di.generic.instance
 
 class AccountDetailsViewModel(application: Application) : BaseViewModel(application) {
@@ -38,13 +38,13 @@ class AccountDetailsViewModel(application: Application) : BaseViewModel(applicat
         launch {
             val getFinancialAccountDetails = repository.getFinancialAccountDetails()
             businessHandler(getFinancialAccountDetails) {
-                interestShareLast .value = getFinancialAccountDetails.data.interestShareLast+"   MAX"
+                interestShareLast .value = getFinancialAccountDetails.data.interestShareLast+"   MTF"
                 interestALL.value = getFinancialAccountDetails.data.interestALL
-                interestLast.value = getFinancialAccountDetails.data.interestLast +"   MAX"
+                interestLast.value = getFinancialAccountDetails.data.interestLast +"   MFT"
                 interestShare.value = getFinancialAccountDetails.data.interestShare
                 interestProduct.value = getFinancialAccountDetails.data.interestProduct
                 interestTeam.value = getFinancialAccountDetails.data.interestTeam
-                interestProductLast.value = getFinancialAccountDetails.data.interestProductLast+"   MAX"
+                interestProductLast.value = getFinancialAccountDetails.data.interestProductLast+"   MFT"
             }
         }
     }

@@ -18,7 +18,7 @@ class InvitationAndReturnMoneyActivity :
     BaseActivity<ActivityInvitationandreturnmoneyBinding, InvitationAndReturnMoneyViewModel>() {
 
     override fun initView() {
-        setTitleBar(getString(R.string.yaoqingfanyong), { finish() }, rightText = getString(R.string.yaoqingguize))
+        setTitleBar(getString(R.string.yaoqingfanyong), { finish() })
         //邀请记录
         binding.view13.setOnClickListener { InvitaionHisActivity.start(this) }
         //返佣记录

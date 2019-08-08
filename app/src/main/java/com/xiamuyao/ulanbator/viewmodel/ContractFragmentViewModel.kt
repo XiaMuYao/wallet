@@ -3,9 +3,9 @@ package com.xiamuyao.ulanbator.viewmodel
 import android.app.Application
 import androidx.databinding.ObservableArrayList
 import com.xiamuyao.ulanbator.base.BaseViewModel
-import com.xiamuyao.ulanbator.extension.businessHandler
 import com.xiamuyao.ulanbator.model.bean.response.GetMoneyShopBean
 import com.xiamuyao.ulanbator.model.repository.MoneyRepository
+import com.xiamuyao.ulanbator.util.businessHandler
 import org.kodein.di.generic.instance
 
 /**
@@ -23,10 +23,11 @@ class ContractFragmentViewModel(application: Application) : BaseViewModel(applic
         getContractList()
     }
 
-    private fun getContractList() {
+     fun getContractList() {
         launch {
             val accessToWealthManagementProducts = repository.accessToWealthManagementProducts(1.toString())
             businessHandler(accessToWealthManagementProducts) {
+                contractList.clear()
                 contractList.addAll(accessToWealthManagementProducts.data.list)
             }
 

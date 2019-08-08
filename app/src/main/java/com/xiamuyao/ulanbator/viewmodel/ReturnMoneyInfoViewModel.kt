@@ -4,9 +4,9 @@ import android.app.Application
 import androidx.databinding.ObservableArrayList
 import androidx.lifecycle.MutableLiveData
 import com.xiamuyao.ulanbator.base.BaseViewModel
-import com.xiamuyao.ulanbator.extension.businessHandler
 import com.xiamuyao.ulanbator.model.bean.ReturnMoneyInfoBean
 import com.xiamuyao.ulanbator.model.repository.MyUserRepository
+import com.xiamuyao.ulanbator.util.businessHandler
 import com.xiamuyao.ulanbator.util.toTime
 import org.kodein.di.generic.instance
 
@@ -36,7 +36,7 @@ class ReturnMoneyInfoViewModel(application: Application) : BaseViewModel(applica
                     var returnMoneyInfoBean = ReturnMoneyInfoBean()
                     returnMoneyInfoBean.time = it.createTime.toTime()!!
                     returnMoneyInfoBean.type = it.operationTypeText
-                    returnMoneyInfoBean.money = it.amount + " MAX"
+                    returnMoneyInfoBean.money = it.amount + " MFT"
                     returnMoneyInfoHis.add(returnMoneyInfoBean)
 
                 }

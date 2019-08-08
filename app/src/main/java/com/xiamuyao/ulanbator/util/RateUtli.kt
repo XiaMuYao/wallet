@@ -15,21 +15,21 @@ import com.xiamuyao.ulanbator.constant.ProjectConstant.inMemoryCurrency
 import com.xiamuyao.ulanbator.model.bean.MarketBean
 import com.xiamuyao.ulanbator.model.bean.response.RateBean
 import com.xiamuyao.ulanbator.net.BaseResponse
+import java.util.*
 
 object RateUtli {
 
-    /**
-     * 用户选择的计价货币
-     * 资产综合
-     * 汇率数据
-     */
-    fun getSumBy(
-        value: String,
-        value1: String,
-        obtainExchangeRate: BaseResponse<RateBean.DataBean>
-    ) {
-//        selectPairByWeb(value, obtainExchangeRate)
 
+    /**
+     * 法币兑换USDT
+     */
+    fun getUSDT(value: String): String {
+        var tempvalue = value
+        val find = getRateList().find { it.rateName == "USDTKRW" }
+        if (find == null) return "1"
+        val div = BigDecimalUtils.div(tempvalue, find?.rate!!)
+        tempvalue = div
+        return tempvalue
     }
 
     /**
@@ -38,27 +38,67 @@ object RateUtli {
     fun selectPairByWeb(
         value: MarketBean.TickBean
     ): String {
-        val tempName = value.pairName
-        val tempPrice = value.close.toBigDecimal()
+        //获取当前货币价格
+        val tempPrice = value.close
+
         var lastPrice = ""
-        var pairToPrice = ""
+//        if (pingtai) {
+//
+////            //平台币 转换 法币(韩元)
+////            val find = getDefPriceList().find { it.pairName == "MFT" }
+////            //韩币价格
+////            val mul = BigDecimalUtils.mul(find?.close!!, tempPrice)
+////            //韩币 -> USDT
+////            if (getUSDTToExchangeRate().isEmpty()) return ""
+////            //当前计价货币 =  上一步 USDT
+////            lastPrice = BigDecimalUtils.mul(mul, getUSDTToExchangeRate())
+//
+//            //BTC to USDT
+//            if (getUSDTToExchangeRate().isEmpty()) return ""
+//
+//            //当前货币价格 * 当前货币 * USDT
+//            lastPrice = BigDecimalUtils.mul(tempPrice, getUSDTToExchangeRate())
+//
+//            return lastPrice
+//        } else {
+        //BTC to USDT
         if (getUSDTToExchangeRate().isEmpty()) return ""
-        lastPrice = tempPrice.multiply(getUSDTToExchangeRate().toBigDecimal()).stripTrailingZeros().toString()
-//        getRateList().forEach {
-//            if (it.rateName.startsWith("USDT") && it.rateName.endsWith(getSelectCurrency())) {
-//                pairToPrice = it.rate
-//                return@forEach
-//            }
-//        }
+
+        //当前货币价格 * 当前货币 * USDT
+        lastPrice = BigDecimalUtils.mul(tempPrice, getUSDTToExchangeRate())
+
         return lastPrice
+//        }
 
     }
 
     /**
      * 选择的国家
      */
-    fun getSelectCity() {
-        App.CONTEXT.getSpValue(SELECT_CITY, "中国")
+    fun getSelectCity(): String {
+        if (App.CONTEXT.getSpValue(SELECT_CITY, "").isEmpty()) {
+            val language = Locale.getDefault().getLanguage()
+            val find = CityUtli.cityList.find { it.cityType == language }
+            find?.cityName
+        }
+        return App.CONTEXT.getSpValue(SELECT_CITY, "中国")
+    }
+
+    /**
+     * 选择的国家 区号
+     */
+    fun getSelectCityNum(): String {
+        val selectCity = getSelectCity()
+
+        return selectCity
+    }
+
+
+    /**
+     * 选择的国家 国家代号
+     */
+    fun getSelectCityNumPlus(): String {
+        return getSelectCity()
     }
 
     /**
@@ -221,17 +261,13 @@ object RateUtli {
 
         val mftkrwt = MarketBean.TickBean()
         mftkrwt.cch = "market_mftkrwt_ticker"
-        mftkrwt.pairName = "MFTKRWT"
+        mftkrwt.pairName = "MFT"
         mftkrwt.pairAndToName = "MFTKRWT"
-
-        mftkrwt.close="100"
-        mftkrwt.high="100"
-        mftkrwt.low="10"
-        mftkrwt.amount="1000"
-        mftkrwt.open="1000"
+        mftkrwt.close = "1"
 
         val observableArrayList = ObservableArrayList<MarketBean.TickBean>()
 
+        observableArrayList.add(mftkrwt)
         observableArrayList.add(btcusdt)
         observableArrayList.add(ethusdt)
         observableArrayList.add(ltcusdt)
@@ -243,7 +279,6 @@ object RateUtli {
         observableArrayList.add(xrpusdt)
         observableArrayList.add(trxusdt)
         observableArrayList.add(dogeusdt)
-        observableArrayList.add(mftkrwt)
 
         return observableArrayList
     }
@@ -264,12 +299,21 @@ object RateUtli {
      * 获取计价货币对应的汇率
      */
     fun getUSDTToExchangeRate(): String {
-        return if (ProjectConstant.USDTToExchangeRate.isEmpty()) {
+
+//        val selectCurrency = getSelectCurrency()
+//        if (selectCurrency == "KRW") {
+//            val find = getPriceList().find { it.pairAndToName == "MFTUSDT" }
+//            val usdt = getUSDT(find?.close!!)
+//            val mul = BigDecimalUtils.div("1", usdt)
+//            return mul
+//        }
+
+        return if (USDTToExchangeRate.isEmpty()) {
             val spValue = App.CONTEXT.getSpValue(EventConstant.USDTToExchangeRate, "0")
-            ProjectConstant.USDTToExchangeRate = spValue
-            ProjectConstant.USDTToExchangeRate
+            USDTToExchangeRate = spValue
+            USDTToExchangeRate
         } else {
-            ProjectConstant.USDTToExchangeRate
+            USDTToExchangeRate
         }
     }
 
@@ -279,6 +323,34 @@ object RateUtli {
     fun saveUSDTToExchangeRate(value: String) {
         App.CONTEXT.putSpValue(USDTToExchangeRate, value)
         USDTToExchangeRate = value
+    }
+
+    /**
+     * 获取当前货币对符号
+     */
+    fun getPairN(): String {
+
+        val tempPrirName = getSelectCurrency()
+        when {
+            tempPrirName.contains("CNY") -> {
+                return "￥"
+            }
+            tempPrirName.contains("USD") -> {
+                return "$"
+
+            }
+            tempPrirName.contains("JPY") -> {
+                return "₩"
+
+            }
+            tempPrirName.contains("KRW") -> {
+                return "¥"
+
+            }
+            else -> {
+                return ""
+            }
+        }
     }
 
 

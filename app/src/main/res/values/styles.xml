@@ -246,4 +246,11 @@
         <item name="android:textColor">#99FFFFFF</item>
         <item name="android:textSize">14dp</item>
     </style>
+
+    <style name="UserLogo">
+        <item name="android:layout_width">75dp</item>
+        <item name="android:layout_height">75dp</item>
+        <item name="android:src">@drawable/logo</item>
+        <item name="android:scaleType">fitXY</item>
+    </style>
 </resources>

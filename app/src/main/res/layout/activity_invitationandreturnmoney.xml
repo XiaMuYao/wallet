@@ -143,7 +143,7 @@
             <TextView
                 style="@style/style_item_num"
                 android:layout_marginLeft="2dp"
-                android:text="MAX"
+                android:text="@string/MFT"
                 android:textSize="14dp" />
 
 

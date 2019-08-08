@@ -6,7 +6,6 @@ import androidx.lifecycle.MutableLiveData
 import com.xiamuyao.ulanbator.R
 import com.xiamuyao.ulanbator.base.BaseViewModel
 import com.xiamuyao.ulanbator.constant.EventConstant.TOKEN
-import com.xiamuyao.ulanbator.extension.businessHandler
 import com.xiamuyao.ulanbator.model.bean.PairListBean
 import com.xiamuyao.ulanbator.model.bean.response.MoneyProudyInfoBean
 import com.xiamuyao.ulanbator.model.repository.MoneyRepository
@@ -21,11 +20,12 @@ import com.blankj.utilcode.util.TimeUtils
 import com.xiamuyao.ulanbator.App
 import com.xiamuyao.ulanbator.util.ArithUtil
 import com.xiamuyao.ulanbator.util.BigDecimalUtils
+import com.xiamuyao.ulanbator.util.businessHandler
 
 
 class ContractIntoViewModel(application: Application) : BaseViewModel(application) {
     private val repository: MoneyRepository by instance()
-
+    var showOrHideDialog = SingleLiveEvent<Boolean>()
     var pariList = ObservableArrayList<PairListBean>()
     var shopTitle = MutableLiveData<String>()
     var productId = MutableLiveData<String>()
@@ -69,7 +69,7 @@ class ContractIntoViewModel(application: Application) : BaseViewModel(applicatio
         earningsStartTime.value = TimeUtli.checkOption("next", TimeUtli.getTime())
 
         incomeArrivalTime.value = TimeUtli.checkOption("next", TimeUtli.getTime(), 2)
-
+        showOrHideDialog.value = false
 
     }
 
@@ -83,7 +83,7 @@ class ContractIntoViewModel(application: Application) : BaseViewModel(applicatio
                         usermoney.value = money
                         usermoneyjindu.value = stateRate
                         setTitle(this)
-                        listSymbolFrozen.forEach {
+                        listSymbolBalance.forEach {
                             pariList.add(PairListBean(it.symbolName.toUpperCase(), it.amount, it.symbolType.toString()))
                         }
 
@@ -168,10 +168,13 @@ class ContractIntoViewModel(application: Application) : BaseViewModel(applicatio
      */
     fun contactContract() {
         launch {
+            showOrHideDialog.value = true
+
             val transfer = repository.transfer(productId.value!!)
             businessHandler(transfer) {
                 finishStatus.call()
             }
+            showOrHideDialog.value = false
 
         }
     }
@@ -185,11 +188,14 @@ class ContractIntoViewModel(application: Application) : BaseViewModel(applicatio
             return
         }
         launch {
+            showOrHideDialog.value = true
             val buyingWealthManagementProducts =
                 repository.buyingWealthManagementProducts(productId.value!!, inoutMoney.value!!, selectPairID.value!!)
             businessHandler(buyingWealthManagementProducts) {
                 finishStatus.call()
             }
+            showOrHideDialog.value = false
+
         }
     }
 
@@ -201,23 +207,46 @@ class ContractIntoViewModel(application: Application) : BaseViewModel(applicatio
         for (it in getRateList()) {
             //如果是平台币
             if (selectPairName.value == TOKEN) {
-                val TOKENUSDT = getPriceList().find { it.pairName == TOKEN + "KRWT" }
-                //平台币兑换KRWT
-                val tokenToKRWTPrice =
-                    inputValue.multiply(TOKENUSDT?.close?.toBigDecimal()?.stripTrailingZeros()).toPlainString()
-                //查找usdt to 韩元
-                val USDTKRW = getRateList().find { it.rateName == "USDT" + "KRW" }
-                //USDT
-                val KRWTToUSDTPrice = BigDecimalUtils.div(tokenToKRWTPrice, USDTKRW?.rate!!)
 
-                //USDT 兑换 USD
-                val USDTUSD = getRateList().find { it.rateName == "USDTUSD" }
-                val tokenToUSDT =
-                    KRWTToUSDTPrice.toBigDecimal().multiply(USDTUSD?.rate?.toBigDecimal()?.stripTrailingZeros())
-                        .toPlainString()
-                nowSelectPrice.value = ArithUtil.convertNumber3(tokenToUSDT, 2)
+//                val TOKENUSDT = getPriceList().find { it.pairName == TOKEN }
+//                //平台币兑换KRWT
+//                val tokenToKRWTPrice =
+//                    inputValue.multiply(TOKENUSDT?.close?.toBigDecimal()?.stripTrailingZeros()).toPlainString()
+//                //查找usdt to 韩元
+//                val USDTKRW = getRateList().find { it.rateName == "USDT" + "KRW" }
+//                //USDT
+//                val KRWTToUSDTPrice = BigDecimalUtils.div(tokenToKRWTPrice, USDTKRW?.rate!!)
+//
+//                //USDT 兑换 USD
+//                val USDTUSD = getRateList().find { it.rateName == "USDTUSD" }
+//                val tokenToUSDT =
+//                    KRWTToUSDTPrice.toBigDecimal().multiply(USDTUSD?.rate?.toBigDecimal()?.stripTrailingZeros())
+//                        .toPlainString()
+//
+//
+//                nowSelectPrice.value = ArithUtil.convertNumber3(tokenToUSDT)
+//
+//                break
 
-                break
+
+                //汇率中得USDT
+                val find = getRateList().find { it.rateName == "USDTUSD" }
+
+                val find1 = getPriceList().find { it.pairAndToName == selectPairName.value?.toUpperCase() + "USDT" }
+
+                if (null != find1) {
+
+                    val tokenToUSDT =
+                        inputValue.multiply(find1.close.toBigDecimal().stripTrailingZeros()).toPlainString()
+
+
+                    val toPlainString =
+                        tokenToUSDT.toBigDecimal().div(find?.rate!!.toBigDecimal()).stripTrailingZeros().toPlainString()
+
+                    nowSelectPrice.value = ArithUtil.convertNumber3(toPlainString)
+
+                    break
+                }
 
             } else {
                 //汇率中得USDT
@@ -234,7 +263,7 @@ class ContractIntoViewModel(application: Application) : BaseViewModel(applicatio
                     val toPlainString =
                         tokenToUSDT.toBigDecimal().div(find?.rate!!.toBigDecimal()).stripTrailingZeros().toPlainString()
 
-                    nowSelectPrice.value = ArithUtil.convertNumber3(toPlainString, 2)
+                    nowSelectPrice.value = ArithUtil.convertNumber3(toPlainString)
 
                     break
                 }

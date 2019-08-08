@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import com.xiamuyao.ulanbator.App
 import com.xiamuyao.ulanbator.activity.SendInfoActivity
 import com.xiamuyao.ulanbator.base.BaseViewModel
+import com.xiamuyao.ulanbator.util.BigDecimalUtils
 import com.xiamuyao.ulanbator.util.UsetUtli
 import com.xiamuyao.ulanbator.util.getSpValue
 
@@ -43,9 +44,8 @@ class TransferAccountsViewModel(application: Application) : BaseViewModel(applic
             userSymbolFeeRate.value = ""
             return
         }
-        userSymbolFeeRate.value =
-            money.value?.toBigDecimal()?.multiply(msymbolFeeRate.value?.toBigDecimal()?.stripTrailingZeros())
-                ?.toPlainString()
+        val run = BigDecimalUtils.run { mul(msymbolFeeRate.value!!.replace(",", ""), "0.01") }
+        userSymbolFeeRate.value = BigDecimalUtils.mul(money.value?.replace(",","")!!,run)
 
     }
 

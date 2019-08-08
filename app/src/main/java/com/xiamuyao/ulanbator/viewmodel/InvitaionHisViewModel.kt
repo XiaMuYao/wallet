@@ -2,6 +2,7 @@ package com.xiamuyao.ulanbator.viewmodel
 
 import android.app.Application
 import androidx.databinding.ObservableArrayList
+import com.xiamuyao.ulanbator.R
 import com.xiamuyao.ulanbator.base.BaseViewModel
 import com.xiamuyao.ulanbator.model.bean.InvataionListBean
 import com.xiamuyao.ulanbator.model.repository.MyUserRepository
@@ -17,11 +18,17 @@ class InvitaionHisViewModel(application: Application) : BaseViewModel(applicatio
     override fun initData() {
 
         launch {
-            myRepository.getTheInvitationRecord("","").data.list.forEach {
+            myRepository.getTheInvitationRecord("", "").data.list.forEach {
                 val invataionListBean = InvataionListBean()
                 invataionListBean.id = 0
                 invataionListBean.invataionID = it.inviteCode
-                invataionListBean.invataionLever = "VIP "+it.vipType.toString()
+
+                if (it.vipType == 0) {
+                    invataionListBean.invataionLever = context.getString(R.string.putuser)
+                } else {
+                    invataionListBean.invataionLever = "VIP " + it.vipType.toString()
+                }
+
                 invataionListBean.invataionTime = it.createTime.toTime()!!
                 invitaionHis.add(invataionListBean)
             }

@@ -92,7 +92,7 @@ object TimeUtli {
         return sdf.format(date)
     }
     fun checkOptionAll(option: String, _date: String,num: Int=1): String {
-        val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+        val sdf = SimpleDateFormat("yyyy-MM-dd")
         val cl = Calendar.getInstance()
         var date: Date? = null
 

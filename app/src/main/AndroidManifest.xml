@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:dist="http://schemas.android.com/apk/distribution"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.xiamuyao.ulanbator">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -55,8 +56,7 @@
 
         <activity android:name=".activity.MainActivity" />
         <activity
-            android:name=".activity.LaunchActivity"
-            android:label="LaunchActivity">
+            android:name=".activity.LaunchActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

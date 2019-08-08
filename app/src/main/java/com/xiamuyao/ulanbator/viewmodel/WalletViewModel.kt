@@ -4,19 +4,19 @@ import android.app.Application
 import androidx.databinding.ObservableArrayList
 import androidx.lifecycle.MutableLiveData
 import com.xiamuyao.ulanbator.App
+import com.xiamuyao.ulanbator.R
 import com.xiamuyao.ulanbator.base.BaseViewModel
 import com.xiamuyao.ulanbator.constant.EventConstant.TOKEN
-import com.xiamuyao.ulanbator.extension.businessHandler
+import com.xiamuyao.ulanbator.model.bean.HomeListBean
 import com.xiamuyao.ulanbator.model.bean.WalletListBean
 import com.xiamuyao.ulanbator.model.repository.WalletRepository
-import com.xiamuyao.ulanbator.util.BigDecimalUtils
-import com.xiamuyao.ulanbator.util.RateUtli
+import com.xiamuyao.ulanbator.util.*
+import com.xiamuyao.ulanbator.util.ArithUtil.convertNumber3
 import com.xiamuyao.ulanbator.util.RateUtli.getPriceList
 import com.xiamuyao.ulanbator.util.RateUtli.getRateList
 import com.xiamuyao.ulanbator.util.RateUtli.getUSDTToExchangeRate
-import com.xiamuyao.ulanbator.util.UsetUtli
-import com.xiamuyao.ulanbator.util.getSpValue
 import com.xiamuyao.ulanbator.utlis.LL
+import kotlinx.android.synthetic.main.activity_transferaccounts.*
 import org.kodein.di.generic.instance
 
 class WalletViewModel(application: Application) : BaseViewModel(application) {
@@ -35,11 +35,16 @@ class WalletViewModel(application: Application) : BaseViewModel(application) {
 
     var calculationStatus = MutableLiveData<Boolean>()
 
+    //生活
+    var lifeObservableArrayList = ObservableArrayList<HomeListBean>()
+
+    //游戏
+    var gameObservableArrayList = ObservableArrayList<HomeListBean>()
+
     init {
         showOrHide.value = true
         priceSum.value = "0"
         priceToPair.value = "0"
-        //todo 计价货币抽出来
         priceToName.value = RateUtli.getSelectCurrency()
         //固定BTC
         priceName.value = "BTC"
@@ -51,6 +56,7 @@ class WalletViewModel(application: Application) : BaseViewModel(application) {
     override fun initData() {
         //获取资产总值
         getTheTotalValueOfTheAsset()
+
     }
 
     /**
@@ -116,7 +122,7 @@ class WalletViewModel(application: Application) : BaseViewModel(application) {
                         //韩元 -> USDT
                         val find = getRateList().find { it.rateName == "USDTKRW" }
                         that.pairToUSDT =
-                            BigDecimalUtils.div(mul.replace(",", ""),find?.rate?.replace(",", "")!! )
+                            BigDecimalUtils.div(mul.replace(",", ""), find?.rate?.replace(",", "")!!)
 
                         //USDT 转换 BTC
                         that.PairToBTC = USDTtoBtc(that.pairToUSDT)
@@ -168,12 +174,15 @@ class WalletViewModel(application: Application) : BaseViewModel(application) {
                     BigDecimalUtils.add(tempMoney, that.pariToPrice!!)
 
             }
+            that.pariToPrice = convertNumber3(that.pariToPrice.toString())
+
         }
 
         LL.d("计算比特总和::$tempSum")
         LL.d("计算计价货币总和::$tempMoney")
         priceSum.value = tempSum.toBigDecimal().stripTrailingZeros().toPlainString()
-        priceToPair.value = tempMoney.toBigDecimal().stripTrailingZeros().toPlainString()
+        priceToPair.value =
+            ArithUtil.convertNumber3(tempMoney.toBigDecimal().stripTrailingZeros().toPlainString())
     }
 
     /**
@@ -201,4 +210,23 @@ class WalletViewModel(application: Application) : BaseViewModel(application) {
 
     }
 
+
+    fun gameList() {
+        gameObservableArrayList.add(HomeListBean("1", R.drawable.nopen2, "彩票"))
+        gameObservableArrayList.add(HomeListBean("1", R.drawable.nopen2, "足球"))
+        gameObservableArrayList.add(HomeListBean("1", R.drawable.nopen2, "竞猜"))
+        gameObservableArrayList.add(HomeListBean("1", R.drawable.nopen2, "大转盘"))
+        gameObservableArrayList.add(HomeListBean("1", R.drawable.nopen2, "百家乐"))
+        gameObservableArrayList.add(HomeListBean("1", R.drawable.nopen2, "德州"))
+
+    }
+
+    fun lifeList() {
+        lifeObservableArrayList.add(HomeListBean("1", R.drawable.nopen, "酒店"))
+        lifeObservableArrayList.add(HomeListBean("1", R.drawable.nopen, "机票"))
+        lifeObservableArrayList.add(HomeListBean("1", R.drawable.nopen, "手机充值"))
+        lifeObservableArrayList.add(HomeListBean("1", R.drawable.nopen, "打折卷"))
+        lifeObservableArrayList.add(HomeListBean("1", R.drawable.nopen, "缴费"))
+        lifeObservableArrayList.add(HomeListBean("1", R.drawable.nopen, "医疗"))
+    }
 }

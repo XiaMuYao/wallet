@@ -29,13 +29,10 @@
             layout="@layout/layout_titlebar" />
 
         <ImageView
-            android:layout_width="75dp"
-            android:layout_height="52.5dp"
-            android:scaleType="center"
-            android:src="@mipmap/ic_icon_app_start"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline143" />
+            app:layout_constraintTop_toTopOf="@+id/guideline143"
+            style="@style/UserLogo" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline35"
@@ -275,6 +272,10 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.726" />
+
+
+
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

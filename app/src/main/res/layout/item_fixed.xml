@@ -45,7 +45,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#343443"
+            android:textColor="#393946"
             android:textSize="75dp"
             android:text="@{fixedListBean.title}"
             android:textStyle="bold"

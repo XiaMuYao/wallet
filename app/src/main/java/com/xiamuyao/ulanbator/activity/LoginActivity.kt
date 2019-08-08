@@ -3,6 +3,7 @@ package com.xiamuyao.ulanbator.activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import com.xiamuyao.ulanbator.App
 import com.xiamuyao.ulanbator.BR
 import com.xiamuyao.ulanbator.R
 import com.xiamuyao.ulanbator.base.BaseActivity
@@ -22,7 +23,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
         setTitleBar(
             leftCallBack = { finish() },
             titleBarColor = R.color.touming,
-            rightText = "注册",
+            rightText = App.CONTEXT.getString(R.string.rehister),
             rightCallBack = { RegisterActivity.start(this) })
     }
 

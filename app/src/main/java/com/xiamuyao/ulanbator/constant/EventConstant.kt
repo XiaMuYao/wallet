@@ -30,5 +30,7 @@ object EventConstant {
     val valuationCurrencyRefresh = "valuationCurrencyRefresh"
     //修改名字
     val SetName = "SetName"
+    //关闭Dialog
+    val DialogCLOSE = "DialogCLOSE"
 
 }

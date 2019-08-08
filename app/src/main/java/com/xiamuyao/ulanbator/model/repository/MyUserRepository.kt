@@ -22,6 +22,7 @@ class MyUserRepository(private var myService: MyService) {
             App.CONTEXT.putSpValue("vipType", data.vipType)
             App.CONTEXT.putSpValue("tel", data.tel)
             App.CONTEXT.putSpValue("dialingCode", data.dialingCode)
+            App.CONTEXT.putSpValue("shareUrl", data.shareUrl)
             UsetUtli.saveUserId(data.inviteCode)
         }
         return@withContext myService.getUserInformation()

@@ -13,6 +13,7 @@ import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.bumptech.glide.request.RequestOptions
 import com.xiamuyao.ulanbator.App
 import com.xiamuyao.ulanbator.R
+import com.xiamuyao.ulanbator.util.RateUtli.getSelectCurrency
 import com.zhouyou.view.seekbar.SignSeekBar
 import com.zhouyou.view.seekbar.SignConfigBuilder
 import java.text.NumberFormat
@@ -64,6 +65,8 @@ object BindingAdapters {
             1 -> R.drawable.logo_01
             2 -> R.drawable.logo_02
             3 -> R.drawable.avatar_01
+            4 -> R.drawable.nopen
+            5 -> R.drawable.nopen2
             else -> R.drawable.logo_01
         }
         Glide.with(App.CONTEXT)
@@ -83,7 +86,27 @@ object BindingAdapters {
     @JvmStatic
     fun setTextWalletShow(view: TextView, setTextWalletShow: Boolean, valueis: String) {
         if (setTextWalletShow) {
-            view.text = valueis
+
+            val tempPrirName = getSelectCurrency()
+            when {
+                tempPrirName.contains("CNY") -> {
+                    view.text = "￥ $valueis"
+                }
+                tempPrirName.contains("USD") -> {
+                    view.text = "$ $valueis"
+
+                }
+                tempPrirName.contains("JPY") -> {
+                    view.text = "₩ $valueis"
+
+                }
+                tempPrirName.contains("KRW") -> {
+                    view.text = "¥ $valueis"
+
+                }
+            }
+
+
         } else {
             view.text = "******"
         }
@@ -119,11 +142,24 @@ object BindingAdapters {
             "ETC" -> {
                 view.setImageResource(R.drawable.etc)
             }
-            "BCH"->{view.setImageResource(R.drawable.bch)}
-            "DASH"->{view.setImageResource(R.drawable.dash)}
-            "DOGE"->{view.setImageResource(R.drawable.doge)}
-            "TRX"->{view.setImageResource(R.drawable.trx)}
-            "XRP"->{view.setImageResource(R.drawable.xrp)}
+            "BCH" -> {
+                view.setImageResource(R.drawable.bch)
+            }
+            "DASH" -> {
+                view.setImageResource(R.drawable.dash)
+            }
+            "DOGE" -> {
+                view.setImageResource(R.drawable.doge)
+            }
+            "TRX" -> {
+                view.setImageResource(R.drawable.trx)
+            }
+            "XRP" -> {
+                view.setImageResource(R.drawable.xrp)
+            }
+            "MFT" -> {
+                view.setImageResource(R.drawable.mft3)
+            }
         }
     }
 
@@ -170,7 +206,7 @@ object BindingAdapters {
             view.setText("+${type}%")
         } else {
             view.setBackgroundResource(R.drawable.shape_pair_down)
-            view.setText("-${type}%")
+            view.setText("${type}%")
         }
     }
 
@@ -216,6 +252,71 @@ object BindingAdapters {
 
         var after = type.substring(type.length - 4, type.length)
         view.text = "$first****$after"
+    }
+
+
+    @SuppressLint("SetTextI18n")
+    @BindingAdapter("currencyFormatting")
+    @JvmStatic
+    fun currencyFormatting(view: TextView, type: String) {
+//        人民币￥，美金$，韩币₩，日元¥
+        val tempPrirName = getSelectCurrency()
+        when {
+            tempPrirName.contains("CNY") -> {
+                view.text = "￥$type"
+            }
+            tempPrirName.contains("USD") -> {
+                view.text = "$$type"
+
+            }
+            tempPrirName.contains("JPY") -> {
+                view.text = "₩$type"
+
+            }
+            tempPrirName.contains("KRW") -> {
+                view.text = "¥$type"
+
+            }
+        }
+
+    }
+
+    @SuppressLint("SetTextI18n")
+    @BindingAdapter("currencyFormattingAndPair")
+    @JvmStatic
+    fun currencyFormattingAndPair(view: TextView, type: String) {
+
+        var tempPair = ArithUtil.convertNumber3(type,4)
+//        人民币￥，美金$，韩币₩，日元¥
+        val tempPrirName = getSelectCurrency()
+        when {
+            tempPrirName.contains("CNY") -> {
+                view.text = "￥$tempPair CNY"
+            }
+            tempPrirName.contains("USD") -> {
+                view.text = "$$tempPair USD"
+
+            }
+            tempPrirName.contains("JPY") -> {
+                view.text = "₩$tempPair JPY"
+
+            }
+            tempPrirName.contains("KRW") -> {
+                view.text = "¥$tempPair KRW "
+
+            }
+        }
+
+    }
+
+    @BindingAdapter("circleLocalImage")
+    @JvmStatic
+    fun setcircleLocalImage(view: ImageView, url: Int) {
+
+        Glide.with(App.CONTEXT)
+            .load(url)
+            .apply(RequestOptions.bitmapTransform(CircleCrop()))
+            .into(view)
     }
 
 

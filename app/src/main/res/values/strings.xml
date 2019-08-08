@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ulanbatorSimple</string>
+    <string name="app_name">Max Flow</string>
     <string name="titleBarLeftText">返回</string>
     <string name="item_skit_text">Christina Photo by @FransLanting Wonderful color ! To let tourists get a better view，the bus drove slowly.What a beautiful town！</string>
     <string name="sum">累计总收益</string>
@@ -7,7 +7,7 @@
     <string name="sumMarkMoney">累计理财收益</string>
     <string name="shoping">购买</string>
     <string name="jiechuheyue">解除合约</string>
-    <string name="login">登录</string>
+    <string name="login">登录1111111</string>
     <string name="fopsd">忘记密码？</string>
     <string name="selelcyCity">选择国家</string>
     <string name="phoneNumber">手机号码</string>
@@ -135,10 +135,10 @@
     <string name="jiantizhongwen">简体中文</string>
     <string name="sharecode">注册邀请码</string>
     <string name="quxiaoquxiao">取消</string>
-    <string name="chaina">中国</string>
-    <string name="english">英语</string>
-    <string name="hanyu">韩语</string>
-    <string name="riyu">日语</string>
+    <string name="chaina">中文</string>
+    <string name="english">English</string>
+    <string name="hanyu">한국어</string>
+    <string name="riyu">日本語</string>
     <string name="xuanzeyyuyan">选择语言</string>
     <string name="wode">我的</string>
     <string name="lica">理财</string>
@@ -180,4 +180,12 @@
     <string name="xianexx">限额:</string>
     <string name="shurushuliang">输入数量</string>
     <string name="yinsizhengce">隐私政策</string>
+    <string name="yijingbaocun">已经保存</string>
+    <string name="shenghuo">生活</string>
+    <string name="allallal">全部</string>
+    <string name="gamegame">游戏</string>
+    <string name="saveSuccess">保存成功!</string>
+    <string name="MFT">MFT</string>
+    <string name="qingshuruzhuanzhangjine">请输入转账金额</string>
+    <string name="putuser">普通用户</string>
 </resources>
