@@ -212,21 +212,27 @@ class WalletViewModel(application: Application) : BaseViewModel(application) {
 
 
     fun gameList() {
-        gameObservableArrayList.add(HomeListBean("1", R.drawable.nopen2, context.getString(R.string.caipiao)))
-        gameObservableArrayList.add(HomeListBean("1", R.drawable.nopen2, context.getString(R.string.zuqiu)))
-        gameObservableArrayList.add(HomeListBean("1", R.drawable.nopen2, context.getString(R.string.jincgaui)))
-        gameObservableArrayList.add(HomeListBean("1", R.drawable.nopen2, context.getString(R.string.dazhuanpan)))
-        gameObservableArrayList.add(HomeListBean("1", R.drawable.nopen2, context.getString(R.string.baijiale)))
-        gameObservableArrayList.add(HomeListBean("1", R.drawable.nopen2, context.getString(R.string.dezhou)))
+        gameObservableArrayList.add(HomeListBean("1", R.drawable.icon_07, context.getString(R.string.caipiao)))
+
+        gameObservableArrayList.add(HomeListBean("1", R.drawable.icon_10, context.getString(R.string.dazhuanpan)))
+
+
+        gameObservableArrayList.add(HomeListBean("1", R.drawable.icon_09, context.getString(R.string.jincgaui)))
+
+
+        gameObservableArrayList.add(HomeListBean("1", R.drawable.icon_08, context.getString(R.string.zuqiu)))
+
+        gameObservableArrayList.add(HomeListBean("1", R.drawable.icon_11, context.getString(R.string.baijiale)))
+        gameObservableArrayList.add(HomeListBean("1", R.drawable.icon_12, context.getString(R.string.dezhou)))
 
     }
 
     fun lifeList() {
-        lifeObservableArrayList.add(HomeListBean("1", R.drawable.nopen, context.getString(R.string.jiudian)))
-        lifeObservableArrayList.add(HomeListBean("1", R.drawable.nopen, context.getString(R.string.jipiao)))
-        lifeObservableArrayList.add(HomeListBean("1", R.drawable.nopen, context.getString(R.string.shoujichongzhi)))
-        lifeObservableArrayList.add(HomeListBean("1", R.drawable.nopen, context.getString(R.string.dazhejuan)))
-        lifeObservableArrayList.add(HomeListBean("1", R.drawable.nopen, context.getString(R.string.jiaofei)))
-        lifeObservableArrayList.add(HomeListBean("1", R.drawable.nopen, context.getString(R.string.yiliao)))
+        lifeObservableArrayList.add(HomeListBean("1", R.drawable.icon_01, context.getString(R.string.jiudian)))
+        lifeObservableArrayList.add(HomeListBean("1", R.drawable.icon_02, context.getString(R.string.jipiao)))
+        lifeObservableArrayList.add(HomeListBean("1", R.drawable.icon_03, context.getString(R.string.shoujichongzhi)))
+        lifeObservableArrayList.add(HomeListBean("1", R.drawable.icon_04, context.getString(R.string.dazhejuan)))
+        lifeObservableArrayList.add(HomeListBean("1", R.drawable.icon_05, context.getString(R.string.jiaofei)))
+        lifeObservableArrayList.add(HomeListBean("1", R.drawable.icon_06, context.getString(R.string.yiliao)))
     }
 }

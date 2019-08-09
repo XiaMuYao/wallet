@@ -212,8 +212,8 @@
     <string name="dezhou">德州</string>
     <string name="jiudian">酒店</string>
     <string name="jipiao">机票</string>
-    <string name="shoujichongzhi">手机充值</string>
-    <string name="dazhejuan">打折卷</string>
+    <string name="shoujichongzhi">充值</string>
+    <string name="dazhejuan">优惠</string>
     <string name="jiaofei">缴费</string>
     <string name="yiliao">医疗</string>
     <string name="quaiinqinabao">全新数字货币钱包</string>
