@@ -41,7 +41,6 @@ class FirstSetMonPsdViewModel(application: Application) : BaseViewModel(applicat
             businessHandler(userRepository.setTransactionPassword(moneyPsd.value!!,moneyPsdAgren.value!!)){
                 startActivity(MainActivity::class.java)
                 ActivityStackManager.getInstance().finishAllActivity()
-
                 finishStatus.call()
             }
 

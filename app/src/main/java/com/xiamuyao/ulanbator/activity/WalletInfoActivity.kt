@@ -32,6 +32,7 @@ class WalletInfoActivity : BaseActivity<ActivityWalletinfoBinding, WalletInfoVie
 
         val serializableExtra = intent.getBundleExtra("bundle")!!
         viewModel.walletListBean.value = serializableExtra.getSerializable("data") as WalletListBean
+        viewModel.walletListBean.value?.pairToUSDT = serializableExtra.getString("rate")!!
 
 
         setTitleBar(

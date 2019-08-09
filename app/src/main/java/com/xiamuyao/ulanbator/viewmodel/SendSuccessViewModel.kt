@@ -11,6 +11,7 @@ class SendSuccessViewModel(application: Application) : BaseViewModel(application
     var money = MutableLiveData<String>()
     var pairName = MutableLiveData<String>()
     var showText = MutableLiveData<String>()
+    var shouSuccessText = MutableLiveData<String>()
 
 
     override fun initData() {

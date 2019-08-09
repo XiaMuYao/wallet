@@ -105,4 +105,9 @@ class ManagingMoneyFragment : BaseFragment<FragmentManagingMoneyOldBinding, Mana
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.getfinancialHomeInformation()
+    }
+
 }

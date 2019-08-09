@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
+import com.xiamuyao.ulanbator.App
 import com.xiamuyao.ulanbator.BR
 import com.xiamuyao.ulanbator.R
 import com.xiamuyao.ulanbator.activity.WalletInfoActivity
@@ -56,8 +57,10 @@ class WalletFragment : BaseFragment<FragmentHomeOldBinding, WalletViewModel>() {
         }
 
         wallerAdapter.setOnItemClickListener { _, _, position ->
+            val find = App.marketList.find { it.pairName == wallerAdapter.getItem(position)?.pairName }
             val bundle = Bundle()
             bundle.putSerializable("data", wallerAdapter.getItem(position))
+            bundle.putString("rate", find?.pairToPrice)
             WalletInfoActivity.start(context!!, bundle)
         }
         lifeAdapter.setOnItemClickListener { _, _, position ->

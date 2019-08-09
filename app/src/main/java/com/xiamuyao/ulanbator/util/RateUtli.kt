@@ -333,18 +333,18 @@ object RateUtli {
         val tempPrirName = getSelectCurrency()
         when {
             tempPrirName.contains("CNY") -> {
-                return "￥"
+                return "¥"
             }
             tempPrirName.contains("USD") -> {
                 return "$"
 
             }
             tempPrirName.contains("JPY") -> {
-                return "₩"
+                return "￥"
 
             }
             tempPrirName.contains("KRW") -> {
-                return "¥"
+                return "₩"
 
             }
             else -> {

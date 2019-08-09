@@ -196,4 +196,37 @@ Please understand that we collect the following information from you to meet you
     <string name="saveSuccess">Save successfully!</string>
     <string name="qingshuruzhuanzhangjine">Please enter the amount of transfer.</string>
     <string name="putuser">Ordinary users</string>
+
+
+    <string name="querenshifoujiechuheyue">Confirm whether you want to cancel the contract </string>
+    <string name="jiechuheyueme">Remove the contract? </string>
+    <string name="jiechu">release </string>
+    <string name="quxia">cancel</string>
+
+    <string name="tuochudenglume">Sign out? </string>
+    <string name="shifoutuichudenglu">Do you want to log out? </string>
+
+    <string name="goumaichengg">purchase success </string>
+
+    <string name="tiqianzhuanchushouxuwei">In advance, excluding income and collecting liquidated damages, dissatisfied </string>
+    <string name="jieyuejieyuejieyu">dismissal, charge </string>
+    <string name="shoufuweijisuan"> handling fee </string>
+    <string name="tiantiantian">day </string>
+    <string name="goumaichenggle">purchase success </string>
+
+
+<string name="caipiao">lottery </string>
+    <string name="zuqiu">soccer </string>
+    <string name="jincgaui"> quiz </string>
+    <string name="dazhuanpan">large turntable </string>
+    <string name="baijiale">Baccarat</string>
+    <string name="dezhou">Texas </string>
+    <string name="jiudian">hotel </string>
+    <string name="jipiao">ticket </string>
+    <string name="shoujichongzhi">charge </string>
+    <string name="dazhejuan">Offer</string>
+    <string name="jiaofei">payment </string>
+    <string name="yiliao">medical </string>
+    <string name="quaiinqinabao">newDigitalCurrencyWallet</string>
+
 </resources>

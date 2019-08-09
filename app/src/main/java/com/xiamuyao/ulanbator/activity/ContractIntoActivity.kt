@@ -1,6 +1,8 @@
 package com.xiamuyao.ulanbator.activity
 
+import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
@@ -8,6 +10,7 @@ import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.text.style.ForegroundColorSpan
 import android.view.View
+import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.Observer
 import com.xiamuyao.ulanbator.BR
@@ -21,6 +24,8 @@ import com.xiamuyao.ulanbator.utlis.DataBusObservable
 import com.xiamuyao.ulanbator.view.CustomPopupWindow
 import com.xiamuyao.ulanbator.viewmodel.ContractIntoViewModel
 import androidx.core.content.ContextCompat
+import com.xiamuyao.ulanbator.util.BigDecimalUtils
+import kotlinx.android.synthetic.main.activity_contractinto.*
 
 
 /**
@@ -38,6 +43,7 @@ class ContractIntoActivity : BaseActivity<ActivityContractintoBinding, ContractI
 
 
         viewModel.productId.value = intent.getStringExtra("productId")
+        viewModel.interestMax.value = intent.getStringExtra("interestMax")
         viewModel.shouyiText.value = intent.getStringExtra("shouyiText")
         val money = intent.getStringExtra("money")
         viewModel.from.value = intent.getStringExtra("from")
@@ -45,9 +51,7 @@ class ContractIntoActivity : BaseActivity<ActivityContractintoBinding, ContractI
         val userAmountMax = intent.getIntExtra("userAmountMax", -1)
         //设置进度条
         binding.signSeekBar.setValueFormatListener { progress ->
-
             "$$money"
-
         }
         binding.signSeekBar.configBuilder.signColor(Color.parseColor("#00FFFFFF")).build()
 
@@ -84,42 +88,22 @@ class ContractIntoActivity : BaseActivity<ActivityContractintoBinding, ContractI
         })
 
         viewModel.loadOk.observe(this, Observer {
-
             setData()
+            //页面属性
+            when (viewModel.type.value) {
+                0 -> {
+                    binding.button.visibility = View.VISIBLE
 
+                }
+                1 -> {
+                    binding.button3.visibility = View.VISIBLE
+                    binding.button5.visibility = View.VISIBLE
+                }
+                2 -> {
+                    binding.button4.visibility = View.VISIBLE
 
-            if (viewModel.from.value == "2") {
-                binding.button.visibility = View.VISIBLE
-            } else {
-
-                //页面属性
-                when (viewModel.type.value) {
-
-                    0 -> {
-                        binding.button.visibility = View.VISIBLE
-
-                    }
-                    1 -> {
-                        binding.button3.visibility = View.VISIBLE
-                        binding.button5.visibility = View.VISIBLE
-                    }
-                    2 -> {
-                        binding.button4.visibility = View.VISIBLE
-
-                    }
                 }
             }
-
-
-//            //进度条
-//            var min = viewModel.low.value?.toFloat()!!
-//            var max = viewModel.high.value?.toFloat()!!
-//
-//            binding.signSeekBar.configBuilder
-//                .min(1000f)
-//                .max(2000f)
-//                .progress(300f)
-//                .build()
 
         })
 
@@ -142,21 +126,24 @@ class ContractIntoActivity : BaseActivity<ActivityContractintoBinding, ContractI
 
             }
         })
+
+        viewModel.disContract.observe(this, Observer {
+            showDisContract()
+        })
+
     }
 
     private fun setData() {
-
-
         //ForegroundColorSpan 为文字前景色，BackgroundColorSpan为文字背景色
-
-
         val greenSpan1 = ForegroundColorSpan(ContextCompat.getColor(this, R.color.lvse))
         val greenSpan2 = ForegroundColorSpan(ContextCompat.getColor(this, R.color.lvse))
         val greenSpan3 = ForegroundColorSpan(ContextCompat.getColor(this, R.color.lvse))
-
+        val greenSpan4 = ForegroundColorSpan(ContextCompat.getColor(this, R.color.lvse))
+        val greenSpan5 = ForegroundColorSpan(ContextCompat.getColor(this, R.color.lvse))
 
         if (viewModel.from.value == "1") {
-
+            dingcunGroup.visibility = View.VISIBLE
+            textView33.visibility = View.GONE
             val builder = SpannableStringBuilder(
                 getString(R.string.yuejishijian) +
                         viewModel.earningsStartTime.value +
@@ -188,12 +175,13 @@ class ContractIntoActivity : BaseActivity<ActivityContractintoBinding, ContractI
             binding.textView32.setText(builder)
 
         } else {
-
+            dingcunGroup.visibility = View.GONE
+            textView33.visibility = View.VISIBLE
             val builder = SpannableStringBuilder(
                 getString(R.string.femhnoqo) +
-                        viewModel.thisleaveDay.value + "天" +
+                        viewModel.thisleaveDay.value + getString(R.string.tiantiantian) +
                         getString(R.string.yujishouyi) +
-                        viewModel.nowSelectPrice.value +
+                        viewModel.expectedReturn.value +
                         " MFT," +
                         viewModel.dueTransferTime.value +
                         getString(R.string.manqizhuanru) +
@@ -205,7 +193,7 @@ class ContractIntoActivity : BaseActivity<ActivityContractintoBinding, ContractI
             val endTime1 = startTime1 + viewModel.thisleaveDay.value?.length!! + 1
 
             val startTime2 = endTime1 + getString(R.string.yujishouyi).length
-            val endTime2 = startTime2 + viewModel.nowSelectPrice.value?.length!!
+            val endTime2 = startTime2 + viewModel.expectedReturn.value!!.length
 
 
             val startTime3 = endTime2 + " MFT,".length
@@ -232,11 +220,60 @@ class ContractIntoActivity : BaseActivity<ActivityContractintoBinding, ContractI
                 Spannable.SPAN_INCLUSIVE_INCLUSIVE
             )
 
+
+
             binding.textView32.setText(builder)
+
+
+            val builder1 = SpannableStringBuilder(
+                getString(R.string.tiqianzhuanchushouxuwei) +
+                        viewModel.thisleaveDay.value + "天" +
+                        getString(R.string.jieyuejieyuejieyu) +
+                        viewModel.shouyiText.value +
+                        getString(R.string.shoufuweijisuan))
+
+
+
+
+            val startTime4 = getString(R.string.tiqianzhuanchushouxuwei).length
+            val endTime4 = startTime4 + (viewModel.thisleaveDay.value + "天" ).length
+
+            val startTime5 = endTime4 + getString(R.string.jieyuejieyuejieyu).length
+            val endTime5 = startTime5 + viewModel.shouyiText.value?.length!!
+
+
+            builder1.setSpan(
+                greenSpan4,
+                startTime4,
+                endTime4,
+                Spannable.SPAN_INCLUSIVE_INCLUSIVE
+            )
+
+            builder1.setSpan(
+                greenSpan5,
+                startTime5,
+                endTime5,
+                Spannable.SPAN_INCLUSIVE_INCLUSIVE
+            )
+
+            binding.textView33.setText(builder1)
+
 
         }
 
 
+    }
+
+    fun showDisContract() {
+        val builder = AlertDialog.Builder(this).setTitle(getString(R.string.jiechuheyueme))
+            .setMessage(getString(R.string.querenshifoujiechuheyue)).setPositiveButton(getString(R.string.jiechu))
+            { _, _ ->
+                viewModel.contactContractNet()
+            }
+            .setNegativeButton(getString(R.string.quxia)) { dialogInterface, _ ->
+                dialogInterface.dismiss()
+            }
+        builder.create().show()
     }
 
     override fun initContentView(savedInstanceState: Bundle?): Int {
@@ -259,7 +296,8 @@ class ContractIntoActivity : BaseActivity<ActivityContractintoBinding, ContractI
             from: String,
             stateRate: Int,
             userAmountMax: Int,
-            money: String
+            money: String,
+            interestMax: String
         ) {
             val starter = Intent(context, ContractIntoActivity::class.java)
             starter.putExtra("productId", productId)
@@ -268,6 +306,7 @@ class ContractIntoActivity : BaseActivity<ActivityContractintoBinding, ContractI
             starter.putExtra("stateRate", stateRate)
             starter.putExtra("userAmountMax", userAmountMax)
             starter.putExtra("money", money)
+            starter.putExtra("interestMax", interestMax)
             context.startActivity(starter)
         }
     }

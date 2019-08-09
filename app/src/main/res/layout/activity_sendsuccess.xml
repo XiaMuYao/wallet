@@ -169,7 +169,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            android:text="@string/sendsucess"
+            android:text="@{sendsuccessViewModel.shouSuccessText}"
             android:textColor="#ffff"
             android:textSize="14dp"
             app:layout_constraintEnd_toStartOf="@+id/guideline195"
@@ -181,14 +181,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-
             android:layout_marginEnd="8dp"
             android:text="@{sendsuccessViewModel.showText}"
             android:textColor="#ffff"
             android:textSize="25dp"
             app:layout_constraintEnd_toStartOf="@+id/guideline195"
             app:layout_constraintStart_toStartOf="@+id/guideline194"
-            app:layout_constraintTop_toTopOf="@+id/guideline197" />
+            app:layout_constraintTop_toTopOf="@+id/guideline197"
+            tools:text="123123123" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

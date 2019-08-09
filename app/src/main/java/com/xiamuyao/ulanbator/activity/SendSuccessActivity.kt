@@ -17,6 +17,7 @@ class SendSuccessActivity : BaseActivity<ActivitySendsuccessBinding, SendSuccess
     override fun initView() {
         viewModel.money.value = intent.getStringExtra("money")
         viewModel.pairName.value = intent.getStringExtra("pairName")
+        viewModel.shouSuccessText.value = intent.getStringExtra("shouSuccessText")
 
     }
 

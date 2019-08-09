@@ -167,4 +167,37 @@
     <string name="saveSuccess">보존 성공!!</string>
     <string name="qingshuruzhuanzhangjine">이체 금액을 입력하십시오</string>
     <string name="putuser">일반 사용자</string>
+
+
+    <string name="querenshifoujiechuheyue"> 계약 취소 여부 확인 </string>
+    <string name="jiechuheyueme"> 계약을 제거 하시겠습니까? </string>
+    <string name="jiechu"> 릴리스 </string>
+    <string name="quxia"> 취소 </string>
+
+    <string name="tuochudenglume"> 로그 아웃 하시겠습니까? </string>
+    <string name="shifoutuichudenglu"> 로그 아웃 하시겠습니까? </string>
+
+    <string name="goumaichengg"> 구매 성공 </string>
+
+    <string name="tiqianzhuanchushouxuwei"> 사전 수입을 배제하고 청산 된 손해 배상을 불만족스럽게 처리 </string>
+    <string name="jieyuejieyuejieyu"> 해고, 청구 </string>
+    <string name="shoufuweijisuan"> 취급 수수료 </string>
+    <string name="tiantiantian"> 일 </string>
+    <string name="goumaichenggle"> 구매 성공 </string>
+    <string name="MFT">MFT</string>
+
+    <string name="caipiao"> 복권 </string>
+    <string name="zuqiu"> 축구 </string>
+    <string name="jincgaui"> 퀴즈 </string>
+    <string name="dazhuanpan"> 큰 턴테이블 </string>
+    <string name="baijiale"> 바카라 </string>
+    <string name="dezhou"> 텍사스 </string>
+    <string name="jiudian"> 호텔 </string>
+    <string name="jipiao"> 티켓 </string>
+    <string name="shoujichongzhi"> 충전 </string>
+    <string name="dazhejuan"> 제공 </string>
+    <string name="jiaofei"> 지급 </string>
+    <string name="yiliao"> 의료 </string>
+    <string name="quaiinqinabao">새로운 디지털 통화 지갑</string>
+
 </resources>

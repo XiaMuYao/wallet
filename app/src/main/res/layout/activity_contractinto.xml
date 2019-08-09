@@ -115,12 +115,19 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout2"
             android:layout_width="0dp"
-            android:layout_height="254dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="17.5dp"
             android:background="@drawable/shape_onegray"
             app:layout_constraintLeft_toLeftOf="@id/guideline30"
             app:layout_constraintRight_toRightOf="@id/guideline35"
             app:layout_constraintTop_toBottomOf="@+id/textView27">
+
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/dingcunGroup"
+                app:constraint_referenced_ids="viewzhanwei,startValue,endValue,signSeekBar,textView30,textView33"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:ignore="NotSibling" />
 
             <TextView
                 android:id="@+id/textView28"
@@ -171,6 +178,7 @@
                 android:layout_marginTop="15dp"
                 android:text="≈ $"
                 android:textColor="#878DA8"
+                android:paddingBottom="@dimen/dp_10"
                 android:textSize="18dp"
                 app:layout_constraintStart_toStartOf="@+id/editText"
                 app:layout_constraintTop_toBottomOf="@+id/view3" />
@@ -216,6 +224,7 @@
 
 
             <View
+                android:id="@+id/viewzhanwei"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:clickable="true"
@@ -226,6 +235,7 @@
                 app:layout_constraintTop_toTopOf="@+id/signSeekBar" />
 
             <TextView
+                android:id="@+id/startValue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{`$` + contractintoViewModel.low}"
@@ -235,6 +245,7 @@
 
 
             <TextView
+                android:id="@+id/endValue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{`$` + contractintoViewModel.high}"
@@ -261,12 +272,28 @@
 
         <TextView
             android:id="@+id/textView32"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:textColor="#5D5C71"
-            app:layout_constraintStart_toStartOf="@+id/guideline30"
+            tools:text="12345646554644646546546564654654656465465465465465464"
+            app:layout_constraintLeft_toLeftOf="@+id/guideline30"
+            app:layout_constraintRight_toRightOf="@+id/guideline35"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
+
+
+        <TextView
+            android:id="@+id/textView33"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textColor="#5D5C71"
+            android:visibility="gone"
+            android:text="提前转出不计收益并收取违约金，不满X天解约，收取X%的手续费"
+            tools:text="提前转出不计收益并收取违约金，不满X天解约，收取X%的手续费"
+            app:layout_constraintLeft_toLeftOf="@+id/guideline30"
+            app:layout_constraintRight_toRightOf="@+id/guideline35"
+            app:layout_constraintTop_toBottomOf="@+id/textView32" />
 
 
         <androidx.constraintlayout.widget.Guideline
@@ -342,18 +369,22 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="@id/guideline30"
             app:layout_constraintRight_toRightOf="@id/guideline36" />
+
         <ProgressBar
-            android:layout_width="56dp"
+            android:layout_width="54dp"
             android:layout_height="56dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            app:setViewShowHide="@{contractintoViewModel.showOrHideDialog}"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:setViewShowHide="@{contractintoViewModel.showOrHideDialog}" />
+
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

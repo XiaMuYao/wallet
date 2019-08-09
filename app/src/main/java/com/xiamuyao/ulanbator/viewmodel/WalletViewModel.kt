@@ -212,21 +212,21 @@ class WalletViewModel(application: Application) : BaseViewModel(application) {
 
 
     fun gameList() {
-        gameObservableArrayList.add(HomeListBean("1", R.drawable.nopen2, "彩票"))
-        gameObservableArrayList.add(HomeListBean("1", R.drawable.nopen2, "足球"))
-        gameObservableArrayList.add(HomeListBean("1", R.drawable.nopen2, "竞猜"))
-        gameObservableArrayList.add(HomeListBean("1", R.drawable.nopen2, "大转盘"))
-        gameObservableArrayList.add(HomeListBean("1", R.drawable.nopen2, "百家乐"))
-        gameObservableArrayList.add(HomeListBean("1", R.drawable.nopen2, "德州"))
+        gameObservableArrayList.add(HomeListBean("1", R.drawable.nopen2, context.getString(R.string.caipiao)))
+        gameObservableArrayList.add(HomeListBean("1", R.drawable.nopen2, context.getString(R.string.zuqiu)))
+        gameObservableArrayList.add(HomeListBean("1", R.drawable.nopen2, context.getString(R.string.jincgaui)))
+        gameObservableArrayList.add(HomeListBean("1", R.drawable.nopen2, context.getString(R.string.dazhuanpan)))
+        gameObservableArrayList.add(HomeListBean("1", R.drawable.nopen2, context.getString(R.string.baijiale)))
+        gameObservableArrayList.add(HomeListBean("1", R.drawable.nopen2, context.getString(R.string.dezhou)))
 
     }
 
     fun lifeList() {
-        lifeObservableArrayList.add(HomeListBean("1", R.drawable.nopen, "酒店"))
-        lifeObservableArrayList.add(HomeListBean("1", R.drawable.nopen, "机票"))
-        lifeObservableArrayList.add(HomeListBean("1", R.drawable.nopen, "手机充值"))
-        lifeObservableArrayList.add(HomeListBean("1", R.drawable.nopen, "打折卷"))
-        lifeObservableArrayList.add(HomeListBean("1", R.drawable.nopen, "缴费"))
-        lifeObservableArrayList.add(HomeListBean("1", R.drawable.nopen, "医疗"))
+        lifeObservableArrayList.add(HomeListBean("1", R.drawable.nopen, context.getString(R.string.jiudian)))
+        lifeObservableArrayList.add(HomeListBean("1", R.drawable.nopen, context.getString(R.string.jipiao)))
+        lifeObservableArrayList.add(HomeListBean("1", R.drawable.nopen, context.getString(R.string.shoujichongzhi)))
+        lifeObservableArrayList.add(HomeListBean("1", R.drawable.nopen, context.getString(R.string.dazhejuan)))
+        lifeObservableArrayList.add(HomeListBean("1", R.drawable.nopen, context.getString(R.string.jiaofei)))
+        lifeObservableArrayList.add(HomeListBean("1", R.drawable.nopen, context.getString(R.string.yiliao)))
     }
 }

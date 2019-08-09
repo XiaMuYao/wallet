@@ -142,7 +142,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{contractListBean.intro}"
-            android:textColor="#47495C"
+            android:textColor="#4DFFFFFF"
             android:textSize="12dp"
             app:layout_constraintBottom_toBottomOf="@+id/textView2"
             app:layout_constraintStart_toStartOf="@+id/guideline33"

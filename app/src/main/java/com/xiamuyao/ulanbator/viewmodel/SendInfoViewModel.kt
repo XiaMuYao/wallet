@@ -3,6 +3,8 @@ package com.xiamuyao.ulanbator.viewmodel
 import android.app.Application
 import androidx.core.os.bundleOf
 import androidx.lifecycle.MutableLiveData
+import com.xiamuyao.ulanbator.App
+import com.xiamuyao.ulanbator.R
 import com.xiamuyao.ulanbator.activity.ForgetActivity
 import com.xiamuyao.ulanbator.activity.SendSuccessActivity
 import com.xiamuyao.ulanbator.base.BaseViewModel
@@ -80,11 +82,13 @@ class SendInfoViewModel(application: Application) : BaseViewModel(application) {
                 if (modifyTheFundPassword.result.returnCode == "0") {
                     startActivity(
                         SendSuccessActivity::class.java,
-                        bundleOf("type" to type.value, "pairName" to pairName.value, "money" to money.value)
+                        bundleOf("type" to type.value, "pairName" to pairName.value, "money" to money.value,"shouSuccessText" to App
+                            .CONTEXT.getString(R.string.sendsucess))
                     )
                 }
-                showOrHideDialog.value = false
             }
+            showOrHideDialog.value = false
+
 
         }
     }

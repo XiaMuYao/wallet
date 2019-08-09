@@ -90,18 +90,18 @@ object BindingAdapters {
             val tempPrirName = getSelectCurrency()
             when {
                 tempPrirName.contains("CNY") -> {
-                    view.text = "￥ $valueis"
+                    view.text = "¥$valueis"
                 }
                 tempPrirName.contains("USD") -> {
-                    view.text = "$ $valueis"
+                    view.text = "$$valueis"
 
                 }
                 tempPrirName.contains("JPY") -> {
-                    view.text = "₩ $valueis"
+                    view.text = "￥$valueis"
 
                 }
                 tempPrirName.contains("KRW") -> {
-                    view.text = "¥ $valueis"
+                    view.text = "₩$valueis"
 
                 }
             }
@@ -263,18 +263,18 @@ object BindingAdapters {
         val tempPrirName = getSelectCurrency()
         when {
             tempPrirName.contains("CNY") -> {
-                view.text = "￥$type"
+                view.text = "¥$type"
             }
             tempPrirName.contains("USD") -> {
                 view.text = "$$type"
 
             }
             tempPrirName.contains("JPY") -> {
-                view.text = "₩$type"
+                view.text = "￥$type"
 
             }
             tempPrirName.contains("KRW") -> {
-                view.text = "¥$type"
+                view.text = "₩$type"
 
             }
         }
@@ -291,18 +291,18 @@ object BindingAdapters {
         val tempPrirName = getSelectCurrency()
         when {
             tempPrirName.contains("CNY") -> {
-                view.text = "￥$tempPair CNY"
+                view.text = "¥$tempPair CNY"
             }
             tempPrirName.contains("USD") -> {
                 view.text = "$$tempPair USD"
 
             }
             tempPrirName.contains("JPY") -> {
-                view.text = "₩$tempPair JPY"
+                view.text = "￥$tempPair JPY"
 
             }
             tempPrirName.contains("KRW") -> {
-                view.text = "¥$tempPair KRW "
+                view.text = "₩$tempPair KRW "
 
             }
         }

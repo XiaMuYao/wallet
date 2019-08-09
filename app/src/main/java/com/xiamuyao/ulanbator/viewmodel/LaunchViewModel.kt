@@ -8,6 +8,7 @@ import com.xiamuyao.ulanbator.constant.ProjectConstant.USER_TOKEN
 import com.xiamuyao.ulanbator.model.repository.PlaceRepository
 import com.xiamuyao.ulanbator.util.getSpValue
 import com.xiamuyao.ulanbator.utlis.ActivityStackManager
+import kotlinx.coroutines.delay
 import org.kodein.di.generic.instance
 
 class LaunchViewModel(application: Application) : BaseViewModel(application) {
@@ -17,6 +18,7 @@ class LaunchViewModel(application: Application) : BaseViewModel(application) {
 
     override fun initData() {
         launch {
+            kotlinx.coroutines.delay(2000)
             //没有用户
             if (getSpValue(USER_TOKEN, "").isEmpty()) {
                 startActivity(NoLoginActivity::class.java)

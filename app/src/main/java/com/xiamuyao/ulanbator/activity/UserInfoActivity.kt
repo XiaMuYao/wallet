@@ -1,8 +1,10 @@
 package com.xiamuyao.ulanbator.activity
 
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import androidx.lifecycle.Observer
 import com.xiamuyao.ulanbator.BR
 import com.xiamuyao.ulanbator.R
 import com.xiamuyao.ulanbator.base.BaseActivity
@@ -32,6 +34,25 @@ class UserInfoActivity : BaseActivity<ActivityUserinfoBinding, UserInfoViewModel
                viewModel. nickName.value = UsetUtli.getUserName()
             }
         })
+        viewModel.logonNetType.observe(this, Observer {
+
+
+            showDisContract()
+        })
+    }
+
+
+    fun showDisContract() {
+        val builder = AlertDialog.Builder(this).setTitle(getString(R.string.tuochudenglume))
+            .setMessage(getString(R.string.shifoutuichudenglu)).setPositiveButton(getString(R.string.login))
+            { _, _ ->
+                viewModel.logoutNet()
+
+            }
+            .setNegativeButton(getString(R.string.quxia)) { dialogInterface, _ ->
+                dialogInterface.dismiss()
+            }
+        builder.create().show()
     }
 
     override fun initContentView(savedInstanceState: Bundle?): Int {

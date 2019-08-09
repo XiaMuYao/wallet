@@ -61,7 +61,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{`￥` + walletinfoViewModel.walletListBean.pairToUSDT}"
+            app:currencyFormattingAndPair="@{walletinfoViewModel.walletListBean.pairToUSDT}"
             android:textColor="#fff"
             android:textSize="12dp"
             app:layout_constraintLeft_toLeftOf="@id/guideline128"

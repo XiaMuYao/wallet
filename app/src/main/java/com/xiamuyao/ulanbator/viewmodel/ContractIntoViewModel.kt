@@ -1,6 +1,9 @@
 package com.xiamuyao.ulanbator.viewmodel
 
+import android.app.AlertDialog
 import android.app.Application
+import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.databinding.ObservableArrayList
 import androidx.lifecycle.MutableLiveData
 import com.xiamuyao.ulanbator.R
@@ -18,6 +21,7 @@ import org.kodein.di.generic.instance
 import java.math.BigDecimal
 import com.blankj.utilcode.util.TimeUtils
 import com.xiamuyao.ulanbator.App
+import com.xiamuyao.ulanbator.activity.SendSuccessActivity
 import com.xiamuyao.ulanbator.util.ArithUtil
 import com.xiamuyao.ulanbator.util.BigDecimalUtils
 import com.xiamuyao.ulanbator.util.businessHandler
@@ -45,6 +49,7 @@ class ContractIntoViewModel(application: Application) : BaseViewModel(applicatio
     var type = MutableLiveData<Int>()
 
     var loadOk = SingleLiveEvent<Boolean>()
+    var disContract = SingleLiveEvent<Boolean>()
 
     var selectPairName = MutableLiveData<String>()
     var thisleaveDay = MutableLiveData<String>()
@@ -53,6 +58,7 @@ class ContractIntoViewModel(application: Application) : BaseViewModel(applicatio
     var showPrice = MutableLiveData<String>()
     var xiane = MutableLiveData<String>()
     var introintro = MutableLiveData<String>()
+    var interestMax = MutableLiveData<String>()
 
     var showbottomLastTitle = MutableLiveData<String>()
 
@@ -62,13 +68,16 @@ class ContractIntoViewModel(application: Application) : BaseViewModel(applicatio
     var incomeArrivalTime = MutableLiveData<String>()
     //到期转入时间
     var dueTransferTime = MutableLiveData<String>()
+    //预计收益
+    var expectedReturn = MutableLiveData<String>()
 
     override fun initData() {
+        expectedReturn.value="0"
         low.value = "0"
         nowSelectPrice.value = "0"
-        earningsStartTime.value = TimeUtli.checkOption("next", TimeUtli.getTime())
+        earningsStartTime.value = TimeUtli.checkOptionAll("next", TimeUtli.getTimeAll())
 
-        incomeArrivalTime.value = TimeUtli.checkOption("next", TimeUtli.getTime(), 2)
+        incomeArrivalTime.value = TimeUtli.checkOptionAll("next", TimeUtli.getTimeAll(), 2)
         showOrHideDialog.value = false
 
     }
@@ -167,6 +176,16 @@ class ContractIntoViewModel(application: Application) : BaseViewModel(applicatio
      * 接触合约
      */
     fun contactContract() {
+                disContract.call()
+
+
+    }
+
+    /**
+     * dialog 回调
+     */
+    fun contactContractNet(){
+
         launch {
             showOrHideDialog.value = true
 
@@ -175,8 +194,9 @@ class ContractIntoViewModel(application: Application) : BaseViewModel(applicatio
                 finishStatus.call()
             }
             showOrHideDialog.value = false
-
         }
+
+
     }
 
     /**
@@ -191,9 +211,16 @@ class ContractIntoViewModel(application: Application) : BaseViewModel(applicatio
             showOrHideDialog.value = true
             val buyingWealthManagementProducts =
                 repository.buyingWealthManagementProducts(productId.value!!, inoutMoney.value!!, selectPairID.value!!)
+
+
             businessHandler(buyingWealthManagementProducts) {
-                finishStatus.call()
+                startActivity(
+                    SendSuccessActivity::class.java,
+                    bundleOf("shouSuccessText" to context.getString(R.string.goumaichenggle),"pairName" to "","money" to "")
+                )
             }
+
+
             showOrHideDialog.value = false
 
         }
@@ -271,5 +298,11 @@ class ContractIntoViewModel(application: Application) : BaseViewModel(applicatio
 
             }
         }
+        var  div = BigDecimalUtils.div(inoutMoney.value!!, interestMax.value!!.replace("%", ""))
+        if ( div.isNullOrEmpty()){
+            div ="0"
+        }
+        val convertNumber3 = ArithUtil.convertNumber3(div, 4)
+        expectedReturn.value =convertNumber3
     }
 }

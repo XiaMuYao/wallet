@@ -38,23 +38,25 @@ class WalletInfoViewModel(application: Application) : BaseViewModel(application)
     //可用余额
     var mbalance = MutableLiveData<String>()
 
+    var rate = MutableLiveData<String>()
+
     private val repository: WalletRepository by instance()
 
 
     override fun initData() {
         pricingCurrency.value = getSelectCurrency()
         //当前货币 兑换方USDT 的价格
-        currentCurrencyExchangeCurrency()
+//        currentCurrencyExchangeCurrency()
     }
 
-    /**
-     * 当前货币兑换法币
-     */
-    private fun currentCurrencyExchangeCurrency() {
-        if (walletListBean.value?.pariAmount.isNullOrEmpty() || walletListBean.value?.pariAmount == "0" || walletListBean.value?.pariToPrice.isNullOrEmpty() || walletListBean.value?.pariToPrice == "0") return
-        walletListBean.value?.pairToUSDT =
-            BigDecimalUtils.div(walletListBean.value?.pariToPrice!!, walletListBean.value?.pariAmount!!)
-    }
+//    /**
+//     * 当前货币兑换法币
+//     */
+//    private fun currentCurrencyExchangeCurrency() {
+//        if (walletListBean.value?.pariAmount.isNullOrEmpty() || walletListBean.value?.pariAmount == "0" || walletListBean.value?.pariToPrice.isNullOrEmpty() || walletListBean.value?.pariToPrice == "0") return
+//        walletListBean.value?.pairToUSDT =
+//            BigDecimalUtils.div(walletListBean.value?.pariToPrice!!, walletListBean.value?.pariAmount!!)
+//    }
 
     fun getPageData() {
 
@@ -154,18 +156,18 @@ class WalletInfoViewModel(application: Application) : BaseViewModel(application)
 
         when {
             tempPrirName.contains("CNY") -> {
-                return "￥$tempPair CNY"
+                return "¥$tempPair CNY"
             }
             tempPrirName.contains("USD") -> {
                 return "$$tempPair USD"
 
             }
             tempPrirName.contains("JPY") -> {
-                return "₩$tempPair JPY"
+                return "￥$tempPair JPY"
 
             }
             tempPrirName.contains("KRW") -> {
-                return "¥$tempPair KRW "
+                return "₩$tempPair KRW "
 
             }
         }

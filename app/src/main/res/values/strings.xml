@@ -7,7 +7,7 @@
     <string name="sumMarkMoney">累计理财收益</string>
     <string name="shoping">购买</string>
     <string name="jiechuheyue">解除合约</string>
-    <string name="login">登录1111111</string>
+    <string name="login">登录</string>
     <string name="fopsd">忘记密码？</string>
     <string name="selelcyCity">选择国家</string>
     <string name="phoneNumber">手机号码</string>
@@ -188,4 +188,34 @@
     <string name="MFT">MFT</string>
     <string name="qingshuruzhuanzhangjine">请输入转账金额</string>
     <string name="putuser">普通用户</string>
+    <string name="querenshifoujiechuheyue">确认是否要解除合约</string>
+    <string name="jiechuheyueme">解除合约？</string>
+    <string name="jiechu">解除</string>
+    <string name="quxia">取消</string>
+
+    <string name="tuochudenglume">退出登录？</string>
+    <string name="shifoutuichudenglu">是否要退出登录？</string>
+
+    <string name="goumaichengg">购买成功</string>
+
+    <string name="tiqianzhuanchushouxuwei">提前转出不计收益并收取违约金，不满</string>
+    <string name="jieyuejieyuejieyu">解约，收取</string>
+    <string name="shoufuweijisuan">的手续费</string>
+    <string name="tiantiantian">天</string>
+    <string name="goumaichenggle">购买成功</string>
+
+    <string name="caipiao">彩票</string>
+    <string name="zuqiu">足球</string>
+    <string name="jincgaui">竞猜</string>
+    <string name="dazhuanpan">大转盘</string>
+    <string name="baijiale">百家乐</string>
+    <string name="dezhou">德州</string>
+    <string name="jiudian">酒店</string>
+    <string name="jipiao">机票</string>
+    <string name="shoujichongzhi">手机充值</string>
+    <string name="dazhejuan">打折卷</string>
+    <string name="jiaofei">缴费</string>
+    <string name="yiliao">医疗</string>
+    <string name="quaiinqinabao">全新数字货币钱包</string>
+
 </resources>

@@ -12,6 +12,7 @@ import com.xiamuyao.ulanbator.util.businessHandler
 import com.xiamuyao.ulanbator.util.getSpValue
 import com.xiamuyao.ulanbator.util.putSpValue
 import com.xiamuyao.ulanbator.utlis.ActivityStackManager
+import com.xiamuyao.ulanbator.utlis.SingleLiveEvent
 import org.kodein.di.generic.instance
 
 class UserInfoViewModel(application: Application) : BaseViewModel(application) {
@@ -22,6 +23,7 @@ class UserInfoViewModel(application: Application) : BaseViewModel(application) {
     var nickName = MutableLiveData<String>()
     var vipType = MutableLiveData<Int>()
     var inviteCode = MutableLiveData<String>()
+    var logonNetType = SingleLiveEvent<Boolean>()
 
 
     override fun initData() {
@@ -35,9 +37,11 @@ class UserInfoViewModel(application: Application) : BaseViewModel(application) {
     }
 
     fun logout() {
+        logonNetType.call()
+    }
+
+    fun logoutNet() {
         launch {
-
-
             val quit = userRepository.quit()
 
             businessHandler(quit) {
@@ -47,7 +51,6 @@ class UserInfoViewModel(application: Application) : BaseViewModel(application) {
 
             }
         }
-
     }
 
 }

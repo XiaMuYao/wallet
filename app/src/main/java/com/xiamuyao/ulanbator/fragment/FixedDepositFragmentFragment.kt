@@ -35,7 +35,8 @@ class FixedDepositFragmentFragment :
                 "2",
                 item.stateRate,
                 item.userAmountMaxSum.replace(",","").toInt(),
-                item.money
+                item.money,
+                item.interestMax
             )
         }
 

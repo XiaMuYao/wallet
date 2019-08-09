@@ -7,6 +7,7 @@ import com.xiamuyao.ulanbator.R
 import com.xiamuyao.ulanbator.base.BaseActivity
 import com.xiamuyao.ulanbator.databinding.ActivityFirstsetmonpsdBinding
 import com.xiamuyao.ulanbator.util.setTitleBar
+import com.xiamuyao.ulanbator.utlis.ActivityStackManager
 import com.xiamuyao.ulanbator.viewmodel.FirstSetMonPsdViewModel
 
 
@@ -21,6 +22,14 @@ class FirstSetMonPsdActivity : BaseActivity<ActivityFirstsetmonpsdBinding, First
     }
 
     override fun initVVMObserver() {
+
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+
+        viewModel.startActivity(MainActivity::class.java)
+        ActivityStackManager.getInstance().finishAllActivity()
 
     }
 
