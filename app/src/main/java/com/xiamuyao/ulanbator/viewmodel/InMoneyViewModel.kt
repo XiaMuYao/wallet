@@ -9,7 +9,6 @@ import com.xiamuyao.ulanbator.App
 import com.xiamuyao.ulanbator.R
 import com.xiamuyao.ulanbator.base.BaseViewModel
 import com.xiamuyao.ulanbator.model.repository.WalletRepository
-import com.xiamuyao.ulanbator.util.getSpValue
 import com.xiamuyao.ulanbator.utlis.SingleLiveEvent
 import com.xiamuyao.ulanbator.utlis.To
 import org.kodein.di.generic.instance
@@ -20,6 +19,7 @@ import android.content.Context.CLIPBOARD_SERVICE
 import androidx.core.content.ContextCompat.getSystemService
 import com.xiamuyao.ulanbator.util.UsetUtli
 import com.xiamuyao.ulanbator.util.businessHandler
+import com.xiamuyao.ulanbator.utlis.getSpValue
 
 
 class InMoneyViewModel(application: Application) : BaseViewModel(application) {

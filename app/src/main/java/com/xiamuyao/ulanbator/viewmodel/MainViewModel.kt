@@ -1,17 +1,33 @@
 package com.xiamuyao.ulanbator.viewmodel
 
 import android.app.Application
+import android.app.DownloadManager
 import androidx.lifecycle.MutableLiveData
 import com.xiamuyao.ulanbator.R
 import com.xiamuyao.ulanbator.base.BaseViewModel
 import com.xiamuyao.ulanbator.constant.ProjectConstant
 import com.xiamuyao.ulanbator.model.repository.WalletRepository
 import org.kodein.di.generic.instance
+import android.os.Environment.DIRECTORY_DOWNLOADS
+import org.kodein.di.weakReference
+import android.app.DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED
+import android.net.Uri
+import android.os.Environment
+import com.xiamuyao.ulanbator.model.bean.response.GetVerSion
+import com.xiamuyao.ulanbator.model.repository.UserRepository
+import com.xiamuyao.ulanbator.util.RateUtli.getPriceList
+import com.zhangke.websocket.WebSocketHandler
+import kotlinx.coroutines.delay
+import java.io.File
+import okhttp3.ResponseBody
+
 
 class MainViewModel(application: Application) : BaseViewModel(application) {
+    private val userrepository: UserRepository by instance()
     private val repository: WalletRepository by instance()
 
     var loadOk = MutableLiveData<Boolean>()
+    var updata = MutableLiveData<GetVerSion.DataBean>()
 
     //底部点击菜单控件List
     var bottomClickIdList = arrayListOf(
@@ -42,6 +58,17 @@ class MainViewModel(application: Application) : BaseViewModel(application) {
     override fun initData() {
         //汇率数据默认第一次调用
         getExchangeRateData()
+        appUpdataViewModel()
+    }
+
+    fun appUpdataViewModel() {
+
+        launch {
+            val theLatestVersionNumber = userrepository.getTheLatestVersionNumber()
+            updata.value = theLatestVersionNumber.data
+            theLatestVersionNumber
+        }
+
     }
 
 
@@ -50,6 +77,10 @@ class MainViewModel(application: Application) : BaseViewModel(application) {
      */
     fun getExchangeRateData() {
         loadOk.value = false
+        val find = getPriceList().find { it.pairName == "MFT" }
+        if (find!!.close.length < 2) {
+            WebSocketHandler.getDefault().send(ProjectConstant.SUB_STR_MFTKRWT)
+        }
         launch {
             repository.obtainExchangeRate()
             loadOk.value = true

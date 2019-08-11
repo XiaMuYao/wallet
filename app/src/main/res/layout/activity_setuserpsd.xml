@@ -33,7 +33,7 @@
 
             <TextView
                 style="@style/style_my_item_setpsd_text"
-                android:text="原登录密码"
+                android:text="@string/yuanlaidenglumima"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toRightOf="@+id/guideline82"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -46,7 +46,7 @@
 
             <EditText
                 style="@style/style_set_user_psd_ed"
-                android:hint="原登录密码"
+                android:hint="@string/yuandenlimima"
                 android:inputType="textPassword"
                 android:text="@={setuserpsdViewModel.loginPassword}"
                 android:textCursorDrawable="@drawable/shape_ed_color"
@@ -90,7 +90,7 @@
 
             <TextView
                 style="@style/style_my_item_setpsd_text"
-                android:text="新登录密码"
+                android:text="@string/xinddenglumima"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toRightOf="@+id/guideline83"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -103,7 +103,7 @@
 
             <EditText
                 style="@style/style_set_user_psd_ed"
-                android:hint="新登录密码"
+                android:hint="@string/xincendelumima"
                 android:text="@={setuserpsdViewModel.password}"
                 android:textCursorDrawable="@drawable/shape_ed_color"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -147,7 +147,7 @@
 
             <TextView
                 style="@style/style_my_item_setpsd_text"
-                android:text="确认新密码"
+                android:text="@string/querenxinmimamamam"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toRightOf="@+id/guideline85"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -160,7 +160,7 @@
 
             <EditText
                 style="@style/style_set_user_psd_ed"
-                android:hint="再次输入新登录密码"
+                android:hint="@string/zaicishuruxinmmmima"
                 android:text="@={setuserpsdViewModel.passwordConfirm}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/guideline86"
@@ -203,7 +203,7 @@
 
             <TextView
                 style="@style/style_my_item_setpsd_text"
-                android:text="手机号码"
+                android:text="@string/phoneNumber"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toRightOf="@+id/guideline87"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -261,7 +261,7 @@
 
             <TextView
                 style="@style/style_my_item_setpsd_text"
-                android:text="手机验证码"
+                android:text="@string/phoneNumberCode"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toRightOf="@+id/guideline89"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -276,7 +276,7 @@
             <EditText
                 android:id="@+id/editText2"
                 style="@style/style_set_user_psd_ed"
-                android:hint="输入手机验证码"
+                android:hint="@string/shourushoujiyanzhengma"
                 android:text="@={setuserpsdViewModel.verifyCode}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/guideline90"

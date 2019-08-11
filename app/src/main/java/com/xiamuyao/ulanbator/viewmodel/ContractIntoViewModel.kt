@@ -50,6 +50,8 @@ class ContractIntoViewModel(application: Application) : BaseViewModel(applicatio
 
     var loadOk = SingleLiveEvent<Boolean>()
     var disContract = SingleLiveEvent<Boolean>()
+    var showBuyDialog = SingleLiveEvent<Boolean>()
+    var leaveRateViewModel = SingleLiveEvent<String>()
 
     var selectPairName = MutableLiveData<String>()
     var thisleaveDay = MutableLiveData<String>()
@@ -72,7 +74,7 @@ class ContractIntoViewModel(application: Application) : BaseViewModel(applicatio
     var expectedReturn = MutableLiveData<String>()
 
     override fun initData() {
-        expectedReturn.value="0"
+        expectedReturn.value = "0"
         low.value = "0"
         nowSelectPrice.value = "0"
         earningsStartTime.value = TimeUtli.checkOptionAll("next", TimeUtli.getTimeAll())
@@ -91,6 +93,7 @@ class ContractIntoViewModel(application: Application) : BaseViewModel(applicatio
                         type.value = stateType
                         usermoney.value = money
                         usermoneyjindu.value = stateRate
+                        leaveRateViewModel.value = leaveRate.toString()
                         setTitle(this)
                         listSymbolBalance.forEach {
                             pariList.add(PairListBean(it.symbolName.toUpperCase(), it.amount, it.symbolType.toString()))
@@ -176,7 +179,7 @@ class ContractIntoViewModel(application: Application) : BaseViewModel(applicatio
      * 接触合约
      */
     fun contactContract() {
-                disContract.call()
+        disContract.call()
 
 
     }
@@ -184,7 +187,7 @@ class ContractIntoViewModel(application: Application) : BaseViewModel(applicatio
     /**
      * dialog 回调
      */
-    fun contactContractNet(){
+    fun contactContractNet() {
 
         launch {
             showOrHideDialog.value = true
@@ -207,6 +210,11 @@ class ContractIntoViewModel(application: Application) : BaseViewModel(applicatio
             To.showToast(context.getString(R.string.inputNotNull))
             return
         }
+        showBuyDialog.call()
+
+    }
+
+    fun buyProDuctNet() {
         launch {
             showOrHideDialog.value = true
             val buyingWealthManagementProducts =
@@ -216,10 +224,13 @@ class ContractIntoViewModel(application: Application) : BaseViewModel(applicatio
             businessHandler(buyingWealthManagementProducts) {
                 startActivity(
                     SendSuccessActivity::class.java,
-                    bundleOf("shouSuccessText" to context.getString(R.string.goumaichenggle),"pairName" to "","money" to "")
+                    bundleOf(
+                        "shouSuccessText" to context.getString(R.string.goumaichenggle),
+                        "pairName" to "",
+                        "money" to ""
+                    )
                 )
             }
-
 
             showOrHideDialog.value = false
 
@@ -298,11 +309,13 @@ class ContractIntoViewModel(application: Application) : BaseViewModel(applicatio
 
             }
         }
-        var  div = BigDecimalUtils.div(inoutMoney.value!!, interestMax.value!!.replace("%", ""))
-        if ( div.isNullOrEmpty()){
-            div ="0"
+        var div = BigDecimalUtils.mul(inoutMoney.value!!, interestMax.value!!.replace("%", ""))
+        if (div.isNullOrEmpty()) {
+            div = "0"
         }
-        val convertNumber3 = ArithUtil.convertNumber3(div, 4)
-        expectedReturn.value =convertNumber3
+        val mul1 = BigDecimalUtils.div(thisleaveDay.value!!, "30")
+        val mul = BigDecimalUtils.mul(div, mul1)
+        val convertNumber3 = ArithUtil.convertNumber3(mul, 4)
+        expectedReturn.value = convertNumber3
     }
 }

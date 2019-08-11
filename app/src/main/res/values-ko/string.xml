@@ -2,7 +2,6 @@
 <resources>
     <string name="app_name">Max Flow</string>
     <string name="titleBarLeftText">뒤로</string>
-    <string name="item_skit_text">Christina Photo by @FransLanting Wonderful color! To let tourists get a better view，the bus drove slowly. What a beautiful town！</string>
     <string name="sum">누적총수익</string>
     <string name="sumprofit">누적초대수익</string>
     <string name="sumMarkMoney">누적재
@@ -199,5 +198,32 @@
     <string name="jiaofei"> 지급 </string>
     <string name="yiliao"> 의료 </string>
     <string name="quaiinqinabao">새로운 디지털 통화 지갑</string>
+    <string name="banbengengxin">버전 업데이트!</string>
+    <string name="shifouyaogengxin">업데이트 하시겠습니까??</string>
+    <string name="tuichutext">출구</string>
 
+
+    <string name="xiugaizijinmimiawenan">출금, 거래, 자산 관리 구매, 상환 등의 거래 관련 작업은 자금 암호를 수정 한 후 24 시간 이내에 금지됩니다.</string>
+    <string name="qingshuruliuweimima">6 자리 비밀번호를 입력하십시오</string>
+    <string name="qingzaicishuruzijinmima">자금 비밀번호를 다시 입력하십시오</string>
+    <string name="xinzijinmima">새로운 자금 비밀번호</string>
+    <string name="querenxinxmima">새 비밀번호 확인</string>
+    <string name="shoujihaoma">휴대 전화 번호</string>
+    <string name="shoujiyanzhengma">휴대 전화 인증 코드</string>
+    <string name="shourushoujiyanzhengma">전화 인증 코드를 입력하십시오</string>
+    <string name="xiugaizijinmima">자금 비밀번호 수정</string>
+    <string name="yuanlaidenglumima">원래 로그인 비밀번호</string>
+    <string name="yuandenlimima">원래 로그인 비밀번호</string>
+    <string name="xinddenglumima">새로운 로그인 비밀번호</string>
+    <string name="xincendelumima">새로운 로그인 비밀번호</string>
+    <string name="querenxinmimamamam">새 비밀번호 확인</string>
+    <string name="zaicishuruxinmmmima">새 로그인 비밀번호를 다시 입력하십시오</string>
+    <string name="wanchengwacccheng">완료</string>
+    <string name="fasongxiangqing">세부 사항 보내기</string>
+    <string name="daikaifangjingqingqidai">열린 상태를 유지하십시오.</string>
+    <string name="shezhidinglumima">로그인 비밀번호 설정</string>
+    <string name="querendenglumima">로그인 비밀번호 확인</string>
+
+    <string name="querengoumaishangpin">구매 확인?</string>
+    <string name="querenshfoyaogoumai">구매 여부 확인</string>
 </resources>

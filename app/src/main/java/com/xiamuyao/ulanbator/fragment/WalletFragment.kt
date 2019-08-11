@@ -11,13 +11,12 @@ import com.xiamuyao.ulanbator.activity.WalletInfoActivity
 import com.xiamuyao.ulanbator.base.BaseFragment
 import com.xiamuyao.ulanbator.base.adapter.BaseObservableNoChildClickAdapter
 import com.xiamuyao.ulanbator.constant.EventConstant
-import com.xiamuyao.ulanbator.databinding.FragmentHomeBinding
 import com.xiamuyao.ulanbator.databinding.FragmentHomeOldBinding
 import com.xiamuyao.ulanbator.extension.defaultStyle
-import com.xiamuyao.ulanbator.util.RateUtli
 import com.xiamuyao.ulanbator.utlis.DataBus
 import com.xiamuyao.ulanbator.utlis.DataBusObservable
 import com.xiamuyao.ulanbator.utlis.To
+import com.xiamuyao.ulanbator.view.SpaceItemDecoration
 import com.xiamuyao.ulanbator.viewmodel.WalletViewModel
 
 
@@ -50,6 +49,8 @@ class WalletFragment : BaseFragment<FragmentHomeOldBinding, WalletViewModel>() {
         binding.lifeReLayout.defaultStyle(lifeAdapter, GridLayoutManager(activity!!, 3))
         binding.gameReLayout.defaultStyle(gameAdapter, GridLayoutManager(activity!!, 3))
 
+        binding.lifeReLayout.addItemDecoration(SpaceItemDecoration())
+        binding.gameReLayout.addItemDecoration(SpaceItemDecoration())
 
         binding.walletShow.setOnClickListener {
             viewModel.showOrHide.value = viewModel.showOrHide.value!!.not()
@@ -64,16 +65,19 @@ class WalletFragment : BaseFragment<FragmentHomeOldBinding, WalletViewModel>() {
             WalletInfoActivity.start(context!!, bundle)
         }
         lifeAdapter.setOnItemClickListener { _, _, position ->
-            To.showToast("待开放，敬请期待！")
+            To.showToast( getString(R.string.daikaifangjingqingqidai))
         }
         gameAdapter.setOnItemClickListener { _, _, position ->
-            To.showToast("待开放，敬请期待！")
+            To.showToast(getString(R.string.daikaifangjingqingqidai))
+
         }
         binding.lifeAll.setOnClickListener {
-            To.showToast("待开放，敬请期待！")
+            To.showToast(getString(R.string.daikaifangjingqingqidai))
+
         }
         binding.gameAll.setOnClickListener {
-            To.showToast("待开放，敬请期待！")
+            To.showToast(getString(R.string.daikaifangjingqingqidai))
+
         }
     }
 
@@ -96,6 +100,13 @@ class WalletFragment : BaseFragment<FragmentHomeOldBinding, WalletViewModel>() {
             }
         })
 
+//        DataBus.observeData(this, EventConstant.LaunageSet, object : DataBusObservable<String> {
+//            override fun dataBusDataCallBack(it: String) {
+//onCreate(null)
+//            }
+//        })
+
+
     }
 
     override fun initContentView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): Int {
@@ -112,6 +123,7 @@ class WalletFragment : BaseFragment<FragmentHomeOldBinding, WalletViewModel>() {
 
     override fun onResume() {
         super.onResume()
+//        LL.d("onResume::"+App.CONTEXT.getString(R.string.login))
         viewModel.initData()
     }
 

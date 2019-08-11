@@ -13,6 +13,7 @@ import com.xiamuyao.ulanbator.constant.EventConstant
 import com.xiamuyao.ulanbator.databinding.ActivityWalletinfoBinding
 import com.xiamuyao.ulanbator.extension.defaultStyle
 import com.xiamuyao.ulanbator.model.bean.WalletListBean
+import com.xiamuyao.ulanbator.util.ArithUtil
 import com.xiamuyao.ulanbator.util.setTitleBar
 import com.xiamuyao.ulanbator.utlis.DataBus
 import com.xiamuyao.ulanbator.utlis.DataBusObservable
@@ -34,6 +35,8 @@ class WalletInfoActivity : BaseActivity<ActivityWalletinfoBinding, WalletInfoVie
         viewModel.walletListBean.value = serializableExtra.getSerializable("data") as WalletListBean
         viewModel.walletListBean.value?.pairToUSDT = serializableExtra.getString("rate")!!
 
+        viewModel.walletListBean.value?.pairToUSDT =
+            ArithUtil.convertNumber3(viewModel.walletListBean.value?.pairToUSDT!!, 4)
 
         setTitleBar(
             title = viewModel.walletListBean.value?.pairName!!,

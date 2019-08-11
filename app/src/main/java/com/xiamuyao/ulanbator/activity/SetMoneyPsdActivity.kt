@@ -19,7 +19,7 @@ import com.xiamuyao.ulanbator.viewmodel.SetMoneyPsdViewModel
 class SetMoneyPsdActivity : BaseActivity<ActivitySetmoneypsdBinding, SetMoneyPsdViewModel>() {
 
     override fun initView() {
-        setTitleBar("修改资金密码", { finish() })
+        setTitleBar(title = getString(R.string.xiugaizijinmima), leftCallBack = { finish() })
 
     }
 

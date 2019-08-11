@@ -78,7 +78,7 @@
             android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="@+id/guideline129"
             app:layout_constraintTop_toTopOf="@+id/guideline130"
-            tools:text="0" />
+            tools:text="78.78917891487" />
 
 
         <TextView
@@ -89,6 +89,7 @@
             android:gravity="center"
             android:text="@string/usd"
             android:textColor="#fff"
+            tools:text="available"
             android:textSize="12dp"
             app:layout_constraintBaseline_toBaselineOf="@+id/textView89"
             app:layout_constraintLeft_toRightOf="@+id/textView89" />

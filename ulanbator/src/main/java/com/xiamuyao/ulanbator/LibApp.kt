@@ -25,6 +25,7 @@ object LibApp {
 
     }
 
+
     fun getContext(): Context {
         return context!!
     }

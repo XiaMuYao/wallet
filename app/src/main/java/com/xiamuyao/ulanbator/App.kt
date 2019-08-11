@@ -2,13 +2,12 @@ package com.xiamuyao.ulanbator
 
 import android.app.Application
 import android.content.Context
+import android.content.res.Configuration
 import androidx.databinding.ObservableArrayList
-import com.blankj.utilcode.util.LanguageUtils
 import com.google.gson.Gson
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter
 import com.scwang.smartrefresh.layout.header.ClassicsHeader
-import com.xiamuyao.ulanbator.activity.LaunchActivity
 import com.xiamuyao.ulanbator.constant.EventConstant
 import com.xiamuyao.ulanbator.constant.EventConstant.TOKEN
 import com.xiamuyao.ulanbator.constant.ProjectConstant
@@ -20,10 +19,7 @@ import com.xiamuyao.ulanbator.model.repository.*
 import com.xiamuyao.ulanbator.network.ServiceCreator
 import com.xiamuyao.ulanbator.network.api.*
 import com.xiamuyao.ulanbator.util.*
-import com.xiamuyao.ulanbator.util.CityUtli.geyLanguageBySys
-import com.xiamuyao.ulanbator.utlis.ActivityStackManager
-import com.xiamuyao.ulanbator.utlis.DataBus
-import com.xiamuyao.ulanbator.utlis.LL
+import com.xiamuyao.ulanbator.utlis.*
 import com.zhangke.websocket.SimpleListener
 import com.zhangke.websocket.WebSocketHandler
 import com.zhangke.websocket.WebSocketSetting
@@ -40,8 +36,6 @@ import kotlin.properties.Delegates
 
 
 class App : Application(), KodeinAware {
-
-    var type = true
 
     override val kodein = Kodein.lazy {
         //创建
@@ -78,9 +72,6 @@ class App : Application(), KodeinAware {
 
         fromCloudRate = RateUtli.getRateList()
         marketList = RateUtli.getPriceList()
-        //设置语言
-
-        LibApp.init(CONTEXT)
 
         initWebSocket()
 
@@ -95,27 +86,44 @@ class App : Application(), KodeinAware {
             ClassicsFooter(context).setDrawableSize(20f)
         }
 
+//        //保存系统默认语言
+//        val language = Locale.getDefault().getLanguage()
+//        val find = CityUtli.cityList.find { it.cityType == language }
+//        CityUtli.saveLanguage(find?.cityId!!)
 
 //        //如果没有手动设置过语言
+        setLanguage()
+    }
+
+    private fun setLanguage() {
         if (CityUtli.getLanguage() == -1) {
-            val language = Locale.getDefault().getLanguage()
+            val language = Locale.getDefault().language
             val find = CityUtli.cityList.find { it.cityType == language }
 
             CityUtli.saveLanguage(find?.cityId!!)
-            LanguageUtils.applySystemLanguage(LaunchActivity::class.java)
-            ActivityStackManager.getInstance().finishAllActivity()
+
+            LocalManageUtil.saveSelectLanguage(this, find.cityId)
 
         } else {
             val language = CityUtli.getLanguage()
             val find = CityUtli.cityList.find { it.cityId == language }
+            CityUtli.saveLanguage(find?.cityId!!)
 
-            LanguageUtils.applyLanguage(geyLanguageBySys(find?.cityId!!)!!, LaunchActivity::class.java)
-//            updateLocale(this,geyLanguageBySys(find?.cityId!!)!!)
-            ActivityStackManager.getInstance().finishAllActivity()
+            LocalManageUtil.saveSelectLanguage(this, find.cityId)
         }
-//        updateLocale(this, Locale.CHINESE)
+    }
 
 
+    override fun attachBaseContext(base: Context) {
+        LibApp.init(base)
+        CONTEXT = base
+        super.attachBaseContext(LocalManageUtil.setLocal(base))
+    }
+//
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        // 当切换横竖屏 重置语言
+        LocalManageUtil.setLocal(applicationContext)
     }
 
     private fun initWebSocket() {
@@ -205,38 +213,24 @@ class App : Application(), KodeinAware {
             val fromJson = MarketBean()
             val tickBean1 = MarketBean.TickBean()
 
-            if (type) {
-
-                tickBean1.open = ""
-                tickBean1.close = "1"
-                tickBean1.amount = ""
-                tickBean1.cch = "market_mftkrwt_ticker"
-                tickBean1.rose = "0"
-                fromJson.setCh("market_mftkrwt_ticker")
-                type = false
-
-            } else {
-                tickBean1.open = fromJso.tick.open
-                tickBean1.close = fromJso.tick.close
-                tickBean1.amount = fromJso.tick.amount
-                tickBean1.high = fromJso.tick.high
-                tickBean1.low = fromJso.tick.low
-                tickBean1.cch = fromJso.channel
-                tickBean1.rose = fromJso.tick.rose
-                fromJson.setCh(fromJso.channel)
-            }
+            tickBean1.open = fromJso.tick.open
+            tickBean1.close = fromJso.tick.close
+            tickBean1.amount = fromJso.tick.amount
+            tickBean1.high = fromJso.tick.high
+            tickBean1.low = fromJso.tick.low
+            tickBean1.cch = fromJso.channel
+            tickBean1.rose = fromJso.tick.rose
+            fromJson.setCh(fromJso.channel)
 
 
             fromJson.setTick(tickBean1)
 
             fromJson.setTs(fromJso.ts.toString())
 
+
             if (null != fromJson.getTick()) {
                 //寻找数据插入还是修改
                 for ((index, indexData) in RateUtli.getPriceList().withIndex()) {
-                    if (index / 3 == 2 && index > 5) {
-                        type = true
-                    }
                     if (indexData.cch == fromJson.getCh()) {
                         fromJson.getTick()?.cch = indexData.cch
                         fromJson.getTick()?.pairName = indexData.pairName
@@ -260,14 +254,19 @@ class App : Application(), KodeinAware {
 
                         //如果是平台币
                         if (RateUtli.getPriceList()[index].pairName == TOKEN) {
-                            //计算行情相应的汇率数据
+                            //计算行情相应的单价
                             RateUtli.getPriceList()[index].close =
-                                RateUtli.getUSDT(RateUtli.getPriceList()[index].close)
-                        }
-                        //计算行情相应的汇率数据
-                        RateUtli.getPriceList()[index].pairToPrice =
-                            RateUtli.selectPairByWeb(RateUtli.getPriceList()[index])
+                                RateUtli.getUSDT(fromJson.getTick()?.close!!)
 
+                            //计算行情相应的汇率数据
+                            RateUtli.getPriceList()[index].pairToPrice =
+                                RateUtli.selectPairByWeb(fromJson.getTick()!!, true)
+
+                        } else {
+                            //计算行情相应的汇率数据
+                            RateUtli.getPriceList()[index].pairToPrice =
+                                RateUtli.selectPairByWeb(fromJson.getTick()!!, false)
+                        }
                         break
                     }
                 }
@@ -277,6 +276,4 @@ class App : Application(), KodeinAware {
             DataBus.postData(EventConstant.quote_Refresh, "")
         }
     }
-
-
 }

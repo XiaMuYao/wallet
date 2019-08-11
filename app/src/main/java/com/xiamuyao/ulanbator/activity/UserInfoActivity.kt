@@ -44,7 +44,7 @@ class UserInfoActivity : BaseActivity<ActivityUserinfoBinding, UserInfoViewModel
 
     fun showDisContract() {
         val builder = AlertDialog.Builder(this).setTitle(getString(R.string.tuochudenglume))
-            .setMessage(getString(R.string.shifoutuichudenglu)).setPositiveButton(getString(R.string.login))
+            .setMessage(getString(R.string.shifoutuichudenglu)).setPositiveButton(getString(R.string.tuichutext))
             { _, _ ->
                 viewModel.logoutNet()
 

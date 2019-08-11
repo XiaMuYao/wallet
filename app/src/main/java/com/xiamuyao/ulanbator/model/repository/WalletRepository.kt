@@ -9,6 +9,7 @@ import com.xiamuyao.ulanbator.network.api.WalletService
 import com.xiamuyao.ulanbator.util.*
 import com.xiamuyao.ulanbator.util.RateUtli.getSelectCurrency
 import com.xiamuyao.ulanbator.utlis.LL
+import com.xiamuyao.ulanbator.utlis.putSpValue
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -106,6 +107,7 @@ class WalletRepository(private var walletService: WalletService) {
             }
             obtainExchangeRate
         }
+
 
     companion object {
 

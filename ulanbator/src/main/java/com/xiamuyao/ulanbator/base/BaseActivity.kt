@@ -10,11 +10,9 @@ import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.gyf.immersionbar.ImmersionBar
+import com.xiamuyao.ulanbator.LibApp
 import com.xiamuyao.ulanbator.R
-import com.xiamuyao.ulanbator.utlis.ActivityStackManager
-import com.xiamuyao.ulanbator.utlis.LL
-
-
+import com.xiamuyao.ulanbator.utlis.*
 
 
 abstract class BaseActivity<V : ViewDataBinding, VM : BaseViewModel> : AppCompatActivity() {
@@ -24,9 +22,34 @@ abstract class BaseActivity<V : ViewDataBinding, VM : BaseViewModel> : AppCompat
 
     open val loadPage: Boolean = true
 
+
+    override fun attachBaseContext(base: Context) {
+        val spValue = LibApp.getContext().getSpValue("SELECITY", -1)
+        var language = ""
+        when (spValue) {
+            1 -> {
+                language = "zh"
+            }
+            2 -> {
+                language = "en"
+
+            }
+            3 -> {
+                language = "ko"
+
+            }
+            4 -> {
+                language = "ja"
+
+            }
+        }
+
+        val attachBaseContext = LanguageUtil.attachBaseContext(base, language)
+        super.attachBaseContext(attachBaseContext)
+    }
+
     @SuppressLint("PrivateResource")
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
         mContext = this
         ActivityStackManager.getInstance().addActivity(this)
         //私有的初始化 Data Binding 和 ViewModel 方法
@@ -43,7 +66,10 @@ abstract class BaseActivity<V : ViewDataBinding, VM : BaseViewModel> : AppCompat
         initBaseLiveDataCallBack()
 
         setImmersionBar()
+        super.onCreate(savedInstanceState)
+
     }
+
 
     open fun setImmersionBar() {
         ImmersionBar.with(this)

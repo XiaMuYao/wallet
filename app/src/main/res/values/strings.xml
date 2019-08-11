@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">Max Flow</string>
     <string name="titleBarLeftText">返回</string>
-    <string name="item_skit_text">Christina Photo by @FransLanting Wonderful color ! To let tourists get a better view，the bus drove slowly.What a beautiful town！</string>
     <string name="sum">累计总收益</string>
     <string name="sumprofit">累计邀请收益</string>
     <string name="sumMarkMoney">累计理财收益</string>
@@ -173,7 +172,6 @@
     <string name="zuoyiyaoqingshouyi">昨日邀请收益</string>
     <string name="fanyongji">返佣记录</string>
     <string name="caozuoanniyu">操作</string>
-    <string name="xiugaidenglumima">修改登录密码</string>
     <string name="xiugaizijinmimia">修改资金密码</string>
     <string name="yijingmane">已满额</string>
     <string name="qingtianxieyaoqingma">请填写邀请码</string>
@@ -217,5 +215,32 @@
     <string name="jiaofei">缴费</string>
     <string name="yiliao">医疗</string>
     <string name="quaiinqinabao">全新数字货币钱包</string>
+    <string name="banbengengxin">版本更新!</string>
+    <string name="shifouyaogengxin">是否要进行更新?</string>
+    <string name="tuichutext">退出?</string>
+    <string name="xiugaizijinmimiawenan">修改资金密码后24h内禁止任何与交易相关的操作如：提现、交易、购买理财、即使兑换等）</string>
+    <string name="qingshuruliuweimima">请输入6位数字密码</string>
+    <string name="qingzaicishuruzijinmima">再次输入资金密码</string>
+    <string name="xinzijinmima">新资金密码</string>
+    <string name="querenxinxmima">确认新密码</string>
+    <string name="shoujihaoma">手机号码</string>
+    <string name="shoujiyanzhengma">手机验证码</string>
+    <string name="shourushoujiyanzhengma">输入手机验证码</string>
+    <string name="xiugaizijinmima">修改资金密码</string>
+    <string name="xiugaidenglumima">修改登录密码</string>
+    <string name="yuanlaidenglumima">原登录密码</string>
+    <string name="yuandenlimima">原登录密码</string>
+    <string name="xinddenglumima">新登录密码</string>
+    <string name="xincendelumima">新登录密码</string>
+    <string name="querenxinmimamamam">确认新密码</string>
+    <string name="zaicishuruxinmmmima">再次输入新登录密码</string>
+    <string name="wanchengwacccheng">完成</string>
+    <string name="fasongxiangqing">发送详情</string>
+    <string name="daikaifangjingqingqidai">待开放，敬请期待！</string>
+    <string name="shezhidinglumima">设置登录密码</string>
+    <string name="querendenglumima">确认登录密码</string>
+
+    <string name="querengoumaishangpin">确认购买?</string>
+    <string name="querenshfoyaogoumai">确认是否要购买</string>
 
 </resources>

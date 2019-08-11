@@ -7,7 +7,7 @@ import com.xiamuyao.ulanbator.network.api.UserService
 import com.xiamuyao.ulanbator.util.CityUtli.getLanguage
 import com.xiamuyao.ulanbator.util.CityUtli.geyLanguageBySys
 import com.xiamuyao.ulanbator.util.Md5
-import com.xiamuyao.ulanbator.util.putSpValue
+import com.xiamuyao.ulanbator.utlis.putSpValue
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -17,7 +17,9 @@ class UserRepository(private var userService: UserService) {
         val tempList = ObservableArrayList<CityListBean.DataBean.ListBean>()
         val cityList = userService.getCityList()
         cityList.data.list.forEach {
+
             val language = getLanguage()
+
             when (language) {
                 1 -> {
                     it.showCityName = it.titleCN
@@ -113,6 +115,17 @@ class UserRepository(private var userService: UserService) {
         val transactionPassword = userService.quit()
         return@withContext transactionPassword
     }
+
+    /**
+     * 获取最新版本号
+     */
+    suspend fun getTheLatestVersionNumber() = withContext(Dispatchers.IO) {
+        val obtainExchangeRate = userService.getTheLatestVersionNumber()
+        if (obtainExchangeRate.result.returnCode == "0") {
+        }
+        obtainExchangeRate
+    }
+
 
     companion object {
 

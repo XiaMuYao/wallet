@@ -8,8 +8,12 @@ import com.xiamuyao.ulanbator.R
 import com.xiamuyao.ulanbator.activity.MessageListInfoActivity
 import com.xiamuyao.ulanbator.base.BaseFragment
 import com.xiamuyao.ulanbator.base.adapter.BaseObservableNoChildClickAdapter
+import com.xiamuyao.ulanbator.constant.EventConstant
+import com.xiamuyao.ulanbator.constant.EventConstant.LaunageSet
 import com.xiamuyao.ulanbator.databinding.FragmentFindmessagelistBinding
 import com.xiamuyao.ulanbator.extension.defaultStyle
+import com.xiamuyao.ulanbator.utlis.DataBus
+import com.xiamuyao.ulanbator.utlis.DataBusObservable
 import com.xiamuyao.ulanbator.viewmodel.FindMessageListViewModel
 
 
@@ -27,9 +31,18 @@ class FindMessageListFragment : BaseFragment<FragmentFindmessagelistBinding, Fin
     }
 
     override fun initVVMObserver() {
+
+        DataBus.observeData(this, EventConstant.LaunageSet, object : DataBusObservable<String> {
+            override fun dataBusDataCallBack(it: String) {
+                viewModel.initData()
+            }
+        })
     }
 
-
+    override fun onResume() {
+        super.onResume()
+//        viewModel.initData()
+    }
     override fun initContentView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): Int {
         return R.layout.fragment_findmessagelist
     }
@@ -41,6 +54,7 @@ class FindMessageListFragment : BaseFragment<FragmentFindmessagelistBinding, Fin
     override fun initViewModel(): Class<FindMessageListViewModel> {
         return FindMessageListViewModel::class.java
     }
+
 
     companion object {
         fun newInstance(bundle: Bundle?): FindMessageListFragment {

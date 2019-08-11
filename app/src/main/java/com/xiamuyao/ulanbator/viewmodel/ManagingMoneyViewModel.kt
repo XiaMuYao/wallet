@@ -10,7 +10,6 @@ import com.xiamuyao.ulanbator.util.BigDecimalUtils
 import com.xiamuyao.ulanbator.util.RateUtli.getRateList
 import com.xiamuyao.ulanbator.util.UsetUtli
 import com.xiamuyao.ulanbator.util.businessHandler
-import com.xiamuyao.ulanbator.util.getSpValue
 import org.kodein.di.generic.instance
 
 class ManagingMoneyViewModel(application: Application) : BaseViewModel(application) {

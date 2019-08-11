@@ -150,9 +150,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="70dp"
                     android:hint="@string/qingshuruzhuanzhangjine"
-
                     android:inputType="numberDecimal"
-
                     android:text="@={transferaccountsViewModel.money}" />
 
                 <View

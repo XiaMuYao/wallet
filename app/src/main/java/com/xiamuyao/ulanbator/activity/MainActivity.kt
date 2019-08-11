@@ -1,19 +1,18 @@
 package com.xiamuyao.ulanbator.activity
 
 import android.Manifest
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.ImageView
+import androidx.annotation.NonNull
 import androidx.core.app.ActivityCompat
-import androidx.core.net.toUri
 import androidx.databinding.ViewDataBinding
-import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.Observer
 import androidx.viewpager.widget.ViewPager
-import com.google.gson.Gson
+import com.allenliu.versionchecklib.v2.AllenVersionChecker
+import com.allenliu.versionchecklib.v2.builder.UIData
 import com.xiamuyao.ulanbator.BR
 import com.xiamuyao.ulanbator.R
 import com.xiamuyao.ulanbator.adapter.fragmentAdapter.SectionsPagerAdapter
@@ -25,19 +24,8 @@ import com.xiamuyao.ulanbator.base.BaseViewModel
 import com.xiamuyao.ulanbator.constant.EventConstant
 import com.xiamuyao.ulanbator.constant.ProjectConstant
 import com.xiamuyao.ulanbator.fragment.*
-import com.xiamuyao.ulanbator.model.bean.MarketBean
 import com.xiamuyao.ulanbator.utlis.DataBus
 import com.xiamuyao.ulanbator.utlis.DataBusObservable
-import com.xiamuyao.ulanbator.utlis.LL
-import com.zhangke.websocket.SimpleListener
-import com.zhangke.websocket.WebSocketHandler
-import com.zhangke.websocket.WebSocketSetting
-import com.zhangke.websocket.response.ErrorResponse
-import com.zhangke.websocket.util.GzipUtil
-import org.java_websocket.client.WebSocketClient
-import org.java_websocket.handshake.ServerHandshake
-import java.net.URI
-import java.nio.ByteBuffer
 
 class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), ViewPager.OnPageChangeListener,
     View.OnClickListener {
@@ -51,6 +39,8 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), ViewPag
             MyFragment.newInstance(null)
         )
     }
+
+
 
     var permissions = arrayOf<String>(
         Manifest.permission.CAMERA,
@@ -82,9 +72,9 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), ViewPag
         binding.include2.mainBottomTabFour.setOnClickListener(this)
         binding.include2.mainBottomTabFive.setOnClickListener(this)
         selectorBottomImage(viewModel.fragmentIndex.value!!)
-        ActivityCompat.requestPermissions(this,permissions, 1)
-
+        ActivityCompat.requestPermissions(this, permissions, 10010)
     }
+
 
     override fun onPageScrollStateChanged(state: Int) {
 
@@ -102,25 +92,54 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), ViewPag
         //行情 - 改变汇率
         DataBus.observeData(this, EventConstant.quote_Refresh, object : DataBusObservable<String> {
             override fun dataBusDataCallBack(it: String) {
-                if (viewModel.loadOk.value!!){
+                if (viewModel.loadOk.value!!) {
                     viewModel.getExchangeRateData()
                 }
             }
         })
 
+        viewModel.updata.observe(this, Observer {
+            appUpdata()
+        })
+    }
 
+    fun appUpdata() {
+
+        val value = viewModel.updata.value!!
+
+        if (ProjectConstant.APP_VERSION < value.versionNoAndroid.toInt()) {
+
+            AllenVersionChecker
+                .getInstance()
+                .downloadOnly(
+                    UIData.create()
+                        .setContent(getString(R.string.banbengengxin))
+                        .setTitle(
+                            getString(R.string.shifouyaogengxin)
+                        )
+                        .setDownloadUrl(value.androidUrl)
+                )
+                .executeMission(this)
+        }
+    }
+
+
+    override fun onRequestPermissionsResult(requestCode: Int, @NonNull permissions: Array<String>, @NonNull grantResults: IntArray) {
+        when (requestCode) {
+            10010 -> {
+                viewModel.appUpdataViewModel()
+            }
+        }
 
     }
 
     override fun initData() {
         with(binding.viewPager) {
             adapter = markerAdapter
-            currentItem = viewModel.fragmentIndex.value!!
             addOnPageChangeListener(this@MainActivity)
         }
         //获取汇率数据
         viewModel.getExchangeRateData()
-
     }
 
 

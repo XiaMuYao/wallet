@@ -285,8 +285,8 @@ object BindingAdapters {
     @BindingAdapter("currencyFormattingAndPair")
     @JvmStatic
     fun currencyFormattingAndPair(view: TextView, type: String) {
-
-        var tempPair = ArithUtil.convertNumber3(type,4)
+        var tempStr = type
+        var tempPair = ArithUtil.convertNumber3(tempStr, 4)
 //        人民币￥，美金$，韩币₩，日元¥
         val tempPrirName = getSelectCurrency()
         when {
@@ -303,7 +303,6 @@ object BindingAdapters {
             }
             tempPrirName.contains("KRW") -> {
                 view.text = "₩$tempPair KRW "
-
             }
         }
 

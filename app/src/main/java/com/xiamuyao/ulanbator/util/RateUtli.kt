@@ -9,13 +9,16 @@ import com.xiamuyao.ulanbator.constant.EventConstant.PRICE_LIST
 import com.xiamuyao.ulanbator.constant.EventConstant.RATE_DATA
 import com.xiamuyao.ulanbator.constant.EventConstant.SELECT_CITY
 import com.xiamuyao.ulanbator.constant.EventConstant.SELECT_CURRENCY
-import com.xiamuyao.ulanbator.constant.ProjectConstant
 import com.xiamuyao.ulanbator.constant.ProjectConstant.USDTToExchangeRate
 import com.xiamuyao.ulanbator.constant.ProjectConstant.inMemoryCurrency
 import com.xiamuyao.ulanbator.model.bean.MarketBean
 import com.xiamuyao.ulanbator.model.bean.response.RateBean
-import com.xiamuyao.ulanbator.net.BaseResponse
+import com.xiamuyao.ulanbator.utlis.getSpValue
+import com.xiamuyao.ulanbator.utlis.putSpValue
 import java.util.*
+import kotlin.math.ceil
+import kotlin.math.floor
+import kotlin.math.pow
 
 object RateUtli {
 
@@ -25,9 +28,17 @@ object RateUtli {
      */
     fun getUSDT(value: String): String {
         var tempvalue = value
-        val find = getRateList().find { it.rateName == "USDTKRW" }
-        if (find == null) return "1"
-        val div = BigDecimalUtils.div(tempvalue, find?.rate!!)
+
+        if (getSelectCurrency() == "KRW") {
+            getPriceList().forEach {
+                if (it.pairName == "MFT") {
+                    it?.toKRW = it?.close!!
+                }
+            }
+        }
+
+        val find = getRateList().find { it.rateName == "USDTKRW" } ?: return "1"
+        val div = BigDecimalUtils.div(tempvalue, find.rate!!)
         tempvalue = div
         return tempvalue
     }
@@ -36,19 +47,20 @@ object RateUtli {
      * 根据用户选择的计价货币 计算汇率
      */
     fun selectPairByWeb(
-        value: MarketBean.TickBean
+        value: MarketBean.TickBean,
+        pingtai: Boolean
     ): String {
         //获取当前货币价格
         val tempPrice = value.close
 
         var lastPrice = ""
-//        if (pingtai) {
-//
+        if (pingtai && getSelectCurrency() == "KRW") {
+
 ////            //平台币 转换 法币(韩元)
-////            val find = getDefPriceList().find { it.pairName == "MFT" }
+            val find = getPriceList().find { it.pairName == "MFT" }
 ////            //韩币价格
-////            val mul = BigDecimalUtils.mul(find?.close!!, tempPrice)
-////            //韩币 -> USDT
+//            val mul = BigDecimalUtils.mul(find?.close!!, tempPrice)
+//            //韩币 -> USDT
 ////            if (getUSDTToExchangeRate().isEmpty()) return ""
 ////            //当前计价货币 =  上一步 USDT
 ////            lastPrice = BigDecimalUtils.mul(mul, getUSDTToExchangeRate())
@@ -57,19 +69,42 @@ object RateUtli {
 //            if (getUSDTToExchangeRate().isEmpty()) return ""
 //
 //            //当前货币价格 * 当前货币 * USDT
-//            lastPrice = BigDecimalUtils.mul(tempPrice, getUSDTToExchangeRate())
-//
-//            return lastPrice
-//        } else {
-        //BTC to USDT
-        if (getUSDTToExchangeRate().isEmpty()) return ""
+//            lastPrice = BigDecimalUtils.mul(find!!.toKRW, "1")
+//            lastPrice = mul
 
-        //当前货币价格 * 当前货币 * USDT
-        lastPrice = BigDecimalUtils.mul(tempPrice, getUSDTToExchangeRate())
+            return find?.toKRW!!
+        } else {
+            //BTC to USDT
+            if (getUSDTToExchangeRate().isEmpty()) return ""
 
-        return lastPrice
-//        }
+            //当前货币价格 * 当前货币 * USDT
+            lastPrice = BigDecimalUtils.mul(tempPrice, getUSDTToExchangeRate())
 
+            return lastPrice
+        }
+
+    }
+
+    fun RoundDown(num: String, pow: Int): String {
+        var tempnum = num.toDouble()
+        try {
+            val powNum = 10.0.pow(pow.toDouble())
+            var ret = (tempnum.toBigDecimal() * powNum.toBigDecimal()).toDouble()
+
+            //1.23456を小数点以下4桁表示なら1.2345 .
+            //-1.23456を小数点以下4桁表示なら-1.2345 .
+            ret = if (tempnum > 0.0) {
+                //正の数の場合は切り捨て.
+                floor(ret)
+            } else {
+                //負の数の場合は切り上げ.
+                ceil(ret)
+            }
+
+            return (ret / powNum).toString()
+        } catch (e: Exception) {
+        }
+        return "0.0"
     }
 
     /**
@@ -263,7 +298,6 @@ object RateUtli {
         mftkrwt.cch = "market_mftkrwt_ticker"
         mftkrwt.pairName = "MFT"
         mftkrwt.pairAndToName = "MFTKRWT"
-        mftkrwt.close = "1"
 
         val observableArrayList = ObservableArrayList<MarketBean.TickBean>()
 

@@ -48,22 +48,22 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    tools:text="1.9 EOS"
                     android:layout_toLeftOf="@+id/textview4"
-                    android:textColor="#fff"
                     android:text="@{sendinfoViewModel.money}"
-                    android:textSize="14dp" />
+                    android:textColor="#fff"
+                    android:textSize="14dp"
+                    tools:text="1.9 EOS" />
 
                 <TextView
                     android:id="@+id/textview4"
-                    android:layout_alignParentRight="true"
                     android:layout_width="wrap_content"
-                    tools:text="ESO"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:text="@{sendinfoViewModel.pairName}"
                     android:textColor="#fff"
-                    android:textSize="14dp" />
+                    android:textSize="14dp"
+                    tools:text="ESO" />
 
                 <View
                     android:layout_width="match_parent"
@@ -81,6 +81,7 @@
 
 
                 <TextView
+                    android:id="@+id/toAddress"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
@@ -93,11 +94,13 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    tools:text="1.9 EOS"
-                    android:textColor="#fff"
+                    android:layout_marginStart="70dp"
+                    android:layout_toEndOf="@+id/toAddress"
                     android:text="@{sendinfoViewModel.address}"
-
-                    android:textSize="14dp" />
+                    android:textColor="#fff"
+                    android:textSize="14dp"
+                    android:gravity="right"
+                    tools:text="45644123123123124" />
 
                 <View
                     android:layout_width="match_parent"
@@ -109,10 +112,10 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="65dp"
-                app:setViewShowHide="@{sendinfoViewModel.type}"
                 android:layout_marginLeft="@dimen/dimens_15dp"
                 android:layout_marginRight="@dimen/dimens_15dp"
-                android:background="@color/pageBackground">
+                android:background="@color/pageBackground"
+                app:setViewShowHide="@{sendinfoViewModel.type}">
 
 
                 <TextView
@@ -128,10 +131,10 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    tools:text="1.9 EOS"
-                    android:textColor="#fff"
                     android:text="@{sendinfoViewModel.memoAddress}"
-                    android:textSize="14dp" />
+                    android:textColor="#fff"
+                    android:textSize="14dp"
+                    tools:text="1.9 EOS" />
 
                 <View
                     android:layout_width="match_parent"
@@ -160,23 +163,23 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    tools:text="1.9"
+                    android:layout_toLeftOf="@+id/textview1"
                     android:text="@{sendinfoViewModel.userSymbolFeeRate}"
                     android:textColor="#fff"
-                    android:layout_toLeftOf="@+id/textview1"
-                    android:textSize="14dp" />
+                    android:textSize="14dp"
+                    tools:text="1.9" />
 
 
                 <TextView
                     android:id="@+id/textview1"
-                    android:layout_alignParentRight="true"
                     android:layout_width="wrap_content"
-                    tools:text="ESO"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:text="@{sendinfoViewModel.pairName}"
                     android:textColor="#fff"
-                    android:textSize="14dp" />
+                    android:textSize="14dp"
+                    tools:text="ESO" />
             </RelativeLayout>
 
 
@@ -210,15 +213,16 @@
                     android:text="@={sendinfoViewModel.fundPassword}"
                     android:textColor="#FFFFFF"
                     android:textColorHint="#5D5C71"
+                    android:inputType="textPassword"
                     android:textCursorDrawable="@drawable/shape_ed_color"
                     android:textSize="14dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:onClick="@{() -> sendinfoViewModel.forgetPassword()}"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
+                    android:onClick="@{() -> sendinfoViewModel.forgetPassword()}"
                     android:text="@string/fopsd"
                     android:textColor="@color/phoneCode"
                     android:textSize="14dp" />
@@ -265,8 +269,8 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:text="@string/getphoneCode"
                     android:onClick="@{() -> sendinfoViewModel.sendCode()}"
+                    android:text="@string/getphoneCode"
                     android:textColor="@color/phoneCode"
                     android:textSize="14dp" />
 
@@ -314,13 +318,13 @@
             android:layout_height="56dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            app:setViewShowHide="@{sendinfoViewModel.showOrHideDialog}"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:setViewShowHide="@{sendinfoViewModel.showOrHideDialog}" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

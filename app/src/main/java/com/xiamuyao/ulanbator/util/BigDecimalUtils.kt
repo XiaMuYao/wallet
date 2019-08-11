@@ -44,7 +44,8 @@ object BigDecimalUtils {
     fun mul(v1: String, v2: String): String {
         val b1 = BigDecimal(v1).stripTrailingZeros()
         val b2 = BigDecimal(v2).stripTrailingZeros()
-        return b1.multiply(b2).stripTrailingZeros().toPlainString()
+        val toPlainString = b1.multiply(b2).stripTrailingZeros().toPlainString()
+        return   toPlainString
     }
 
     /**
@@ -56,12 +57,15 @@ object BigDecimalUtils {
      * @return 两个参数的商
      */
     fun div(v1: String, v2: String): String {
-        var v11 = v1.replace(",","") .toBigDecimal().stripTrailingZeros().toPlainString()
-        var v22 = v2.replace(",","") .toBigDecimal().stripTrailingZeros().toPlainString()
+        if (v1.isNullOrEmpty() || v2.isNullOrEmpty()) return "1"
+        var v11 = v1.replace(",", "").toBigDecimal().stripTrailingZeros().toPlainString()
+        var v22 = v2.replace(",", "").toBigDecimal().stripTrailingZeros().toPlainString()
 
         val b1 = BigDecimal(v11)
         val b2 = BigDecimal(v22)
-        return b1.divide(b2,10, RoundingMode.HALF_UP).stripTrailingZeros().toPlainString()
+        val toPlainString = b1.divide(b2, 10, RoundingMode.HALF_UP).stripTrailingZeros().toPlainString()
+        return         toPlainString
+
     }
 
     /**

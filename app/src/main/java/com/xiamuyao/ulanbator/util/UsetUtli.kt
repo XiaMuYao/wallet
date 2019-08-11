@@ -1,6 +1,8 @@
 package com.xiamuyao.ulanbator.util
 
 import com.xiamuyao.ulanbator.App
+import com.xiamuyao.ulanbator.utlis.getSpValue
+import com.xiamuyao.ulanbator.utlis.putSpValue
 
 object UsetUtli {
 

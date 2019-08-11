@@ -8,7 +8,7 @@ import com.xiamuyao.ulanbator.activity.SendInfoActivity
 import com.xiamuyao.ulanbator.base.BaseViewModel
 import com.xiamuyao.ulanbator.util.BigDecimalUtils
 import com.xiamuyao.ulanbator.util.UsetUtli
-import com.xiamuyao.ulanbator.util.getSpValue
+import com.xiamuyao.ulanbator.utlis.getSpValue
 
 class TransferAccountsViewModel(application: Application) : BaseViewModel(application) {
 
@@ -18,6 +18,11 @@ class TransferAccountsViewModel(application: Application) : BaseViewModel(applic
 
     var pairType = MutableLiveData<String>()
     var pairName = MutableLiveData<String>()
+
+    //最大最小手续费
+    var symbolFeeMax = MutableLiveData<String>()
+    var symbolFeeMin = MutableLiveData<String>()
+
     var type = MutableLiveData<Boolean>()
 
     var address = MutableLiveData<String>()
@@ -39,13 +44,26 @@ class TransferAccountsViewModel(application: Application) : BaseViewModel(applic
 
     }
 
+    /**
+     * 计算手续费
+     */
     fun calculationFee() {
         if (money.value.isNullOrEmpty()) {
             userSymbolFeeRate.value = ""
             return
         }
+
         val run = BigDecimalUtils.run { mul(msymbolFeeRate.value!!.replace(",", ""), "0.01") }
-        userSymbolFeeRate.value = BigDecimalUtils.mul(money.value?.replace(",","")!!,run)
+        val mul = BigDecimalUtils.mul(money.value?.replace(",", "")!!, run)
+        
+        if (BigDecimalUtils.compare(mul, symbolFeeMax.value!!)) {
+            userSymbolFeeRate.value = symbolFeeMax.value!!
+            return
+        } else if (!BigDecimalUtils.compare(mul, symbolFeeMin.value!!)) {
+            userSymbolFeeRate.value = symbolFeeMin.value!!
+            return
+        }
+        userSymbolFeeRate.value = mul
 
     }
 
@@ -66,8 +84,6 @@ class TransferAccountsViewModel(application: Application) : BaseViewModel(applic
                 "pairName" to pairName.value,
                 "pairType" to pairType.value,
                 "type" to type.value
-
-
             )
         )
     }

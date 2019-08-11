@@ -2,7 +2,6 @@ package com.xiamuyao.ulanbator.activity
 
 import android.app.AlertDialog
 import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
@@ -10,7 +9,6 @@ import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.text.style.ForegroundColorSpan
 import android.view.View
-import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.Observer
 import com.xiamuyao.ulanbator.BR
@@ -24,7 +22,6 @@ import com.xiamuyao.ulanbator.utlis.DataBusObservable
 import com.xiamuyao.ulanbator.view.CustomPopupWindow
 import com.xiamuyao.ulanbator.viewmodel.ContractIntoViewModel
 import androidx.core.content.ContextCompat
-import com.xiamuyao.ulanbator.util.BigDecimalUtils
 import kotlinx.android.synthetic.main.activity_contractinto.*
 
 
@@ -40,7 +37,6 @@ class ContractIntoActivity : BaseActivity<ActivityContractintoBinding, ContractI
             { finish() },
             titleBarColor = R.color.touming
         )
-
 
         viewModel.productId.value = intent.getStringExtra("productId")
         viewModel.interestMax.value = intent.getStringExtra("interestMax")
@@ -65,6 +61,8 @@ class ContractIntoActivity : BaseActivity<ActivityContractintoBinding, ContractI
         binding.editText.addTextChangedListener {
             if (it.isNullOrEmpty()) {
                 viewModel.nowSelectPrice.value = "0"
+                viewModel.expectedReturn.value = "0"
+                setData()
                 return@addTextChangedListener
             }
             viewModel.calculateTheAmountAfterTheInput(viewModel.inoutMoney.value?.toBigDecimal()!!)
@@ -83,6 +81,14 @@ class ContractIntoActivity : BaseActivity<ActivityContractintoBinding, ContractI
 
 
     override fun initVVMObserver() {
+
+        DataBus.observeData(this, EventConstant.finsh, object : DataBusObservable<String> {
+            override fun dataBusDataCallBack(it: String) {
+              viewModel.finishStatus.call()
+            }
+        })
+
+
         viewModel.productId.observe(this, Observer {
             viewModel.getPageData(it)
         })
@@ -130,7 +136,9 @@ class ContractIntoActivity : BaseActivity<ActivityContractintoBinding, ContractI
         viewModel.disContract.observe(this, Observer {
             showDisContract()
         })
-
+        viewModel.showBuyDialog.observe(this, Observer {
+            showBuyDialog()
+        })
     }
 
     private fun setData() {
@@ -229,7 +237,7 @@ class ContractIntoActivity : BaseActivity<ActivityContractintoBinding, ContractI
                 getString(R.string.tiqianzhuanchushouxuwei) +
                         viewModel.thisleaveDay.value + "天" +
                         getString(R.string.jieyuejieyuejieyu) +
-                        viewModel.shouyiText.value +
+                        viewModel.leaveRateViewModel.value +"%"+
                         getString(R.string.shoufuweijisuan))
 
 
@@ -275,6 +283,20 @@ class ContractIntoActivity : BaseActivity<ActivityContractintoBinding, ContractI
             }
         builder.create().show()
     }
+
+    fun showBuyDialog() {
+        val builder = AlertDialog.Builder(this).setTitle(getString(R.string.querengoumaishangpin))
+            .setMessage(getString(R.string.querenshfoyaogoumai)).setPositiveButton(getString(R.string.queding))
+            { _, _ ->
+                viewModel.buyProDuctNet()
+            }
+            .setNegativeButton(getString(R.string.quxia)) { dialogInterface, _ ->
+                dialogInterface.dismiss()
+            }
+        builder.create().show()
+    }
+
+
 
     override fun initContentView(savedInstanceState: Bundle?): Int {
         return R.layout.activity_contractinto

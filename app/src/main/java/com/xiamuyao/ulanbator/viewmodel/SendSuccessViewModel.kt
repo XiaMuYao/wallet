@@ -1,10 +1,13 @@
 package com.xiamuyao.ulanbator.viewmodel
 
 import android.app.Application
+import androidx.core.os.bundleOf
 import androidx.lifecycle.MutableLiveData
 import com.xiamuyao.ulanbator.activity.MainActivity
 import com.xiamuyao.ulanbator.base.BaseViewModel
+import com.xiamuyao.ulanbator.constant.EventConstant.finsh
 import com.xiamuyao.ulanbator.utlis.ActivityStackManager
+import com.xiamuyao.ulanbator.utlis.DataBus
 
 class SendSuccessViewModel(application: Application) : BaseViewModel(application) {
 
@@ -19,8 +22,9 @@ class SendSuccessViewModel(application: Application) : BaseViewModel(application
     }
 
     fun finshthis() {
-        startActivity(MainActivity::class.java)
-        ActivityStackManager.getInstance().finishAllActivity()
+//        startActivity(MainActivity::class.java, bundleOf("index" to 3))
+//        ActivityStackManager.getInstance().finishAllActivity()
+        DataBus.postData(finsh,finsh)
         finishStatus.call()
     }
 }

@@ -39,7 +39,6 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:text="@string/rehister"
             android:textColor="#fff"
             android:textSize="@dimen/dimens_20dp"
@@ -119,11 +118,11 @@
             android:layout_height="44dp"
             android:layout_marginStart="32dp"
             android:background="@null"
-            android:maxLength="12"
-
             android:imeOptions="actionNext"
-            android:singleLine="true"
+
+            android:maxLength="12"
             android:nextFocusForward="@+id/editText3"
+            android:singleLine="true"
 
             android:text="@={registerViewModel.phoneNum}"
             android:textColor="#FFFFFF"
@@ -136,7 +135,7 @@
 
         <TextView
             style="@style/loginTitle"
-            android:text="手机验证码"
+            android:text="@string/phoneNumberCode"
             app:layout_constraintStart_toStartOf="@+id/guideline145"
             app:layout_constraintTop_toTopOf="@+id/guideline156" />
 
@@ -146,13 +145,13 @@
             android:layout_width="0dp"
             android:layout_height="44dp"
             android:background="@null"
+            android:imeOptions="actionNext"
+            android:nextFocusForward="@+id/pwdpwdpwdpwd"
+            android:singleLine="true"
+
             android:text="@={registerViewModel.phoneCode}"
             android:textColor="#FFFFFF"
             android:textColorHint="#5D5C71"
-
-            android:imeOptions="actionNext"
-            android:singleLine="true"
-            android:nextFocusForward="@+id/pwdpwdpwdpwd"
 
 
             android:textCursorDrawable="@drawable/shape_ed_color"
@@ -212,7 +211,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:onClick="@{() -> registerViewModel.gotoPrivacyActivity()}"
-            android:text="隐私政策"
+            android:text="@string/privacyPolicy"
             android:textColor="#fff"
             app:layout_constraintBaseline_toBaselineOf="@+id/btnLogin"
             app:layout_constraintStart_toEndOf="@+id/imageView5" />
@@ -316,7 +315,7 @@
 
         <TextView
             style="@style/loginTitle"
-            android:text="登录密码"
+            android:text="@string/loginPsd"
             app:layout_constraintStart_toStartOf="@+id/guideline145"
             app:layout_constraintTop_toTopOf="@+id/guideline159" />
 
@@ -339,17 +338,17 @@
             android:layout_width="0dp"
             android:layout_height="44dp"
             android:background="@null"
+            android:imeOptions="actionNext"
+            android:inputType="textPassword"
+            android:nextFocusForward="@+id/pwdpwdpwdpwdpwdpwdpwpd"
+            android:singleLine="true"
             android:text="@={registerViewModel.accountPsd}"
             android:textColor="#FFFFFF"
+
+
             android:textColorHint="#5D5C71"
             android:textCursorDrawable="@drawable/shape_ed_color"
             android:textSize="14dp"
-android:inputType="textPassword"
-
-
-            android:imeOptions="actionNext"
-            android:singleLine="true"
-            android:nextFocusForward="@+id/pwdpwdpwdpwdpwdpwdpwpd"
 
 
             app:layout_constraintBottom_toTopOf="@+id/guideline161"
@@ -373,7 +372,7 @@ android:inputType="textPassword"
 
         <TextView
             style="@style/loginTitle"
-            android:text="确认密码"
+            android:text="@string/aginPsd"
             app:layout_constraintStart_toStartOf="@+id/guideline145"
             app:layout_constraintTop_toTopOf="@+id/guideline162" />
 
@@ -390,17 +389,17 @@ android:inputType="textPassword"
             android:layout_width="0dp"
             android:layout_height="44dp"
             android:background="@null"
+            android:imeOptions="actionNext"
+            android:inputType="textPassword"
+            android:nextFocusForward="@+id/yaoqingma"
+            android:singleLine="true"
             android:text="@={registerViewModel.accountPsdConfirm}"
             android:textColor="#FFFFFF"
+
+
             android:textColorHint="#5D5C71"
             android:textCursorDrawable="@drawable/shape_ed_color"
             android:textSize="14dp"
-            android:inputType="textPassword"
-
-
-            android:imeOptions="actionNext"
-            android:singleLine="true"
-            android:nextFocusForward="@+id/yaoqingma"
 
 
             app:layout_constraintBottom_toTopOf="@+id/guideline164"
@@ -424,7 +423,7 @@ android:inputType="textPassword"
 
         <TextView
             style="@style/loginTitle"
-            android:text="邀请码(选填)"
+            android:text="@string/InvitationCode"
             app:layout_constraintStart_toStartOf="@+id/guideline145"
             app:layout_constraintTop_toTopOf="@+id/guideline165" />
 
@@ -441,12 +440,12 @@ android:inputType="textPassword"
             android:layout_width="0dp"
             android:layout_height="44dp"
             android:background="@null"
+            android:hint="@string/qingtianxieyaoqingma"
             android:text="@={registerViewModel.invitationCode}"
             android:textColor="#FFFFFF"
             android:textColorHint="#5D5C71"
             android:textCursorDrawable="@drawable/shape_ed_color"
             android:textSize="14dp"
-            android:hint="@string/qingtianxieyaoqingma"
             app:layout_constraintBottom_toTopOf="@+id/guideline167"
             app:layout_constraintEnd_toStartOf="@+id/guideline147"
             app:layout_constraintStart_toStartOf="@+id/guideline145"
@@ -484,18 +483,19 @@ android:inputType="textPassword"
             app:layout_constraintLeft_toLeftOf="@+id/guideline145"
             app:layout_constraintRight_toRightOf="@+id/guideline147"
             app:layout_constraintTop_toBottomOf="@id/guideline167" />
+
         <ProgressBar
             android:layout_width="56dp"
             android:layout_height="56dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            app:setViewShowHide="@{registerViewModel.showOrHideDialog}"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:setViewShowHide="@{registerViewModel.showOrHideDialog}" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

@@ -5,14 +5,16 @@ import androidx.core.os.bundleOf
 import androidx.lifecycle.MutableLiveData
 import com.xiamuyao.ulanbator.App
 import com.xiamuyao.ulanbator.R
+import com.xiamuyao.ulanbator.activity.FirstSetMonPsdActivity
 import com.xiamuyao.ulanbator.activity.ForgetActivity
 import com.xiamuyao.ulanbator.activity.SendSuccessActivity
+import com.xiamuyao.ulanbator.activity.SetMoneyPsdActivity
 import com.xiamuyao.ulanbator.base.BaseViewModel
 import com.xiamuyao.ulanbator.model.repository.UserRepository
 import com.xiamuyao.ulanbator.model.repository.WalletRepository
 import com.xiamuyao.ulanbator.util.businessHandler
-import com.xiamuyao.ulanbator.util.getSpValue
 import com.xiamuyao.ulanbator.utlis.SingleLiveEvent
+import com.xiamuyao.ulanbator.utlis.getSpValue
 import org.kodein.di.generic.instance
 
 class SendInfoViewModel(application: Application) : BaseViewModel(application) {
@@ -57,7 +59,7 @@ class SendInfoViewModel(application: Application) : BaseViewModel(application) {
     }
 
     fun forgetPassword() {
-        startActivity(ForgetActivity::class.java)
+        startActivity(SetMoneyPsdActivity::class.java)
     }
 
     fun send() {
@@ -68,16 +70,17 @@ class SendInfoViewModel(application: Application) : BaseViewModel(application) {
             }else{
                 address.value!!
             }
+            showOrHideDialog.value = true
+
             val modifyTheFundPassword =
                 repository.transfer(
                     pairType.value!!,
                     phoneCode.value!!,
                     addressd,
-                    money.value!!,
+                    money.value!!.replace(",",""),
                     fundPassword.value!!
                 )
 
-            showOrHideDialog.value = true
             businessHandler(modifyTheFundPassword) {
                 if (modifyTheFundPassword.result.returnCode == "0") {
                     startActivity(

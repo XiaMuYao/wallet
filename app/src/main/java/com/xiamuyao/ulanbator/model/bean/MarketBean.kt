@@ -148,6 +148,14 @@ class MarketBean : BaseObservable() {
                 notifyPropertyChanged(BR.rose)
             }
 
+
+        @get:Bindable
+        var toKRW: String = "1"
+            set(sex) {
+                field = sex
+                notifyPropertyChanged(BR.toKRW)
+            }
+
         //只是显示 没有其他作用 不可用
         @get:Bindable
         var pairToName: String = "USDT"

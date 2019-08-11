@@ -42,6 +42,9 @@ class FindFragment : BaseFragment<FragmentFindBinding, FindViewModel>() {
     override fun initVVMObserver() {
     }
 
+    override fun onResume() {
+        super.onResume()
+    }
     override fun initContentView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): Int {
         return R.layout.fragment_find
     }

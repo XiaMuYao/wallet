@@ -125,7 +125,7 @@
 
         <TextView
             style="@style/loginTitle"
-            android:text="手机验证码"
+            android:text="@string/phoneNumberCode"
             app:layout_constraintStart_toStartOf="@+id/guideline145"
             app:layout_constraintTop_toTopOf="@+id/guideline156" />
 
@@ -283,7 +283,7 @@
 
         <TextView
             style="@style/loginTitle"
-            android:text="设置登录密码"
+            android:text="@string/shezhidinglumima"
             app:layout_constraintStart_toStartOf="@+id/guideline145"
             app:layout_constraintTop_toTopOf="@+id/guideline159" />
 
@@ -338,7 +338,7 @@ android:inputType="textPassword"
 
         <TextView
             style="@style/loginTitle"
-            android:text="确认登录密码"
+            android:text="@string/querendenglumima"
             app:layout_constraintStart_toStartOf="@+id/guideline145"
             app:layout_constraintTop_toTopOf="@+id/guideline162" />
 

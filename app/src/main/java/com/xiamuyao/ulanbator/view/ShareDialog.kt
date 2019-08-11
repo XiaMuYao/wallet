@@ -15,10 +15,10 @@ import com.xiamuyao.ulanbator.App
 import com.xiamuyao.ulanbator.R
 import com.xiamuyao.ulanbator.constant.EventConstant
 import com.xiamuyao.ulanbator.util.UsetUtli.getUserId
-import com.xiamuyao.ulanbator.util.getSpValue
 import com.xiamuyao.ulanbator.util.saveToAlbum
 import com.xiamuyao.ulanbator.utlis.DataBus
 import com.xiamuyao.ulanbator.utlis.To
+import com.xiamuyao.ulanbator.utlis.getSpValue
 import kotlinx.android.synthetic.main.dialog_share.*
 
 /**

@@ -1,0 +1,246 @@
+<resources>
+    <string name="app_name">Max Flow</string>
+    <string name="titleBarLeftText">返回</string>
+    <string name="sum">累積トータルリターン</string>
+    <string name="sumprofit">累積招待収入</string>
+    <string name="sumMarkMoney">累積金融収入</string>
+    <string name="shoping">購入</string>
+    <string name="jiechuheyue">契約を解除</string>
+    <string name="login">ログイン</string>
+    <string name="fopsd">パスワードを忘れましたか？ </string>
+    <string name="selelcyCity">国を選択</string>
+    <string name="phoneNumber">携帯電話番号</string>
+    <string name="loginPsd">ログインパスワード</string>
+    <string name="phoneNumberCode">電話確認コード</string>
+    <string name="aginPsd">パスワードの確認</string>
+    <string name="InvitationCode">招待コード（オプション）</string>
+    <string name="privacyPolicy">プライバシーポリシー</string>
+    <string name="rehister">登録</string>
+    <string name="phonecode">検証コード</string>
+    <string name="vip"> VIPインタレスト</string>
+    <string name="Invitecommission">リベートの招待</string>
+    <string name="SafetyCenter">セキュリティセンター</string>
+    <string name="SystemSettings">システム設定</string>
+    <string name="ShareAPP"> MFTを共有</string>
+    <string name="help">ヘルプとフィードバック</string>
+    <string name="about">私たちについて</string>
+    <string name="headImage">アバター</string>
+    <string name="id"> ID </string>
+    <string name="name">ニックネーム</string>
+    <string name="cancel">キャンセル</string>
+    <string name="save">保存</string>
+    <string name="yaoqinghis">招待記録</string>
+    <string name="saveimage">画像を保存</string>
+    <string name="wx"> WeChat </string>
+    <string name="wxFirend">友達サークル</string>
+    <string name="register">登録</string>
+    <string name="send">送信</string>
+    <string name="queding"> OK </string>
+    <string name="wangjimima">パスワードを忘れた</string>
+    <string name="yinsixieyi">このポリシーおよびその他の関連規制は、私のブロックチェーンと、私のブロックチェーン上のブロックチェーンが所有するDAppに適用されることを理解しています。
+まず、あなたからどのような情報を収集しますか\ n \ n
+私たちはあなたから私のブロックチェーンサービスのニーズを満たすために以下の情報を収集し、あなたのプライバシーの保護を大切にしていることを理解してください。お客様の情報を収集する際、「合法、公正、必要」という原則を厳守します。そして、あなたは私たちのサービスに必要な関連情報を提供しない場合、私のブロックチェーンでのあなたのサービス体験が結果として影響を受けるかもしれないことを理解しています。 \ n \ n
+
+1.モバイルデバイス情報、操作履歴、取引履歴、ウォレットアドレスなどの個人情報を収集します。 \ n \ n
+
+2.特定のサービスニーズを満たすために、お客様の名前、銀行カード番号、携帯電話番号、メールアドレス、その他の情報を収集します。 \ n \ n
+
+3.ブロックチェーン上のウォレットパスワード、プライベートキー、ニーモニック、およびキーストアがブロックチェーンサーバーに保存または同期されていないことを知っています。私のブロックチェーンは、ウォレットのパスワード、秘密鍵、ニーモニック、またはキーストアを取得するサービスを提供していません。 \ n
+
+4.上記に加えて、あなたは私のブロックチェーンの特定の機能を使用する場合、個人情報を収集する前に、より多くの個人情報を収集するための特別なヒントを提供することを理解しています。同意しないことを選択した場合、あなたは私のブロックチェーンのこの特定の機能を放棄したとみなされます。 \ n
+
+5.サードパーティのDAppにジャンプすると、サードパーティのDAppが個人情報を収集します。私のブロックチェーンには、サードパーティのDAppによって収集された個人情報は含まれていません。 \ n \ n
+6.法律および規制で許可される範囲で、私のブロックチェーンはお客様の同意なしに以下の状況でお客様の個人情報を収集および使用する場合があります。\ n \ n
+（1）国家安全保障および国家防衛安全保障に関連する、\ n \ n
+
+（2）公衆安全、公衆衛生、および主要な公共の利益に関連する\ n \ n
+
+（3）犯罪捜査、検察、裁判および判決の執行に関連する\ n \ n
+
+（4）収集された個人情報は、自分で一般に公開されます; \ n \ n
+
+（5）合法的なニュース報道、政府情報の公開など、法的に公開されている情報から個人情報を収集する。</string>
+    <string name="agranRegister">プライバシーポリシーに同意してください</string>
+    <string name="setMoney">資金調達パスワードを設定</string>
+    <string name="setmoenyagen">資金パスワードをもう一度入力します</string>
+    <string name="copyAddress">住所のコピー</string>
+    <string name="copyMemo">メモをコピー</string>
+    <string name="senNUm">番号を送信</string>
+    <string name="toAddress">パーティーの住所</string>
+    <string name="memo">メモ</string>
+    <string name="headmoney">取り扱い手数料</string>
+    <string name="moenypsd">資金パスワード</string>
+    <string name="phoneCode"> SMS検証</string>
+    <string name="inphoneCode"> SMS確認コードを入力してください</string>
+    <string name="inmoneypsd">資金調達パスワードを入力してください</string>
+    <string name="getphoneCode">確認コードを取得</string>
+    <string name="type">タイプ</string>
+    <string name="createTIme">作成時間</string>
+    <string name="hasmap">トランザクションハッシュ</string>
+    <string name="sendsucess">正常に送信</string>
+    <string name="pasdno"> 2つのパスワードの不一致</string>
+    <string name="datanull">データが空です</string>
+    <string name="pleaseInoutPhoe">携帯電話番号を入力してください</string>
+    <string name="pleaseInPutPsd">パスワードを入力してください</string>
+    <string name="pleaseInPutPsdConig">確認パスワードを入力してください</string>
+    <string name="pleadzijinmima">資金調達パスワードを入力してください</string>
+    <string name="pldeazijinagre">パスワードをもう一度入力してください</string>
+    <string name="liangcinoagen"> 2つのパスワード入力の不一致</string>
+    <string name="inputNotNull">入力量は空にできません</string>
+    <string name="copy">コピー成功</string>
+    <string name="inmoney">受信中</string>
+    <string name="gotoAddress">転送</string>
+    <string name="autoSacn">ボックスにQRコードを入力すると、自動的にスキャンできます</string>
+    <string name="menkan">しきい値</string>
+    <string name="xiane">制限</string>
+    <string name="keyong">利用可能：</string>
+    <string name="sumToPrice">総資産相当</string>
+    <string name="jiaoyijil">トランザクションレコード</string>
+    <string name="usd">利用可能</string>
+    <string name="unusd">フリーズ</string>
+    <string name="tomoney">転送</string>
+    <string name="keyongdian">利用可能：</string>
+    <string name="address">アドレス</string>
+    <string name="moneym">金額</string>
+    <string name="heanmondy">取扱手数料</string>
+    <string name="allin">すべてが転送された</string>
+    <string name="hangqing">引用</string>
+    <string name="moneyType">通貨</string>
+    <string name="price">価格</string>
+    <string name="upordown">アップ/ダウン</string>
+    <string name="twomoneyto">金融資産の総資産</string>
+    <string name="waifinfo">アカウントの詳細</string>
+    <string name="yirengou">が購読しました</string>
+    <string name="yimane">全額</string>
+    <string name="yirengoul">サブスクライブできます</string>
+    <string name="rihuashoulilv"> 1日の収量</string>
+    <string name="yuehuashouliyi">月間収益率</string>
+    <string name="gonggao">お知らせ</string>
+    <string name="zixun">情報</string>
+    <string name="bangzhuzhongxin">ヘルプセンター</string>
+    <string name="yaoqingguize">ルールを招待</string>
+    <string name="yaoqingfanyong">リベートを招待</string>
+    <string name="yao1">一般ユーザーの数を招待</string>
+    <string name="yao2"> VIP1番号を招待</string>
+    <string name="yzo3"> VIP2番号を招待する</string>
+    <string name="yao4"> VIP3番号を招待する</string>
+    <string name="yao5"> VIP4番号を招待</string>
+    <string name="yao3"> VIP5番号を招待</string>
+    <string name="yaoqigzongrenshu">総人数を招待</string>
+    <string name="leijifanyong">累積リベート</string>
+    <string name="xitongshezhi">システム設定</string>
+    <string name="selectlaung">言語の選択</string>
+    <string name="jijiahuobi">価格設定通貨</string>
+    <string name="jiantizhongwen">簡体字中国語</string>
+    <string name="sharecode">招待コードを登録</string>
+    <string name="quxiaoquxiao">キャンセル</string>
+    <string name="chaina">中文</string>
+    <string name="english">英語</string>
+    <string name="hanyu">한국어</string>
+    <string name="riyu">日本語</string>
+    <string name="xuanzeyyuyan">言語を選択</string>
+    <string name="wode">私の</string>
+    <string name="lica">財務管理</string>
+    <string name="qiabao">ホーム</string>
+    <string name="gerenxinxi">個人情報</string>
+    <string name="tuichudengou">ログアウト</string>
+    <string name="nicheng">ニックネーム</string>
+    <string name="yonghuleixing">ユーザータイプ</string>
+    <string name="fanyongzongshu">リベートの総数</string>
+    <string name="fanyongleixing">リベートタイプ</string>
+    <string name="shijiantitile">時間</string>
+    <string name="fanyongjine">リベート額</string>
+    <string name="nichengasd">ニックネーム</string>
+    <string name="aboutabout"> Maxflowは真新しいデジタル通貨ウォレットです</string>
+    <string name="findfind">発見</string>
+    <string name="maorururu">購入</string>
+    <string name="heyueheyue">契約</string>
+    <string name="rihuarihua">日化</string>
+    <string name="yuehuayuehua">毎月</string>
+    <string name="yuejishijian">予想される</string>
+    <string name="femhnoqo">閉じられたピリオド</string>
+    <string name="yujishouyi">、予想収益</string>
+    <string name="cjamsjemhsjpiuo">収益を生む、</string>
+    <string name="shouyicaozhang">アカウントの収益</string>
+    <string name="manqizhuanru">期限切れの転送</string>
+    <string name="huoqi">現在</string>
+    <string name="zhuanruheyu">転送</string>
+    <string name="heyutitle">契約</string>
+    <string name="dingcuntitle">ストレージ</string>
+    <string name="zuorilicaishouyi">昨日の金融収入</string>
+    <string name="zuoyiyaoqingshouyi">昨日招待された収入</string>
+    <string name="fanyongji">レコードを返す</string>
+    <string name="caozuoanniyu">操作</string>
+    <string name="xiugaizijinmimia">ファンドパスワードの変更</string>
+    <string name="yijingmane">全額</string>
+    <string name="qingtianxieyaoqingma">招待コードを入力してください</string>
+    <string name="xianexx">制限：</string>
+    <string name="shurushuliang">数字を入力してください</string>
+    <string name="yinsizhengce">プライバシーポリシー</string>
+    <string name="yijingbaocun">保存されました</string>
+    <string name="shenghuo">人生</string>
+    <string name="allallal">すべて</string>
+    <string name="gamegame">ゲーム</string>
+    <string name="saveSuccess">保存に成功しました</string>
+    <string name="MFT"> MFT </string>
+    <string name="qingshuruzhuanzhangjine">振込金額を入力してください</string>
+    <string name="putuser">通常のユーザー</string>
+    <string name="querenshifoujiechuheyue">契約をキャンセルするかどうかを確認します</string>
+    <string name="jiechuheyueme">契約を削除しますか？ </string>
+    <string name="jiechu">リリース</string>
+    <string name="quxia">キャンセル</string>
+
+    <string name="tuochudenglume">ログアウトしますか？ </string>
+    <string name="shifoutuichudenglu">ログアウトしますか？ </string>
+
+    <string name="goumaichengg">購入の成功</string>
+
+    <string name="tiqianzhuanchushouxuwei">事前に、収入を除外し、清算された損害を収集し、不満</string>
+    <string name="jieyuejieyuejieyu">解雇、請求</string>
+    <string name="shoufuweijisuan">手数料</string>
+    <string name="tiantiantian">日</string>
+    <string name="goumaichenggle">購入の成功</string>
+
+    <string name="caipiao">宝くじ</string>
+    <string name="zuqiu">サッカー</string>
+    <string name="jincgaui">クイズ</string>
+    <string name="dazhuanpan">大きなターンテーブル</string>
+    <string name="baijiale">バカラ</string>
+    <string name="dezhou">テキサス</string>
+    <string name="jiudian">ホテル</string>
+    <string name="jipiao">チケット</string>
+    <string name="shoujichongzhi">請求</string>
+    <string name="dazhejuan">オファー</string>
+    <string name="jiaofei">支払い</string>
+    <string name="yiliao">医療</string>
+    <string name="quaiinqinabao">新しいデジタル通貨ウォレット</string>
+    <string name="banbengengxin">バージョンアップ！</string>
+    <string name="shifouyaogengxin">更新しますか？</string>
+    <string name="tuichutext">終了しますか</string>
+    <string name="xiugaizijinmimiawenan">ファンドのパスワードを変更してから24時間以内に、引き出し、取引、資産管理の購入、償還などの取引関連の操作を許可しないでください。</string>
+    <string name="qingshuruliuweimima"> 6桁のパスワードを入力してください</string>
+    <string name="qingzaicishuruzijinmima">資金パスワードをもう一度入力します</string>
+    <string name="xinzijinmima">新しい資金調達パスワード</string>
+    <string name="querenxinxmima">新しいパスワードの確認</string>
+    <string name="shoujihaoma">携帯電話番号</string>
+    <string name="shoujiyanzhengma">モバイル検証コード</string>
+    <string name="shourushoujiyanzhengma">電話確認コードを入力してください</string>
+    <string name="xiugaizijinmima">ファンドパスワードの変更</string>
+    <string name="xiugaidenglumima">ログインパスワードの変更</string>
+    <string name="yuanlaidenglumima">元のログインパスワード</string>
+    <string name="yuandenlimima">元のログインパスワード</string>
+    <string name="xinddenglumima">新しいログインパスワード</string>
+    <string name="xincendelumima">新しいログインパスワード</string>
+    <string name="querenxinmimamamam">新しいパスワードを確認します</string>
+    <string name="zaicishuruxinmmmima">新しいログインパスワードをもう一度入力</string>
+    <string name="wanchengwacccheng">完了</string>
+    <string name="fasongxiangqing">詳細を送信</string>
+    <string name="daikaifangjingqingqidai">オープンするために、お楽しみに！ </string>
+    <string name="shezhidinglumima">ログインパスワードを設定します</string>
+    <string name="querendenglumima">ログインパスワードを確認します</string>
+
+    <string name="querengoumaishangpin">購入を確認しますか？</string>
+    <string name="querenshfoyaogoumai">購入するかどうかを確認します</string>
+    <string name="zuorizogshouyi">昨日の総収益</string>
+
+</resources>

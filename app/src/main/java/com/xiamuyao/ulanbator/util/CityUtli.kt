@@ -3,6 +3,8 @@ package com.xiamuyao.ulanbator.util
 import com.xiamuyao.ulanbator.App
 import com.xiamuyao.ulanbator.R
 import com.xiamuyao.ulanbator.utlis.LL
+import com.xiamuyao.ulanbator.utlis.getSpValue
+import com.xiamuyao.ulanbator.utlis.putSpValue
 import java.util.*
 
 object CityUtli {
@@ -18,8 +20,8 @@ object CityUtli {
     var cityList = arrayListOf<cityBean>(
         cityBean(CHINESE, App.CONTEXT.getString(R.string.chaina), "zh", ""),
         cityBean(ENGLISH, App.CONTEXT.getString(R.string.english), "en", ""),
-        cityBean(JAPANESE, App.CONTEXT.getString(R.string.riyu), "jq", ""),
-        cityBean(KOREAN, App.CONTEXT.getString(R.string.hanyu), "ko", "")
+        cityBean(KOREAN, App.CONTEXT.getString(R.string.hanyu), "ko", ""),
+        cityBean(JAPANESE, App.CONTEXT.getString(R.string.riyu), "ja", "")
     )
 
     fun saveLanguage(index: Int) {

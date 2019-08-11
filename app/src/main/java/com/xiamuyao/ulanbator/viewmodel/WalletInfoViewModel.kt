@@ -40,6 +40,9 @@ class WalletInfoViewModel(application: Application) : BaseViewModel(application)
 
     var rate = MutableLiveData<String>()
 
+    var msymbolFeeMax = MutableLiveData<String>()
+    var msymbolFeeMin = MutableLiveData<String>()
+
     private val repository: WalletRepository by instance()
 
 
@@ -76,6 +79,8 @@ class WalletInfoViewModel(application: Application) : BaseViewModel(application)
                     msymbolFeeRate.value = symbolFeeRate
                     mbalance.value = balance
 
+                    msymbolFeeMax.value = symbolFeeMax
+                    msymbolFeeMin.value = symbolFeeMin
 
                     val mul = BigDecimalUtils.mul(
                         available.value!!.replace(",", ""),
@@ -142,7 +147,9 @@ class WalletInfoViewModel(application: Application) : BaseViewModel(application)
                 "pairName" to walletListBean.value?.pairName,
                 "msymbolFeeRate" to msymbolFeeRate.value,
                 "balance" to mbalance.value,
-                "type" to type
+                "type" to type,
+                "symbolFeeMax" to msymbolFeeMax.value,
+                "symbolFeeMin" to msymbolFeeMin.value
             )
         )
     }

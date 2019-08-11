@@ -29,7 +29,7 @@ class SendInfoActivity : BaseActivity<ActivitySendinfoBinding, SendInfoViewModel
 
         setTitleBar(
             leftCallBack = { finish() },
-            title = "发送详情"
+            title = getString(R.string.fasongxiangqing)
         )
     }
 

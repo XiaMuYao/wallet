@@ -23,7 +23,9 @@ class FindMessageListViewModel(application: Application) : BaseViewModel(applica
 
     fun getList() {
         launch {
-            findMessage.addAll(repository.getDiscoveryPageInformation(requesttype.value!!))
+            val discoveryPageInformation = repository.getDiscoveryPageInformation(requesttype.value!!)
+            findMessage.clear()
+            findMessage.addAll(discoveryPageInformation)
         }
     }
 

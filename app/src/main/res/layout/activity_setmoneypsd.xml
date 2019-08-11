@@ -32,7 +32,7 @@
 
             <TextView
                 style="@style/style_my_item_setpsd_text"
-                android:text="新资金密码"
+                android:text="@string/xinzijinmima"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toRightOf="@+id/guideline82"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -45,7 +45,7 @@
 
             <EditText
                 style="@style/style_set_user_psd_ed"
-                android:hint="请输入6位数字密码"
+                android:hint="@string/qingshuruliuweimima"
                 android:text="@={setmoneypsdViewModel.password}"
                 android:textCursorDrawable="@drawable/shape_ed_color"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -88,7 +88,7 @@
 
             <TextView
                 style="@style/style_my_item_setpsd_text"
-                android:text="确认新密码"
+                android:text="@string/querenxinxmima"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toRightOf="@+id/guideline83"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -101,7 +101,7 @@
 
             <EditText
                 style="@style/style_set_user_psd_ed"
-                android:hint="再次输入资金密码"
+                android:hint="@string/qingzaicishuruzijinmima"
                 android:text="@={setmoneypsdViewModel.passwordConfirm}"
                 android:textCursorDrawable="@drawable/shape_ed_color"
 
@@ -145,7 +145,7 @@
 
             <TextView
                 style="@style/style_my_item_setpsd_text"
-                android:text="手机号码"
+                android:text="@string/shoujihaoma"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toRightOf="@+id/guideline87"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -202,7 +202,7 @@
 
             <TextView
                 style="@style/style_my_item_setpsd_text"
-                android:text="手机验证码"
+                android:text="@string/shoujiyanzhengma"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toRightOf="@+id/guideline89"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -217,7 +217,7 @@
             <EditText
                 android:id="@+id/editText2"
                 style="@style/style_set_user_psd_ed"
-                android:hint="输入手机验证码"
+                android:hint="@string/shourushoujiyanzhengma"
                 android:inputType="text"
                 android:text="@={setmoneypsdViewModel.verifyCode}"
                 android:textCursorDrawable="@drawable/shape_ed_color"
@@ -265,7 +265,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:text="修改资金密码后24h内禁止任何与交易相关的操作如：提现、交易、购买理财、即使兑换等）"
+            android:text="@string/xiugaizijinmimiawenan"
             android:textColor="#CCFF6960"
             android:textSize="12sp"
             app:layout_constraintLeft_toLeftOf="@+id/guideline91"

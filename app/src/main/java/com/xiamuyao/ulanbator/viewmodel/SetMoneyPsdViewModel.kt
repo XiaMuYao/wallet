@@ -6,8 +6,8 @@ import com.xiamuyao.ulanbator.base.BaseViewModel
 import com.xiamuyao.ulanbator.model.repository.MyUserRepository
 import com.xiamuyao.ulanbator.model.repository.UserRepository
 import com.xiamuyao.ulanbator.util.businessHandler
-import com.xiamuyao.ulanbator.util.getSpValue
 import com.xiamuyao.ulanbator.utlis.SingleLiveEvent
+import com.xiamuyao.ulanbator.utlis.getSpValue
 import org.kodein.di.generic.instance
 
 class SetMoneyPsdViewModel(application: Application) : BaseViewModel(application) {

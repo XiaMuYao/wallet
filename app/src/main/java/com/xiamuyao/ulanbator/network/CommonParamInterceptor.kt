@@ -2,8 +2,10 @@ package com.xiamuyao.ulanbator.network
 
 import com.blankj.utilcode.util.DeviceUtils
 import com.xiamuyao.ulanbator.App
+import com.xiamuyao.ulanbator.constant.ProjectConstant
+import com.xiamuyao.ulanbator.constant.ProjectConstant.APP_VERSION
 import com.xiamuyao.ulanbator.util.CityUtli
-import com.xiamuyao.ulanbator.util.getSpValue
+import com.xiamuyao.ulanbator.utlis.getSpValue
 import okhttp3.FormBody
 import okhttp3.Interceptor
 import okhttp3.Request
@@ -90,7 +92,7 @@ class CommonParamInterceptor : Interceptor {
             builder.addEncoded("ipAddress", "")
             builder.addEncoded("devicePlatformVersion", "")
             builder.addEncoded("devicePlatformLanguage", CityUtli.getLanguage().toString())
-            builder.addEncoded("clientChannel", "1")
+            builder.addEncoded("clientChannel", ProjectConstant.APP_VERSION.toString())
             builder.addEncoded("clientVersion", "")
 
             tempRequest = request.newBuilder().post(builder.build()).build()

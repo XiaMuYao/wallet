@@ -32,5 +32,7 @@ object EventConstant {
     val SetName = "SetName"
     //关闭Dialog
     val DialogCLOSE = "DialogCLOSE"
+    val finsh = "finsh"
+    val LaunageSet = "LaunageSet"
 
 }

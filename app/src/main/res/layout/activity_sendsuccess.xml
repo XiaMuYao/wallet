@@ -87,7 +87,7 @@
             android:layout_marginBottom="8dp"
             android:background="@drawable/shape_btn"
             android:onClick="@{() -> sendsuccessViewModel.finshthis()}"
-            android:text="完成"
+            android:text="@string/wanchengwacccheng"
             android:textColor="#fff"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/guideline195"

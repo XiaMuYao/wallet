@@ -21,7 +21,6 @@
         android:roundIcon="@mipmap/ic_icon_app_start"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.TestActivity" />
         <activity android:name=".activity.ScanActivity" />
         <activity android:name=".activity.SendSuccessActivity" />
         <activity android:name=".activity.SendInfoActivity" />

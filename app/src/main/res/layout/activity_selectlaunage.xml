@@ -75,7 +75,6 @@
             android:layout_width="match_parent"
             android:layout_height="51dp"
             android:background="@color/myitem"
-
             android:onClick="@{() -> selectlaunageViewModel.saveTheCurrency(4)}">
 
             <TextView

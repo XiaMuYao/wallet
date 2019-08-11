@@ -19,7 +19,7 @@ import com.xiamuyao.ulanbator.viewmodel.SetUserPsdViewModel
 class SetUserPsdActivity : BaseActivity<ActivitySetuserpsdBinding, SetUserPsdViewModel>() {
 
     override fun initView() {
-        setTitleBar("修改登录密码", { finish() })
+        setTitleBar(title = getString(R.string.xiugaidenglumima), leftCallBack = { finish() })
 
     }
 

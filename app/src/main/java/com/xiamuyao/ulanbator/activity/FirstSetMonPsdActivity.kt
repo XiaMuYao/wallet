@@ -18,7 +18,7 @@ class FirstSetMonPsdActivity : BaseActivity<ActivityFirstsetmonpsdBinding, First
 
 
     override fun initView() {
-        setTitleBar(titleBarColor = R.color.touming, leftCallBack = { finish() })
+        setTitleBar(titleBarColor = R.color.touming, leftCallBack = { startGoMainActivity() })
     }
 
     override fun initVVMObserver() {
@@ -26,11 +26,12 @@ class FirstSetMonPsdActivity : BaseActivity<ActivityFirstsetmonpsdBinding, First
     }
 
     override fun onBackPressed() {
-        super.onBackPressed()
+        startGoMainActivity()
+    }
 
+    private fun startGoMainActivity() {
         viewModel.startActivity(MainActivity::class.java)
-        ActivityStackManager.getInstance().finishAllActivity()
-
+        viewModel.finishStatus.call()
     }
 
 

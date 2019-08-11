@@ -29,6 +29,9 @@ class TransferAccountsActivity : BaseActivity<ActivityTransferaccountsBinding, T
         viewModel.msymbolFeeRate.value = intent.getStringExtra("msymbolFeeRate")
         viewModel.mbalance.value = intent.getStringExtra("balance")
 
+        viewModel.symbolFeeMax.value = intent.getStringExtra("symbolFeeMax")
+        viewModel.symbolFeeMin.value = intent.getStringExtra("symbolFeeMin")
+
 
         setTitleBar(
             "${viewModel.pairName.value}" + getString(R.string.gotoAddress),

@@ -1,10 +1,10 @@
-package com.xiamuyao.ulanbator.util
+package com.xiamuyao.ulanbator.utlis
 
 import android.app.Activity
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.lifecycle.ViewModel
-import com.xiamuyao.ulanbator.App
+import com.xiamuyao.ulanbator.LibApp
 import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
 import java.io.ObjectInputStream
@@ -32,8 +32,8 @@ fun Context.sp(name: String = packageName, mode: Int = Context.MODE_PRIVATE): Sh
 fun Activity.sp(name: String = packageName, mode: Int = Context.MODE_PRIVATE): SharedPreferences =
     getSharedPreferences(name, mode)
 
-fun ViewModel.sp(name: String = App.CONTEXT.packageName, mode: Int = Context.MODE_PRIVATE): SharedPreferences =
-    App.CONTEXT.getSharedPreferences(name, mode)
+fun ViewModel.sp(name: String = LibApp.getContext().packageName, mode: Int = Context.MODE_PRIVATE): SharedPreferences =
+    LibApp.getContext().getSharedPreferences(name, mode)
 
 fun <T> Context.putSpValue(key: String, value: T, name: String = packageName) = sp(name).edit {
     when (value) {
@@ -80,7 +80,7 @@ fun <T> Activity.getSpValue(key: String, default: T, name: String = packageName)
     return result as T
 }
 
-fun <T> ViewModel.getSpValue(key: String, default: T, name: String = App.CONTEXT.packageName): T = sp(name).run {
+fun <T> ViewModel.getSpValue(key: String, default: T, name: String = LibApp.getContext().packageName): T = sp(name).run {
     val result = when (default) {
         is Long -> getLong(key, default)
         is String -> getString(key, default)
@@ -98,7 +98,7 @@ fun <T> ViewModel.getSpValue(key: String, default: T, name: String = App.CONTEXT
 }
 
 fun Context.removeAllKey() {
-    val sp = sp(App.CONTEXT.packageName)
+    val sp = sp(LibApp.getContext().packageName)
     val editor = sp.edit()
     editor.clear()
     editor.apply()

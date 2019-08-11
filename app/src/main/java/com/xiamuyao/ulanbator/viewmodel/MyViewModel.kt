@@ -6,7 +6,7 @@ import com.xiamuyao.ulanbator.base.BaseViewModel
 import com.xiamuyao.ulanbator.model.repository.MyUserRepository
 import com.xiamuyao.ulanbator.util.UsetUtli
 import com.xiamuyao.ulanbator.util.businessHandler
-import com.xiamuyao.ulanbator.util.getSpValue
+import com.xiamuyao.ulanbator.utlis.getSpValue
 import org.kodein.di.generic.instance
 
 class MyViewModel(application: Application) : BaseViewModel(application) {

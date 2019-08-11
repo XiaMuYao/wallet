@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">Max Flow</string>
     <string name="titleBarLeftText">return </string>
-    <string name="item_skit_text">Christina Photo by @FransLanting Wonderful color ! To let tourists get a better view,the bus drove slowly.What a beautiful town! </string>
     <string name="sum">cumulative total revenue</string>
     <string name="sumprofit">cumulative invitation revenue</string>
     <string name="sumMarkMoney"> cumulative financial income </string>
@@ -147,8 +146,8 @@ Please understand that we collect the following information from you to meet you
     <string name="riyu">日本語</string>
     <string name="xuanzeyyuyan">Select language </string>
     <string name="wode">my </string>
-    <string name="lica">财财</string>
-    <string name="qiabao">Home </string>
+    <string name="lica">financial</string>
+    <string name="qiabao">Home</string>
     <string name="gerenxinxi">personal information</string>
     <string name="tuichudengou"> logout </string>
     <string name="nicheng">nickname </string>
@@ -215,7 +214,7 @@ Please understand that we collect the following information from you to meet you
     <string name="goumaichenggle">purchase success </string>
 
 
-<string name="caipiao">lottery </string>
+    <string name="caipiao">lottery </string>
     <string name="zuqiu">soccer </string>
     <string name="jincgaui"> quiz </string>
     <string name="dazhuanpan">large turntable </string>
@@ -228,5 +227,33 @@ Please understand that we collect the following information from you to meet you
     <string name="jiaofei">payment </string>
     <string name="yiliao">medical </string>
     <string name="quaiinqinabao">newDigitalCurrencyWallet</string>
+    <string name="banbengengxin">newVersionUpdate!</string>
+    <string name="shifouyaogengxin">doYouWantToUpdate?</string>
+    <string name="tuichutext">quit</string>
+
+
+    <string name="xiugaizijinmimiawenan">Any transaction-related operations such as withdrawal, transaction, purchase of wealth management, even redemption, etc. are prohibited within 24 hours after the modification of the fund password.</string>
+    <string name="qingshuruliuweimima">pleaseEnterA6DigitPassword</string>
+    <string name="qingzaicishuruzijinmima">enterTheFundsPasswordAgain</string>
+    <string name="xinzijinmima">newFundPassword</string>
+    <string name="querenxinxmima">confirmTheNewPassword</string>
+    <string name="shoujihaoma">cellphoneNumber</string>
+    <string name="shoujiyanzhengma">mobilePhoneVerificationCode</string>
+    <string name="shourushoujiyanzhengma">enterYourPhoneVerificationCode</string>
+    <string name="xiugaizijinmima">modifyTheFundPassword</string>
+    <string name="yuanlaidenglumima">originalLoginPassword</string>
+    <string name="yuandenlimima">originalLoginPassword</string>
+    <string name="xinddenglumima">newLoginPassword</string>
+    <string name="xincendelumima">newLoginPassword</string>
+    <string name="querenxinmimamamam">confirmTheNewPassword</string>
+    <string name="zaicishuruxinmmmima">enterTheNewLoginPasswordAgain</string>
+    <string name="wanchengwacccheng">complete</string>
+    <string name="fasongxiangqing">sendDetails</string>
+    <string name="daikaifangjingqingqidai">stayOpenStayTuned</string>
+    <string name="shezhidinglumima">settingLoginPassword</string>
+    <string name="querendenglumima">confirmLoginPassword</string>
+
+    <string name="querengoumaishangpin">confirmPurchase?</string>
+    <string name="querenshfoyaogoumai">confirmWhetherYouWantToBuy</string>
 
 </resources>

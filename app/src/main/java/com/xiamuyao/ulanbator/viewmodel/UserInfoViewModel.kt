@@ -9,10 +9,10 @@ import com.xiamuyao.ulanbator.constant.ProjectConstant
 import com.xiamuyao.ulanbator.model.repository.UserRepository
 import com.xiamuyao.ulanbator.util.UsetUtli
 import com.xiamuyao.ulanbator.util.businessHandler
-import com.xiamuyao.ulanbator.util.getSpValue
-import com.xiamuyao.ulanbator.util.putSpValue
 import com.xiamuyao.ulanbator.utlis.ActivityStackManager
 import com.xiamuyao.ulanbator.utlis.SingleLiveEvent
+import com.xiamuyao.ulanbator.utlis.getSpValue
+import com.xiamuyao.ulanbator.utlis.putSpValue
 import org.kodein.di.generic.instance
 
 class UserInfoViewModel(application: Application) : BaseViewModel(application) {

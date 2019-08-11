@@ -51,6 +51,8 @@
 
         <ImageView
             style="@style/UserLogo"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/guideline38" />
