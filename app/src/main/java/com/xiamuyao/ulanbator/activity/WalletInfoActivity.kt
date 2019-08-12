@@ -52,6 +52,15 @@ class WalletInfoActivity : BaseActivity<ActivityWalletinfoBinding, WalletInfoVie
             viewModel.getPageData()
         })
 
+
+        DataBus.observeData(this, EventConstant.finsh, object : DataBusObservable<String> {
+            override fun dataBusDataCallBack(it: String) {
+                viewModel.initData()
+                viewModel.getPageData()
+            }
+        })
+
+
     }
 
     override fun initContentView(savedInstanceState: Bundle?): Int {
@@ -74,8 +83,4 @@ class WalletInfoActivity : BaseActivity<ActivityWalletinfoBinding, WalletInfoVie
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        viewModel.initData()
-    }
 }

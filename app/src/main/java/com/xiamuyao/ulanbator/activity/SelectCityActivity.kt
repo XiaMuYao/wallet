@@ -32,6 +32,7 @@ class SelectCityActivity : BaseActivity<ActivitySelectcityBinding, SelectCityVie
         contractAdapter.setOnItemClickListener { _, _, position ->
             DataBus.postData(EventConstant.selectCityName, viewModel.cityList[position]?.showCityName.toString())
             DataBus.postData(EventConstant.selectCityNum, viewModel.cityList[position]?.dialingCode.toString())
+            DataBus.postData(EventConstant.countryCode, viewModel.cityList[position]?.countryCode.toString())
             finish()
         }
 

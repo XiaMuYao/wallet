@@ -54,6 +54,11 @@ class TransferAccountsActivity : BaseActivity<ActivityTransferaccountsBinding, T
                 viewModel.address.value = it
             }
         })
+        DataBus.observeData(this, EventConstant.finsh, object : DataBusObservable<String> {
+            override fun dataBusDataCallBack(it: String) {
+                viewModel.finishStatus.call()
+            }
+        })
     }
 
 

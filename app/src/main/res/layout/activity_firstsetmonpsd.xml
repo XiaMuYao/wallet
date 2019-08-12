@@ -30,10 +30,8 @@
             layout="@layout/layout_titlebar" />
 
         <ImageView
+            style="@style/UserLogo"
             android:id="@+id/imageView29"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:scaleType="center"
             android:src="@mipmap/ic_icon_app_start"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -22,28 +22,28 @@ object ProjectConstant {
 
 
     const val SUB_STR_BTC =
-        "{\"event\":\"sub\",\"params\":{\"channel\":\"market_btcusdt_ticker\",\"cb_id\":\"xrpbtc\"}}\n"
+        "{\"event\":\"sub\",\"params\":{\"channel\":\"market_btcusdt_ticker\",\"cb_id\":\"btcusdt\"}}\n"
     const val SUB_STR_ETH =
-        "{\"event\":\"sub\",\"params\":{\"channel\":\"market_ethusdt_ticker\",\"cb_id\":\"xrpbtc\"}}\n"
+        "{\"event\":\"sub\",\"params\":{\"channel\":\"market_ethusdt_ticker\",\"cb_id\":\"ethusdt\"}}\n"
     const val SUB_STR_LTC =
-        "{\"event\":\"sub\",\"params\":{\"channel\":\"market_ltcusdt_ticker\",\"cb_id\":\"xrpbtc\"}}\n"
+        "{\"event\":\"sub\",\"params\":{\"channel\":\"market_ltcusdt_ticker\",\"cb_id\":\"ltcusdt\"}}\n"
     const val SUB_STR_EOS =
-        "{\"event\":\"sub\",\"params\":{\"channel\":\"market_eosusdt_ticker\",\"cb_id\":\"xrpbtc\"}}\n"
+        "{\"event\":\"sub\",\"params\":{\"channel\":\"market_eosusdt_ticker\",\"cb_id\":\"eosusdt\"}}\n"
     const val SUB_STR_ETC =
-        "{\"event\":\"sub\",\"params\":{\"channel\":\"market_etcusdt_ticker\",\"cb_id\":\"xrpbtc\"}}\n"
+        "{\"event\":\"sub\",\"params\":{\"channel\":\"market_etcusdt_ticker\",\"cb_id\":\"etcusdt\"}}\n"
 
     const val SUB_STR_DASH =
-        "{\"event\":\"sub\",\"params\":{\"channel\":\"market_dashusdt_ticker\",\"cb_id\":\"xrpbtc\"}}\n"
+        "{\"event\":\"sub\",\"params\":{\"channel\":\"market_dashusdt_ticker\",\"cb_id\":\"dashusdt\"}}\n"
     const val SUB_STR_BCH =
-        "{\"event\":\"sub\",\"params\":{\"channel\":\"market_bchusdt_ticker\",\"cb_id\":\"xrpbtc\"}}\n"
+        "{\"event\":\"sub\",\"params\":{\"channel\":\"market_bchusdt_ticker\",\"cb_id\":\"bchusdt\"}}\n"
     const val SUB_STR_XRP =
-        "{\"event\":\"sub\",\"params\":{\"channel\":\"market_xrpusdt_ticker\",\"cb_id\":\"xrpbtc\"}}\n"
+        "{\"event\":\"sub\",\"params\":{\"channel\":\"market_xrpusdt_ticker\",\"cb_id\":\"xrpusdt\"}}\n"
     const val SUB_STR_TRX =
-        "{\"event\":\"sub\",\"params\":{\"channel\":\"market_trxusdt_ticker\",\"cb_id\":\"xrpbtc\"}}\n"
+        "{\"event\":\"sub\",\"params\":{\"channel\":\"market_trxusdt_ticker\",\"cb_id\":\"trxusdt\"}}\n"
     const val SUB_STR_DOGE =
-        "{\"event\":\"sub\",\"params\":{\"channel\":\"market_dogeusdt_ticker\",\"cb_id\":\"xrpbtc\"}}\n"
+        "{\"event\":\"sub\",\"params\":{\"channel\":\"market_dogeusdt_ticker\",\"cb_id\":\"dogeusdt\"}}\n"
     const val SUB_STR_MFTKRWT =
-        "{\"event\":\"sub\",\"params\":{\"channel\":\"market_mftkrwt_ticker\",\"cb_id\":\"xrpbtc\"}}\n"
+        "{\"event\":\"sub\",\"params\":{\"channel\":\"market_mftkrwt_ticker\",\"cb_id\":\"mftkrwt\"}}\n"
 
 
     const val USER_TOKEN = "userLoginToken"

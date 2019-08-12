@@ -157,7 +157,7 @@ class WalletInfoViewModel(application: Application) : BaseViewModel(application)
     fun setTextee(type: String): String {
 
 
-        var tempPair = ArithUtil.convertNumber3(type, 4)
+        var tempPair = type
         //        人民币￥，美金$，韩币₩，日元¥
         val tempPrirName = getSelectCurrency()
 

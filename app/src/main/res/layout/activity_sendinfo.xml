@@ -259,6 +259,7 @@
                     android:hint="@string/inphoneCode"
                     android:text="@={sendinfoViewModel.phoneCode}"
                     android:textColor="#FFFFFF"
+                    android:inputType="number"
                     android:textColorHint="#5D5C71"
                     android:textCursorDrawable="@drawable/shape_ed_color"
                     android:textSize="14dp" />

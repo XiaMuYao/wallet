@@ -73,6 +73,8 @@ class ContractIntoViewModel(application: Application) : BaseViewModel(applicatio
     //预计收益
     var expectedReturn = MutableLiveData<String>()
 
+    var mtitle = MutableLiveData<String>()
+
     override fun initData() {
         expectedReturn.value = "0"
         low.value = "0"
@@ -94,6 +96,7 @@ class ContractIntoViewModel(application: Application) : BaseViewModel(applicatio
                         usermoney.value = money
                         usermoneyjindu.value = stateRate
                         leaveRateViewModel.value = leaveRate.toString()
+                        mtitle.value = title.toString()
                         setTitle(this)
                         listSymbolBalance.forEach {
                             pariList.add(PairListBean(it.symbolName.toUpperCase(), it.amount, it.symbolType.toString()))
@@ -226,8 +229,8 @@ class ContractIntoViewModel(application: Application) : BaseViewModel(applicatio
                     SendSuccessActivity::class.java,
                     bundleOf(
                         "shouSuccessText" to context.getString(R.string.goumaichenggle),
-                        "pairName" to "",
-                        "money" to ""
+                        "pairName" to "MFT",
+                        "money" to buyingWealthManagementProducts.data.decimalAmount
                     )
                 )
             }
@@ -315,7 +318,8 @@ class ContractIntoViewModel(application: Application) : BaseViewModel(applicatio
         }
         val mul1 = BigDecimalUtils.div(thisleaveDay.value!!, "30")
         val mul = BigDecimalUtils.mul(div, mul1)
-        val convertNumber3 = ArithUtil.convertNumber3(mul, 4)
+        val mul12 = BigDecimalUtils.mul(mul, "0.01")
+        val convertNumber3 = ArithUtil.convertNumber3(mul12, 4)
         expectedReturn.value = convertNumber3
     }
 }

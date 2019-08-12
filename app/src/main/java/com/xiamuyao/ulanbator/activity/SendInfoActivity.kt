@@ -5,9 +5,12 @@ import androidx.lifecycle.Observer
 import com.xiamuyao.ulanbator.BR
 import com.xiamuyao.ulanbator.R
 import com.xiamuyao.ulanbator.base.BaseActivity
+import com.xiamuyao.ulanbator.constant.EventConstant
 import com.xiamuyao.ulanbator.databinding.ActivitySendinfoBinding
 import com.xiamuyao.ulanbator.util.CountTime
 import com.xiamuyao.ulanbator.util.setTitleBar
+import com.xiamuyao.ulanbator.utlis.DataBus
+import com.xiamuyao.ulanbator.utlis.DataBusObservable
 import com.xiamuyao.ulanbator.viewmodel.SendInfoViewModel
 
 /**
@@ -46,6 +49,11 @@ class SendInfoActivity : BaseActivity<ActivitySendinfoBinding, SendInfoViewModel
 
         })
 
+        DataBus.observeData(this, EventConstant.finsh, object : DataBusObservable<String> {
+            override fun dataBusDataCallBack(it: String) {
+                viewModel.finishStatus.call()
+            }
+        })
     }
 
 

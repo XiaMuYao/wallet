@@ -85,7 +85,10 @@ class SendInfoViewModel(application: Application) : BaseViewModel(application) {
                 if (modifyTheFundPassword.result.returnCode == "0") {
                     startActivity(
                         SendSuccessActivity::class.java,
-                        bundleOf("type" to type.value, "pairName" to pairName.value, "money" to money.value,"shouSuccessText" to App
+                        bundleOf("type" to type.value,
+                            "pairName" to pairName.value,
+                            "money" to money.value,
+                            "shouSuccessText" to App
                             .CONTEXT.getString(R.string.sendsucess))
                     )
                 }

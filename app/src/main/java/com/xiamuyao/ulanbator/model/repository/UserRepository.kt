@@ -83,6 +83,9 @@ class UserRepository(private var userService: UserService) {
         if (logIn.result.returnCode == "0") {
             App.CONTEXT.putSpValue("userLoginId", logIn.data.userLoginId)
             App.CONTEXT.putSpValue("userLoginToken", logIn.data.userLoginToken)
+            App.CONTEXT.putSpValue("tel", tel)
+            App.CONTEXT.putSpValue("dialingCode", dialingCode)
+
         }
         return@withContext logIn
     }

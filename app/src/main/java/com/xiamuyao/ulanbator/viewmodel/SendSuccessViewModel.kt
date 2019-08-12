@@ -18,13 +18,13 @@ class SendSuccessViewModel(application: Application) : BaseViewModel(application
 
 
     override fun initData() {
-        showText.value = money.value + pairName.value
+        showText.value = money.value + " " + pairName.value
     }
 
     fun finshthis() {
 //        startActivity(MainActivity::class.java, bundleOf("index" to 3))
 //        ActivityStackManager.getInstance().finishAllActivity()
-        DataBus.postData(finsh,finsh)
+        DataBus.postData(finsh, finsh)
         finishStatus.call()
     }
 }

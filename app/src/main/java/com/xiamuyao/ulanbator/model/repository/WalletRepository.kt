@@ -101,7 +101,7 @@ class WalletRepository(private var walletService: WalletService) {
     suspend fun transfer(symbolType: String, verifyCode: String, address: String, amount: String, password: String) =
         withContext(Dispatchers.IO) {
             val obtainExchangeRate =
-                walletService.transfer(symbolType, verifyCode, address, amount, Md5.getMD5(password))
+                walletService.transfer(symbolType, verifyCode, address, amount.replace(",",""), Md5.getMD5(password))
             if (obtainExchangeRate.result.returnCode == "0") {
 
             }

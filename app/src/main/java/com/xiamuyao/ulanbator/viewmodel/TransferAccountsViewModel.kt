@@ -57,18 +57,18 @@ class TransferAccountsViewModel(application: Application) : BaseViewModel(applic
         val mul = BigDecimalUtils.mul(money.value?.replace(",", "")!!, run)
         
         if (BigDecimalUtils.compare(mul, symbolFeeMax.value!!)) {
-            userSymbolFeeRate.value = symbolFeeMax.value!!
+            userSymbolFeeRate.value = symbolFeeMax.value!!.toBigDecimal().stripTrailingZeros().toPlainString()
             return
         } else if (!BigDecimalUtils.compare(mul, symbolFeeMin.value!!)) {
-            userSymbolFeeRate.value = symbolFeeMin.value!!
+            userSymbolFeeRate.value = symbolFeeMin.value!!.toBigDecimal().stripTrailingZeros().toPlainString()
             return
         }
-        userSymbolFeeRate.value = mul
+        userSymbolFeeRate.value = mul.toBigDecimal().stripTrailingZeros().toPlainString()
 
     }
 
     fun allIn() {
-        money.value = mbalance.value
+        money.value = mbalance.value?.replace(",","")
         calculationFee()
     }
 
